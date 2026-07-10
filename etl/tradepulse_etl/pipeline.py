@@ -20,11 +20,11 @@ from .transform import transform_all
 RAW_DIR = Path(__file__).resolve().parents[2] / "data" / "raw"
 
 
-def get_source(kind: str, period: str = "2025") -> TradeSource:
+def get_source(kind: str, period: str | None = None) -> TradeSource:
     if kind == "fixture":
         return FixtureSource()
     if kind == "comtrade":
-        return ComtradeSource(period=period)
+        return ComtradeSource()   # pulls recent months, aggregates to quarters
     raise ValueError(f"unknown source: {kind!r} (use 'fixture' or 'comtrade')")
 
 

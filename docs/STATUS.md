@@ -3,11 +3,12 @@
 > Single source of truth for the CURRENT moment. Update at the start and end of every
 > session. History goes in `docs/progress/`, not here.
 
-**Last updated:** 2026-07-10 (Phase 1 MVP COMPLETE — all batches 1.1–1.9 merged; runs on localhost:3200)
+**Last updated:** 2026-07-11 (MVP complete + running on REAL Comtrade data; annual World-only)
 
 ## Phase
-**Phase 1 MVP — COMPLETE.** Full product runs on `localhost:3200`. Stage 0 validation still
-deferred (ADR-0001 on record). Data + content are SAMPLE.
+**Phase 1 MVP — COMPLETE, now on real trade data.** Runs on `localhost:3200`. Layer-1 map/signals
+use REAL UN Comtrade figures (`--source comtrade`, annual World-only — L-003). Profiles + Layer-3
+requirements remain SAMPLE (curation pending). Stage 0 validation still deferred (ADR-0001).
 
 ## Active task
 **Phase 1 — ADR-0002 — DONE (1.1–1.9 merged to `main`).** Shipped: Layer-1 map + deterministic
@@ -18,8 +19,9 @@ profiles, Layer-3 requirement pages, watch/alerts engine + telemetry, and the fr
 
 ## How to run (localhost MVP)
 ```
-cd etl && python -m tradepulse_etl         # build data + snapshot (Python stdlib, no pip)
-cd ../web && npm install && npm run dev     # http://localhost:3200   (?lang=en for English)
+cd etl && python -m tradepulse_etl --source comtrade   # REAL data (annual, ~90s, rate-limited)
+#   or: python -m tradepulse_etl                        # offline SAMPLE fixture (instant)
+cd ../web && npm install && npm run dev                 # http://localhost:3200  (?lang=en)
 ```
 
 ## Next action (owner picks)

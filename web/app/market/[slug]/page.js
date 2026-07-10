@@ -55,7 +55,7 @@ export default async function MarketPage({ params, searchParams }) {
             {bandArrow(m.band, m.direction)} {bandLabel(m.band, lang)}
           </span>
           <span className="chip">{fmtUSD(m.value_usd)} · {m.band !== "none" ? fmtPct(m.yoy_delta) : tr.noSignal}</span>
-          <span className="chip muted">{tr.period} {m.period} · {tr.published} {m.published_date}</span>
+          <span className="chip muted">{tr.period} {m.period}{m.published_date ? ` · ${tr.published} ${m.published_date}` : ""}</span>
         </div>
         <p className="muted small">{tr.flowImport}</p>
         <div className="actions">

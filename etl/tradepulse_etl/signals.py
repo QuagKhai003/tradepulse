@@ -14,9 +14,12 @@ from . import config
 
 
 def prev_year_period(period: str) -> str:
-    """'2026-Q1' -> '2025-Q1' (YoY comparison, never QoQ — plan §6.1)."""
-    year, quarter = period.split("-")
-    return f"{int(year) - 1}-{quarter}"
+    """Same period one year earlier (YoY, never QoQ — plan §6.1).
+    Quarterly '2026-Q1' -> '2025-Q1'; annual '2024' -> '2023'."""
+    if "-Q" in period:
+        year, quarter = period.split("-")
+        return f"{int(year) - 1}-{quarter}"
+    return str(int(period) - 1)
 
 
 def classify_band(yoy: float) -> str:

@@ -36,7 +36,7 @@ export default function MarketTile({ m, lang, t }) {
           {t.vnShare}: <strong>{(m.vn_share * 100).toFixed(0)}%</strong>
         </div>
       )}
-      <div className="tile-period muted">{m.period} · {t.published} {m.published_date}</div>
+      <div className="tile-period muted">{m.period}{m.published_date ? ` · ${t.published} ${m.published_date}` : ""}</div>
       <div className="tile-cta">{t.viewDetail}</div>
     </Link>
   );

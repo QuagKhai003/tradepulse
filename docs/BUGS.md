@@ -21,6 +21,18 @@ Format: `L-NNN` (limitation) / `B-NNN` (bug) / `S-NNN` (security/launch risk).
 - **Where:** plan §6.4. Default importer-reported per view; state it in a tooltip.
 - **Notes:** Vietnam-tile headline side (GDVC vs importer) still open — plan §15 Q4.
 
+## L-003 — Comtrade free preview: annual World-only (no quarterly, no partners)
+- **Symptom:** live `--source comtrade` returns ANNUAL World totals only; drill-down shows "no
+  sourcing data"; signals are annual YoY, not quarterly.
+- **Cause:** the keyless preview endpoint rejects multi-period requests (HTTP 400) and rate-limits
+  bursts (HTTP 429), so monthly→quarter aggregation across markets × partners is infeasible without
+  a subscription key. Also returns the World total split by transport-mode/2nd-partner — only the
+  canonical `motCode=0, partner2Code=0` row is the true total (double-count bug, now filtered + tested).
+- **Status:** addressed-by-design (annual World-only) + regression test (`test_comtrade.py`).
+- **Where:** `etl/tradepulse_etl/sources/comtrade.py`; signals annual-aware (`prev_year_period`).
+- **Notes:** get a Comtrade subscription key → switch to monthly `C/M/HS` + quarter aggregation +
+  partner breakdown (the `_to_quarters` path already exists in git history) to restore the full design.
+
 ## S-001 — Accuracy liability (outdated requirement → rejected container)
 - **Symptom:** a stale Layer-3 requirement could cause a user's shipment to be rejected at port.
 - **Cause:** Layer 3 is a curation business; sources change.

@@ -61,9 +61,9 @@ npm run dev                                  # -> http://localhost:3200  (?lang=
 - **Phase 1 MVP COMPLETE — runs on `localhost:3200`** (owner chose sequential build over the Stage 0
   gate). Map + signals + search + drill-down (sourcing chart) + Layer-2 profiles + Layer-3 requirement
   pages + watch/alerts + free↔paid paywall. All batches 1.1–1.9 merged to `main`.
-- **Data + profiles + requirements are SAMPLE, labelled everywhere.** Swap to real Comtrade
-  (`--source comtrade`) + verified curation before any launch. Stage 0 willingness-to-pay unproven.
-- **Tests:** 15 offline (ETL + deterministic signal/alert math). `cd etl && python -m unittest discover -s tests`.
+- **Layer-1 trade data is now REAL** (`--source comtrade`, annual World-only — L-003). Profiles +
+  Layer-3 requirements are still SAMPLE (verified curation pending). Stage 0 WTP unproven.
+- **Tests:** 20 offline (ETL + deterministic signal/alert math + Comtrade helpers). `cd etl && python -m unittest discover -s tests`.
 
 ## New here?
 Start at `docs/ONBOARDING.md`. `docs/CONVENTIONS.md` is the mandatory hygiene contract.
