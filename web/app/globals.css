@@ -218,3 +218,19 @@ a.tile:hover { transform: translateY(-2px); border-color: var(--accent); box-sha
   border-radius: 999px; padding: 7px 16px; font-size: 14px; font-weight: 650; cursor: pointer; }
 .watchbtn:hover { border-color: var(--accent); color: var(--accent); }
 .watchbtn.on { background: #fffbeb; border-color: #f59e0b; color: #b45309; }
+
+/* pricing */
+.pricegrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 560px; margin-bottom: 18px; }
+@media (max-width: 640px) { .pricegrid { grid-template-columns: 1fr; } }
+.pricecol { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; box-shadow: var(--shadow); }
+.pricecol.paid { border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245,158,11,.12); }
+.pricecol h2 { color: var(--ink); text-transform: none; letter-spacing: normal; font-size: 15px; }
+.price { font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+.permo { font-size: 13px; font-weight: 500; color: var(--muted); }
+.feattable { width: 100%; max-width: 560px; border-collapse: collapse; font-size: 14px; margin-bottom: 18px; }
+.feattable th, .feattable td { text-align: center; padding: 9px 8px; border-bottom: 1px solid var(--line); }
+.feattable th:first-child, .feattable td:first-child { text-align: left; }
+.feattable .paidcol { background: #fffdf5; }
+.feattable .yes { color: #15803d; font-weight: 800; }
+.feattable .no { color: #cbd5e1; }
+.checkout { margin: 8px 0 4px; }

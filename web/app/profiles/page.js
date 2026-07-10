@@ -8,6 +8,7 @@
 import Link from "next/link";
 import CompanyCard from "../components/CompanyCard.js";
 import { loadCompanies, FREE_PROFILE_LIMIT } from "../lib/companies.js";
+import { getTier } from "../lib/tier.js";
 import { t } from "../lib/i18n.js";
 
 export default async function ProfilesPage({ searchParams }) {
@@ -21,10 +22,13 @@ export default async function ProfilesPage({ searchParams }) {
     return <main className="page"><div className="empty">{tr.noProfiles}</div></main>;
   }
 
+  const paid = (await getTier()) === "paid";
   const buyers = data.companies.filter((c) => c.role === "buyer");
   const sellers = data.companies.filter((c) => c.role === "seller");
-  // Free-tier gating: first N across the whole list are open, the rest blurred.
-  const openIds = new Set(data.companies.slice(0, FREE_PROFILE_LIMIT).map((c) => c.id));
+  // Free-tier gating: first N open, rest blurred; paid unlocks all (plan §11).
+  const openIds = new Set(
+    (paid ? data.companies : data.companies.slice(0, FREE_PROFILE_LIMIT)).map((c) => c.id)
+  );
 
   const section = (title, list) => (
     <section className="prof-section">

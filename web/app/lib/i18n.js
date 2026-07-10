@@ -51,6 +51,13 @@ const STRINGS = {
     disclaimerReq: "Thông tin, không phải tư vấn pháp lý. Nguồn chính thức là căn cứ cuối cùng. Kiểm tra ngày rà soát.",
     watch: "Theo dõi tín hiệu", watching: "Đang theo dõi",
     watchRule: "Theo dõi thay đổi quy định", watchingRule: "Đang theo dõi quy định",
+    pricingLink: "Nâng cấp ★", pricingTitle: "Gói dịch vụ", perMonth: "tháng",
+    pricingNote: "SME trả tiền cho cảnh báo + yêu cầu đầy đủ, không phải bảng số liệu. Giá đang thử nghiệm.",
+    freeSub: "Bản đồ + tín hiệu + tra cứu. Đủ để bắt đầu.", paidSub: "Cảnh báo tức thời + hồ sơ & yêu cầu đầy đủ.",
+    rowMap: "Bản đồ + feed tín hiệu", rowDrill: "Xem sâu theo nước", rowProfiles: "Hồ sơ người mua/bán",
+    rowReq: "Trang yêu cầu", rowReqFull: "Đầy đủ + nguồn", rowWatch: "Theo dõi", rowAlerts: "Cảnh báo tức thời + tin đấu thầu",
+    startPaid: "Bắt đầu gói trả phí", testMode: "chế độ thử", downgrade: "Hạ về miễn phí",
+    current: "Hiện tại", upgraded: "Đã nâng cấp lên bản trả phí (thử nghiệm).", downgraded: "Đã về bản miễn phí.",
   },
   en: {
     tagline: "Export demand radar",
@@ -98,6 +105,13 @@ const STRINGS = {
     disclaimerReq: "Information, not legal advice. Official sources govern. Check the review date.",
     watch: "Watch signal", watching: "Watching",
     watchRule: "Watch rule changes", watchingRule: "Watching rules",
+    pricingLink: "Upgrade ★", pricingTitle: "Plans", perMonth: "mo",
+    pricingNote: "SMEs pay for alerts + full requirements, not dashboards. Price is being tested.",
+    freeSub: "Map + signals + lookup. Enough to start.", paidSub: "Instant alerts + full profiles & requirements.",
+    rowMap: "Map + signal feed", rowDrill: "Country drill-down", rowProfiles: "Buyer/seller profiles",
+    rowReq: "Requirement pages", rowReqFull: "Full + sources", rowWatch: "Watches", rowAlerts: "Instant alerts + tender feed",
+    startPaid: "Start paid plan", testMode: "test mode", downgrade: "Downgrade to free",
+    current: "Current", upgraded: "Upgraded to paid (test mode).", downgraded: "Back on free.",
   },
 };
 

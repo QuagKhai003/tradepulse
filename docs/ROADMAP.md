@@ -15,10 +15,9 @@
 **Sequence:** 0.1 → 0.2 → 0.3. **Gate:** GO = ≥5 substantive replies AND ≥3 say yes to paying.
 **Acceptance:** in ADR-0001.
 
-## Phase 1 — MVP — IN PROGRESS (ADR-0002) — 6–8 weeks
-**Goal:** global map + pilot vertical full depth + watch/alerts + payments (plan §13).
-Building sequentially toward a localhost-runnable MVP (owner direction). Walking skeleton =
-1.1→1.2→1.3. Depth 1.6–1.9 still advised to wait for Stage 0 GO (plan §12). Batches (ADR-0002):
+## Phase 1 — MVP — COMPLETE (ADR-0002) — runs on localhost:3200
+**Goal:** global map + pilot vertical full depth + watch/alerts + payments (plan §13). ✅ shipped.
+All 9 batches done + merged. Data + content are SAMPLE; Stage 0 willingness-to-pay still unproven. Batches:
 
 | # | Task | Status |
 |---|------|--------|
@@ -30,7 +29,7 @@ Building sequentially toward a localhost-runnable MVP (owner direction). Walking
 | 1.6 | Layer 2: buyer/seller profiles (names + source links, curated) | ✅ |
 | 1.7 | Layer 3: pellets→JP/KR/EU requirement pages (markdown, cited) | ✅ |
 | 1.8 | Watch/alerts (email) + locked-page telemetry | ✅ |
-| 1.9 | Payments (single paid tier) | ⬜ |
+| 1.9 | Payments (single paid tier) | ✅ |
 
 ## Phase 2 — PLANNED — +6 weeks
 | # | Task | Status |

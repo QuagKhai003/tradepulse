@@ -3,30 +3,31 @@
 > Single source of truth for the CURRENT moment. Update at the start and end of every
 > session. History goes in `docs/progress/`, not here.
 
-**Last updated:** 2026-07-10 (batch 1.8 watch/alerts + telemetry done + merged; next = 1.9 payments = last)
+**Last updated:** 2026-07-10 (Phase 1 MVP COMPLETE — all batches 1.1–1.9 merged; runs on localhost:3200)
 
 ## Phase
-**Phase 1 MVP — sequential build (owner direction).** Stage 0 validation deferred (ADR-0001 on
-record). Goal this stretch: a Next.js app runnable on `localhost` showing pellet demand signals.
+**Phase 1 MVP — COMPLETE.** Full product runs on `localhost:3200`. Stage 0 validation still
+deferred (ADR-0001 on record). Data + content are SAMPLE.
 
 ## Active task
-**Phase 1 — ADR-0002 — batches 1.1–1.8 DONE (merged to `main`).** Full stack + alert engine live:
-map, search, drill-down, profiles, requirement pages, Watch button + `/api/watch`, PURE alert logic
-(band-crossing + rule-change + telemetry rollup). Runs on `localhost:3200`.
-**NEXT: batch 1.9 (LAST)** — payments / paid-tier gate (branch `phase/1-payments`): make the
-free↔paid boundary real (plan §11) — a tier cookie/session + test-mode checkout stub gating full
-profiles, requirement checklists, and unlimited watches.
+**Phase 1 — ADR-0002 — DONE (1.1–1.9 merged to `main`).** Shipped: Layer-1 map + deterministic
+signals, product search + locked pages, country drill-down (partners + sourcing chart), Layer-2
+profiles, Layer-3 requirement pages, watch/alerts engine + telemetry, and the free↔paid gate
+(cookie + test-mode checkout). 15 offline Python tests green; web build clean.
+**NEXT: nothing queued.** Options below — owner picks.
 
-## How to run right now (localhost MVP)
+## How to run (localhost MVP)
 ```
-cd etl && python -m tradepulse_etl        # build data + snapshot (stdlib, no pip)
-cd ../web && npm install && npm run dev    # http://localhost:3200  (?lang=en)
+cd etl && python -m tradepulse_etl         # build data + snapshot (Python stdlib, no pip)
+cd ../web && npm install && npm run dev     # http://localhost:3200   (?lang=en for English)
 ```
 
-## Next action (whoever picks this up)
-- Batch 1.4 search, then 1.5 country drill-down. (Depth 1.6–1.9 still advised behind Stage 0 GO.)
+## Next action (owner picks)
+1. **Make it real (highest value):** run the actual Comtrade pull (`--source comtrade` + monthly→
+   quarter aggregation) and replace SAMPLE profiles/requirements with verified content (S-001 bar).
+2. **Validate:** do Stage 0 (ADR-0001) now that there's a live demo to show exporters.
+3. **Phase 2 (ADR-0003, write when starting):** 2nd vertical, real tender feed, Zalo alerts, real email delivery + login.
 - Confirm Golden Rule wording ("Inform, never match" — CLAUDE.md).
-- Decide pilot-vertical fallback if pellets stall (tea/seafood/cashew — plan §15 Q1).
 
 ## Path to MVP (localhost) — see docs/ROADMAP.md
 Skeleton: **1.1 ETL ✅ → 1.2 signals(+test) → 1.3 map+feed** = runnable localhost demo.

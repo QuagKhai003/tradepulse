@@ -10,13 +10,14 @@ import Link from "next/link";
 import RequirementChecklist from "../../components/RequirementChecklist.js";
 import WatchButton from "../../components/WatchButton.js";
 import { loadRequirement } from "../../lib/requirements.js";
+import { getTier } from "../../lib/tier.js";
 import { t } from "../../lib/i18n.js";
 
 export default async function RequirementPage({ params, searchParams }) {
   const { market } = await params;
   const sp = searchParams ? await searchParams : {};
   const lang = sp.lang === "en" ? "en" : "vi";
-  const paid = sp.tier === "paid";
+  const paid = (await getTier()) === "paid";
   const tr = t(lang);
   const qs = lang === "en" ? "?lang=en" : "";
   const d = await loadRequirement(market);
@@ -35,9 +36,7 @@ export default async function RequirementPage({ params, searchParams }) {
           <Link className="logo" href={`/${qs}`}>◈ TradePulse</Link>
           <span className="tagline">{tr.tagline}</span>
         </div>
-        <a className="langswitch" href={`?tier=${paid ? "free" : "paid"}&lang=${lang}`}>
-          {paid ? tr.viewFree : tr.viewPaid}
-        </a>
+        <a className="langswitch" href={`/pricing${qs}`}>{paid ? tr.tierPaid : tr.viewPaid}</a>
       </header>
 
       <Link className="back" href={`/requirements${qs}`}>{tr.backReq}</Link>
@@ -66,7 +65,7 @@ export default async function RequirementPage({ params, searchParams }) {
         <div className="paywall">
           <div className="paywall-lock">🔒</div>
           <p>{tr.paywall}</p>
-          <a className="locked-btn" href={`?tier=paid&lang=${lang}`}>{tr.unlockDemo}</a>
+          <a className="locked-btn" href={`/pricing${qs}`}>{tr.viewPaid}</a>
         </div>
       )}
 

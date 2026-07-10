@@ -1,6 +1,8 @@
 # ADR-0002 — Phase 1 MVP build plan
 
-**Status:** Accepted · 2026-07-10 · Builds on: ADR-0001 (Stage 0), product plan §5–11, §13.
+**Status:** Accepted — COMPLETE · 2026-07-10 · Builds on: ADR-0001 (Stage 0), product plan §5–11, §13.
+All batches 1.1–1.9 shipped + merged to `main`; MVP runs on `localhost:3200`. Acceptance met (below),
+with the standing caveat that DATA + content are SAMPLE and Stage 0 willingness-to-pay is unproven.
 
 > **Gate note:** plan §12 recommends no code until Stage 0 = GO. Owner elected to build the
 > walking skeleton in parallel with Stage 0 validation (at owner's risk). If Stage 0 = KILL,
@@ -81,8 +83,11 @@ batches. Everything downstream of the skeleton is *widening*, not *de-risking*.
   `match_watches`, `rollup_locked_clicks`; +7 offline tests (15 total). CLI diffs prev vs new signals →
   `data/alerts.ndjson` + prints the demand rollup. Web `WatchButton` + `/api/watch` (→ `watches.ndjson`)
   on market + requirement pages. **Delivery is a stub** (NDJSON, not email) — the email/Zalo swap is documented.
-- [ ] **1.9 — Payments (single tier).** Gate full profiles/requirements/alerts behind one paid tier.
+- [x] **1.9 — Payments (single tier).** Gate full profiles/requirements/alerts behind one paid tier.
   **Acceptance:** free vs paid boundary matches plan §11; test-mode checkout completes.
+  → **DONE:** `lib/tier.js` (cookie tier), `/api/checkout` (test-mode upgrade/cancel, 303 + cookie),
+  `/pricing` (free vs paid table, 200k₫/mo). Profiles + requirement checklists gate on the cookie.
+  Verified full cycle: free=snapshot only → checkout → paid=full checklist + all profiles → downgrade re-gates.
 
 ## Acceptance (phase done)
 - The skeleton (1.1–1.3) renders real pellet signals on the map.

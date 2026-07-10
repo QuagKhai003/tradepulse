@@ -58,6 +58,7 @@ export default async function Page({ searchParams }) {
           {covered && <span className="chip muted">{tr.period} {snap.latest_period}</span>}
           {covered && <a className="chip link" href={`/profiles${lang === "en" ? "?lang=en" : ""}`}>{tr.profilesLink}</a>}
           {covered && <a className="chip link" href={`/requirements${lang === "en" ? "?lang=en" : ""}`}>{tr.reqLink}</a>}
+          <a className="chip link" href={`/pricing${lang === "en" ? "?lang=en" : ""}`}>{tr.pricingLink}</a>
         </div>
       </section>
 
