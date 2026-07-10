@@ -1,0 +1,34 @@
+{
+  "market": "eu",
+  "market_name_en": "European Union", "market_name_vi": "Liên minh châu Âu",
+  "hs6": "440131",
+  "product_en": "Wood pellets", "product_vi": "Viên nén gỗ",
+  "is_sample": true,
+  "last_full_review": "2026-06-20",
+  "snapshot_vi": "EU là thị trường lớn nhưng có rào cản pháp lý nặng nhất: Quy định chống phá rừng (EUDR) yêu cầu truy xuất nguồn gốc và thẩm định (due diligence) chặt. Không đạt EUDR là không vào được.",
+  "snapshot_en": "The EU is large but carries the heaviest regulatory gate: the Deforestation Regulation (EUDR) demands geolocation traceability and strict due diligence. Failing EUDR means no market access.",
+  "requirements": [
+    { "seq": 1, "text_vi": "Thẩm định EUDR (chống phá rừng) + toạ độ địa lý lô nguyên liệu", "text_en": "EUDR due diligence + plot geolocation of raw material",
+      "type": "Regulatory", "mandatory": "yes", "evidence_vi": "Tuyên bố thẩm định (DDS) + dữ liệu toạ độ", "evidence_en": "Due-diligence statement (DDS) + geolocation data",
+      "source": "EU Access2Markets", "source_url": "https://trade.ec.europa.eu/access-to-markets", "verified_date": "2026-06-20" },
+    { "seq": 2, "text_vi": "Chứng nhận bền vững FSC/PEFC hoặc SBP", "text_en": "FSC/PEFC or SBP sustainability certificate",
+      "type": "Certification", "mandatory": "de-facto", "evidence_vi": "Số chứng chỉ CoC/SBP", "evidence_en": "CoC/SBP certificate no.",
+      "source": "info.fsc.org", "source_url": "https://info.fsc.org/certificate", "verified_date": "2026-06-20" },
+    { "seq": 3, "text_vi": "Tuân thủ ISPM-15 / kiểm dịch thực vật", "text_en": "ISPM-15 / phytosanitary compliance",
+      "type": "Regulatory", "mandatory": "yes", "evidence_vi": "Dấu ISPM-15 / giấy kiểm dịch", "evidence_en": "ISPM-15 stamp / phytosanitary certificate",
+      "source": "EU Access2Markets", "source_url": "https://trade.ec.europa.eu/access-to-markets", "verified_date": "2026-06-20" },
+    { "seq": 4, "text_vi": "Đạt tiêu chuẩn chất lượng ENplus (thị trường dân dụng)", "text_en": "ENplus quality standard (residential market)",
+      "type": "Market spec", "mandatory": "de-facto", "evidence_vi": "Chứng nhận ENplus", "evidence_en": "ENplus certification",
+      "source": "enplus-pellets.eu", "source_url": "https://enplus-pellets.eu", "verified_date": "2026-05-20" }
+  ],
+  "buyer_expectations_vi": "Thị trường chia hai: công nghiệp (nhà máy điện) và dân dụng (sưởi ấm, cần ENplus A1). Chú trọng chứng từ EUDR đầy đủ trước khi ký.",
+  "buyer_expectations_en": "Two segments: industrial (power plants) and residential (heating, needs ENplus A1). Complete EUDR paperwork before signing is decisive.",
+  "demand_vi": "Người mua gồm nhà máy điện và nhà phân phối viên nén dân dụng. Cơ chế: hợp đồng + đấu thầu công (EU TED).",
+  "demand_en": "Buyers include power plants and residential pellet distributors. Mechanism: contracts + public tenders (EU TED).",
+  "demand_url": "https://ted.europa.eu",
+  "price_vi": "~200–260 EUR/tấn (dân dụng, minh hoạ)", "price_en": "~€200–260/tonne (residential, illustrative)",
+  "price_source": "industry reference", "price_date": "2026-05-31",
+  "change_log": [
+    { "date": "2026-06-20", "text_vi": "EUDR áp dụng đầy đủ cho doanh nghiệp lớn", "text_en": "EUDR fully applicable to large operators", "source": "trade.ec.europa.eu" }
+  ]
+}

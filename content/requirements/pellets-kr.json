@@ -1,0 +1,34 @@
+{
+  "market": "kr",
+  "market_name_en": "South Korea", "market_name_vi": "Hàn Quốc",
+  "hs6": "440131",
+  "product_en": "Wood pellets", "product_vi": "Viên nén gỗ",
+  "is_sample": true,
+  "last_full_review": "2026-06-08",
+  "snapshot_vi": "Hàn Quốc là thị trường lớn nhưng cầu đang chịu áp lực từ thay đổi trợ giá (REC/RPS). Rào cản: tiêu chuẩn nhiên liệu và hồ sơ đủ điều kiện REC cho bên mua là điện lực.",
+  "snapshot_en": "South Korea is a large market but demand is under pressure from subsidy (REC/RPS) changes. Gates: fuel-quality standards and REC-eligibility paperwork for utility buyers.",
+  "requirements": [
+    { "seq": 1, "text_vi": "Đạt tiêu chuẩn chất lượng nhiên liệu (KS/K-eco)", "text_en": "Meet fuel-quality standard (KS / K-eco)",
+      "type": "Regulatory", "mandatory": "yes", "evidence_vi": "Phiếu kiểm nghiệm đạt chuẩn", "evidence_en": "Conforming lab test report",
+      "source": "keco.or.kr", "source_url": "https://www.keco.or.kr", "verified_date": "2026-06-08" },
+    { "seq": 2, "text_vi": "Hồ sơ đủ điều kiện REC/RPS (cho bên mua điện lực)", "text_en": "REC/RPS eligibility documentation (for utility buyers)",
+      "type": "Regulatory", "mandatory": "de-facto", "evidence_vi": "Chứng từ nguồn gốc bền vững", "evidence_en": "Sustainable-origin documentation",
+      "source": "knrec.or.kr", "source_url": "https://www.knrec.or.kr", "verified_date": "2026-06-08" },
+    { "seq": 3, "text_vi": "Giấy kiểm dịch thực vật / hun trùng", "text_en": "Phytosanitary / fumigation certificate",
+      "type": "Regulatory", "mandatory": "yes", "evidence_vi": "Giấy chứng nhận kiểm dịch lô hàng", "evidence_en": "Per-shipment phytosanitary certificate",
+      "source": "at.go.kr", "source_url": "https://www.at.go.kr", "verified_date": "2026-06-01" },
+    { "seq": 4, "text_vi": "Chứng nhận bền vững FSC/PEFC (ngày càng được yêu cầu)", "text_en": "FSC/PEFC sustainability certificate (increasingly required)",
+      "type": "Certification", "mandatory": "phasing-in", "evidence_vi": "Số chứng chỉ CoC", "evidence_en": "CoC certificate no.",
+      "source": "info.fsc.org", "source_url": "https://info.fsc.org/certificate", "verified_date": "2026-06-08" }
+  ],
+  "buyer_expectations_vi": "Hợp đồng đấu thầu công khai (KOMIPO/KOSPO/KOEN); giao theo tàu lớn; nhạy giá do trợ giá thay đổi.",
+  "buyer_expectations_en": "Public tender contracts (KOMIPO/KOSPO/KOEN); large-vessel delivery; price-sensitive as subsidies shift.",
+  "demand_vi": "Người mua là các công ty phát điện thuộc KEPCO qua đấu thầu công khai. Theo dõi các cuộc đấu giá viên nén của KOMIPO/KOSPO/KOEN.",
+  "demand_en": "Buyers are KEPCO generation companies via public tenders. Watch KOMIPO/KOSPO/KOEN pellet auctions.",
+  "demand_url": "https://www.kospo.co.kr",
+  "price_vi": "~150–170 USD/tấn CIF Hàn (minh hoạ)", "price_en": "~$150–170/tonne CIF Korea (illustrative)",
+  "price_source": "industry reference", "price_date": "2026-05-31",
+  "change_log": [
+    { "date": "2026-05-30", "text_vi": "Điều chỉnh giảm hệ số REC cho sinh khối nhập khẩu", "text_en": "REC weighting for imported biomass adjusted down", "source": "knrec.or.kr" }
+  ]
+}

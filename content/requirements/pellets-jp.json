@@ -1,0 +1,38 @@
+{
+  "market": "jp",
+  "market_name_en": "Japan", "market_name_vi": "Nhật Bản",
+  "hs6": "440131",
+  "product_en": "Wood pellets", "product_vi": "Viên nén gỗ",
+  "is_sample": true,
+  "last_full_review": "2026-06-15",
+  "snapshot_vi": "Nhật là thị trường viên nén lớn của châu Á, cầu do chính sách FIT/FIP dẫn dắt. Một SME Việt Nam có thể vào được, nhưng rào cản khó nhất là chứng nhận bền vững (FSC/PEFC, và SBP đang bắt buộc dần) cộng kiểm dịch thực vật.",
+  "snapshot_en": "Japan is a major Asian pellet market, demand driven by FIT/FIP policy. A typical Vietnamese SME can enter, but the hardest gate is sustainability certification (FSC/PEFC, with SBP phasing in) plus phytosanitary clearance.",
+  "requirements": [
+    { "seq": 1, "text_vi": "Chứng chỉ chuỗi hành trình FSC hoặc PEFC (CoC)", "text_en": "FSC or PEFC Chain-of-Custody certificate",
+      "type": "Certification", "mandatory": "de-facto", "evidence_vi": "Số chứng chỉ trong CSDL FSC/PEFC", "evidence_en": "Certificate no. in FSC/PEFC database",
+      "source": "info.fsc.org", "source_url": "https://info.fsc.org/certificate", "verified_date": "2026-06-15" },
+    { "seq": 2, "text_vi": "Chứng nhận SBP (Sustainable Biomass Program)", "text_en": "SBP certification",
+      "type": "Certification", "mandatory": "phasing-in", "evidence_vi": "Mã người nắm chứng chỉ SBP", "evidence_en": "SBP certificate-holder ID",
+      "source": "sbp-cert.org", "source_url": "https://sbp-cert.org/certificate-holders", "verified_date": "2026-06-15" },
+    { "seq": 3, "text_vi": "Giấy kiểm dịch thực vật / hun trùng", "text_en": "Phytosanitary / fumigation certificate",
+      "type": "Regulatory", "mandatory": "yes", "evidence_vi": "Giấy chứng nhận kiểm dịch lô hàng", "evidence_en": "Per-shipment phytosanitary certificate",
+      "source": "maff.go.jp", "source_url": "https://www.maff.go.jp", "verified_date": "2026-06-02" },
+    { "seq": 4, "text_vi": "Tuân thủ ISPM-15 cho bao bì gỗ", "text_en": "ISPM-15 compliance for wood packaging",
+      "type": "Regulatory", "mandatory": "yes", "evidence_vi": "Dấu ISPM-15", "evidence_en": "ISPM-15 stamp",
+      "source": "maff.go.jp", "source_url": "https://www.maff.go.jp", "verified_date": "2026-06-02" },
+    { "seq": 5, "text_vi": "Đạt tiêu chuẩn chất lượng (nhiệt trị, tro, ẩm, clo) theo hợp đồng/ENplus", "text_en": "Meet quality spec (calorific value, ash, moisture, chlorine) per contract/ENplus",
+      "type": "Market spec", "mandatory": "de-facto", "evidence_vi": "Phiếu kiểm nghiệm phòng lab", "evidence_en": "Lab test report",
+      "source": "enplus-pellets.eu", "source_url": "https://enplus-pellets.eu", "verified_date": "2026-05-20" }
+  ],
+  "buyer_expectations_vi": "Điều khoản thanh toán L/C hoặc trả sau; sản lượng tối thiểu theo tàu (handysize/Panamax); ưu tiên hợp đồng dài hạn (offtake); quy cách công nghiệp (industrial) hoặc ENplus A1.",
+  "buyer_expectations_en": "L/C or deferred payment; vessel-scale minimum volumes (handysize/Panamax); long-term offtake preferred; industrial or ENplus A1 spec.",
+  "demand_vi": "Người mua chính là các công ty điện lực và nhà máy đồng đốt, cùng các nhà thương mại (trading house). Cơ chế: hợp đồng dài hạn + một phần đấu thầu. Theo dõi lịch đấu giá FIT của METI.",
+  "demand_en": "Buyers are power utilities and co-firing plants plus trading houses. Mechanism: long-term contracts + some tenders. Watch METI's FIT auction schedule.",
+  "demand_url": "https://www.meti.go.jp",
+  "price_vi": "~160–180 USD/tấn CIF Nhật (minh hoạ)", "price_en": "~$160–180/tonne CIF Japan (illustrative)",
+  "price_source": "industry reference", "price_date": "2026-05-31",
+  "change_log": [
+    { "date": "2026-06-15", "text_vi": "SBP siết yêu cầu cho hợp đồng mới", "text_en": "SBP requirement tightened for new contracts", "source": "sbp-cert.org" },
+    { "date": "2026-02-10", "text_vi": "Công bố lịch đấu giá FIT", "text_en": "FIT auction schedule published", "source": "meti.go.jp" }
+  ]
+}

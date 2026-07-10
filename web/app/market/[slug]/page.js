@@ -57,6 +57,9 @@ export default async function MarketPage({ params, searchParams }) {
           <span className="chip muted">{tr.period} {m.period} · {tr.published} {m.published_date}</span>
         </div>
         <p className="muted small">{tr.flowImport}</p>
+        {["jp", "kr", "eu"].includes(slug) && (
+          <a className="chip link" href={`/requirements/${slug}${qs}`}>{tr.reqLink}</a>
+        )}
       </section>
 
       {m.partners && m.partners.length > 0 ? (

@@ -28,7 +28,7 @@ Building sequentially toward a localhost-runnable MVP (owner direction). Walking
 | 1.4 | Category search: everyday words → HS chip (30–50 hand-mapped codes) | ✅ |
 | 1.5 | Country drill-down + historical sourcing chart | ✅ |
 | 1.6 | Layer 2: buyer/seller profiles (names + source links, curated) | ✅ |
-| 1.7 | Layer 3: pellets→JP/KR/EU requirement pages (markdown, cited) | ⬜ |
+| 1.7 | Layer 3: pellets→JP/KR/EU requirement pages (markdown, cited) | ✅ |
 | 1.8 | Watch/alerts (email) + locked-page telemetry | ⬜ |
 | 1.9 | Payments (single paid tier) | ⬜ |
 

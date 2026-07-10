@@ -67,8 +67,14 @@ batches. Everything downstream of the skeleton is *widening*, not *de-risking*.
   evidence source + verified date, zero contacts); `/profiles` SSR list, free-tier blurs beyond 3
   (plan §11). Verified no email/phone fields render. **Note:** entries are sample placeholders —
   real curation is the documented manual task; the accuracy bar (S-001) applies before launch.
-- [ ] **1.7 — Layer 3: requirement pages.** pellets→JP, →KR, →EU markdown pages per plan §8
+- [x] **1.7 — Layer 3: requirement pages.** pellets→JP, →KR, →EU markdown pages per plan §8
   template; every item sourced + dated; change log. **Acceptance:** 3 pages, zero unsourced items.
+  → **DONE:** `content/requirements/pellets-{jp,kr,eu}.json` (§8 template: snapshot, checklist,
+  buyer expectations, demand, price, change log). Loader DROPS any item missing source_url +
+  verified_date (enforces "no source = no ship"). `/requirements` index + `/requirements/[market]`;
+  free tier = Snapshot only, paid unlocks the checklist (plan §11, `?tier=paid` demo). SAMPLE-labelled.
+  **Decision:** structured JSON instead of raw markdown — better enforces the sourced-item invariant;
+  git history is still the change-log/audit trail. (See BUGS S-001 — accuracy bar before launch.)
 - [ ] **1.8 — Watch/alerts (email) + locked-page telemetry.** Watch button; signal-band-crossing +
   rule-change email; `locked_page_clicks` logged. **Acceptance:** a band crossing emits one email to a watcher.
 - [ ] **1.9 — Payments (single tier).** Gate full profiles/requirements/alerts behind one paid tier.

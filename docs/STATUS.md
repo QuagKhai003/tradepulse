@@ -3,19 +3,20 @@
 > Single source of truth for the CURRENT moment. Update at the start and end of every
 > session. History goes in `docs/progress/`, not here.
 
-**Last updated:** 2026-07-10 (batch 1.6 Layer-2 profiles done + merged; next = 1.7 requirement pages)
+**Last updated:** 2026-07-10 (batch 1.7 Layer-3 requirement pages done + merged; next = 1.8 alerts)
 
 ## Phase
 **Phase 1 MVP — sequential build (owner direction).** Stage 0 validation deferred (ADR-0001 on
 record). Goal this stretch: a Next.js app runnable on `localhost` showing pellet demand signals.
 
 ## Active task
-**Phase 1 — ADR-0002 — batches 1.1–1.6 DONE (merged to `main`).** Map + search + drill-down +
-Layer-2 profiles live. `/profiles`: 10 curated names + cited public sources, no contacts, free tier
-blurs beyond 3. Runs on `localhost:3200`.
-**NEXT: batch 1.7** — Layer 3 requirement pages (branch `phase/1-requirements`): pellets→JP/KR/EU
-markdown pages per plan §8 template (every item sourced + verified date + change log). The paid core.
-⚠ 1.7–1.9 remain the plan's Stage-0-gated depth/payments batches — owner building through.
+**Phase 1 — ADR-0002 — batches 1.1–1.7 DONE (merged to `main`).** Full content stack live: map,
+search, drill-down, Layer-2 profiles, Layer-3 requirement pages (JP/KR/EU, §8 template, sourced,
+free=snapshot / paid=full checklist). Runs on `localhost:3200`.
+**NEXT: batch 1.8** — watch/alerts + locked-page telemetry rollup (branch `phase/1-alerts`):
+"Watch this" button; signal-band-crossing + rule-change alerts (email stub); fold
+`data/locked_clicks.ndjson` into a summary. The recurring-revenue engine.
+⚠ 1.8–1.9 remain the plan's Stage-0-gated batches — owner building through.
 
 ## How to run right now (localhost MVP)
 ```
