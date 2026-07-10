@@ -36,10 +36,16 @@ def _is_world_total(r: dict) -> bool:
     return r.get("partnerCode") == 0 and _is_total_row(r)
 
 
+def _chunks(items: list, n: int) -> list[list]:
+    return [items[i:i + n] for i in range(0, len(items), n)]
+
+
 class ComtradeSource:
     name = "comtrade"
 
-    def __init__(self, key: str | None = None, months: int = 30, years: int = 6,
+    PERIODS_PER_CALL = 12   # authenticated /data hard limit: "Maximum number of periods is 12"
+
+    def __init__(self, key: str | None = None, months: int = 24, years: int = 6,
                  timeout: int = 60, pause: float = 1.2):
         self.key = key
         self.months = months
@@ -51,15 +57,17 @@ class ComtradeSource:
         hs = ",".join(hs_codes)
         return self._pull_authenticated(hs, reporters) if self.key else self._pull_keyless(hs, reporters)
 
-    # --- authenticated: monthly, all partners, one call per reporter -> quarters ---
+    # --- authenticated: monthly, all partners; chunk periods (<=12/call) -> quarters ---
     def _pull_authenticated(self, hs: str, reporters: list[int]) -> list[dict]:
-        months = ",".join(self._recent_months(self.months))
+        months = self._recent_months(self.months)
         monthly: list[dict] = []
         for reporter in reporters:
-            params = {"reporterCode": reporter, "cmdCode": hs, "flowCode": "M", "period": months}
-            rows = self._get(f"{DATA_MONTHLY}?{urllib.parse.urlencode(params)}", auth=True)
-            monthly += [r for r in rows if _is_total_row(r)]   # keep every partner's canonical total
-            time.sleep(self.pause)
+            for chunk in _chunks(months, self.PERIODS_PER_CALL):
+                params = {"reporterCode": reporter, "cmdCode": hs, "flowCode": "M",
+                          "period": ",".join(chunk)}
+                rows = self._get(f"{DATA_MONTHLY}?{urllib.parse.urlencode(params)}", auth=True)
+                monthly += [r for r in rows if _is_total_row(r)]   # each partner's canonical total
+                time.sleep(self.pause)
         return self._to_quarters(monthly)
 
     # --- keyless: annual World-only, one call per reporter×year (tested fallback) ---
