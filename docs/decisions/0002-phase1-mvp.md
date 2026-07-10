@@ -75,8 +75,12 @@ batches. Everything downstream of the skeleton is *widening*, not *de-risking*.
   free tier = Snapshot only, paid unlocks the checklist (plan §11, `?tier=paid` demo). SAMPLE-labelled.
   **Decision:** structured JSON instead of raw markdown — better enforces the sourced-item invariant;
   git history is still the change-log/audit trail. (See BUGS S-001 — accuracy bar before launch.)
-- [ ] **1.8 — Watch/alerts (email) + locked-page telemetry.** Watch button; signal-band-crossing +
+- [x] **1.8 — Watch/alerts (email) + locked-page telemetry.** Watch button; signal-band-crossing +
   rule-change email; `locked_page_clicks` logged. **Acceptance:** a band crossing emits one email to a watcher.
+  → **DONE:** `alerts.py` (PURE): `signal_alerts` (band crossings, skips first load), `rule_change_alerts`,
+  `match_watches`, `rollup_locked_clicks`; +7 offline tests (15 total). CLI diffs prev vs new signals →
+  `data/alerts.ndjson` + prints the demand rollup. Web `WatchButton` + `/api/watch` (→ `watches.ndjson`)
+  on market + requirement pages. **Delivery is a stub** (NDJSON, not email) — the email/Zalo swap is documented.
 - [ ] **1.9 — Payments (single tier).** Gate full profiles/requirements/alerts behind one paid tier.
   **Acceptance:** free vs paid boundary matches plan §11; test-mode checkout completes.
 

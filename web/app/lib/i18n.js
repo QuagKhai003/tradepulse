@@ -49,6 +49,8 @@ const STRINGS = {
     paywall: "Danh mục yêu cầu đầy đủ + nguồn dẫn chứng dành cho bản trả phí.",
     sampleReq: "NỘI DUNG MINH HOẠ — hãy đối chiếu nguồn chính thức trước khi hành động.",
     disclaimerReq: "Thông tin, không phải tư vấn pháp lý. Nguồn chính thức là căn cứ cuối cùng. Kiểm tra ngày rà soát.",
+    watch: "Theo dõi tín hiệu", watching: "Đang theo dõi",
+    watchRule: "Theo dõi thay đổi quy định", watchingRule: "Đang theo dõi quy định",
   },
   en: {
     tagline: "Export demand radar",
@@ -94,6 +96,8 @@ const STRINGS = {
     paywall: "The full checklist + cited sources are on the paid tier.",
     sampleReq: "ILLUSTRATIVE CONTENT — verify against official sources before acting.",
     disclaimerReq: "Information, not legal advice. Official sources govern. Check the review date.",
+    watch: "Watch signal", watching: "Watching",
+    watchRule: "Watch rule changes", watchingRule: "Watching rules",
   },
 };
 

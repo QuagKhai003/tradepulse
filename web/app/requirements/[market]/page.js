@@ -8,6 +8,7 @@
  */
 import Link from "next/link";
 import RequirementChecklist from "../../components/RequirementChecklist.js";
+import WatchButton from "../../components/WatchButton.js";
 import { loadRequirement } from "../../lib/requirements.js";
 import { t } from "../../lib/i18n.js";
 
@@ -47,6 +48,10 @@ export default async function RequirementPage({ params, searchParams }) {
           <span className="chip hs">HS {d.hs6}</span>
           <span className="chip muted">{tr.lastReview}: {d.last_full_review}</span>
           <span className={`chip ${paid ? "" : "link"}`}>{paid ? tr.tierPaid : tr.tierFree}</span>
+        </div>
+        <div className="actions">
+          <WatchButton watchKey={`rule:${d.hs6}:${market}`} meta={{ hs6: d.hs6, market, kind: "rule" }}
+                       labelOff={tr.watchRule} labelOn={tr.watchingRule} />
         </div>
       </section>
 

@@ -3,20 +3,19 @@
 > Single source of truth for the CURRENT moment. Update at the start and end of every
 > session. History goes in `docs/progress/`, not here.
 
-**Last updated:** 2026-07-10 (batch 1.7 Layer-3 requirement pages done + merged; next = 1.8 alerts)
+**Last updated:** 2026-07-10 (batch 1.8 watch/alerts + telemetry done + merged; next = 1.9 payments = last)
 
 ## Phase
 **Phase 1 MVP — sequential build (owner direction).** Stage 0 validation deferred (ADR-0001 on
 record). Goal this stretch: a Next.js app runnable on `localhost` showing pellet demand signals.
 
 ## Active task
-**Phase 1 — ADR-0002 — batches 1.1–1.7 DONE (merged to `main`).** Full content stack live: map,
-search, drill-down, Layer-2 profiles, Layer-3 requirement pages (JP/KR/EU, §8 template, sourced,
-free=snapshot / paid=full checklist). Runs on `localhost:3200`.
-**NEXT: batch 1.8** — watch/alerts + locked-page telemetry rollup (branch `phase/1-alerts`):
-"Watch this" button; signal-band-crossing + rule-change alerts (email stub); fold
-`data/locked_clicks.ndjson` into a summary. The recurring-revenue engine.
-⚠ 1.8–1.9 remain the plan's Stage-0-gated batches — owner building through.
+**Phase 1 — ADR-0002 — batches 1.1–1.8 DONE (merged to `main`).** Full stack + alert engine live:
+map, search, drill-down, profiles, requirement pages, Watch button + `/api/watch`, PURE alert logic
+(band-crossing + rule-change + telemetry rollup). Runs on `localhost:3200`.
+**NEXT: batch 1.9 (LAST)** — payments / paid-tier gate (branch `phase/1-payments`): make the
+free↔paid boundary real (plan §11) — a tier cookie/session + test-mode checkout stub gating full
+profiles, requirement checklists, and unlimited watches.
 
 ## How to run right now (localhost MVP)
 ```

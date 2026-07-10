@@ -84,6 +84,10 @@ def fetch_flows(conn: sqlite3.Connection, flow: str | None = None) -> list[dict]
     return [dict(r) for r in conn.execute(sql, params).fetchall()]
 
 
+def fetch_signals(conn: sqlite3.Connection) -> list[dict]:
+    return [dict(r) for r in conn.execute("SELECT * FROM signals").fetchall()]
+
+
 def upsert_signals(conn: sqlite3.Connection, rows: list[dict]) -> int:
     """Recompute is a full replace for the cells touched — idempotent on the natural key."""
     sql = """

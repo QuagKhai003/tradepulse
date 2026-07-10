@@ -8,6 +8,7 @@
 import Link from "next/link";
 import PartnerTable from "../../components/PartnerTable.js";
 import SourcingChart from "../../components/SourcingChart.js";
+import WatchButton from "../../components/WatchButton.js";
 import { loadSnapshot } from "../../lib/snapshot.js";
 import { t } from "../../lib/i18n.js";
 import { fmtPct, fmtUSD, bandArrow, bandColor, bandLabel } from "../../lib/format.js";
@@ -57,9 +58,13 @@ export default async function MarketPage({ params, searchParams }) {
           <span className="chip muted">{tr.period} {m.period} · {tr.published} {m.published_date}</span>
         </div>
         <p className="muted small">{tr.flowImport}</p>
-        {["jp", "kr", "eu"].includes(slug) && (
-          <a className="chip link" href={`/requirements/${slug}${qs}`}>{tr.reqLink}</a>
-        )}
+        <div className="actions">
+          <WatchButton watchKey={`signal:${snap.hs6}:${slug}`} meta={{ hs6: snap.hs6, market: slug, kind: "signal" }}
+                       labelOff={tr.watch} labelOn={tr.watching} />
+          {["jp", "kr", "eu"].includes(slug) && (
+            <a className="chip link" href={`/requirements/${slug}${qs}`}>{tr.reqLink}</a>
+          )}
+        </div>
       </section>
 
       {m.partners && m.partners.length > 0 ? (
