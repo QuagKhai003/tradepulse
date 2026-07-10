@@ -28,10 +28,13 @@ Format: `L-NNN` (limitation) / `B-NNN` (bug) / `S-NNN` (security/launch risk).
   bursts (HTTP 429), so monthly→quarter aggregation across markets × partners is infeasible without
   a subscription key. Also returns the World total split by transport-mode/2nd-partner — only the
   canonical `motCode=0, partner2Code=0` row is the true total (double-count bug, now filtered + tested).
-- **Status:** addressed-by-design (annual World-only) + regression test (`test_comtrade.py`).
-- **Where:** `etl/tradepulse_etl/sources/comtrade.py`; signals annual-aware (`prev_year_period`).
-- **Notes:** get a Comtrade subscription key → switch to monthly `C/M/HS` + quarter aggregation +
-  partner breakdown (the `_to_quarters` path already exists in git history) to restore the full design.
+- **Status:** RESOLVED-when-keyed. `comtrade.py` is now DUAL-MODE: a FREE Comtrade API key
+  (`etl/.env` → `COMTRADE_SUBSCRIPTION_KEY`) switches to the authenticated monthly `/data` endpoint
+  (multi-period + all partners in one call) → quarter aggregation + partner breakdown = full design.
+  Without a key it falls back to the tested keyless annual World-only path.
+- **Where:** `etl/tradepulse_etl/sources/comtrade.py` (both paths), `settings.py` (.env loader).
+- **Notes:** free key registration — https://comtradedeveloper.un.org/ (see `etl/.env.example`).
+  No paid tier or scraping needed. Regression tests cover the total-row filter + quarter aggregation.
 
 ## S-001 — Accuracy liability (outdated requirement → rejected container)
 - **Symptom:** a stale Layer-3 requirement could cause a user's shipment to be rejected at port.

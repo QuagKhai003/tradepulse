@@ -7,7 +7,7 @@ test_comtrade.py — offline test for the live-source helpers (no network).
 import unittest
 
 from tradepulse_etl.signals import prev_year_period
-from tradepulse_etl.sources.comtrade import ComtradeSource, _is_world_total
+from tradepulse_etl.sources.comtrade import ComtradeSource, _is_total_row, _is_world_total
 
 
 class WorldTotalFilterTest(unittest.TestCase):
@@ -26,6 +26,29 @@ class WorldTotalFilterTest(unittest.TestCase):
         # A response without the breakdown keys is itself the total.
         self.assertTrue(_is_world_total({"partnerCode": 0, "primaryValue": 10}))
 
+    def test_partner_total_filter_keeps_canonical_per_partner(self):
+        # Authenticated path keeps each partner's canonical total (Vietnam here), drops splits.
+        rows = [
+            {"partnerCode": 704, "partner2Code": 0, "motCode": "0", "customsCode": "C00", "primaryValue": 90},  # keep
+            {"partnerCode": 704, "partner2Code": 0, "motCode": "2100", "customsCode": "C00", "primaryValue": 50},  # drop
+            {"partnerCode": 704, "partner2Code": 792, "motCode": "0", "customsCode": "C00", "primaryValue": 40},   # drop
+        ]
+        kept = [r for r in rows if _is_total_row(r)]
+        self.assertEqual([r["primaryValue"] for r in kept], [90])
+
+    def test_to_quarters_aggregates_complete_quarters_only(self):
+        # 3 months -> one quarter; a lone month -> dropped (incomplete).
+        rows = [
+            {"reporterCode": 392, "partnerCode": 0, "cmdCode": "440131", "period": "202401", "primaryValue": 10, "netWgt": 1},
+            {"reporterCode": 392, "partnerCode": 0, "cmdCode": "440131", "period": "202402", "primaryValue": 20, "netWgt": 2},
+            {"reporterCode": 392, "partnerCode": 0, "cmdCode": "440131", "period": "202403", "primaryValue": 30, "netWgt": 3},
+            {"reporterCode": 392, "partnerCode": 0, "cmdCode": "440131", "period": "202404", "primaryValue": 99, "netWgt": 9},
+        ]
+        out = ComtradeSource._to_quarters(rows)
+        self.assertEqual(len(out), 1)
+        self.assertEqual(out[0]["period"], "2024-Q1")
+        self.assertEqual(out[0]["primaryValue"], 60)
+
 
 class NormaliseTest(unittest.TestCase):
     def test_sums_duplicates_into_annual_record(self):
@@ -33,7 +56,7 @@ class NormaliseTest(unittest.TestCase):
             {"reporterCode": 392, "partnerCode": 0, "cmdCode": "440131", "period": 2024, "primaryValue": 100, "netWgt": 5},
             {"reporterCode": 392, "partnerCode": 0, "cmdCode": "440131", "period": 2024, "primaryValue": 50, "netWgt": 2},
         ]
-        out = ComtradeSource._normalise(raw)
+        out = ComtradeSource._normalise_annual(raw)
         self.assertEqual(len(out), 1)
         self.assertEqual(out[0]["primaryValue"], 150)
         self.assertEqual(out[0]["period"], "2024")

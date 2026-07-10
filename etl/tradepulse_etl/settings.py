@@ -1,0 +1,30 @@
+"""
+settings.py — read local secrets/config (stdlib-only, no python-dotenv dep).
+@context  The free UN Comtrade API key lives in etl/.env (gitignored). This loads it into the
+          environment so the Comtrade source can pick the authenticated path automatically.
+@done     load_env() (parse etl/.env), comtrade_key().
+@limits   Never commit .env. Best-effort; missing file is fine (keyless fallback).
+@affects  Used by pipeline.get_source.
+"""
+from __future__ import annotations
+
+import os
+from pathlib import Path
+
+ENV_PATH = Path(__file__).resolve().parents[1] / ".env"   # etl/.env
+
+
+def load_env() -> None:
+    if not ENV_PATH.exists():
+        return
+    for line in ENV_PATH.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+
+
+def comtrade_key() -> str | None:
+    load_env()
+    return os.environ.get("COMTRADE_SUBSCRIPTION_KEY") or None

@@ -24,7 +24,10 @@ def get_source(kind: str, period: str | None = None) -> TradeSource:
     if kind == "fixture":
         return FixtureSource()
     if kind == "comtrade":
-        return ComtradeSource()   # pulls recent months, aggregates to quarters
+        from .settings import comtrade_key
+        key = comtrade_key()
+        print(f"[comtrade] mode={'authenticated monthly+partners' if key else 'keyless annual World-only'}")
+        return ComtradeSource(key=key)
     raise ValueError(f"unknown source: {kind!r} (use 'fixture' or 'comtrade')")
 
 

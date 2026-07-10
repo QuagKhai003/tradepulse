@@ -19,7 +19,8 @@ profiles, Layer-3 requirement pages, watch/alerts engine + telemetry, and the fr
 
 ## How to run (localhost MVP)
 ```
-cd etl && python -m tradepulse_etl --source comtrade   # REAL data (annual, ~90s, rate-limited)
+# optional: put a FREE Comtrade key in etl/.env (see etl/.env.example) -> quarterly + partners
+cd etl && python -m tradepulse_etl --source comtrade   # REAL data (keyed=quarterly, keyless=annual)
 #   or: python -m tradepulse_etl                        # offline SAMPLE fixture (instant)
 cd ../web && npm install && npm run dev                 # http://localhost:3200  (?lang=en)
 ```
