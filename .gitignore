@@ -55,9 +55,6 @@ data/cache/
 # local Postgres dumps
 *.dump
 
-# --- Dev workflow kit (source templates — tooling, not the product) ---
-dev-workflow-kit/
-
 # --- Scratch / temp ---
 scratch/
 tmp/

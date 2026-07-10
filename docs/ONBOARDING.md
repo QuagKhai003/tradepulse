@@ -15,7 +15,7 @@ report (ADR-0001), not engineering. Read that ADR before assuming there's a code
 
 ## By role (once Phase 1 starts)
 - **Data / ETL dev** → `etl/`; external deps (Comtrade, national stats, scrapers) go behind a
-  seam (`WORKFLOW.md` §10). Raw-before-transform. Cache aggressively (Comtrade rate limits).
+  seam (`CONVENTIONS.md` §11). Raw-before-transform. Cache aggressively (Comtrade rate limits).
 - **Core / signal dev** → signal math is PURE + DETERMINISTIC (plan §6). Every change ships an
   offline test. No LLM in the number path — the Golden Rule's engineering half.
 - **Backend / API dev** → `docs/DATA_MODEL.md` for the schema + contracts.
@@ -25,5 +25,5 @@ report (ADR-0001), not engineering. Read that ADR before assuming there's a code
 
 ## Your first task
 Pick the first unchecked batch in the active ADR (`docs/decisions/`), branch from `main`, and
-follow the build loop in `dev-workflow-kit/WORKFLOW.md` §5. Finish per the "done" definition
-(§6). **Do not merge without the owner's approval.**
+follow the build loop in `docs/CONVENTIONS.md` §10. Finish per the "done" definition
+(§8). **Do not merge without the owner's approval.**

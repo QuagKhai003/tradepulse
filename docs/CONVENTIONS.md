@@ -60,3 +60,19 @@ Use the comment syntax of the language. Update the header when behaviour changes
 - **Never merge without the owner's explicit approval.** Never push without approval.
 - Don't skip hooks or bypass signing unless asked.
 - **Gitignore dev/product-build/testing artifacts + secrets + re-pullable data** (see `.gitignore`).
+
+## 10. The build loop (one batch per cycle)
+1. **Orient** — read `STATUS.md` (active task) → the ADR's first unchecked batch → `git log`
+   + current branch → this file → `CLAUDE.md` (the Golden Rule).
+2. **Branch** — `git checkout main && git checkout -b <type>/<n>-<slug>` (one batch per branch).
+3. **Implement** — follow the ADR + these conventions. Reuse existing patterns. Header brief on new files.
+4. **Verify** — tests green (offline); for UI, build + lint clean. Deterministic test for any core/logic change.
+5. **Docs in the SAME batch** — `STATUS.md` (active + next), `progress/YYYY-MM.md` (newest on
+   top), `DATA_MODEL.md` if types changed; tick the batch `[ ]` → `[x]` in the ADR.
+6. **Commit** (conventional, no AI attribution). **Do NOT merge — await owner approval.**
+7. Roomy context + more batches → next. Context large → stop after commit; disk resumes cleanly.
+
+## 11. The seam pattern (external dependencies)
+Put every external dependency (Comtrade, national stats, scrapers, DB, email, payments) **behind
+an interface** with a real *local* impl now + a *documented* production swap later. Ship value
+today without heavy infra; swap impls with no caller changes. Raw-before-transform still holds.
