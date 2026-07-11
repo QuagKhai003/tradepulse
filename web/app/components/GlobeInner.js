@@ -2,16 +2,18 @@
 /**
  * GlobeInner.js — realistic interactive 3D signal globe (react-globe.gl / three.js WebGL).
  * @context  ONE photoreal Earth (blue-marble texture + relief bump + starfield) — the same imagery at
- *           every zoom, so the globe never changes appearance (zoom out = the original look). Crisp
- *           vector COUNTRY BORDERS (50m) give clear boundaries at any zoom; max anisotropic filtering
- *           keeps the texture as sharp as it can be at grazing angles. A glowing signal POINT sits on
- *           every country with a signal (colour = direction, height = value); top movers pulse. Auto-
- *           rotates after idle; drag to spin; click to drill; hover for values. Client-only.
+ *           every zoom, so the globe never changes appearance (zoom out = the original look). Country
+ *           BORDERS (50m) appear only near country-level zoom, drawn as a single GL LineSegments buffer
+ *           (one draw call, built lazily) and toggled by visibility — so the default globe stays smooth.
+ *           Max anisotropic filtering keeps the texture sharp at grazing angles. A glowing signal POINT
+ *           sits on every country with a signal (colour = direction, height = value); top movers pulse.
+ *           Auto-rotates after idle; drag to spin; click to drill; hover for values. Client-only.
  * @limits   Client-only. Colours reuse signal semantics (vivid on the dark globe).
  * @affects  Rendered by GlobeHero; data from the snapshot (countries + metric).
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { BufferGeometry, Float32BufferAttribute, LineBasicMaterial, LineSegments } from "three";
 import Globe from "react-globe.gl";
 import { geoCentroid } from "d3-geo";
 import { feature } from "topojson-client";
@@ -24,26 +26,28 @@ const norm = (v) => String(Number(v));
 const UP = "#34d399", DOWN = "#fb7185", NEW = "#a78bfa";
 const hue = (b, dir) => (b === "new" ? NEW : dir === "down" ? DOWN : UP);
 
-// Country outlines as light LINE paths (cheap) rather than filled polygons (heavy). Only rendered
-// when zoomed to country level (see BORDER_IN/OUT), so the default globe stays smooth.
+// Country outlines drawn as ONE native GL LineSegments buffer (a single draw call for all ~98k
+// segments) — react-globe.gl's pathsData builds a separate fat-line object per ring (1600+ draw
+// calls) which is what made the globe lag. Built lazily on first zoom-in, toggled by .visible; only
+// shown near country level (BORDER_IN/OUT) so the default globe renders none of it.
 const BORDER_IN = 190, BORDER_OUT = 250;   // camera distance: show below IN, hide above OUT (hysteresis)
-function ringsToPaths(features) {
-  const paths = [];
+function toRings(features) {
+  const rings = [];
   for (const f of features) {
     const g = f.geometry;
     if (!g) continue;
     const polys = g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : [];
-    for (const poly of polys) for (const ring of poly) paths.push(ring.map(([lng, lat]) => [lat, lng]));
+    for (const poly of polys) for (const ring of poly) rings.push(ring.map(([lng, lat]) => [lat, lng]));
   }
-  return paths;
+  return rings;
 }
 
 export default function GlobeInner({ countries, metric, hs, lang }) {
   const router = useRouter();
   const globeRef = useRef();
   const wrapRef = useRef();
+  const linesRef = useRef(null);           // the single border LineSegments (built lazily, toggled)
   const [size, setSize] = useState({ w: 800, h: 620 });
-  const [showBorders, setShowBorders] = useState(false);   // borders only appear at country-level zoom
 
   // Sharpen the globe texture at grazing angles (max anisotropic filtering) — the most detail a single
   // texture can give without changing its appearance. react-globe.gl v2.38 exposes globeMaterial as a
@@ -64,8 +68,13 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
   useEffect(() => { const id = setTimeout(bumpAniso, 1200); return () => clearTimeout(id); }, []);
 
   const features = useMemo(() => feature(worldData, worldData.objects.countries).features, []);
-  // Built once but only fed to the globe while zoomed in (empty array otherwise → zero render cost).
-  const borderPaths = useMemo(() => ringsToPaths(feature(borders50, borders50.objects.countries).features), []);
+  const borderRings = useMemo(() => toRings(feature(borders50, borders50.objects.countries).features), []);
+
+  // Cleanup: drop the border geometry from the scene on unmount.
+  useEffect(() => () => {
+    const l = linesRef.current;
+    if (l) { l.parent && l.parent.remove(l); l.geometry.dispose(); l.material.dispose(); linesRef.current = null; }
+  }, []);
   const byId = useMemo(() => {
     const m = {};
     for (const c of countries) if (c[metric]) m[norm(OVERRIDE[c.code] ?? c.code)] = c;
@@ -113,11 +122,32 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
     c.zoomSpeed = 0.8;
     g.pointOfView({ lat: 12, lng: 30, altitude: 1.6 }, 0);
 
+    // Build the border geometry once (first time it's needed) as a single LineSegments buffer.
+    const buildBorders = () => {
+      const pos = [];
+      for (const ring of borderRings) {
+        for (let i = 0; i < ring.length - 1; i++) {
+          const a = g.getCoords(ring[i][0], ring[i][1], 0.003);
+          const b = g.getCoords(ring[i + 1][0], ring[i + 1][1], 0.003);
+          pos.push(a.x, a.y, a.z, b.x, b.y, b.z);
+        }
+      }
+      const geo = new BufferGeometry();
+      geo.setAttribute("position", new Float32BufferAttribute(pos, 3));
+      const lines = new LineSegments(geo, new LineBasicMaterial({ color: 0xbcd0f8, transparent: true, opacity: 0.5, depthWrite: false }));
+      lines.renderOrder = 1;
+      g.scene().add(lines);
+      return lines;
+    };
+
     // Show borders only near country level; hide (→ original globe) when zoomed back out. Hysteresis
-    // stops flicker at the boundary. Runs on interaction end + wheel, not per-frame.
+    // stops flicker at the boundary. Toggles .visible imperatively (no React re-render). End + wheel only.
     const updateBorders = () => {
       const dist = typeof c.getDistance === "function" ? c.getDistance() : g.camera().position.length();
-      setShowBorders((s) => (dist < BORDER_IN ? true : dist > BORDER_OUT ? false : s));
+      const show = dist < BORDER_IN ? true : dist > BORDER_OUT ? false : null;
+      if (show === null) return;
+      if (show && !linesRef.current) linesRef.current = buildBorders();
+      if (linesRef.current) linesRef.current.visible = show;
     };
 
     let timer;
@@ -155,15 +185,6 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
         showAtmosphere
         atmosphereColor="#7c9bff"
         atmosphereAltitude={0.2}
-        pathsData={showBorders ? borderPaths : []}
-        pathPointLat={(p) => p[0]}
-        pathPointLng={(p) => p[1]}
-        pathPointAlt={0.004}
-        pathColor={() => "rgba(190,208,248,0.6)"}
-        pathStroke={0.8}
-        pathDashLength={1}
-        pathDashGap={0}
-        pathTransitionDuration={0}
         pointsData={points}
         pointColor={(p) => hue(p.band, p.direction)}
         pointAltitude={(p) => 0.012 + 0.55 * Math.sqrt(p.val / maxVal)}
