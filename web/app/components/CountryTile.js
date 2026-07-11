@@ -25,10 +25,11 @@ function Flow({ label, slot }) {
   );
 }
 
-export default function CountryTile({ c, lang, t, emphasis }) {
+export default function CountryTile({ c, lang, t, emphasis, hs }) {
   const name = lang === "en" ? c.name_en : c.name_vi;
+  const href = `/country/${c.code}?hs=${hs}${lang === "en" ? "&lang=en" : ""}`;
   return (
-    <Link className="ctile" href={`/country/${c.code}${lang === "en" ? "?lang=en" : ""}`}>
+    <Link className="ctile" href={href}>
       <div className="ctile-name">{name}</div>
       <div className={emphasis === "exp" ? "" : "dim"}><Flow label={t.exportsLabel} slot={c.exp} /></div>
       <div className={emphasis === "imp" ? "" : "dim"}><Flow label={t.importsLabel} slot={c.imp} /></div>

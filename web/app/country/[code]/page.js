@@ -46,24 +46,27 @@ export default async function CountryPage({ params, searchParams }) {
   const sp = searchParams ? await searchParams : {};
   const lang = sp.lang === "en" ? "en" : "vi";
   const tr = t(lang);
-  const qs = lang === "en" ? "?lang=en" : "";
-  const snap = await loadSnapshot();
+  const snap = await loadSnapshot(sp.hs);
+  const hs = (snap && snap.hs6) || sp.hs || "440131";
+  const qs = `?hs=${hs}${lang === "en" ? "&lang=en" : ""}`;
+  const backHome = `/?hs=${hs}${lang === "en" ? "&lang=en" : ""}`;
   const c = snap?.countries.find((x) => String(x.code) === String(code));
 
-  if (!snap || !c) return <main className="page"><div className="empty">404 · <Link href={`/${qs}`}>{tr.backMap}</Link></div></main>;
+  if (!snap || !c) return <main className="page"><div className="empty">404 · <Link href={backHome}>{tr.backMap}</Link></div></main>;
 
   const name = lang === "en" ? c.name_en : c.name_vi;
   const product = lang === "en" ? snap.product.name_en : snap.product.name_vi;
-  const reqMarket = REQ_MARKET[c.code];
+  const isPellets = hs === "440131";
+  const reqMarket = isPellets ? REQ_MARKET[c.code] : null;
 
   return (
     <main className="page">
       <header className="topbar">
-        <div className="brand"><Link className="logo" href={`/${qs}`}>◈ TradePulse</Link><span className="tagline">{tr.tagline}</span></div>
+        <div className="brand"><Link className="logo" href={backHome}>◈ TradePulse</Link><span className="tagline">{tr.tagline}</span></div>
         <a className="langswitch" href={`?lang=${lang === "en" ? "vi" : "en"}`}>{tr.lang}</a>
       </header>
 
-      <Link className="back" href={`/${qs}`}>{tr.backMap}</Link>
+      <Link className="back" href={backHome}>{tr.backMap}</Link>
 
       {snap.is_sample && <div className="samplebar">⚠ {tr.sample}</div>}
 
@@ -76,8 +79,8 @@ export default async function CountryPage({ params, searchParams }) {
         <div className="actions">
           <WatchButton watchKey={`signal:${snap.hs6}:${c.code}`} meta={{ hs6: snap.hs6, market: String(c.code), kind: "signal" }}
                        labelOff={tr.watch} labelOn={tr.watching} />
-          <a className="chip link" href={`/profiles${qs}`}>{tr.profilesLink}</a>
-          {reqMarket && <a className="chip link" href={`/requirements/${reqMarket}${qs}`}>{tr.reqLink}</a>}
+          {isPellets && <a className="chip link" href={`/profiles${lang === "en" ? "?lang=en" : ""}`}>{tr.profilesLink}</a>}
+          {reqMarket && <a className="chip link" href={`/requirements/${reqMarket}${lang === "en" ? "?lang=en" : ""}`}>{tr.reqLink}</a>}
         </div>
       </section>
 

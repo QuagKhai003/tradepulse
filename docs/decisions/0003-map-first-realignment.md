@@ -28,6 +28,10 @@ A qualifications tab informs per export/import choice.
   (VN-exporter framing) + a country-level qualifications entry point.
 - [ ] **3.6 — Quarterly + partner sourcing (refinement).** Restore per-country quarterly + partner
   breakdown (needs a monthly, per-reporter pull — heavier) for the drill-down sourcing chart.
+- [x] **3.7 — Multiple product categories.** Pull each covered HS (pellets, sawn wood, tea, coffee,
+  shrimp, cashew, rice) → one snapshot per product; the category switch loads real per-product maps.
+  → **DONE:** `config.COVERED_HS`; ETL loops HS×year; `snapshot-<hs>.json` per product; web loader +
+  catalog + page/country switch by `?hs`. Pellet-only Layer-2/3 links gated to the pellet product.
 
 ## Acceptance
 - Map shows all countries with export+import, toggled; feed lists global both-flow signals; a category

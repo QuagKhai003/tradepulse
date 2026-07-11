@@ -32,6 +32,8 @@ feed[ {code,name_en,name_vi, flow:'export'|'import', value_usd,yoy_delta,band,di
 `exp` = flow X, `imp` = flow M. Consumed by `web/app/lib/snapshot.js` → SSR by `web/app/page.js`
 (map + toggle + feed) and `web/app/country/[code]/page.js` (drill-down). Country names from the
 bundled Comtrade reference (`etl/tradepulse_etl/reference/countries.json`).
+**One file per product:** `snapshot-<hs>.json` for each `config.COVERED_HS`; `snapshot.json` = the
+landing default (pellets). Web `loadSnapshot(hs)` picks the file; the category switch is a file swap.
 
 ## Planned persistence (PostgreSQL — Phase 1)
 Documented before code so the schema is decided up front. Metric rule: store trade **value

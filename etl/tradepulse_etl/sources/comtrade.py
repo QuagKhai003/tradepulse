@@ -55,19 +55,21 @@ class ComtradeSource:
         self.pause = pause
 
     def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None) -> list[dict]:
-        hs = ",".join(hs_codes)
-        return self._pull_authenticated(hs, reporters) if self.key else self._pull_keyless(hs, reporters)
+        if self.key:
+            return self._pull_authenticated(hs_codes)
+        return self._pull_keyless(",".join(hs_codes), reporters)
 
-    # --- authenticated: ALL reporters, BOTH flows, World partner; ANNUAL (light + global) ---
-    def _pull_authenticated(self, hs: str, reporters: list[int]) -> list[dict]:
-        # reporters is ignored on purpose — one annual call per year returns every country, both
-        # flows (X+M). Annual (not monthly) keeps the all-country payload small enough to be reliable.
+    # --- authenticated: per HS, ALL reporters, BOTH flows, World partner; ANNUAL (light + global) ---
+    def _pull_authenticated(self, hs_codes: list[str]) -> list[dict]:
+        # One annual call per (HS, year) returns every country, both flows (X+M). Per-HS keeps each
+        # all-country payload small enough to be reliable (a combined multi-HS call times out).
         rows: list[dict] = []
-        for year in self._recent_years(self.years):
-            params = {"cmdCode": hs, "flowCode": "M,X", "partnerCode": "0", "period": year}
-            data = self._get(f"{DATA_ANNUAL}?{urllib.parse.urlencode(params)}", auth=True)
-            rows += [r for r in data if _is_total_row(r)]
-            time.sleep(self.pause)
+        for hs in hs_codes:
+            for year in self._recent_years(self.years):
+                params = {"cmdCode": hs, "flowCode": "M,X", "partnerCode": "0", "period": year}
+                data = self._get(f"{DATA_ANNUAL}?{urllib.parse.urlencode(params)}", auth=True)
+                rows += [r for r in data if _is_total_row(r)]
+                time.sleep(self.pause)
         return self._normalise_annual(rows)
 
     # --- keyless: annual World-only, one call per reporter×year (tested fallback) ---

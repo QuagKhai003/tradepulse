@@ -24,11 +24,11 @@ export default async function Page({ searchParams }) {
   const lang = sp.lang === "en" ? "en" : "vi";
   const flow = FLOWS.includes(sp.flow) ? sp.flow : "all";
   const tr = t(lang);
-  const snap = await loadSnapshot();
-  if (!snap) return <main className="page"><div className="empty">{tr.noData}</div></main>;
+  const snap = await loadSnapshot(sp.hs);       // no hs -> landing default (snapshot.json)
+  if (!snap && !sp.hs) return <main className="page"><div className="empty">{tr.noData}</div></main>;
 
-  const hs = sp.hs || snap.hs6;
-  const covered = hs === snap.hs6 && (snap.countries?.length > 0);
+  const hs = (snap && snap.hs6) || sp.hs || "440131";
+  const covered = !!snap && snap.countries?.length > 0;
   const entry = lookup(hs) || { hs6: hs, name_en: hs, name_vi: hs };
   const product = covered
     ? (lang === "en" ? snap.product.name_en : snap.product.name_vi)
@@ -54,16 +54,16 @@ export default async function Page({ searchParams }) {
 
       <div className="searchrow"><SearchBox lang={lang} placeholder={tr.searchPlaceholder} /></div>
 
-      {snap.is_sample && covered && <div className="samplebar">⚠ {tr.sample}</div>}
+      {snap?.is_sample && covered && <div className="samplebar">⚠ {tr.sample}</div>}
 
       <section className="subhead">
         <h1>{tr.subtitle}</h1>
         <div className="chips">
           <span className="chip">{tr.product}: <strong>{product}</strong></span>
           <span className="chip hs">HS {hs}</span>
-          <span className="chip muted">{tr.period} {snap.latest_period}</span>
-          <a className="chip link" href={`/profiles${lang === "en" ? "?lang=en" : ""}`}>{tr.profilesLink}</a>
-          <a className="chip link" href={`/requirements${lang === "en" ? "?lang=en" : ""}`}>{tr.reqLink}</a>
+          {covered && <span className="chip muted">{tr.period} {snap.latest_period}</span>}
+          {hs === "440131" && <a className="chip link" href={`/profiles${lang === "en" ? "?lang=en" : ""}`}>{tr.profilesLink}</a>}
+          {hs === "440131" && <a className="chip link" href={`/requirements${lang === "en" ? "?lang=en" : ""}`}>{tr.reqLink}</a>}
           <a className="chip link" href={`/pricing${lang === "en" ? "?lang=en" : ""}`}>{tr.pricingLink}</a>
         </div>
       </section>
@@ -85,11 +85,11 @@ export default async function Page({ searchParams }) {
               <div className="markets">
                 <h2>{tr.topCountries} · {snap.countries.length} {tr.allCountries}</h2>
                 <div className="ctiles">
-                  {top.map((c) => <CountryTile key={c.code} c={c} lang={lang} t={tr} emphasis={emphasis} />)}
+                  {top.map((c) => <CountryTile key={c.code} c={c} lang={lang} t={tr} emphasis={emphasis} hs={hs} />)}
                 </div>
               </div>
             </div>
-            <GlobalFeed feed={snap.feed} flow={flow} lang={lang} t={tr} />
+            <GlobalFeed feed={snap.feed} flow={flow} lang={lang} t={tr} hs={hs} />
           </section>
         </>
       ) : (

@@ -49,8 +49,8 @@ playwright-report/
 # --- Data pulls & caches (raw trade data is re-pullable, not source) ---
 data/raw/
 data/cache/
-# generated web snapshot (rebuilt by the ETL; not source)
-web/public/data/snapshot.json
+# generated web snapshots (rebuilt by the ETL; not source)
+web/public/data/snapshot*.json
 # locked-page telemetry + watches + alerts (raw capture logs)
 data/locked_clicks.ndjson
 data/watches.ndjson

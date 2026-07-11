@@ -8,7 +8,7 @@
 import Link from "next/link";
 import { bandArrow, bandColor, bandLabel, fmtPct, fmtUSD } from "../lib/format.js";
 
-export default function GlobalFeed({ feed, flow, lang, t }) {
+export default function GlobalFeed({ feed, flow, lang, t, hs }) {
   const items = flow === "all" ? feed : feed.filter((f) => f.flow === flow);
   return (
     <aside className="feed">
@@ -25,7 +25,7 @@ export default function GlobalFeed({ feed, flow, lang, t }) {
               <span className="dot" style={{ background: color }} />
               <div className="feed-body">
                 <div className="feed-top">
-                  <Link className="feed-link" href={`/country/${m.code}${lang === "en" ? "?lang=en" : ""}`}>{name}</Link>
+                  <Link className="feed-link" href={`/country/${m.code}?hs=${hs}${lang === "en" ? "&lang=en" : ""}`}>{name}</Link>
                   <span className="feed-band" style={{ color }}>
                     {bandArrow(m.band, m.direction)} {bandLabel(m.band, lang)}
                   </span>

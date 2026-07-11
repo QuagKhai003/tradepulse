@@ -44,11 +44,21 @@ def main() -> None:
     if alerts:
         _append_alerts(alerts, now_iso)
 
-    snap = build_snapshot(conn, generated_at=now_iso)
-    out = write_snapshot(snap, args.snapshot)
+    # One snapshot per covered product; the map switches between them. Default = first covered.
+    from .config import COVERED_HS
+    default_path = Path(args.snapshot)
+    covered = []
+    for hs in COVERED_HS:
+        snap = build_snapshot(conn, generated_at=now_iso, hs6=hs)
+        if not snap["countries"]:
+            continue
+        write_snapshot(snap, default_path.parent / f"snapshot-{hs}.json")
+        covered.append(f"{hs}:{len(snap['countries'])}c")
+        if hs == COVERED_HS[0]:
+            write_snapshot(snap, default_path)       # landing default
 
     print(f"[tradepulse] flows={count_trade_flows(conn)} (upserted {n}) signals={len(sigs)} "
-          f"feed={len(snap['feed'])} alerts={len(alerts)} snapshot={out}")
+          f"alerts={len(alerts)} products={len(covered)} [{' '.join(covered)}]")
     _print_rollup()
 
 

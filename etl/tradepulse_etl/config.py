@@ -9,13 +9,22 @@ config.py — pilot-scope constants for the ETL.
 @affects  Consumed by pipeline, transform, signals, and the web snapshot export.
 """
 
-# --- Pilot vertical: wood pellets (plan §3) ---
-HS_PELLETS = ["440131"]  # HS-6 wood pellets. Displayed as an educational badge, never an input.
+# --- Covered products (plan §3, §7.2). Each gets its own snapshot; the map switches per product. ---
+HS_PELLETS = ["440131"]  # pilot vertical (kept for the fixture/tests)
 
-# HS-6 -> bilingual product name (everyday words, plan §7.2). Widen with each vertical.
+# HS-6 -> bilingual product name (everyday words). Add a code here to cover a new category.
 PRODUCTS = {
-    "440131": {"name_en": "Wood pellets", "name_vi": "Viên nén gỗ"},
+    "440131": {"name_en": "Wood pellets",     "name_vi": "Viên nén gỗ"},
+    "440710": {"name_en": "Sawn wood",        "name_vi": "Gỗ xẻ"},
+    "090240": {"name_en": "Black tea",        "name_vi": "Chè (trà) đen"},
+    "090111": {"name_en": "Coffee",           "name_vi": "Cà phê"},
+    "030617": {"name_en": "Frozen shrimp",    "name_vi": "Tôm đông lạnh"},
+    "080131": {"name_en": "Cashew (in shell)", "name_vi": "Hạt điều"},
+    "100630": {"name_en": "Milled rice",      "name_vi": "Gạo"},
 }
+
+# The list the ETL pulls + exports a snapshot for. First = the landing default.
+COVERED_HS = ["440131", "440710", "090240", "090111", "030617", "080131", "100630"]
 
 # --- Destination markets (plan §3): slug -> codes + bilingual names ---
 # reporter = the importing country whose customs report the flow (importer-reported default, §6.4).

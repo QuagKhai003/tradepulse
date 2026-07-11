@@ -59,8 +59,10 @@ Offline Python tests: `cd etl && python -m unittest discover -s tests` (22).
 - **Phase 1 MVP COMPLETE — runs on `localhost:3200`** (owner chose sequential build over the Stage 0
   gate). Map + signals + search + drill-down (sourcing chart) + Layer-2 profiles + Layer-3 requirement
   pages + watch/alerts + free↔paid paywall. All batches 1.1–1.9 merged to `main`.
-- **Map-first (ADR-0003):** world map of **162 countries**, export + import, colored by signal, with
+- **Map-first (ADR-0003):** world map (up to ~177 countries), export + import, colored by signal, with
   an export/import/all toggle + global feed (both flows) + country drill (`/country/[code]`).
+  **7 product categories** (pellets, sawn wood, tea, coffee, shrimp, cashew, rice) — search/`?hs`
+  swaps to a real per-product map (`snapshot-<hs>.json`).
 - **Data is REAL:** Layer-1 trade (Comtrade authenticated, annual all-countries both flows) + Layer-2
   profiles + Layer-3 requirement pages (curated, official sources + verified dates). Stage 0 WTP unproven.
   Quarterly + partner sourcing = deferred refinement (3.6); requirement rules age — quarterly review (S-001).

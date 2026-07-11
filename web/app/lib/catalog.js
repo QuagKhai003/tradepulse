@@ -14,17 +14,17 @@
 export const CATALOG = [
   { hs6: "440131", covered: true,  name_en: "Wood pellets",   name_vi: "Viên nén gỗ",
     synonyms: ["wood pellet", "pellet", "viên nén", "vien nen", "biomass", "chất đốt sinh khối"] },
-  { hs6: "440710", covered: false, name_en: "Sawn wood",      name_vi: "Gỗ xẻ",
+  { hs6: "440710", covered: true,  name_en: "Sawn wood",      name_vi: "Gỗ xẻ",
     synonyms: ["sawn wood", "timber", "lumber", "gỗ xẻ", "go xe", "wood"] },
-  { hs6: "090240", covered: false, name_en: "Black tea",      name_vi: "Chè (trà) đen",
+  { hs6: "090240", covered: true,  name_en: "Black tea",      name_vi: "Chè (trà) đen",
     synonyms: ["tea", "black tea", "trà", "tra", "chè", "che"] },
-  { hs6: "090111", covered: false, name_en: "Coffee",         name_vi: "Cà phê",
+  { hs6: "090111", covered: true,  name_en: "Coffee",         name_vi: "Cà phê",
     synonyms: ["coffee", "cà phê", "ca phe", "robusta", "arabica"] },
-  { hs6: "030617", covered: false, name_en: "Frozen shrimp",  name_vi: "Tôm đông lạnh",
+  { hs6: "030617", covered: true,  name_en: "Frozen shrimp",  name_vi: "Tôm đông lạnh",
     synonyms: ["shrimp", "prawn", "tôm", "tom", "seafood", "thủy sản", "thuy san"] },
-  { hs6: "080131", covered: false, name_en: "Cashew (in shell)", name_vi: "Hạt điều",
+  { hs6: "080131", covered: true,  name_en: "Cashew (in shell)", name_vi: "Hạt điều",
     synonyms: ["cashew", "hạt điều", "hat dieu", "điều", "dieu", "nut"] },
-  { hs6: "100630", covered: false, name_en: "Milled rice",    name_vi: "Gạo",
+  { hs6: "100630", covered: true,  name_en: "Milled rice",    name_vi: "Gạo",
     synonyms: ["rice", "gạo", "gao"] },
 ];
 

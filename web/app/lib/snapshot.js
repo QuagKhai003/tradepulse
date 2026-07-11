@@ -8,8 +8,10 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-export async function loadSnapshot() {
-  const p = path.join(process.cwd(), "public", "data", "snapshot.json");
+// hs -> per-product snapshot (snapshot-<hs>.json); no hs -> the landing default (snapshot.json).
+export async function loadSnapshot(hs) {
+  const file = hs ? `snapshot-${hs}.json` : "snapshot.json";
+  const p = path.join(process.cwd(), "public", "data", file);
   try {
     return JSON.parse(await readFile(p, "utf-8"));
   } catch {
