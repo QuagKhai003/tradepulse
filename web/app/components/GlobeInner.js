@@ -24,11 +24,26 @@ const norm = (v) => String(Number(v));
 const UP = "#34d399", DOWN = "#fb7185", NEW = "#a78bfa";
 const hue = (b, dir) => (b === "new" ? NEW : dir === "down" ? DOWN : UP);
 
+// Country outlines as light LINE paths (cheap) rather than filled polygons (heavy). Only rendered
+// when zoomed to country level (see BORDER_IN/OUT), so the default globe stays smooth.
+const BORDER_IN = 190, BORDER_OUT = 250;   // camera distance: show below IN, hide above OUT (hysteresis)
+function ringsToPaths(features) {
+  const paths = [];
+  for (const f of features) {
+    const g = f.geometry;
+    if (!g) continue;
+    const polys = g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : [];
+    for (const poly of polys) for (const ring of poly) paths.push(ring.map(([lng, lat]) => [lat, lng]));
+  }
+  return paths;
+}
+
 export default function GlobeInner({ countries, metric, hs, lang }) {
   const router = useRouter();
   const globeRef = useRef();
   const wrapRef = useRef();
   const [size, setSize] = useState({ w: 800, h: 620 });
+  const [showBorders, setShowBorders] = useState(false);   // borders only appear at country-level zoom
 
   // Sharpen the globe texture at grazing angles (max anisotropic filtering) — the most detail a single
   // texture can give without changing its appearance. react-globe.gl v2.38 exposes globeMaterial as a
@@ -49,7 +64,8 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
   useEffect(() => { const id = setTimeout(bumpAniso, 1200); return () => clearTimeout(id); }, []);
 
   const features = useMemo(() => feature(worldData, worldData.objects.countries).features, []);
-  const borderFeatures = useMemo(() => feature(borders50, borders50.objects.countries).features, []);
+  // Built once but only fed to the globe while zoomed in (empty array otherwise → zero render cost).
+  const borderPaths = useMemo(() => ringsToPaths(feature(borders50, borders50.objects.countries).features), []);
   const byId = useMemo(() => {
     const m = {};
     for (const c of countries) if (c[metric]) m[norm(OVERRIDE[c.code] ?? c.code)] = c;
@@ -97,12 +113,19 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
     c.zoomSpeed = 0.8;
     g.pointOfView({ lat: 12, lng: 30, altitude: 1.6 }, 0);
 
+    // Show borders only near country level; hide (→ original globe) when zoomed back out. Hysteresis
+    // stops flicker at the boundary. Runs on interaction end + wheel, not per-frame.
+    const updateBorders = () => {
+      const dist = typeof c.getDistance === "function" ? c.getDistance() : g.camera().position.length();
+      setShowBorders((s) => (dist < BORDER_IN ? true : dist > BORDER_OUT ? false : s));
+    };
+
     let timer;
     const spinAfterIdle = () => { clearTimeout(timer); if (!reduced) timer = setTimeout(() => { c.autoRotate = true; }, 5000); };
     const stop = () => { clearTimeout(timer); c.autoRotate = false; };
     const onStart = () => stop();
-    const onEnd = () => spinAfterIdle();
-    const onWheel = () => { stop(); spinAfterIdle(); };
+    const onEnd = () => { spinAfterIdle(); updateBorders(); };
+    const onWheel = () => { stop(); spinAfterIdle(); updateBorders(); };
     const wrap = wrapRef.current;
     c.addEventListener("start", onStart);
     c.addEventListener("end", onEnd);
@@ -132,11 +155,15 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
         showAtmosphere
         atmosphereColor="#7c9bff"
         atmosphereAltitude={0.2}
-        polygonsData={borderFeatures}
-        polygonCapColor={() => "rgba(0,0,0,0)"}
-        polygonSideColor={() => "rgba(0,0,0,0)"}
-        polygonStrokeColor={() => "rgba(175,193,240,0.4)"}
-        polygonAltitude={0.004}
+        pathsData={showBorders ? borderPaths : []}
+        pathPointLat={(p) => p[0]}
+        pathPointLng={(p) => p[1]}
+        pathPointAlt={0.004}
+        pathColor={() => "rgba(190,208,248,0.6)"}
+        pathStroke={0.8}
+        pathDashLength={1}
+        pathDashGap={0}
+        pathTransitionDuration={0}
         pointsData={points}
         pointColor={(p) => hue(p.band, p.direction)}
         pointAltitude={(p) => 0.012 + 0.55 * Math.sqrt(p.val / maxVal)}
