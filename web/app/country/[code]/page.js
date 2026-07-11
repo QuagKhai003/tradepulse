@@ -9,12 +9,11 @@ import Link from "next/link";
 import WatchButton from "../../components/WatchButton.js";
 import PartnerTable from "../../components/PartnerTable.js";
 import SourcingChart from "../../components/SourcingChart.js";
+import QualPanel from "../../components/QualPanel.js";
 import { loadSnapshot } from "../../lib/snapshot.js";
 import { loadSourcing } from "../../lib/sourcing.js";
 import { t } from "../../lib/i18n.js";
 import { bandArrow, bandColor, bandLabel, fmtPct, fmtUSD } from "../../lib/format.js";
-
-const REQ_MARKET = { 392: "jp", 410: "kr", 97: "eu" };
 
 function FlowPanel({ title, slot, t: tr }) {
   if (!slot) return <div className="panel"><h2>{title}</h2><p className="muted">—</p></div>;
@@ -60,8 +59,6 @@ export default async function CountryPage({ params, searchParams }) {
   const name = lang === "en" ? c.name_en : c.name_vi;
   const product = lang === "en" ? snap.product.name_en : snap.product.name_vi;
   const isPellets = hs === "440131";
-  const reqMarket = isPellets ? REQ_MARKET[c.code] : null;
-
   const sourcing = (await loadSourcing(hs))?.[String(c.code)] || null;
 
   return (
@@ -85,7 +82,6 @@ export default async function CountryPage({ params, searchParams }) {
           <WatchButton watchKey={`signal:${snap.hs6}:${c.code}`} meta={{ hs6: snap.hs6, market: String(c.code), kind: "signal" }}
                        labelOff={tr.watch} labelOn={tr.watching} />
           {isPellets && <a className="chip link" href={`/profiles${lang === "en" ? "?lang=en" : ""}`}>{tr.profilesLink}</a>}
-          {reqMarket && <a className="chip link" href={`/requirements/${reqMarket}${lang === "en" ? "?lang=en" : ""}`}>{tr.reqLink}</a>}
         </div>
       </section>
 
@@ -93,6 +89,8 @@ export default async function CountryPage({ params, searchParams }) {
         <FlowPanel title={tr.exportsLabel} slot={c.exp} t={tr} />
         <FlowPanel title={tr.importsLabel} slot={c.imp} t={tr} />
       </section>
+
+      <QualPanel hs={hs} code={c.code} product={product} country={name} lang={lang} t={tr} />
 
       {sourcing && ["export", "import"].map((fl) => sourcing[fl] && (
         <section key={fl} className="sourcing-sec">

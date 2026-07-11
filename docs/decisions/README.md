@@ -10,4 +10,4 @@ Copy `0000-template.md` → `NNNN-<slug>.md` and link it below.
 |---|-------|--------|
 | 0001 | [Stage 0 — manual report validation](0001-stage0-validation.md) | Accepted — IN PROGRESS |
 | 0002 | [Phase 1 MVP build plan](0002-phase1-mvp.md) | Accepted — COMPLETE |
-| 0003 | [Map-first realignment](0003-map-first-realignment.md) | Accepted — IN PROGRESS (3.1–3.4 done) |
+| 0003 | [Map-first realignment](0003-map-first-realignment.md) | Accepted — COMPLETE (3.1–3.7) |

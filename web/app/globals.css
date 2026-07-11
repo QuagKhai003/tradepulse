@@ -273,3 +273,13 @@ a.tile:hover { transform: translateY(-2px); border-color: var(--accent); box-sha
 .spark-x { font-size: 9px; margin-top: 4px; white-space: nowrap; }
 .sourcing-sec { margin-top: 18px; }
 .sourcing-sec h3 { margin: 0 0 8px; text-transform: none; letter-spacing: normal; }
+
+/* qualifications panel */
+.qual { margin-top: 18px; }
+.qual h2 { text-transform: none; letter-spacing: normal; font-size: 16px; color: var(--ink); }
+.qual-list { list-style: none; margin: 12px 0; padding: 0; }
+.qual-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.qual-text { font-weight: 600; }
+.qual-list a { color: var(--accent); text-decoration: none; }
+.qual-locked { text-align: center; padding: 22px; }
+.qual-lock { font-size: 26px; }

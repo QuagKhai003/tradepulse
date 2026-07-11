@@ -1,6 +1,7 @@
 # ADR-0003 — Map-first realignment (global, both flows, product filter)
 
-**Status:** Accepted — IN PROGRESS · 2026-07-11 · Builds on: ADR-0002, product plan §5, §7.1.
+**Status:** Accepted — COMPLETE · 2026-07-11 · Builds on: ADR-0002, product plan §5, §7.1.
+All batches (3.1–3.7) shipped + merged to `main`.
 
 ## Context
 Owner feedback: the built UI was *pellet-first / import-only / 5-market*, not the plan's Layer-1
@@ -24,8 +25,11 @@ A qualifications tab informs per export/import choice.
 - [x] **3.3 — Global feed (both flows).** Moderate+ worldwide, flow-tagged, toggle-filtered. → **DONE.**
 - [x] **3.4 — Country drill.** `/country/[code]`: export + import signal + history sparkline + links
   to profiles and (if covered) the qualification page. → **DONE.**
-- [ ] **3.5 — Qualifications tab per flow.** Re-anchor requirement pages to the export/import choice
+- [x] **3.5 — Qualifications tab per flow.** Re-anchor requirement pages to the export/import choice
   (VN-exporter framing) + a country-level qualifications entry point.
+  → **DONE:** `QualPanel` on the country drill = market-entry qualifications for (product × country),
+  exporter-framed. Covered pairs (pellets→JP/KR/EU) show snapshot + sourced teaser + full-checklist link;
+  uncovered pairs show "coming soon — request it" (`RequestQual` → `/api/locked-click`, demand telemetry §7.6).
 - [x] **3.6 — Quarterly + partner sourcing.** Per-country quarterly + partner breakdown for the
   drill-down sourcing chart. → **DONE:** two-tier data — global map stays annual (all countries too
   heavy monthly); a **focus set** (Vietnam + JP/KR/US/UK) gets a quarterly, all-partner pull

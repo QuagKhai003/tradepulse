@@ -14,11 +14,12 @@ Data = REAL Comtrade, authenticated, **annual all-countries both flows** (quarte
 = refinement 3.6). Key in `etl/.env`.
 
 ## Active task
-**ADR-0003 — batches 3.1–3.4, 3.6, 3.7 DONE (merged to `main`).** Map-first + multi-product +
-quarterly sourcing: global both-flows annual map per product (7 covered); export/import/all toggle;
-global feed; `/country/[code]` drill with **quarterly partner-sourcing charts** for focus markets
-(VN/JP/KR/US/UK), annual history elsewhere. 22 Python tests green; build clean.
-**NEXT (only 3.5 left):** qualifications tab anchored to export/import choice.
+**ADR-0003 COMPLETE (3.1–3.7 merged to `main`).** Map-first + multi-product + quarterly sourcing +
+qualifications: global both-flows map per product (7 covered); export/import/all toggle; global feed;
+`/country/[code]` drill with quarterly partner-sourcing charts (focus markets) + a **market-entry
+qualifications panel** (covered pairs show sourced checklist, uncovered log demand). 22 tests green.
+**NEXT: nothing queued.** Options: real email/Zalo alert delivery + login (Phase 2), mirror-based VN
+sourcing, more requirement pages (per demand telemetry), or Stage 0 validation with the live demo.
 Note: full data refresh = 112 Comtrade calls (~6 min); `prepare-data` threshold = 7 days.
 
 ## How to run (ONE command)
