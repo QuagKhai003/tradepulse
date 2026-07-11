@@ -67,12 +67,31 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
     const g = globeRef.current;
     if (!g) return;
     const c = g.controls();
-    c.autoRotate = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    c.autoRotate = false;                 // idle by default — only spins after 5s of no interaction
     c.autoRotateSpeed = 0.5;
     c.enableZoom = true; c.enablePan = false;
-    c.minDistance = 120; c.maxDistance = 520;   // scroll to zoom, within bounds
+    c.minDistance = 120; c.maxDistance = 520;
     c.zoomSpeed = 0.8;
-    g.pointOfView({ lat: 12, lng: 30, altitude: 1.6 }, 0);   // centred + ~50% larger on load
+    g.pointOfView({ lat: 12, lng: 30, altitude: 1.6 }, 0);
+
+    let timer;
+    const spinAfterIdle = () => { clearTimeout(timer); if (!reduced) timer = setTimeout(() => { c.autoRotate = true; }, 5000); };
+    const stop = () => { clearTimeout(timer); c.autoRotate = false; };
+    const onStart = () => stop();
+    const onEnd = () => spinAfterIdle();
+    const onWheel = () => { stop(); spinAfterIdle(); };
+    const wrap = wrapRef.current;
+    c.addEventListener("start", onStart);
+    c.addEventListener("end", onEnd);
+    wrap && wrap.addEventListener("wheel", onWheel, { passive: true });
+    spinAfterIdle();                      // begin idle countdown on load
+    return () => {
+      clearTimeout(timer);
+      c.removeEventListener("start", onStart);
+      c.removeEventListener("end", onEnd);
+      wrap && wrap.removeEventListener("wheel", onWheel);
+    };
   }, [size.w]);
 
   const label = (p) =>
