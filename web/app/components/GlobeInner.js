@@ -10,7 +10,6 @@
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { TextureLoader, SRGBColorSpace } from "three";
 import Globe from "react-globe.gl";
 import { geoCentroid } from "d3-geo";
 import { feature } from "topojson-client";
@@ -26,8 +25,26 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
   const router = useRouter();
   const globeRef = useRef();
   const wrapRef = useRef();
-  const hiResRef = useRef(false);          // guard: fetch the 8k texture at most once
+  const hiResRef = useRef(false);          // guard: swap to the 8k texture at most once
   const [size, setSize] = useState({ w: 800, h: 620 });
+  const [globeImg, setGlobeImg] = useState("/textures/earth.jpg");
+
+  // Sharpen every globe texture at grazing angles (max anisotropic filtering). react-globe.gl v2.38
+  // exposes globeMaterial as a PROP, not a ref method, so reach the material via the scene graph.
+  const bumpAniso = () => {
+    const g = globeRef.current;
+    if (!g) return;
+    try {
+      const max = g.renderer().capabilities.getMaxAnisotropy();
+      g.scene().traverse((o) => {
+        const map = o.material && o.material.map;
+        if (map && map.anisotropy !== undefined && map.anisotropy !== max) { map.anisotropy = max; map.needsUpdate = true; }
+      });
+    } catch {}
+  };
+
+  // After the (base or 8k) texture swaps in, wait a beat for it to load, then bump anisotropy.
+  useEffect(() => { const id = setTimeout(bumpAniso, 900); return () => clearTimeout(id); }, [globeImg]);
 
   const features = useMemo(() => feature(worldData, worldData.objects.countries).features, []);
   const byId = useMemo(() => {
@@ -86,12 +103,10 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
       const dist = typeof c.getDistance === "function" ? c.getDistance() : g.camera().position.length();
       if (dist > 230) return;
       hiResRef.current = true;
-      new TextureLoader().load("/textures/earth-8k.jpg", (tex) => {
-        tex.colorSpace = SRGBColorSpace;
-        try { tex.anisotropy = g.renderer().capabilities.getMaxAnisotropy(); } catch {}
-        const mat = g.globeMaterial();
-        if (mat) { mat.map = tex; mat.needsUpdate = true; }
-      });
+      // preload so the swap is flash-free, then hand the URL to react-globe.gl (it manages the map)
+      const img = new Image();
+      img.onload = () => setGlobeImg("/textures/earth-8k.jpg");
+      img.src = "/textures/earth-8k.jpg";
     };
 
     let timer;
@@ -123,17 +138,9 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
         width={size.w}
         height={size.h}
         backgroundColor="rgba(0,0,0,0)"
-        globeImageUrl="/textures/earth.jpg"
+        globeImageUrl={globeImg}
         bumpImageUrl="/textures/earth-topology.png"
-        onGlobeReady={() => {
-          const g = globeRef.current;
-          if (!g) return;
-          try {
-            const mat = g.globeMaterial();
-            const a = g.renderer().capabilities.getMaxAnisotropy();
-            if (mat && mat.map) { mat.map.anisotropy = a; mat.map.needsUpdate = true; }
-          } catch {}
-        }}
+        onGlobeReady={bumpAniso}
         showAtmosphere
         atmosphereColor="#7c9bff"
         atmosphereAltitude={0.2}

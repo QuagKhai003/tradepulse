@@ -22,8 +22,14 @@ export default function SortMenu({ value, onChange, t }) {
 
   function toggle() {
     if (!open && btnRef.current) {
-      const r = btnRef.current.getBoundingClientRect();
-      setPos({ top: r.bottom + 6, right: Math.round(window.innerWidth - r.right) });
+      const btn = btnRef.current.getBoundingClientRect();
+      const panelEl = btnRef.current.closest(".glasscol") || btnRef.current.closest(".panel-col");
+      const panel = panelEl ? panelEl.getBoundingClientRect() : btn;
+      // sit the menu just LEFT of the panel (in the gap next to it), not layered over the feed
+      const right = Math.round(window.innerWidth - panel.left + 10);
+      const width = 236;
+      const clamped = Math.min(right, window.innerWidth - width - 8); // keep on-screen
+      setPos({ top: Math.round(btn.top), right: Math.max(8, clamped) });
     }
     setOpen((o) => !o);
   }
