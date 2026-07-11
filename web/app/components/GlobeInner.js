@@ -70,9 +70,9 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
     c.autoRotate = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     c.autoRotateSpeed = 0.5;
     c.enableZoom = true; c.enablePan = false;
-    c.minDistance = 140; c.maxDistance = 520;   // scroll to zoom, within bounds
+    c.minDistance = 120; c.maxDistance = 520;   // scroll to zoom, within bounds
     c.zoomSpeed = 0.8;
-    g.pointOfView({ lat: 14, lng: 108, altitude: 2.4 }, 0);
+    g.pointOfView({ lat: 12, lng: 30, altitude: 1.6 }, 0);   // centred + ~50% larger on load
   }, [size.w]);
 
   const label = (p) =>

@@ -1,25 +1,23 @@
 /**
- * GlobalFeed.js — worldwide signal feed, both flows, filtered by the export/import/all toggle.
- * @context  Side panel (plan §7.1). Each row leads with the country + a signed, colour-coded YoY %
- *           (the signal), then a muted subline: flow · value · magnitude · period. Direction is
- *           carried by sign + colour + arrow, so a decline never reads as a rise.
+ * GlobalFeed.js — worldwide signal feed, both flows, filtered by the export/import toggle (plan §7.1).
+ * @context  Each row: country + signed, colour-coded YoY % (the signal), then flow · value · magnitude
+ *           · period. Direction = sign + colour + arrow, so a decline never reads as a rise. The flow
+ *           toggle lives in the header (the only filter). No colour legend.
  * @limits   Presentation only; snapshot.feed is pre-sorted by severity then value.
  * @affects  Rendered on page.js from snapshot.feed + the active flow.
  */
 import Link from "next/link";
 import { bandArrow, bandLabel, fmtPct, fmtUSD, sigColor } from "../lib/format.js";
 
-export default function GlobalFeed({ feed, flow, lang, t, hs }) {
+export default function GlobalFeed({ feed, flow, lang, t, hs, toggle }) {
   const items = flow === "all" ? feed : feed.filter((f) => f.flow === flow);
   return (
-    <aside className="feed">
-      <div className="feed-head">
-        <h2>{t.feedTitle}</h2>
-        <span className="feed-count">{items.length}</span>
+    <div className="col-fill">
+      <div className="panel-h">
+        <h2>{t.feedTitle} <span className="feed-count">{items.length}</span></h2>
+        {toggle}
       </div>
-      <p className="feed-note muted">{t.feedNote}</p>
-      {items.length === 0 && <p className="muted">—</p>}
-      <ul>
+      <ul className="feed-list scrollx">
         {items.map((m, i) => {
           const name = lang === "en" ? m.name_en : m.name_vi;
           const color = sigColor(m.band, m.direction);
@@ -40,6 +38,6 @@ export default function GlobalFeed({ feed, flow, lang, t, hs }) {
           );
         })}
       </ul>
-    </aside>
+    </div>
   );
 }

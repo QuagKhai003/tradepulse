@@ -9,19 +9,19 @@
  */
 import GlobeHero from "./components/GlobeHero.js";
 import GlobalFeed from "./components/GlobalFeed.js";
+import TopCountries from "./components/TopCountries.js";
 import SearchBox from "./components/SearchBox.js";
-import Legend from "./components/Legend.js";
 import LockedProduct from "./components/LockedProduct.js";
 import { loadSnapshot } from "./lib/snapshot.js";
 import { lookup } from "./lib/catalog.js";
 import { t } from "./lib/i18n.js";
 
-const FLOWS = ["all", "export", "import"];
+const FLOWS = ["export", "import"];   // only import/export; import = demand (the app's core)
 
 export default async function Page({ searchParams }) {
   const sp = searchParams ? await searchParams : {};
   const lang = sp.lang === "en" ? "en" : "vi";
-  const flow = FLOWS.includes(sp.flow) ? sp.flow : "all";
+  const flow = FLOWS.includes(sp.flow) ? sp.flow : "import";
   const tr = t(lang);
   const snap = await loadSnapshot(sp.hs);
   if (!snap && !sp.hs) return <main className="page"><div className="empty">{tr.noData}</div></main>;
@@ -56,8 +56,16 @@ export default async function Page({ searchParams }) {
   }
 
   const metric = flow === "export" ? "exp" : "imp";
-  const flowLabel = (f) => f === "all" ? tr.flowAll : f === "export" ? tr.flowExport : tr.flowImport;
+  const flowLabel = (f) => f === "export" ? tr.flowExport : tr.flowImport;
   const isTotal = hs === "TOTAL";
+
+  const flowToggle = (
+    <div className="flowbar dark">
+      {FLOWS.map((f) => (
+        <a key={f} className={`flowbtn ${f === flow ? "on" : ""}`} href={`/?flow=${f}&hs=${hs}${qsl}`}>{flowLabel(f)}</a>
+      ))}
+    </div>
+  );
 
   return (
     <main className="home">
@@ -66,7 +74,11 @@ export default async function Page({ searchParams }) {
 
         <header className="hero-top">
           <div className="brand"><span className="logo">◈ TradePulse</span><span className="tagline">{tr.tagline}</span></div>
+          <div className="hero-search-top"><SearchBox lang={lang} placeholder={tr.searchPlaceholder} /></div>
           <div className="hero-top-right">
+            <span className="chip on-dark strong">{product}</span>
+            {!isTotal && <span className="chip hs">HS {hs}</span>}
+            <span className="chip on-dark muted">{snap.latest_period}</span>
             {hs === "440131" && <a className="chip link on-dark" href={`/profiles${lang === "en" ? "?lang=en" : ""}`}>{tr.profilesLink}</a>}
             {hs === "440131" && <a className="chip link on-dark" href={`/requirements${lang === "en" ? "?lang=en" : ""}`}>{tr.reqLink}</a>}
             <a className="chip link on-dark" href={`/pricing${lang === "en" ? "?lang=en" : ""}`}>{tr.pricingLink}</a>
@@ -74,34 +86,20 @@ export default async function Page({ searchParams }) {
           </div>
         </header>
 
-        <div className="hero-inner">
-          <aside className="hero-rail">
-            <h1 className="hero-title">{tr.subtitle}</h1>
-            <div className="hero-search"><SearchBox lang={lang} placeholder={tr.searchPlaceholder} /></div>
-
-            <div className="hero-controls">
-              <div className="flowbar dark">
-                {FLOWS.map((f) => (
-                  <a key={f} className={`flowbtn ${f === flow ? "on" : ""}`} href={`/?flow=${f}&hs=${hs}${qsl}`}>{flowLabel(f)}</a>
-                ))}
-              </div>
-              <span className="chip on-dark strong">{product}</span>
-              {!isTotal && <span className="chip hs">HS {hs}</span>}
-              <span className="chip on-dark muted">{snap.latest_period}</span>
-            </div>
-
-            <div className="hero-legend"><Legend lang={lang} /></div>
-
-            <div className="hero-feedwrap">
-              <GlobalFeed feed={snap.feed} flow={flow} lang={lang} t={tr} hs={hs} />
-            </div>
-            {snap.is_sample && <div className="hero-sample">⚠ {tr.sample}</div>}
+        <div className="hero-body">
+          <aside className="glasscol">
+            <TopCountries countries={snap.countries} lang={lang} t={tr} hs={hs} />
           </aside>
 
           <div className="hero-globe">
             <GlobeHero countries={snap.countries} metric={metric} hs={hs} lang={lang} />
             <p className="hero-hint">{tr.clickCountry} · <span className="num">{snap.countries.length}</span> {tr.allCountries}</p>
+            {snap.is_sample && <div className="hero-sample">⚠ {tr.sample}</div>}
           </div>
+
+          <aside className="glasscol">
+            <GlobalFeed feed={snap.feed} flow={flow} lang={lang} t={tr} hs={hs} toggle={flowToggle} />
+          </aside>
         </div>
       </section>
     </main>
