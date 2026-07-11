@@ -19,7 +19,8 @@ import urllib.parse
 import urllib.request
 from datetime import date
 
-DATA_MONTHLY = "https://comtradeapi.un.org/data/v1/get/C/M/HS"        # authenticated (free key)
+DATA_ANNUAL = "https://comtradeapi.un.org/data/v1/get/C/A/HS"          # authenticated (free key)
+DATA_MONTHLY = "https://comtradeapi.un.org/data/v1/get/C/M/HS"        # authenticated (reserved)
 PREVIEW_ANNUAL = "https://comtradeapi.un.org/public/v1/preview/C/A/HS"  # keyless fallback
 
 
@@ -57,18 +58,17 @@ class ComtradeSource:
         hs = ",".join(hs_codes)
         return self._pull_authenticated(hs, reporters) if self.key else self._pull_keyless(hs, reporters)
 
-    # --- authenticated: monthly, all partners; chunk periods (<=12/call) -> quarters ---
+    # --- authenticated: ALL reporters, BOTH flows, World partner; ANNUAL (light + global) ---
     def _pull_authenticated(self, hs: str, reporters: list[int]) -> list[dict]:
-        months = self._recent_months(self.months)
-        monthly: list[dict] = []
-        for reporter in reporters:
-            for chunk in _chunks(months, self.PERIODS_PER_CALL):
-                params = {"reporterCode": reporter, "cmdCode": hs, "flowCode": "M",
-                          "period": ",".join(chunk)}
-                rows = self._get(f"{DATA_MONTHLY}?{urllib.parse.urlencode(params)}", auth=True)
-                monthly += [r for r in rows if _is_total_row(r)]   # each partner's canonical total
-                time.sleep(self.pause)
-        return self._to_quarters(monthly)
+        # reporters is ignored on purpose — one annual call per year returns every country, both
+        # flows (X+M). Annual (not monthly) keeps the all-country payload small enough to be reliable.
+        rows: list[dict] = []
+        for year in self._recent_years(self.years):
+            params = {"cmdCode": hs, "flowCode": "M,X", "partnerCode": "0", "period": year}
+            data = self._get(f"{DATA_ANNUAL}?{urllib.parse.urlencode(params)}", auth=True)
+            rows += [r for r in data if _is_total_row(r)]
+            time.sleep(self.pause)
+        return self._normalise_annual(rows)
 
     # --- keyless: annual World-only, one call per reporter×year (tested fallback) ---
     def _pull_keyless(self, hs: str, reporters: list[int]) -> list[dict]:
@@ -108,31 +108,33 @@ class ComtradeSource:
                 continue
             year, month = period[:4], int(period[4:6])
             quarter = f"{year}-Q{(month - 1) // 3 + 1}"
-            key = (r.get("reporterCode"), r.get("partnerCode"), str(r.get("cmdCode")), quarter)
+            flow = r.get("flowCode") or "M"
+            key = (r.get("reporterCode"), r.get("partnerCode"), str(r.get("cmdCode")), quarter, flow)
             c = agg.setdefault(key, {"value": 0.0, "wgt": 0.0, "months": set()})
             c["value"] += float(r.get("primaryValue") or 0)
             c["wgt"] += float(r.get("netWgt") or 0)
             c["months"].add(month)
         return [
             {"reporterCode": rep, "partnerCode": par, "cmdCode": cmd, "period": quarter,
-             "flowCode": "M", "primaryValue": round(c["value"], 2), "netWgt": round(c["wgt"], 2),
+             "flowCode": flow, "primaryValue": round(c["value"], 2), "netWgt": round(c["wgt"], 2),
              "qtyUnitAbbr": "kg", "publishedDate": None}
-            for (rep, par, cmd, quarter), c in agg.items() if len(c["months"]) >= 3
+            for (rep, par, cmd, quarter, flow), c in agg.items() if len(c["months"]) >= 3
         ]
 
     @staticmethod
     def _normalise_annual(rows: list[dict]) -> list[dict]:
         agg: dict[tuple, dict] = {}
         for r in rows:
-            key = (r.get("reporterCode"), r.get("partnerCode"), str(r.get("cmdCode")), str(r.get("period")))
+            flow = r.get("flowCode") or "M"
+            key = (r.get("reporterCode"), r.get("partnerCode"), str(r.get("cmdCode")), str(r.get("period")), flow)
             c = agg.setdefault(key, {"value": 0.0, "wgt": 0.0})
             c["value"] += float(r.get("primaryValue") or 0)
             c["wgt"] += float(r.get("netWgt") or 0)
         return [
             {"reporterCode": rep, "partnerCode": par, "cmdCode": cmd, "period": period,
-             "flowCode": "M", "primaryValue": round(c["value"], 2), "netWgt": round(c["wgt"], 2),
+             "flowCode": flow, "primaryValue": round(c["value"], 2), "netWgt": round(c["wgt"], 2),
              "qtyUnitAbbr": "kg", "publishedDate": None}
-            for (rep, par, cmd, period), c in agg.items()
+            for (rep, par, cmd, period, flow), c in agg.items()
         ]
 
     @staticmethod

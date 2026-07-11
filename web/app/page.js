@@ -1,37 +1,46 @@
 /**
- * page.js — Layer-1 landing: search + demand map + signal feed, or a locked page (plan §7.1–7.6).
- * @context  Server component. Reads the ETL snapshot; ?hs picks the product (VN-default, ?lang=en).
- *           Covered product -> map screen; uncovered -> "coming soon, request it" (telemetry).
- * @done     Header + search; covered branch (choropleth, tiles, feed); locked branch.
- * @todo     Country drill-down (1.5), watch button (1.8).
- * @limits   Inform-never-match (Golden Rule): data only; no parties, no contacts.
- * @affects  Reads lib/snapshot + lib/catalog; renders SearchBox / WorldMap / SignalFeed / MarketTile / LockedProduct.
+ * page.js — map-first landing: world signal map + export/import/all toggle + global feed (plan §7.1).
+ * @context  Server component. The map is the hero: every country coloured by its export OR import
+ *           signal for the selected product; a global feed lists moderate+ signals both flows; the
+ *           flow toggle (?flow) and product search (?hs) reshape it. Click a country to drill in.
+ * @done     Map + toggle + top-country tiles (both flows) + global feed + search; locked for uncovered HS.
+ * @todo     Deeper country view + qualifications tab per flow (batch 3.4/3.5).
+ * @limits   Inform-never-match; value/volume only.
+ * @affects  Reads lib/snapshot + lib/catalog; renders WorldMap / GlobalFeed / CountryTile / SearchBox / LockedProduct.
  */
 import WorldMap from "./components/WorldMap.js";
-import SignalFeed from "./components/SignalFeed.js";
-import MarketTile from "./components/MarketTile.js";
+import GlobalFeed from "./components/GlobalFeed.js";
+import CountryTile from "./components/CountryTile.js";
 import SearchBox from "./components/SearchBox.js";
 import LockedProduct from "./components/LockedProduct.js";
 import { loadSnapshot } from "./lib/snapshot.js";
 import { lookup } from "./lib/catalog.js";
 import { t } from "./lib/i18n.js";
 
+const FLOWS = ["all", "export", "import"];
+
 export default async function Page({ searchParams }) {
   const sp = searchParams ? await searchParams : {};
   const lang = sp.lang === "en" ? "en" : "vi";
+  const flow = FLOWS.includes(sp.flow) ? sp.flow : "all";
   const tr = t(lang);
   const snap = await loadSnapshot();
-
-  if (!snap) {
-    return <main className="page"><div className="empty">{tr.noData}</div></main>;
-  }
+  if (!snap) return <main className="page"><div className="empty">{tr.noData}</div></main>;
 
   const hs = sp.hs || snap.hs6;
-  const covered = hs === snap.hs6;                       // only the pilot vertical has data today
+  const covered = hs === snap.hs6 && (snap.countries?.length > 0);
   const entry = lookup(hs) || { hs6: hs, name_en: hs, name_vi: hs };
   const product = covered
     ? (lang === "en" ? snap.product.name_en : snap.product.name_vi)
     : (lang === "en" ? entry.name_en : entry.name_vi);
+  const qsl = lang === "en" ? "&lang=en" : "";
+
+  const metric = flow === "export" ? "exp" : "imp";
+  const emphasis = flow === "export" ? "exp" : flow === "import" ? "imp" : null;
+  const flowVal = (c) => flow === "export" ? (c.exp?.value_usd || 0)
+    : flow === "import" ? (c.imp?.value_usd || 0)
+    : Math.max(c.exp?.value_usd || 0, c.imp?.value_usd || 0);
+  const top = covered ? [...snap.countries].sort((a, b) => flowVal(b) - flowVal(a)).slice(0, 12) : [];
 
   return (
     <main className="page">
@@ -40,12 +49,10 @@ export default async function Page({ searchParams }) {
           <span className="logo">◈ TradePulse</span>
           <span className="tagline">{tr.tagline}</span>
         </div>
-        <a className="langswitch" href={`?hs=${hs}&lang=${lang === "en" ? "vi" : "en"}`}>{tr.lang}</a>
+        <a className="langswitch" href={`?flow=${flow}&hs=${hs}&lang=${lang === "en" ? "vi" : "en"}`}>{tr.lang}</a>
       </header>
 
-      <div className="searchrow">
-        <SearchBox lang={lang} placeholder={tr.searchPlaceholder} />
-      </div>
+      <div className="searchrow"><SearchBox lang={lang} placeholder={tr.searchPlaceholder} /></div>
 
       {snap.is_sample && covered && <div className="samplebar">⚠ {tr.sample}</div>}
 
@@ -54,27 +61,37 @@ export default async function Page({ searchParams }) {
         <div className="chips">
           <span className="chip">{tr.product}: <strong>{product}</strong></span>
           <span className="chip hs">HS {hs}</span>
-          {covered && <span className="chip">{tr.flowImport}</span>}
-          {covered && <span className="chip muted">{tr.period} {snap.latest_period}</span>}
-          {covered && <a className="chip link" href={`/profiles${lang === "en" ? "?lang=en" : ""}`}>{tr.profilesLink}</a>}
-          {covered && <a className="chip link" href={`/requirements${lang === "en" ? "?lang=en" : ""}`}>{tr.reqLink}</a>}
+          <span className="chip muted">{tr.period} {snap.latest_period}</span>
+          <a className="chip link" href={`/profiles${lang === "en" ? "?lang=en" : ""}`}>{tr.profilesLink}</a>
+          <a className="chip link" href={`/requirements${lang === "en" ? "?lang=en" : ""}`}>{tr.reqLink}</a>
           <a className="chip link" href={`/pricing${lang === "en" ? "?lang=en" : ""}`}>{tr.pricingLink}</a>
         </div>
       </section>
 
       {covered ? (
-        <section className="grid">
-          <div className="mapcol">
-            <WorldMap markets={snap.markets} />
-            <div className="markets">
-              <h2>{tr.marketsTitle}</h2>
-              <div className="tiles">
-                {snap.markets.map((m) => <MarketTile key={m.slug} m={m} lang={lang} t={tr} />)}
+        <>
+          <div className="flowbar">
+            {FLOWS.map((f) => (
+              <a key={f} className={`flowbtn ${f === flow ? "on" : ""}`} href={`/?flow=${f}&hs=${hs}${qsl}`}>
+                {f === "all" ? tr.flowAll : f === "export" ? tr.flowExport : tr.flowImport}
+              </a>
+            ))}
+          </div>
+
+          <section className="grid">
+            <div className="mapcol">
+              <WorldMap countries={snap.countries} metric={metric} lang={lang} />
+              <p className="maphint muted">{tr.clickCountry}</p>
+              <div className="markets">
+                <h2>{tr.topCountries} · {snap.countries.length} {tr.allCountries}</h2>
+                <div className="ctiles">
+                  {top.map((c) => <CountryTile key={c.code} c={c} lang={lang} t={tr} emphasis={emphasis} />)}
+                </div>
               </div>
             </div>
-          </div>
-          <SignalFeed feed={snap.feed} lang={lang} t={tr} />
-        </section>
+            <GlobalFeed feed={snap.feed} flow={flow} lang={lang} t={tr} />
+          </section>
+        </>
       ) : (
         <LockedProduct product={entry} lang={lang} />
       )}

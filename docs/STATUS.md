@@ -3,20 +3,22 @@
 > Single source of truth for the CURRENT moment. Update at the start and end of every
 > session. History goes in `docs/progress/`, not here.
 
-**Last updated:** 2026-07-11 (one-command `npm run dev`; REAL quarterly + partner Comtrade data)
+**Last updated:** 2026-07-11 (map-first realignment ADR-0003: global map, both flows, toggle, drill)
 
 ## Phase
-**Phase 1 MVP — COMPLETE, on real quarterly data, one-command run.** `npm run dev` auto-fetches.
-Layer-1 map/signals + drill-down sourcing use REAL UN Comtrade (authenticated, quarterly + partners,
-key in `etl/.env`). **Layer-2 profiles + Layer-3 requirement pages are now REAL curated** (official
-sources + verified dates, 2026-07-11). Stage 0 validation still deferred (ADR-0001).
+**Phase 1 MVP complete + map-first realignment (ADR-0003, 3.1–3.4 done).** `npm run dev` auto-fetches.
+The map is now the hero: **162 countries, export + import**, colored by signal, with an
+export/import/all toggle + global feed (both flows) + country drill (`/country/[code]`). Layer-2
+profiles + Layer-3 requirement pages REAL curated. Stage 0 deferred (ADR-0001).
+Data = REAL Comtrade, authenticated, **annual all-countries both flows** (quarterly + partner sourcing
+= refinement 3.6). Key in `etl/.env`.
 
 ## Active task
-**Phase 1 — ADR-0002 — DONE (1.1–1.9 merged to `main`).** Shipped: Layer-1 map + deterministic
-signals, product search + locked pages, country drill-down (partners + sourcing chart), Layer-2
-profiles, Layer-3 requirement pages, watch/alerts engine + telemetry, and the free↔paid gate
-(cookie + test-mode checkout). 15 offline Python tests green; web build clean.
-**NEXT: nothing queued.** Options below — owner picks.
+**ADR-0003 — batches 3.1–3.4 DONE (merged to `main`).** Map-first: global both-flows ETL →
+country-centric snapshot (162 countries); WorldMap colored by chosen flow; export/import/all toggle;
+global feed both flows; `/country/[code]` drill (export+import signal + sparkline + profiles/req links).
+Removed old market route + partner components (snapshot reshaped). 22 Python tests green; build clean.
+**NEXT:** 3.5 qualifications-per-flow tab; 3.6 restore quarterly + partner sourcing chart.
 
 ## How to run (ONE command)
 ```

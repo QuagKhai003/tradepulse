@@ -59,9 +59,11 @@ Offline Python tests: `cd etl && python -m unittest discover -s tests` (22).
 - **Phase 1 MVP COMPLETE — runs on `localhost:3200`** (owner chose sequential build over the Stage 0
   gate). Map + signals + search + drill-down (sourcing chart) + Layer-2 profiles + Layer-3 requirement
   pages + watch/alerts + free↔paid paywall. All batches 1.1–1.9 merged to `main`.
-- **Data is REAL:** Layer-1 trade (Comtrade authenticated, quarterly + partners) + Layer-2 profiles
-  + Layer-3 requirement pages (curated from official sources + verified dates). Stage 0 WTP unproven.
-  Requirement rules age — quarterly re-review (S-001).
+- **Map-first (ADR-0003):** world map of **162 countries**, export + import, colored by signal, with
+  an export/import/all toggle + global feed (both flows) + country drill (`/country/[code]`).
+- **Data is REAL:** Layer-1 trade (Comtrade authenticated, annual all-countries both flows) + Layer-2
+  profiles + Layer-3 requirement pages (curated, official sources + verified dates). Stage 0 WTP unproven.
+  Quarterly + partner sourcing = deferred refinement (3.6); requirement rules age — quarterly review (S-001).
 - **Tests:** 20 offline (ETL + deterministic signal/alert math + Comtrade helpers). `cd etl && python -m unittest discover -s tests`.
 
 ## New here?
