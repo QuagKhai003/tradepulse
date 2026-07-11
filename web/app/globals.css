@@ -359,6 +359,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .authbtn.primary:hover { background: #4338ca; transform: translateY(-1px); }
 
 .panel-n { color: #a5b4fc; font-weight: 800; margin-right: 3px; }
+
+/* animated segmented toggle (lang + flow) — sliding fill, no reload */
+.seg { position: relative; display: inline-flex; gap: 2px; background: rgba(16,24,50,.6); border: 1px solid rgba(124,142,196,.24); border-radius: var(--pill); padding: 3px; }
+.seg-opt { position: relative; isolation: isolate; border: none; background: none; cursor: pointer; padding: 0 15px; min-height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--pill); color: #a3b3d6; font-weight: 650; font-size: 13px; font-family: var(--sans); transition: color .2s var(--ease); }
+.seg-opt.on { color: #fff; }
+.seg-opt:hover:not(.on) { color: #dbe3f3; }
+.seg-ind { position: absolute; inset: 0; z-index: 0; background: var(--brand); border-radius: var(--pill); box-shadow: 0 4px 14px -4px rgba(79,70,229,.7); }
+.seg-label { position: relative; z-index: 1; }
+.seg-sm .seg-opt { padding: 0 13px; min-height: 30px; font-size: 12.5px; }
+
 .glasscol { background: rgba(13,20,42,.6); backdrop-filter: blur(14px); border: 1px solid rgba(124,142,196,.2); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
 .col-fill { display: flex; flex-direction: column; min-height: 0; flex: 1; }
 .panel-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 16px 9px; flex: none; }
