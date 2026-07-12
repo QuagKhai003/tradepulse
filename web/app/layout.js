@@ -12,7 +12,7 @@ const sans = Plus_Jakarta_Sans({
   subsets: ["latin", "vietnamese"],
   variable: "--font-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],   // 500 dropped — only .permo used it and 400 covers it
 });
 const display = Be_Vietnam_Pro({
   subsets: ["latin", "vietnamese"],
