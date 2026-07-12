@@ -3,7 +3,7 @@
 > Single source of truth for the CURRENT moment. Update at the start and end of every
 > session. History goes in `docs/progress/`, not here.
 
-**Last updated:** 2026-07-12 (feature/globe-3d MERGED to main — 3D globe hero + redesign + perf)
+**Last updated:** 2026-07-13 (multi-source data spine + 1,240-product catalog MERGED to main)
 
 ## Phase
 **Phase 1 MVP complete + map-first realignment (ADR-0003, 3.1–3.4 done).** `npm run dev` auto-fetches.
@@ -24,13 +24,15 @@ Jakarta Sans body + Be Vietnam Pro display, dark-panel contrast, portal sort men
 full country ranking list, "Tìm kiếm quốc gia" + globe icon). Country borders on zoom-in only (one
 GL LineSegments buffer, 50m lazy-loaded). Next 15.5.20; framer-motion dropped for CSS. Compile:
 warm `/` ~8-10s, cold ~48s (three.js floor — one-time; keep `.next`), HMR <1s.
-**IN FLIGHT (branch `feat/multi-source-data`, NOT merged):** multi-source data spine —
-`merge.merge_flows` = one number per cell (national authority > freshness > priority, never sums);
-`freq` (A/Q/M) dimension + M/Q/A UI toggle (`by_freq` in snapshot); **US Census** source (fresh
-authoritative US totals — verified live, caught+fixed a region double-count); **Comtrade
-monthly→quarterly** (core products, 1 month/call); "in 2024" freshness stamp. `npm run data` now runs
-`--source comtrade,census --freq AQ`. **34 offline tests.** Full multi-source refresh NOT yet run
-(heavy: ~320 Comtrade + ~370 Census calls). Catalog: `docs/DATA_SOURCES.md`.
+**MERGED to `main` (2026-07-13, `20c396b`, not pushed):** multi-source data spine.
+Sources merged + deduped (one number per cell, national authority > freshness > priority, never sums):
+**BACI bulk** (global history, all ~5,600 HS6, NO API throttle) + **Comtrade API** (recent) + **US
+Census / EU Eurostat / UK HMRC** (fresh national primaries; EUR/GBP -> USD via ECB FX). Japan/Korea
+national sources dropped on purpose (Comtrade covers them in HS). Incremental refresh (frozen periods
+never re-fetched) + per-product persistence. `freq` (A/Q/M) + Nam/Quy toggle across map/ranking/feed.
+**Catalog: 1,240 products** (every official HS4 heading + 32 curated w/ Vietnamese names). Slim snapshot
+(310KB -> 48KB) so all ship (59MB); indexed export = 1,239 snapshots in 96s. **50 offline tests green.**
+
 **NEXT (same frame):** feed-by-freq; more national sources (HMRC/Eurostat keyless, JP/KR need keys);
 then new signal types (prices/tenders/border-rejections/rule-changes). Then Phase-2 alerts + login.
 Note: full data refresh = 112 Comtrade calls (~6 min); `prepare-data` threshold = 7 days.
