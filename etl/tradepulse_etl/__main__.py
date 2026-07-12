@@ -15,8 +15,8 @@ from pathlib import Path
 
 from .alerts import rollup_locked_clicks, signal_alerts
 from .db import DEFAULT_DB, connect, count_trade_flows, fetch_flows, fetch_signals, upsert_signals
-from .export import DEFAULT_SNAPSHOT, build_snapshot, write_snapshot
-from .pipeline import get_source, run
+from .export import DEFAULT_SNAPSHOT, build_snapshot, write_countries, write_snapshot
+from .pipeline import get_sources, run_multi
 from .signals import compute_signals
 
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
@@ -24,9 +24,12 @@ DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
 def main() -> None:
     ap = argparse.ArgumentParser(prog="tradepulse_etl", description="Build TradePulse Layer-1 data.")
-    ap.add_argument("--source", default="fixture", choices=["fixture", "comtrade"],
-                    help="data source (default: fixture — offline sample data)")
+    ap.add_argument("--source", default="fixture",
+                    help="data source(s), comma-separated: fixture | comtrade | census "
+                         "(e.g. 'comtrade,census' — merged, one number per cell)")
     ap.add_argument("--period", default="2025", help="period for the comtrade source")
+    ap.add_argument("--freq", default="A", choices=["A", "AQ"],
+                    help="grain(s) for comtrade: A=annual (default), AQ=annual + monthly->quarterly")
     ap.add_argument("--db", default=str(DEFAULT_DB), help="SQLite path")
     ap.add_argument("--snapshot", default=str(DEFAULT_SNAPSHOT), help="web snapshot output path")
     args = ap.parse_args()
@@ -34,8 +37,8 @@ def main() -> None:
     now_iso = datetime.now(timezone.utc).isoformat()
     conn = connect(args.db)
 
-    source = get_source(args.source, period=args.period)
-    n = run(source, conn)
+    sources = get_sources(args.source.split(","), freqs=tuple(args.freq))
+    n = run_multi(sources, conn)
 
     prev = fetch_signals(conn)                       # state before this run (for band crossings)
     sigs = compute_signals(fetch_flows(conn), now_iso)
@@ -48,6 +51,7 @@ def main() -> None:
     # One snapshot per covered product; the map switches between them. Default = first covered.
     from .config import COVERED_HS
     default_path = Path(args.snapshot)
+    write_countries(conn, default_path.parent / "countries.json")   # names once, shared by all products
     covered = []
     for hs in COVERED_HS:
         snap = build_snapshot(conn, generated_at=now_iso, hs6=hs)
@@ -62,12 +66,13 @@ def main() -> None:
           f"alerts={len(alerts)} products={len(covered)} [{' '.join(covered)}]")
 
     # Tier 2: quarterly partner sourcing for the focus reporters (needs the Comtrade key).
-    if getattr(source, "key", None):
+    sourcing_src = next((s for s in sources if getattr(s, "key", None) and hasattr(s, "pull_sourcing")), None)
+    if sourcing_src is not None:
         from .config import FOCUS_REPORTERS, SOURCING_HS
         from .sourcing import build_sourcing, write_sourcing
         srcs = []
         for hs in SOURCING_HS:
-            rows = source.pull_sourcing([hs], FOCUS_REPORTERS)
+            rows = sourcing_src.pull_sourcing([hs], FOCUS_REPORTERS)
             sm = build_sourcing(rows, hs)
             if sm:
                 write_sourcing(sm, default_path.parent / f"sourcing-{hs}.json")

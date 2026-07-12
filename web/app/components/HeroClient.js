@@ -37,9 +37,12 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
   const [lang, setLang] = useState(initialLang);
   const [flow, setFlow] = useState(initialFlow);
   const [sort, setSort] = useState("value-desc");
+  const [freq, setFreq] = useState("A");
   const tr = t(lang);
   const metric = flow === "export" ? "exp" : "imp";
   const isTotal = hs === "TOTAL";
+  // Only offer the grain toggle when this product actually has quarterly data (bounded to core products).
+  const hasQuarterly = snapshot.countries.some((c) => c.exp?.by_freq?.Q || c.imp?.by_freq?.Q);
   const product = lang === "en" ? snapshot.product.name_en : snapshot.product.name_vi;
   const updated = snapshot.generated_at
     ? new Date(snapshot.generated_at).toLocaleDateString(lang === "en" ? "en-GB" : "vi-VN", { day: "2-digit", month: "2-digit", year: "numeric" })
@@ -49,13 +52,17 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
     <Segmented idBase="flow-ind" value={flow} onChange={setFlow} size="sm"
       options={[{ v: "export", label: tr.flowExport }, { v: "import", label: tr.flowImport }]} />
   );
-  const feedTools = (<><SortMenu value={sort} onChange={setSort} t={tr} />{flowToggle}</>);
+  const freqToggle = hasQuarterly ? (
+    <Segmented idBase="freq-ind" value={freq} onChange={setFreq} size="sm"
+      options={[{ v: "A", label: tr.freqYear }, { v: "Q", label: tr.freqQuarter }]} />
+  ) : null;
+  const feedTools = (<><SortMenu value={sort} onChange={setSort} t={tr} />{freqToggle}{flowToggle}</>);
 
   return (
     <main className="home">
       <section className="hero">
         <div className="hero-glow" aria-hidden />
-        <div className="hero-globe-bg"><GlobeHero countries={snapshot.countries} metric={metric} hs={hs} lang={lang} /></div>
+        <div className="hero-globe-bg"><GlobeHero countries={snapshot.countries} metric={metric} hs={hs} lang={lang} freq={freq} /></div>
 
         <header className="hero-top">
           <div className="brand"><span className="logo">◈ TradePulse</span></div>
@@ -72,11 +79,11 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
         </header>
 
         <MotionPanel from="left" className="panel-col left glasscol">
-          <TopCountries countries={snapshot.countries} lang={lang} t={tr} hs={hs} />
+          <TopCountries countries={snapshot.countries} lang={lang} t={tr} hs={hs} freq={freq} />
         </MotionPanel>
 
         <MotionPanel from="right" delay={0.05} className="panel-col right glasscol">
-          <GlobalFeed feed={snapshot.feed} flow={flow} lang={lang} t={tr} hs={hs} sort={sort} tools={feedTools} />
+          <GlobalFeed countries={snapshot.countries} flow={flow} freq={freq} lang={lang} t={tr} hs={hs} sort={sort} tools={feedTools} />
         </MotionPanel>
 
         <div className="hero-foot">

@@ -6,8 +6,11 @@
 
 ## Core types (current)
 - **`trade_flows`** (`etl/tradepulse_etl/db.py`) — IMPLEMENTED (SQLite). The Layer-1 fact table.
-  PK(reporter,partner,hs6,period,flow); value_usd + quantity + source + published_date.
-  Populated by `pipeline.run` from the source seam (fixture now, Comtrade later).
+  PK(reporter,partner,hs6,period,flow); **freq('A'/'Q'/'M')** + value_usd + quantity + source +
+  published_date. Grain lives in `period` (YYYY | YYYY-Qn | YYYYMM) so monthly/quarterly/annual rows
+  coexist (UI toggle); `freq` labels it. Populated by `pipeline.run_multi` from ONE OR MORE sources,
+  passed through **`merge.merge_flows`** (dedupe: one row per cell — national authority > freshness >
+  priority; never sums two sources). `source`/`published_date` = the winning source's freshness stamp.
 - **`signals`** (`etl/tradepulse_etl/db.py`) — IMPLEMENTED. Filled by `signals.compute_signals`
   (PURE, deterministic). One row per (reporter,hs6,flow,period) clearing the §6 floors; band ∈
   {minor,moderate,significant,surge,collapse,new}.
@@ -26,7 +29,8 @@
 **Country-centric (ADR-0003).** The Next.js app reads this file (seam). One product; both flows. Shape:
 `{ generated_at, hs6, product{name_en,name_vi}, latest_period, is_sample, sources[],
 countries[ {code, name_en, name_vi,
-  exp{value_usd,period,yoy_delta,band,direction,history[{period,value_usd}]} | null,
+  exp{value_usd,period,freq,source,published_date,yoy_delta,band,direction,history[…],
+      by_freq{A:{…slot…}, Q:{…slot…}}} | null,   // grain toggle; default slot = annual (freshest fallback)
   imp{ …same… } | null } ],
 feed[ {code,name_en,name_vi, flow:'export'|'import', value_usd,yoy_delta,band,direction,period} ] }`.
 `exp` = flow X, `imp` = flow M. Consumed by `web/app/lib/snapshot.js` → SSR by `web/app/page.js`
@@ -48,7 +52,7 @@ Documented before code so the schema is decided up front. Metric rule: store tra
 | Table | Key columns | Relationships / notes |
 |-------|-------------|-----------------------|
 | `hs_codes` | `hs6` PK | `description_en`, `description_vi`, `synonyms[]`, `category_slug`, `covered bool`. The everyday-word → HS map (§7.2). |
-| `trade_flows` | PK(`reporter`,`partner`,`hs6`,`period`,`flow`) | `flow` ENUM(export,import); `value_usd`, `quantity`, `qty_unit`, `source`, `published_date`. The Layer-1 fact table. |
+| `trade_flows` | PK(`reporter`,`partner`,`hs6`,`period`,`flow`) | `freq`('A'/'Q'/'M'), `flow` ENUM(export,import); `value_usd`, `quantity`, `qty_unit`, `source`, `published_date`. Layer-1 fact table. Multi-source → `merge.merge_flows` dedupes to one row per cell (authority > freshness > priority). |
 | `signals` | `id` | `country`, `hs6`, `flow`, `period`, `yoy_delta`, `band`, `computed_at`. Pure function of `trade_flows` (§6). |
 | `companies` | `id` | `name`, `country`, `role` ENUM(buyer,seller), `hs6[]`, `profile_url`, `evidence_source`, `evidence_url`, `verified_date`. Layer 2 — **public names + source only, never contacts**. |
 | `requirement_pages` | `id` | `hs6_group`, `market`, `body_md`, `last_full_review`. Layer 3; body is markdown (git = change log). |

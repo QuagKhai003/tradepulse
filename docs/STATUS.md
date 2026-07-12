@@ -24,8 +24,15 @@ Jakarta Sans body + Be Vietnam Pro display, dark-panel contrast, portal sort men
 full country ranking list, "Tìm kiếm quốc gia" + globe icon). Country borders on zoom-in only (one
 GL LineSegments buffer, 50m lazy-loaded). Next 15.5.20; framer-motion dropped for CSS. Compile:
 warm `/` ~8-10s, cold ~48s (three.js floor — one-time; keep `.next`), HMR <1s.
-**NEXT: nothing queued.** Options: real email/Zalo alert delivery + login (Phase 2), mirror-based VN
-sourcing, more requirement pages (per demand telemetry), or Stage 0 validation with the live demo.
+**IN FLIGHT (branch `feat/multi-source-data`, NOT merged):** multi-source data spine —
+`merge.merge_flows` = one number per cell (national authority > freshness > priority, never sums);
+`freq` (A/Q/M) dimension + M/Q/A UI toggle (`by_freq` in snapshot); **US Census** source (fresh
+authoritative US totals — verified live, caught+fixed a region double-count); **Comtrade
+monthly→quarterly** (core products, 1 month/call); "in 2024" freshness stamp. `npm run data` now runs
+`--source comtrade,census --freq AQ`. **34 offline tests.** Full multi-source refresh NOT yet run
+(heavy: ~320 Comtrade + ~370 Census calls). Catalog: `docs/DATA_SOURCES.md`.
+**NEXT (same frame):** feed-by-freq; more national sources (HMRC/Eurostat keyless, JP/KR need keys);
+then new signal types (prices/tenders/border-rejections/rule-changes). Then Phase-2 alerts + login.
 Note: full data refresh = 112 Comtrade calls (~6 min); `prepare-data` threshold = 7 days.
 
 ## How to run (ONE command)

@@ -6,7 +6,7 @@
  *             • stale (> MAX_AGE) -> refresh in the BACKGROUND (dev starts instantly)
  *             • fresh             -> skip
  *           Never fails the dev start — a network/ETL error just leaves the existing snapshot.
- * @limits   Node script (build tooling). Spawns Python (`python -m tradepulse_etl --source comtrade`).
+ * @limits   Node script (build tooling). Spawns Python (`python -m tradepulse_etl --source comtrade,census --freq AQ`).
  * @affects  Wired via package.json "predev"; `--force` refreshes regardless of age.
  */
 import { spawn, spawnSync } from "node:child_process";
@@ -19,7 +19,11 @@ const force = process.argv.includes("--force");
 const SNAPSHOT = path.join(process.cwd(), "public", "data", "snapshot.json");
 const ETL_DIR = path.join(process.cwd(), "..", "etl");
 const PY = process.platform === "win32" ? "python" : "python3";
-const ETL_ARGS = ["-m", "tradepulse_etl", "--source", "comtrade"];
+// Everyday refresh = LIGHT: Comtrade annual (global) + US Census, merged + incremental (only the
+// revisable window re-fetches). Census skips cleanly without CENSUS_API_KEY. Quarterly (the M/Q/A
+// toggle) is a heavier, deliberate run: add `--freq AQ`. See docs/DATA_SOURCES.md.
+// baci = local CEPII bulk file (history, no API throttle); skips cleanly if data/baci is empty.
+const ETL_ARGS = ["-m", "tradepulse_etl", "--source", "baci,comtrade,census,eurostat,hmrc", "--freq", "A"];
 
 function ageHours(p) {
   return (Date.now() - statSync(p).mtimeMs) / 3_600_000;

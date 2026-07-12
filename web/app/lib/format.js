@@ -21,6 +21,33 @@ export function fmtPct(x) {
   return `${x >= 0 ? "+" : ""}${s}%`;
 }
 
+// Freshness stamp: turn a period into a plain "in 2024" / "năm 2024" (no source name).
+// Annual 'YYYY', quarterly 'YYYY-Qn', monthly 'YYYYMM'.
+const _MON = { vi: ["Th1","Th2","Th3","Th4","Th5","Th6","Th7","Th8","Th9","Th10","Th11","Th12"],
+               en: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"] };
+export function fmtPeriod(period, lang = "vi") {
+  if (!period) return "";
+  const p = String(period);
+  const inw = lang === "en" ? "in" : "năm";
+  if (p.includes("-Q")) { const [y, q] = p.split("-"); return `${q} ${y}`; }
+  if (p.length === 6 && /^\d+$/.test(p)) {
+    const y = p.slice(0, 4), m = parseInt(p.slice(4), 10) - 1;
+    return `${(_MON[lang === "en" ? "en" : "vi"][m] || "")} ${y}`;
+  }
+  return `${inw} ${p}`;
+}
+
+// Pick a country slot's sub-slot for the chosen grain (A/Q/M); fall back to the default slot when the
+// product has no data at that grain (quarterly is bounded to core products).
+export function slotFor(slot, freq) {
+  if (!slot) return slot;
+  return (slot.by_freq && slot.by_freq[freq]) || slot;
+}
+
+// Bands that qualify for the signal feed (moderate+); 'minor'/'none' are suppressed by design.
+const FEED_BANDS = new Set(["surge", "collapse", "significant", "moderate", "new"]);
+export function isFeedSignal(band) { return FEED_BANDS.has(band); }
+
 export function fmtTons(kg) {
   if (kg == null) return null;
   const t = kg / 1000;

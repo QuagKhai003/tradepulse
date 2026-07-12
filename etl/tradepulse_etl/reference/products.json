@@ -1,0 +1,4962 @@
+{
+ "TOTAL": {
+  "name_en": "All products",
+  "name_vi": "Tất cả sản phẩm"
+ },
+ "0901": {
+  "name_en": "Coffee",
+  "name_vi": "Cà phê"
+ },
+ "0902": {
+  "name_en": "Tea",
+  "name_vi": "Chè (trà)"
+ },
+ "1006": {
+  "name_en": "Rice",
+  "name_vi": "Gạo"
+ },
+ "0306": {
+  "name_en": "Crustaceans",
+  "name_vi": "Giáp xác (tôm, cua)"
+ },
+ "0801": {
+  "name_en": "Nuts (cashew/coconut)",
+  "name_vi": "Hạt (điều, dừa)"
+ },
+ "4401": {
+  "name_en": "Wood fuel",
+  "name_vi": "Nhiên liệu gỗ"
+ },
+ "440131": {
+  "name_en": "Wood pellets",
+  "name_vi": "Viên nén gỗ"
+ },
+ "4407": {
+  "name_en": "Sawn wood",
+  "name_vi": "Gỗ xẻ"
+ },
+ "090240": {
+  "name_en": "Black tea",
+  "name_vi": "Trà đen"
+ },
+ "090210": {
+  "name_en": "Green tea",
+  "name_vi": "Trà xanh"
+ },
+ "090111": {
+  "name_en": "Coffee, green",
+  "name_vi": "Cà phê nhân"
+ },
+ "090121": {
+  "name_en": "Coffee, roasted",
+  "name_vi": "Cà phê rang"
+ },
+ "030617": {
+  "name_en": "Frozen shrimp",
+  "name_vi": "Tôm đông lạnh"
+ },
+ "080131": {
+  "name_en": "Cashew (in shell)",
+  "name_vi": "Điều thô"
+ },
+ "080132": {
+  "name_en": "Cashew (shelled)",
+  "name_vi": "Điều nhân"
+ },
+ "100630": {
+  "name_en": "Milled rice",
+  "name_vi": "Gạo xát"
+ },
+ "100640": {
+  "name_en": "Broken rice",
+  "name_vi": "Tấm (gạo tấm)"
+ },
+ "8517": {
+  "name_en": "Phones & telecom",
+  "name_vi": "Điện thoại & viễn thông"
+ },
+ "8542": {
+  "name_en": "Integrated circuits",
+  "name_vi": "Vi mạch (IC)"
+ },
+ "6109": {
+  "name_en": "T-shirts",
+  "name_vi": "Áo thun"
+ },
+ "6110": {
+  "name_en": "Knitwear",
+  "name_vi": "Áo len dệt kim"
+ },
+ "6403": {
+  "name_en": "Leather footwear",
+  "name_vi": "Giày da"
+ },
+ "9403": {
+  "name_en": "Furniture",
+  "name_vi": "Đồ nội thất"
+ },
+ "4001": {
+  "name_en": "Natural rubber",
+  "name_vi": "Cao su tự nhiên"
+ },
+ "0904": {
+  "name_en": "Pepper",
+  "name_vi": "Hạt tiêu"
+ },
+ "0304": {
+  "name_en": "Fish fillets",
+  "name_vi": "Phi lê cá"
+ },
+ "0803": {
+  "name_en": "Bananas",
+  "name_vi": "Chuối"
+ },
+ "2709": {
+  "name_en": "Crude oil",
+  "name_vi": "Dầu thô"
+ },
+ "8703": {
+  "name_en": "Cars",
+  "name_vi": "Ô tô"
+ },
+ "1201": {
+  "name_en": "Soybeans",
+  "name_vi": "Đậu tương"
+ },
+ "1511": {
+  "name_en": "Palm oil",
+  "name_vi": "Dầu cọ"
+ },
+ "0101": {
+  "name_en": "Horses, asses, mules and hinnies",
+  "name_vi": "Horses, asses, mules and hinnies"
+ },
+ "0102": {
+  "name_en": "Bovine animals",
+  "name_vi": "Bovine animals"
+ },
+ "0103": {
+  "name_en": "Swine",
+  "name_vi": "Swine"
+ },
+ "0104": {
+  "name_en": "Sheep and goats",
+  "name_vi": "Sheep and goats"
+ },
+ "0105": {
+  "name_en": "Poultry",
+  "name_vi": "Poultry"
+ },
+ "0106": {
+  "name_en": "Animals",
+  "name_vi": "Animals"
+ },
+ "0201": {
+  "name_en": "Meat of bovine animals",
+  "name_vi": "Meat of bovine animals"
+ },
+ "0202": {
+  "name_en": "Meat of bovine animals",
+  "name_vi": "Meat of bovine animals"
+ },
+ "0203": {
+  "name_en": "Meat of swine",
+  "name_vi": "Meat of swine"
+ },
+ "0204": {
+  "name_en": "Meat of sheep or goats",
+  "name_vi": "Meat of sheep or goats"
+ },
+ "0205": {
+  "name_en": "Meat",
+  "name_vi": "Meat"
+ },
+ "0206": {
+  "name_en": "Edible offal of bovine animals, swine, sheep, goats,…",
+  "name_vi": "Edible offal of bovine animals, swine, sheep, goats,…"
+ },
+ "0207": {
+  "name_en": "Meat and edible offal of poultry",
+  "name_vi": "Meat and edible offal of poultry"
+ },
+ "0208": {
+  "name_en": "Meat and edible meat offal, n.e.c. in chapter 2",
+  "name_vi": "Meat and edible meat offal, n.e.c. in chapter 2"
+ },
+ "0209": {
+  "name_en": "Pig fat, free of lean meat, and poultry fat, not…",
+  "name_vi": "Pig fat, free of lean meat, and poultry fat, not…"
+ },
+ "0210": {
+  "name_en": "Meat and edible meat offal",
+  "name_vi": "Meat and edible meat offal"
+ },
+ "0301": {
+  "name_en": "Fish",
+  "name_vi": "Fish"
+ },
+ "0302": {
+  "name_en": "Fish",
+  "name_vi": "Fish"
+ },
+ "0303": {
+  "name_en": "Fish",
+  "name_vi": "Fish"
+ },
+ "0305": {
+  "name_en": "Fish, dried, salted or in brine",
+  "name_vi": "Fish, dried, salted or in brine"
+ },
+ "0307": {
+  "name_en": "Molluscs",
+  "name_vi": "Molluscs"
+ },
+ "0308": {
+  "name_en": "Aquatic invertebrates other than crustaceans and…",
+  "name_vi": "Aquatic invertebrates other than crustaceans and…"
+ },
+ "0309": {
+  "name_en": "Flours, meals and pellets of fish, crustaceans,…",
+  "name_vi": "Flours, meals and pellets of fish, crustaceans,…"
+ },
+ "0401": {
+  "name_en": "Milk and cream",
+  "name_vi": "Milk and cream"
+ },
+ "0402": {
+  "name_en": "Milk and cream",
+  "name_vi": "Milk and cream"
+ },
+ "0403": {
+  "name_en": "Yogurt",
+  "name_vi": "Yogurt"
+ },
+ "0404": {
+  "name_en": "Whey and products consisting of natural milk constituents",
+  "name_vi": "Whey and products consisting of natural milk constituents"
+ },
+ "0405": {
+  "name_en": "Butter and other fats and oils derived from milk",
+  "name_vi": "Butter and other fats and oils derived from milk"
+ },
+ "0406": {
+  "name_en": "Cheese and curd",
+  "name_vi": "Cheese and curd"
+ },
+ "0407": {
+  "name_en": "Birds' eggs, in shell",
+  "name_vi": "Birds' eggs, in shell"
+ },
+ "0408": {
+  "name_en": "Birds' eggs, not in shell",
+  "name_vi": "Birds' eggs, not in shell"
+ },
+ "0409": {
+  "name_en": "Honey",
+  "name_vi": "Honey"
+ },
+ "0410": {
+  "name_en": "Animal products",
+  "name_vi": "Animal products"
+ },
+ "0501": {
+  "name_en": "Human hair",
+  "name_vi": "Human hair"
+ },
+ "0502": {
+  "name_en": "Pigs', hogs' or boars' bristles and hair",
+  "name_vi": "Pigs', hogs' or boars' bristles and hair"
+ },
+ "0504": {
+  "name_en": "Guts, bladders and stomachs of animals (other than fish)",
+  "name_vi": "Guts, bladders and stomachs of animals (other than fish)"
+ },
+ "0505": {
+  "name_en": "Skins and other parts of birds with feathers, down",
+  "name_vi": "Skins and other parts of birds with feathers, down"
+ },
+ "0506": {
+  "name_en": "Bones and horn-cores, unworked, defatted, simply…",
+  "name_vi": "Bones and horn-cores, unworked, defatted, simply…"
+ },
+ "0507": {
+  "name_en": "Ivory, tortoise-shell, whalebone and whalebone hair,…",
+  "name_vi": "Ivory, tortoise-shell, whalebone and whalebone hair,…"
+ },
+ "0508": {
+  "name_en": "Coral and similar materials, unworked or simply…",
+  "name_vi": "Coral and similar materials, unworked or simply…"
+ },
+ "0510": {
+  "name_en": "Ambergris, castoreum, civet and musk",
+  "name_vi": "Ambergris, castoreum, civet and musk"
+ },
+ "0511": {
+  "name_en": "Animal products not elsewhere specified or included",
+  "name_vi": "Animal products not elsewhere specified or included"
+ },
+ "0601": {
+  "name_en": "Bulbs, tubers, tuberous roots, corms, crowns and rhizomes",
+  "name_vi": "Bulbs, tubers, tuberous roots, corms, crowns and rhizomes"
+ },
+ "0602": {
+  "name_en": "Plants, live",
+  "name_vi": "Plants, live"
+ },
+ "0603": {
+  "name_en": "Flowers",
+  "name_vi": "Flowers"
+ },
+ "0604": {
+  "name_en": "Foliage, branches and other parts of plants, without…",
+  "name_vi": "Foliage, branches and other parts of plants, without…"
+ },
+ "0701": {
+  "name_en": "Potatoes",
+  "name_vi": "Potatoes"
+ },
+ "0702": {
+  "name_en": "Tomatoes",
+  "name_vi": "Tomatoes"
+ },
+ "0703": {
+  "name_en": "Onions, shallots, garlic, leeks and other alliaceous…",
+  "name_vi": "Onions, shallots, garlic, leeks and other alliaceous…"
+ },
+ "0704": {
+  "name_en": "Cabbages, cauliflowers, kohlrabi, kale and similar…",
+  "name_vi": "Cabbages, cauliflowers, kohlrabi, kale and similar…"
+ },
+ "0705": {
+  "name_en": "Lettuce (lactuca sativa) and chicory (cichorium spp.)…",
+  "name_vi": "Lettuce (lactuca sativa) and chicory (cichorium spp.)…"
+ },
+ "0706": {
+  "name_en": "Carrots, turnips, salad beetroot, salsify, celeriac,…",
+  "name_vi": "Carrots, turnips, salad beetroot, salsify, celeriac,…"
+ },
+ "0707": {
+  "name_en": "Cucumbers and gherkins",
+  "name_vi": "Cucumbers and gherkins"
+ },
+ "0708": {
+  "name_en": "Leguminous vegetables",
+  "name_vi": "Leguminous vegetables"
+ },
+ "0709": {
+  "name_en": "Vegetables",
+  "name_vi": "Vegetables"
+ },
+ "0710": {
+  "name_en": "Vegetables (uncooked or cooked by steaming or boiling…",
+  "name_vi": "Vegetables (uncooked or cooked by steaming or boiling…"
+ },
+ "0711": {
+  "name_en": "Vegetables provisionally preserved, but unsuitable in…",
+  "name_vi": "Vegetables provisionally preserved, but unsuitable in…"
+ },
+ "0712": {
+  "name_en": "Vegetables, dried",
+  "name_vi": "Vegetables, dried"
+ },
+ "0713": {
+  "name_en": "Vegetables, leguminous",
+  "name_vi": "Vegetables, leguminous"
+ },
+ "0714": {
+  "name_en": "Manioc, arrowroot, salep, Jerusalem artichokes, sweet…",
+  "name_vi": "Manioc, arrowroot, salep, Jerusalem artichokes, sweet…"
+ },
+ "0802": {
+  "name_en": "Nuts (excluding coconuts, Brazils and cashew nuts)",
+  "name_vi": "Nuts (excluding coconuts, Brazils and cashew nuts)"
+ },
+ "0804": {
+  "name_en": "Dates, figs, pineapples, avocados, guavas, mangoes and…",
+  "name_vi": "Dates, figs, pineapples, avocados, guavas, mangoes and…"
+ },
+ "0805": {
+  "name_en": "Citrus fruit",
+  "name_vi": "Citrus fruit"
+ },
+ "0806": {
+  "name_en": "Grapes",
+  "name_vi": "Grapes"
+ },
+ "0807": {
+  "name_en": "Melons (including watermelons) and papaws (papayas)",
+  "name_vi": "Melons (including watermelons) and papaws (papayas)"
+ },
+ "0808": {
+  "name_en": "Apples, pears and quinces",
+  "name_vi": "Apples, pears and quinces"
+ },
+ "0809": {
+  "name_en": "Apricots, cherries, peaches (including nectarines),…",
+  "name_vi": "Apricots, cherries, peaches (including nectarines),…"
+ },
+ "0810": {
+  "name_en": "Fruit, fresh",
+  "name_vi": "Fruit, fresh"
+ },
+ "0811": {
+  "name_en": "Fruit and nuts",
+  "name_vi": "Fruit and nuts"
+ },
+ "0812": {
+  "name_en": "Fruit and nuts provisionally preserved, but unsuitable…",
+  "name_vi": "Fruit and nuts provisionally preserved, but unsuitable…"
+ },
+ "0813": {
+  "name_en": "Fruit, dried, other than that of heading no. 0801 to 0806",
+  "name_vi": "Fruit, dried, other than that of heading no. 0801 to 0806"
+ },
+ "0814": {
+  "name_en": "Peel of citrus fruit or melons (including watermelons)",
+  "name_vi": "Peel of citrus fruit or melons (including watermelons)"
+ },
+ "0903": {
+  "name_en": "Mate",
+  "name_vi": "Mate"
+ },
+ "0905": {
+  "name_en": "Vanilla",
+  "name_vi": "Vanilla"
+ },
+ "0906": {
+  "name_en": "Cinnamon and cinnamon-tree flowers",
+  "name_vi": "Cinnamon and cinnamon-tree flowers"
+ },
+ "0907": {
+  "name_en": "Cloves (whole fruit, cloves and stems)",
+  "name_vi": "Cloves (whole fruit, cloves and stems)"
+ },
+ "0908": {
+  "name_en": "Nutmeg, mace and cardamoms",
+  "name_vi": "Nutmeg, mace and cardamoms"
+ },
+ "0909": {
+  "name_en": "Seeds of anise, badian, fennel, coriander, cumin,…",
+  "name_vi": "Seeds of anise, badian, fennel, coriander, cumin,…"
+ },
+ "0910": {
+  "name_en": "Ginger, saffron, tumeric (curcuma), thyme, bay leaves,…",
+  "name_vi": "Ginger, saffron, tumeric (curcuma), thyme, bay leaves,…"
+ },
+ "1001": {
+  "name_en": "Wheat and meslin",
+  "name_vi": "Wheat and meslin"
+ },
+ "1002": {
+  "name_en": "Rye",
+  "name_vi": "Rye"
+ },
+ "1003": {
+  "name_en": "Barley",
+  "name_vi": "Barley"
+ },
+ "1004": {
+  "name_en": "Oats",
+  "name_vi": "Oats"
+ },
+ "1005": {
+  "name_en": "Maize (corn)",
+  "name_vi": "Maize (corn)"
+ },
+ "1007": {
+  "name_en": "Grain sorghum",
+  "name_vi": "Grain sorghum"
+ },
+ "1008": {
+  "name_en": "Buckwheat, millet and canary seeds",
+  "name_vi": "Buckwheat, millet and canary seeds"
+ },
+ "1101": {
+  "name_en": "Wheat or meslin flour",
+  "name_vi": "Wheat or meslin flour"
+ },
+ "1102": {
+  "name_en": "Cereal flours",
+  "name_vi": "Cereal flours"
+ },
+ "1103": {
+  "name_en": "Cereal groats",
+  "name_vi": "Cereal groats"
+ },
+ "1104": {
+  "name_en": "Cereal grains otherwise worked (e.g. hulled, rolled,…",
+  "name_vi": "Cereal grains otherwise worked (e.g. hulled, rolled,…"
+ },
+ "1105": {
+  "name_en": "Flour, meal, powder, flakes, granules and pellets of…",
+  "name_vi": "Flour, meal, powder, flakes, granules and pellets of…"
+ },
+ "1106": {
+  "name_en": "Flour, meal and powder",
+  "name_vi": "Flour, meal and powder"
+ },
+ "1107": {
+  "name_en": "Malt",
+  "name_vi": "Malt"
+ },
+ "1108": {
+  "name_en": "Starches",
+  "name_vi": "Starches"
+ },
+ "1109": {
+  "name_en": "Wheat gluten",
+  "name_vi": "Wheat gluten"
+ },
+ "1202": {
+  "name_en": "Ground-nuts",
+  "name_vi": "Ground-nuts"
+ },
+ "1203": {
+  "name_en": "Copra",
+  "name_vi": "Copra"
+ },
+ "1204": {
+  "name_en": "Oil seeds",
+  "name_vi": "Oil seeds"
+ },
+ "1205": {
+  "name_en": "Rape or colza seeds",
+  "name_vi": "Rape or colza seeds"
+ },
+ "1206": {
+  "name_en": "Sunflower seeds",
+  "name_vi": "Sunflower seeds"
+ },
+ "1207": {
+  "name_en": "Oil seeds and oleaginous fruits, n.e.c. in chapter 12",
+  "name_vi": "Oil seeds and oleaginous fruits, n.e.c. in chapter 12"
+ },
+ "1208": {
+  "name_en": "Flours and meals of oil seeds or oleaginous fruits",
+  "name_vi": "Flours and meals of oil seeds or oleaginous fruits"
+ },
+ "1209": {
+  "name_en": "Seeds, fruit and spores",
+  "name_vi": "Seeds, fruit and spores"
+ },
+ "1210": {
+  "name_en": "Hop cones, fresh or dried, whether or not ground,…",
+  "name_vi": "Hop cones, fresh or dried, whether or not ground,…"
+ },
+ "1211": {
+  "name_en": "Plants and parts of plants (including seeds and…",
+  "name_vi": "Plants and parts of plants (including seeds and…"
+ },
+ "1212": {
+  "name_en": "Locust beans, seaweeds and other algae, sugar beet,…",
+  "name_vi": "Locust beans, seaweeds and other algae, sugar beet,…"
+ },
+ "1213": {
+  "name_en": "Cereal straw and husks, unprepared",
+  "name_vi": "Cereal straw and husks, unprepared"
+ },
+ "1214": {
+  "name_en": "Swedes, mangolds, fodder roots, hay, lucerne…",
+  "name_vi": "Swedes, mangolds, fodder roots, hay, lucerne…"
+ },
+ "1301": {
+  "name_en": "Lac",
+  "name_vi": "Lac"
+ },
+ "1302": {
+  "name_en": "Vegetable saps and extracts",
+  "name_vi": "Vegetable saps and extracts"
+ },
+ "1401": {
+  "name_en": "Vegetable materials of a kind used primarily for plaiting",
+  "name_vi": "Vegetable materials of a kind used primarily for plaiting"
+ },
+ "1404": {
+  "name_en": "Vegetable products not elsewhere specified or included",
+  "name_vi": "Vegetable products not elsewhere specified or included"
+ },
+ "1501": {
+  "name_en": "Pig fat (including lard) and poultry fat, other than…",
+  "name_vi": "Pig fat (including lard) and poultry fat, other than…"
+ },
+ "1502": {
+  "name_en": "Fats of bovine animals, sheep or goats, other than…",
+  "name_vi": "Fats of bovine animals, sheep or goats, other than…"
+ },
+ "1503": {
+  "name_en": "Lard stearin, lard oil, oleostearin, oleo-oil and…",
+  "name_vi": "Lard stearin, lard oil, oleostearin, oleo-oil and…"
+ },
+ "1504": {
+  "name_en": "Fats and oils and their fractions of fish or marine…",
+  "name_vi": "Fats and oils and their fractions of fish or marine…"
+ },
+ "1505": {
+  "name_en": "Wool grease and fatty substances derived therefrom…",
+  "name_vi": "Wool grease and fatty substances derived therefrom…"
+ },
+ "1506": {
+  "name_en": "Animal fats and oils and their fractions",
+  "name_vi": "Animal fats and oils and their fractions"
+ },
+ "1507": {
+  "name_en": "Soya-bean oil and its fractions",
+  "name_vi": "Soya-bean oil and its fractions"
+ },
+ "1508": {
+  "name_en": "Ground nut oil and its fractions",
+  "name_vi": "Ground nut oil and its fractions"
+ },
+ "1509": {
+  "name_en": "Olive oil and its fractions",
+  "name_vi": "Olive oil and its fractions"
+ },
+ "1510": {
+  "name_en": "Vegetable oils",
+  "name_vi": "Vegetable oils"
+ },
+ "1512": {
+  "name_en": "Sun-flower seed, safflower or cotton-seed oil and…",
+  "name_vi": "Sun-flower seed, safflower or cotton-seed oil and…"
+ },
+ "1513": {
+  "name_en": "Coconut (copra), palm kernel or babassu oil and their…",
+  "name_vi": "Coconut (copra), palm kernel or babassu oil and their…"
+ },
+ "1514": {
+  "name_en": "Rape, colza or mustard oil and their fractions",
+  "name_vi": "Rape, colza or mustard oil and their fractions"
+ },
+ "1515": {
+  "name_en": "Fixed vegetable or microbial fats and oils n.e.c. in…",
+  "name_vi": "Fixed vegetable or microbial fats and oils n.e.c. in…"
+ },
+ "1516": {
+  "name_en": "Animal, vegetable or microbial fats and oils and their…",
+  "name_vi": "Animal, vegetable or microbial fats and oils and their…"
+ },
+ "1517": {
+  "name_en": "Margarine",
+  "name_vi": "Margarine"
+ },
+ "1518": {
+  "name_en": "Animal, vegetable or microbial fats, oils and their…",
+  "name_vi": "Animal, vegetable or microbial fats, oils and their…"
+ },
+ "1520": {
+  "name_en": "Glycerol, crude",
+  "name_vi": "Glycerol, crude"
+ },
+ "1521": {
+  "name_en": "Vegetable waxes (other than triglycerides), beeswax,…",
+  "name_vi": "Vegetable waxes (other than triglycerides), beeswax,…"
+ },
+ "1522": {
+  "name_en": "Degras",
+  "name_vi": "Degras"
+ },
+ "1601": {
+  "name_en": "Sausages and similar products, of meat, meat offal,…",
+  "name_vi": "Sausages and similar products, of meat, meat offal,…"
+ },
+ "1602": {
+  "name_en": "Prepared or preserved meat, meat offal, blood or insects",
+  "name_vi": "Prepared or preserved meat, meat offal, blood or insects"
+ },
+ "1603": {
+  "name_en": "Extracts and juices of meat, fish or crustaceans,…",
+  "name_vi": "Extracts and juices of meat, fish or crustaceans,…"
+ },
+ "1604": {
+  "name_en": "Prepared or preserved fish",
+  "name_vi": "Prepared or preserved fish"
+ },
+ "1605": {
+  "name_en": "Crustaceans, molluscs and other aquatic invertebrates,…",
+  "name_vi": "Crustaceans, molluscs and other aquatic invertebrates,…"
+ },
+ "1701": {
+  "name_en": "Cane or beet sugar and chemically pure sucrose, in…",
+  "name_vi": "Cane or beet sugar and chemically pure sucrose, in…"
+ },
+ "1702": {
+  "name_en": "Sugars, including lactose, maltose, glucose or…",
+  "name_vi": "Sugars, including lactose, maltose, glucose or…"
+ },
+ "1703": {
+  "name_en": "Molasses",
+  "name_vi": "Molasses"
+ },
+ "1704": {
+  "name_en": "Sugar confectionery (including white chocolate), not…",
+  "name_vi": "Sugar confectionery (including white chocolate), not…"
+ },
+ "1801": {
+  "name_en": "Cocoa beans",
+  "name_vi": "Cocoa beans"
+ },
+ "1802": {
+  "name_en": "Cocoa",
+  "name_vi": "Cocoa"
+ },
+ "1803": {
+  "name_en": "Cocoa",
+  "name_vi": "Cocoa"
+ },
+ "1804": {
+  "name_en": "Cocoa",
+  "name_vi": "Cocoa"
+ },
+ "1805": {
+  "name_en": "Cocoa",
+  "name_vi": "Cocoa"
+ },
+ "1806": {
+  "name_en": "Chocolate and other food preparations containing cocoa",
+  "name_vi": "Chocolate and other food preparations containing cocoa"
+ },
+ "1901": {
+  "name_en": "Malt extract",
+  "name_vi": "Malt extract"
+ },
+ "1902": {
+  "name_en": "Pasta",
+  "name_vi": "Pasta"
+ },
+ "1903": {
+  "name_en": "Tapioca and substitutes therefor prepared from starch",
+  "name_vi": "Tapioca and substitutes therefor prepared from starch"
+ },
+ "1904": {
+  "name_en": "Prepared foods obtained by swelling or roasting…",
+  "name_vi": "Prepared foods obtained by swelling or roasting…"
+ },
+ "1905": {
+  "name_en": "Bread, pastry, cakes, biscuits, other bakers' wares,…",
+  "name_vi": "Bread, pastry, cakes, biscuits, other bakers' wares,…"
+ },
+ "2001": {
+  "name_en": "Vegetables, fruit, nuts and other edible parts of plants",
+  "name_vi": "Vegetables, fruit, nuts and other edible parts of plants"
+ },
+ "2002": {
+  "name_en": "Tomatoes",
+  "name_vi": "Tomatoes"
+ },
+ "2003": {
+  "name_en": "Mushrooms and truffles, prepared or preserved other…",
+  "name_vi": "Mushrooms and truffles, prepared or preserved other…"
+ },
+ "2004": {
+  "name_en": "Vegetables preparations n.e.c.",
+  "name_vi": "Vegetables preparations n.e.c."
+ },
+ "2005": {
+  "name_en": "Vegetables preparations n.e.c.",
+  "name_vi": "Vegetables preparations n.e.c."
+ },
+ "2006": {
+  "name_en": "Vegetables, fruit, nuts, fruit-peel and other parts of…",
+  "name_vi": "Vegetables, fruit, nuts, fruit-peel and other parts of…"
+ },
+ "2007": {
+  "name_en": "Jams, fruit jellies, marmalades, fruit or nut puree…",
+  "name_vi": "Jams, fruit jellies, marmalades, fruit or nut puree…"
+ },
+ "2008": {
+  "name_en": "Fruit, nuts and other edible parts of plants",
+  "name_vi": "Fruit, nuts and other edible parts of plants"
+ },
+ "2009": {
+  "name_en": "Fruit or nut juices (including grape must and coconut…",
+  "name_vi": "Fruit or nut juices (including grape must and coconut…"
+ },
+ "2101": {
+  "name_en": "Extracts, essences, concentrates of coffee, tea or mate",
+  "name_vi": "Extracts, essences, concentrates of coffee, tea or mate"
+ },
+ "2102": {
+  "name_en": "Yeasts (active or inactive)",
+  "name_vi": "Yeasts (active or inactive)"
+ },
+ "2103": {
+  "name_en": "Sauces and preparations therefor",
+  "name_vi": "Sauces and preparations therefor"
+ },
+ "2104": {
+  "name_en": "Soups and broths and preparations therefor",
+  "name_vi": "Soups and broths and preparations therefor"
+ },
+ "2105": {
+  "name_en": "Ice cream and other edible ice",
+  "name_vi": "Ice cream and other edible ice"
+ },
+ "2106": {
+  "name_en": "Food preparations not elsewhere specified or included",
+  "name_vi": "Food preparations not elsewhere specified or included"
+ },
+ "2201": {
+  "name_en": "Waters, including natural or artificial mineral waters…",
+  "name_vi": "Waters, including natural or artificial mineral waters…"
+ },
+ "2202": {
+  "name_en": "Waters, including mineral and aerated waters,…",
+  "name_vi": "Waters, including mineral and aerated waters,…"
+ },
+ "2203": {
+  "name_en": "Beer made from malt",
+  "name_vi": "Beer made from malt"
+ },
+ "2204": {
+  "name_en": "Wine of fresh grapes, including fortified wines",
+  "name_vi": "Wine of fresh grapes, including fortified wines"
+ },
+ "2205": {
+  "name_en": "Vermouth and other wine of fresh grapes, flavoured…",
+  "name_vi": "Vermouth and other wine of fresh grapes, flavoured…"
+ },
+ "2206": {
+  "name_en": "Fermented beverages, n.e.c. in chapter 22",
+  "name_vi": "Fermented beverages, n.e.c. in chapter 22"
+ },
+ "2207": {
+  "name_en": "Ethyl alcohol, undenatured",
+  "name_vi": "Ethyl alcohol, undenatured"
+ },
+ "2208": {
+  "name_en": "Ethyl alcohol, undenatured",
+  "name_vi": "Ethyl alcohol, undenatured"
+ },
+ "2209": {
+  "name_en": "Vinegar and substitutes for vinegar obtained from…",
+  "name_vi": "Vinegar and substitutes for vinegar obtained from…"
+ },
+ "2301": {
+  "name_en": "Flours, meal and pellets, of meat or meat offal, of…",
+  "name_vi": "Flours, meal and pellets, of meat or meat offal, of…"
+ },
+ "2302": {
+  "name_en": "Bran, sharps and other residues",
+  "name_vi": "Bran, sharps and other residues"
+ },
+ "2303": {
+  "name_en": "Residues of starch manufacture, similar residues",
+  "name_vi": "Residues of starch manufacture, similar residues"
+ },
+ "2304": {
+  "name_en": "Oil-cake and other solid residues",
+  "name_vi": "Oil-cake and other solid residues"
+ },
+ "2305": {
+  "name_en": "Oil-cake and other solid residues",
+  "name_vi": "Oil-cake and other solid residues"
+ },
+ "2306": {
+  "name_en": "Oil-cake and other solid residues",
+  "name_vi": "Oil-cake and other solid residues"
+ },
+ "2307": {
+  "name_en": "Wine lees",
+  "name_vi": "Wine lees"
+ },
+ "2308": {
+  "name_en": "Vegetable materials and vegetable waste, vegetable…",
+  "name_vi": "Vegetable materials and vegetable waste, vegetable…"
+ },
+ "2309": {
+  "name_en": "Preparations of a kind used in animal feeding",
+  "name_vi": "Preparations of a kind used in animal feeding"
+ },
+ "2401": {
+  "name_en": "Tobacco, unmanufactured",
+  "name_vi": "Tobacco, unmanufactured"
+ },
+ "2402": {
+  "name_en": "Cigars, cheroots, cigarillos and cigarettes",
+  "name_vi": "Cigars, cheroots, cigarillos and cigarettes"
+ },
+ "2403": {
+  "name_en": "Manufactured tobacco and manufactured tobacco…",
+  "name_vi": "Manufactured tobacco and manufactured tobacco…"
+ },
+ "2404": {
+  "name_en": "Products containing tobacco, reconstituted tobacco,…",
+  "name_vi": "Products containing tobacco, reconstituted tobacco,…"
+ },
+ "2501": {
+  "name_en": "Salt (including table salt and denatured salt)",
+  "name_vi": "Salt (including table salt and denatured salt)"
+ },
+ "2502": {
+  "name_en": "Iron pyrites",
+  "name_vi": "Iron pyrites"
+ },
+ "2503": {
+  "name_en": "Sulphur of all kinds",
+  "name_vi": "Sulphur of all kinds"
+ },
+ "2504": {
+  "name_en": "Graphite",
+  "name_vi": "Graphite"
+ },
+ "2505": {
+  "name_en": "Sands of all kinds",
+  "name_vi": "Sands of all kinds"
+ },
+ "2506": {
+  "name_en": "Quartz",
+  "name_vi": "Quartz"
+ },
+ "2507": {
+  "name_en": "Kaolin and other kaolinic clays",
+  "name_vi": "Kaolin and other kaolinic clays"
+ },
+ "2508": {
+  "name_en": "Clays",
+  "name_vi": "Clays"
+ },
+ "2509": {
+  "name_en": "Chalk",
+  "name_vi": "Chalk"
+ },
+ "2510": {
+  "name_en": "Natural calcium phosphates",
+  "name_vi": "Natural calcium phosphates"
+ },
+ "2511": {
+  "name_en": "Natural barium sulphate (barytes)",
+  "name_vi": "Natural barium sulphate (barytes)"
+ },
+ "2512": {
+  "name_en": "Siliceous fossil meals (e.g. kieselguhr, tripolite and…",
+  "name_vi": "Siliceous fossil meals (e.g. kieselguhr, tripolite and…"
+ },
+ "2513": {
+  "name_en": "Pumice stone",
+  "name_vi": "Pumice stone"
+ },
+ "2514": {
+  "name_en": "Slate, whether or not roughly trimmed or merely cut,…",
+  "name_vi": "Slate, whether or not roughly trimmed or merely cut,…"
+ },
+ "2515": {
+  "name_en": "Marble, travertine, ecaussine and other calcareous stone",
+  "name_vi": "Marble, travertine, ecaussine and other calcareous stone"
+ },
+ "2516": {
+  "name_en": "Granite, porphyry, basalt, sandstone, other monumental…",
+  "name_vi": "Granite, porphyry, basalt, sandstone, other monumental…"
+ },
+ "2517": {
+  "name_en": "Pebbles, gravel, crushed stone for concrete aggregates…",
+  "name_vi": "Pebbles, gravel, crushed stone for concrete aggregates…"
+ },
+ "2518": {
+  "name_en": "Dolomite, whether or not calcined or sintered,…",
+  "name_vi": "Dolomite, whether or not calcined or sintered,…"
+ },
+ "2519": {
+  "name_en": "Natural magnesium carbonate (magnesite)",
+  "name_vi": "Natural magnesium carbonate (magnesite)"
+ },
+ "2520": {
+  "name_en": "Gypsum",
+  "name_vi": "Gypsum"
+ },
+ "2521": {
+  "name_en": "Limestone flux",
+  "name_vi": "Limestone flux"
+ },
+ "2522": {
+  "name_en": "Quicklime, slaked lime and hydraulic lime",
+  "name_vi": "Quicklime, slaked lime and hydraulic lime"
+ },
+ "2523": {
+  "name_en": "Portland cement, aluminous cement (ciment fondu), slag…",
+  "name_vi": "Portland cement, aluminous cement (ciment fondu), slag…"
+ },
+ "2524": {
+  "name_en": "Asbestos",
+  "name_vi": "Asbestos"
+ },
+ "2525": {
+  "name_en": "Mica, including splittings",
+  "name_vi": "Mica, including splittings"
+ },
+ "2526": {
+  "name_en": "Natural steatite",
+  "name_vi": "Natural steatite"
+ },
+ "2528": {
+  "name_en": "Natural borates and concentrates thereof (whether or…",
+  "name_vi": "Natural borates and concentrates thereof (whether or…"
+ },
+ "2529": {
+  "name_en": "Feldspar",
+  "name_vi": "Feldspar"
+ },
+ "2530": {
+  "name_en": "Mineral substances not elsewhere specified or included",
+  "name_vi": "Mineral substances not elsewhere specified or included"
+ },
+ "2601": {
+  "name_en": "Iron ores and concentrates",
+  "name_vi": "Iron ores and concentrates"
+ },
+ "2602": {
+  "name_en": "Manganese ores and concentrates, including ferruginous…",
+  "name_vi": "Manganese ores and concentrates, including ferruginous…"
+ },
+ "2603": {
+  "name_en": "Copper ores and concentrates",
+  "name_vi": "Copper ores and concentrates"
+ },
+ "2604": {
+  "name_en": "Nickel ores and concentrates",
+  "name_vi": "Nickel ores and concentrates"
+ },
+ "2605": {
+  "name_en": "Cobalt ores and concentrates",
+  "name_vi": "Cobalt ores and concentrates"
+ },
+ "2606": {
+  "name_en": "Aluminium ores and concentrates",
+  "name_vi": "Aluminium ores and concentrates"
+ },
+ "2607": {
+  "name_en": "Lead ores and concentrates",
+  "name_vi": "Lead ores and concentrates"
+ },
+ "2608": {
+  "name_en": "Zinc ores and concentrates",
+  "name_vi": "Zinc ores and concentrates"
+ },
+ "2609": {
+  "name_en": "Tin ores and concentrates",
+  "name_vi": "Tin ores and concentrates"
+ },
+ "2610": {
+  "name_en": "Chromium ores and concentrates",
+  "name_vi": "Chromium ores and concentrates"
+ },
+ "2611": {
+  "name_en": "Tungsten ores and concentrates",
+  "name_vi": "Tungsten ores and concentrates"
+ },
+ "2612": {
+  "name_en": "Uranium or thorium ores and concentrates",
+  "name_vi": "Uranium or thorium ores and concentrates"
+ },
+ "2613": {
+  "name_en": "Molybdenum ores and concentrates",
+  "name_vi": "Molybdenum ores and concentrates"
+ },
+ "2614": {
+  "name_en": "Titanium ores and concentrates",
+  "name_vi": "Titanium ores and concentrates"
+ },
+ "2615": {
+  "name_en": "Niobium, tantalum, vanadium or zirconium ores and…",
+  "name_vi": "Niobium, tantalum, vanadium or zirconium ores and…"
+ },
+ "2616": {
+  "name_en": "Precious metal ores and concentrates",
+  "name_vi": "Precious metal ores and concentrates"
+ },
+ "2617": {
+  "name_en": "Ores and concentrates",
+  "name_vi": "Ores and concentrates"
+ },
+ "2618": {
+  "name_en": "Granulated slag (slag sand) from the manufacture of…",
+  "name_vi": "Granulated slag (slag sand) from the manufacture of…"
+ },
+ "2619": {
+  "name_en": "Slag, dross",
+  "name_vi": "Slag, dross"
+ },
+ "2620": {
+  "name_en": "Slag, ash and residues",
+  "name_vi": "Slag, ash and residues"
+ },
+ "2621": {
+  "name_en": "Slag and ash n.e.c. in chapter 26",
+  "name_vi": "Slag and ash n.e.c. in chapter 26"
+ },
+ "2701": {
+  "name_en": "Coal",
+  "name_vi": "Coal"
+ },
+ "2702": {
+  "name_en": "Lignite",
+  "name_vi": "Lignite"
+ },
+ "2703": {
+  "name_en": "Peat",
+  "name_vi": "Peat"
+ },
+ "2704": {
+  "name_en": "Coke and semi-coke",
+  "name_vi": "Coke and semi-coke"
+ },
+ "2705": {
+  "name_en": "Coal gas, water gas, producer gas and similar gases,…",
+  "name_vi": "Coal gas, water gas, producer gas and similar gases,…"
+ },
+ "2706": {
+  "name_en": "Tar distilled from coal, from lignite, peat and other…",
+  "name_vi": "Tar distilled from coal, from lignite, peat and other…"
+ },
+ "2707": {
+  "name_en": "Oils and other products of the distillation of high…",
+  "name_vi": "Oils and other products of the distillation of high…"
+ },
+ "2708": {
+  "name_en": "Pitch and pitch coke",
+  "name_vi": "Pitch and pitch coke"
+ },
+ "2710": {
+  "name_en": "Petroleum oils and oils from bituminous minerals, not…",
+  "name_vi": "Petroleum oils and oils from bituminous minerals, not…"
+ },
+ "2711": {
+  "name_en": "Petroleum gases and other gaseous hydrocarbons",
+  "name_vi": "Petroleum gases and other gaseous hydrocarbons"
+ },
+ "2712": {
+  "name_en": "Petroleum jelly",
+  "name_vi": "Petroleum jelly"
+ },
+ "2713": {
+  "name_en": "Petroleum coke, petroleum bitumen",
+  "name_vi": "Petroleum coke, petroleum bitumen"
+ },
+ "2714": {
+  "name_en": "Bitumen and asphalt, natural",
+  "name_vi": "Bitumen and asphalt, natural"
+ },
+ "2715": {
+  "name_en": "Bituminous mixtures based on natural asphalt",
+  "name_vi": "Bituminous mixtures based on natural asphalt"
+ },
+ "2716": {
+  "name_en": "Electrical energy",
+  "name_vi": "Electrical energy"
+ },
+ "2801": {
+  "name_en": "Fluorine, chlorine, bromine and iodine",
+  "name_vi": "Fluorine, chlorine, bromine and iodine"
+ },
+ "2802": {
+  "name_en": "Sulphur",
+  "name_vi": "Sulphur"
+ },
+ "2803": {
+  "name_en": "Carbon",
+  "name_vi": "Carbon"
+ },
+ "2804": {
+  "name_en": "Hydrogen, rare gases and other non-metals",
+  "name_vi": "Hydrogen, rare gases and other non-metals"
+ },
+ "2805": {
+  "name_en": "Alkali or alkaline-earth metals",
+  "name_vi": "Alkali or alkaline-earth metals"
+ },
+ "2806": {
+  "name_en": "Hydrogen chloride (hydrochloric acid)",
+  "name_vi": "Hydrogen chloride (hydrochloric acid)"
+ },
+ "2807": {
+  "name_en": "Sulphuric acid",
+  "name_vi": "Sulphuric acid"
+ },
+ "2808": {
+  "name_en": "Nitric acid",
+  "name_vi": "Nitric acid"
+ },
+ "2809": {
+  "name_en": "Diphosphorus pentaoxide",
+  "name_vi": "Diphosphorus pentaoxide"
+ },
+ "2810": {
+  "name_en": "Oxides of boron",
+  "name_vi": "Oxides of boron"
+ },
+ "2811": {
+  "name_en": "Inorganic acids and other inorganic oxygen compounds…",
+  "name_vi": "Inorganic acids and other inorganic oxygen compounds…"
+ },
+ "2812": {
+  "name_en": "Halides and halide oxides of non-metals",
+  "name_vi": "Halides and halide oxides of non-metals"
+ },
+ "2813": {
+  "name_en": "Sulphides of non-metals",
+  "name_vi": "Sulphides of non-metals"
+ },
+ "2814": {
+  "name_en": "Ammonia",
+  "name_vi": "Ammonia"
+ },
+ "2815": {
+  "name_en": "Sodium hydroxide (caustic soda)",
+  "name_vi": "Sodium hydroxide (caustic soda)"
+ },
+ "2816": {
+  "name_en": "Hydroxide and peroxide of magnesium",
+  "name_vi": "Hydroxide and peroxide of magnesium"
+ },
+ "2817": {
+  "name_en": "Zinc",
+  "name_vi": "Zinc"
+ },
+ "2818": {
+  "name_en": "Aluminium oxide (including artificial corundum)",
+  "name_vi": "Aluminium oxide (including artificial corundum)"
+ },
+ "2819": {
+  "name_en": "Chromium oxides and hydroxides",
+  "name_vi": "Chromium oxides and hydroxides"
+ },
+ "2820": {
+  "name_en": "Manganese oxides",
+  "name_vi": "Manganese oxides"
+ },
+ "2821": {
+  "name_en": "Iron oxides and hydroxides",
+  "name_vi": "Iron oxides and hydroxides"
+ },
+ "2822": {
+  "name_en": "Cobalt oxides and hydroxides",
+  "name_vi": "Cobalt oxides and hydroxides"
+ },
+ "2823": {
+  "name_en": "Titanium oxides",
+  "name_vi": "Titanium oxides"
+ },
+ "2824": {
+  "name_en": "Lead oxides",
+  "name_vi": "Lead oxides"
+ },
+ "2825": {
+  "name_en": "Hydrazine and hydroxylamine and their inorganic salts",
+  "name_vi": "Hydrazine and hydroxylamine and their inorganic salts"
+ },
+ "2826": {
+  "name_en": "Fluorides",
+  "name_vi": "Fluorides"
+ },
+ "2827": {
+  "name_en": "Chlorides",
+  "name_vi": "Chlorides"
+ },
+ "2828": {
+  "name_en": "Hypochlorites",
+  "name_vi": "Hypochlorites"
+ },
+ "2829": {
+  "name_en": "Chlorates and perchlorates",
+  "name_vi": "Chlorates and perchlorates"
+ },
+ "2830": {
+  "name_en": "Sulphides",
+  "name_vi": "Sulphides"
+ },
+ "2831": {
+  "name_en": "Dithionites and sulphoxylates",
+  "name_vi": "Dithionites and sulphoxylates"
+ },
+ "2832": {
+  "name_en": "Sulphites",
+  "name_vi": "Sulphites"
+ },
+ "2833": {
+  "name_en": "Sulphates",
+  "name_vi": "Sulphates"
+ },
+ "2834": {
+  "name_en": "Nitrites",
+  "name_vi": "Nitrites"
+ },
+ "2835": {
+  "name_en": "Phosphinates (hypophosphites), phosphonates…",
+  "name_vi": "Phosphinates (hypophosphites), phosphonates…"
+ },
+ "2836": {
+  "name_en": "Carbonates",
+  "name_vi": "Carbonates"
+ },
+ "2837": {
+  "name_en": "Cyanides, cyanide oxides and complex cyanides",
+  "name_vi": "Cyanides, cyanide oxides and complex cyanides"
+ },
+ "2839": {
+  "name_en": "Silicates",
+  "name_vi": "Silicates"
+ },
+ "2840": {
+  "name_en": "Borates",
+  "name_vi": "Borates"
+ },
+ "2841": {
+  "name_en": "Salts of oxometallic or peroxometallic acids",
+  "name_vi": "Salts of oxometallic or peroxometallic acids"
+ },
+ "2842": {
+  "name_en": "Salts of inorganic acids or peroxoacids, n.e.c.…",
+  "name_vi": "Salts of inorganic acids or peroxoacids, n.e.c.…"
+ },
+ "2843": {
+  "name_en": "Colloidal precious metals",
+  "name_vi": "Colloidal precious metals"
+ },
+ "2844": {
+  "name_en": "Radioactive chemical elements and radioactive isotopes…",
+  "name_vi": "Radioactive chemical elements and radioactive isotopes…"
+ },
+ "2845": {
+  "name_en": "Isotopes other than those of heading no. 2844",
+  "name_vi": "Isotopes other than those of heading no. 2844"
+ },
+ "2846": {
+  "name_en": "Compounds, inorganic or organic, of rare-earth metals",
+  "name_vi": "Compounds, inorganic or organic, of rare-earth metals"
+ },
+ "2847": {
+  "name_en": "Hydrogen peroxide",
+  "name_vi": "Hydrogen peroxide"
+ },
+ "2849": {
+  "name_en": "Carbides, whether or not chemically defined",
+  "name_vi": "Carbides, whether or not chemically defined"
+ },
+ "2850": {
+  "name_en": "Hydrides, nitrides, azides, silicides and borides,…",
+  "name_vi": "Hydrides, nitrides, azides, silicides and borides,…"
+ },
+ "2852": {
+  "name_en": "Inorganic or organic compounds of mercury, excluding…",
+  "name_vi": "Inorganic or organic compounds of mercury, excluding…"
+ },
+ "2853": {
+  "name_en": "Phosphides, chemically defined or not, not ferrophosphorus",
+  "name_vi": "Phosphides, chemically defined or not, not ferrophosphorus"
+ },
+ "2901": {
+  "name_en": "Acyclic hydrocarbons",
+  "name_vi": "Acyclic hydrocarbons"
+ },
+ "2902": {
+  "name_en": "Cyclic hydrocarbons",
+  "name_vi": "Cyclic hydrocarbons"
+ },
+ "2903": {
+  "name_en": "Halogenated derivatives of hydrocarbons",
+  "name_vi": "Halogenated derivatives of hydrocarbons"
+ },
+ "2904": {
+  "name_en": "Sulphonated, nitrated or nitrosated derivatives of…",
+  "name_vi": "Sulphonated, nitrated or nitrosated derivatives of…"
+ },
+ "2905": {
+  "name_en": "Acyclic alcohols and their halogenated, sulphonated,…",
+  "name_vi": "Acyclic alcohols and their halogenated, sulphonated,…"
+ },
+ "2906": {
+  "name_en": "Alcohols",
+  "name_vi": "Alcohols"
+ },
+ "2907": {
+  "name_en": "Phenols",
+  "name_vi": "Phenols"
+ },
+ "2908": {
+  "name_en": "Phenols or phenol-alcohols",
+  "name_vi": "Phenols or phenol-alcohols"
+ },
+ "2909": {
+  "name_en": "Ethers, ether-alcohols, ether-phenols,…",
+  "name_vi": "Ethers, ether-alcohols, ether-phenols,…"
+ },
+ "2910": {
+  "name_en": "Epoxides, epoxyalcohols, epoxyphenols and epoxyethers",
+  "name_vi": "Epoxides, epoxyalcohols, epoxyphenols and epoxyethers"
+ },
+ "2911": {
+  "name_en": "Acetals and hemiacetals",
+  "name_vi": "Acetals and hemiacetals"
+ },
+ "2912": {
+  "name_en": "Aldehydes, whether or not with other oxygen function",
+  "name_vi": "Aldehydes, whether or not with other oxygen function"
+ },
+ "2913": {
+  "name_en": "Aldehydes",
+  "name_vi": "Aldehydes"
+ },
+ "2914": {
+  "name_en": "Ketones and quinones",
+  "name_vi": "Ketones and quinones"
+ },
+ "2915": {
+  "name_en": "Acids",
+  "name_vi": "Acids"
+ },
+ "2916": {
+  "name_en": "Acids",
+  "name_vi": "Acids"
+ },
+ "2917": {
+  "name_en": "Acids",
+  "name_vi": "Acids"
+ },
+ "2918": {
+  "name_en": "Acids",
+  "name_vi": "Acids"
+ },
+ "2919": {
+  "name_en": "Esters",
+  "name_vi": "Esters"
+ },
+ "2920": {
+  "name_en": "Esters of other inorganic acids of non-metals (other…",
+  "name_vi": "Esters of other inorganic acids of non-metals (other…"
+ },
+ "2921": {
+  "name_en": "Amine-function compounds",
+  "name_vi": "Amine-function compounds"
+ },
+ "2922": {
+  "name_en": "Oxygen-function amino-compounds",
+  "name_vi": "Oxygen-function amino-compounds"
+ },
+ "2923": {
+  "name_en": "Quaternary ammonium salts and hydroxides",
+  "name_vi": "Quaternary ammonium salts and hydroxides"
+ },
+ "2924": {
+  "name_en": "Carboxyamide-function compounds",
+  "name_vi": "Carboxyamide-function compounds"
+ },
+ "2925": {
+  "name_en": "Carboxyimide-function compounds (including saccharin…",
+  "name_vi": "Carboxyimide-function compounds (including saccharin…"
+ },
+ "2926": {
+  "name_en": "Nitrile-function compounds",
+  "name_vi": "Nitrile-function compounds"
+ },
+ "2927": {
+  "name_en": "Diazo-, azo- or azoxy-compounds",
+  "name_vi": "Diazo-, azo- or azoxy-compounds"
+ },
+ "2928": {
+  "name_en": "Organic derivatives of hydrazine or of hydroxylamine",
+  "name_vi": "Organic derivatives of hydrazine or of hydroxylamine"
+ },
+ "2929": {
+  "name_en": "Nitrogen-function compounds, n.e.c. in chapter 29",
+  "name_vi": "Nitrogen-function compounds, n.e.c. in chapter 29"
+ },
+ "2930": {
+  "name_en": "Organo-sulphur compounds",
+  "name_vi": "Organo-sulphur compounds"
+ },
+ "2931": {
+  "name_en": "Other organo-inorganic compounds",
+  "name_vi": "Other organo-inorganic compounds"
+ },
+ "2932": {
+  "name_en": "Heterocyclic compounds with oxygen hetero-atom(s) only",
+  "name_vi": "Heterocyclic compounds with oxygen hetero-atom(s) only"
+ },
+ "2933": {
+  "name_en": "Heterocyclic compounds with nitrogen hetero-atom(s) only",
+  "name_vi": "Heterocyclic compounds with nitrogen hetero-atom(s) only"
+ },
+ "2934": {
+  "name_en": "Nucleic acids and their salts, whether or not…",
+  "name_vi": "Nucleic acids and their salts, whether or not…"
+ },
+ "2935": {
+  "name_en": "Sulphonamides",
+  "name_vi": "Sulphonamides"
+ },
+ "2936": {
+  "name_en": "Provitamins, vitamins",
+  "name_vi": "Provitamins, vitamins"
+ },
+ "2937": {
+  "name_en": "Hormones, prostaglandins, thromboxanes and…",
+  "name_vi": "Hormones, prostaglandins, thromboxanes and…"
+ },
+ "2938": {
+  "name_en": "Glycosides, natural or reproduced by synthesis, and…",
+  "name_vi": "Glycosides, natural or reproduced by synthesis, and…"
+ },
+ "2939": {
+  "name_en": "Alkaloids",
+  "name_vi": "Alkaloids"
+ },
+ "2940": {
+  "name_en": "Sugars, chemically pure, other than sucrose, lactose,…",
+  "name_vi": "Sugars, chemically pure, other than sucrose, lactose,…"
+ },
+ "2941": {
+  "name_en": "Antibiotics",
+  "name_vi": "Antibiotics"
+ },
+ "2942": {
+  "name_en": "Organic compounds",
+  "name_vi": "Organic compounds"
+ },
+ "3001": {
+  "name_en": "Glands and other organs (extracts, secretions thereof)…",
+  "name_vi": "Glands and other organs (extracts, secretions thereof)…"
+ },
+ "3002": {
+  "name_en": "Human blood",
+  "name_vi": "Human blood"
+ },
+ "3003": {
+  "name_en": "Medicaments",
+  "name_vi": "Medicaments"
+ },
+ "3004": {
+  "name_en": "Medicaments",
+  "name_vi": "Medicaments"
+ },
+ "3005": {
+  "name_en": "Wadding, gauze, bandages (dressings, adhesive…",
+  "name_vi": "Wadding, gauze, bandages (dressings, adhesive…"
+ },
+ "3006": {
+  "name_en": "Pharmaceutical goods",
+  "name_vi": "Pharmaceutical goods"
+ },
+ "3101": {
+  "name_en": "Fertilizers",
+  "name_vi": "Fertilizers"
+ },
+ "3102": {
+  "name_en": "Fertilizers",
+  "name_vi": "Fertilizers"
+ },
+ "3103": {
+  "name_en": "Fertilizers",
+  "name_vi": "Fertilizers"
+ },
+ "3104": {
+  "name_en": "Fertilizers",
+  "name_vi": "Fertilizers"
+ },
+ "3105": {
+  "name_en": "Fertilizers",
+  "name_vi": "Fertilizers"
+ },
+ "3201": {
+  "name_en": "Tanning extracts of vegetable origin",
+  "name_vi": "Tanning extracts of vegetable origin"
+ },
+ "3202": {
+  "name_en": "Tanning substances",
+  "name_vi": "Tanning substances"
+ },
+ "3203": {
+  "name_en": "Colouring matter of vegetable or animal origin…",
+  "name_vi": "Colouring matter of vegetable or animal origin…"
+ },
+ "3204": {
+  "name_en": "Synthetic organic colouring matter and preparations…",
+  "name_vi": "Synthetic organic colouring matter and preparations…"
+ },
+ "3205": {
+  "name_en": "Colour lakes",
+  "name_vi": "Colour lakes"
+ },
+ "3206": {
+  "name_en": "Colouring matter and preparations thereof n.e.c. in…",
+  "name_vi": "Colouring matter and preparations thereof n.e.c. in…"
+ },
+ "3207": {
+  "name_en": "Pigments, prepared",
+  "name_vi": "Pigments, prepared"
+ },
+ "3208": {
+  "name_en": "Paints, varnishes",
+  "name_vi": "Paints, varnishes"
+ },
+ "3209": {
+  "name_en": "Paints and varnishes (including enamels and lacquers)…",
+  "name_vi": "Paints and varnishes (including enamels and lacquers)…"
+ },
+ "3210": {
+  "name_en": "Paints and varnishes (including enamels, lacquers and…",
+  "name_vi": "Paints and varnishes (including enamels, lacquers and…"
+ },
+ "3211": {
+  "name_en": "Driers",
+  "name_vi": "Driers"
+ },
+ "3212": {
+  "name_en": "Pigments (metallic powders and flakes) dispersed in…",
+  "name_vi": "Pigments (metallic powders and flakes) dispersed in…"
+ },
+ "3213": {
+  "name_en": "Colours",
+  "name_vi": "Colours"
+ },
+ "3214": {
+  "name_en": "Glaziers' putty, grafting putty, resin cements,…",
+  "name_vi": "Glaziers' putty, grafting putty, resin cements,…"
+ },
+ "3215": {
+  "name_en": "Ink",
+  "name_vi": "Ink"
+ },
+ "3301": {
+  "name_en": "Oils",
+  "name_vi": "Oils"
+ },
+ "3302": {
+  "name_en": "Odoriferous substances and mixtures (including…",
+  "name_vi": "Odoriferous substances and mixtures (including…"
+ },
+ "3303": {
+  "name_en": "Perfumes and toilet waters",
+  "name_vi": "Perfumes and toilet waters"
+ },
+ "3304": {
+  "name_en": "Cosmetic and toilet preparations",
+  "name_vi": "Cosmetic and toilet preparations"
+ },
+ "3305": {
+  "name_en": "Hair preparations",
+  "name_vi": "Hair preparations"
+ },
+ "3306": {
+  "name_en": "Oral or dental hygiene preparations",
+  "name_vi": "Oral or dental hygiene preparations"
+ },
+ "3307": {
+  "name_en": "Perfumery, cosmetic or toilet preparations",
+  "name_vi": "Perfumery, cosmetic or toilet preparations"
+ },
+ "3401": {
+  "name_en": "Soap",
+  "name_vi": "Soap"
+ },
+ "3402": {
+  "name_en": "Organic surface-active agents (not soap)",
+  "name_vi": "Organic surface-active agents (not soap)"
+ },
+ "3403": {
+  "name_en": "Lubricating preparations and those used in oil or…",
+  "name_vi": "Lubricating preparations and those used in oil or…"
+ },
+ "3404": {
+  "name_en": "Waxes",
+  "name_vi": "Waxes"
+ },
+ "3405": {
+  "name_en": "Polishes, creams, scouring pastes, powders and similar",
+  "name_vi": "Polishes, creams, scouring pastes, powders and similar"
+ },
+ "3406": {
+  "name_en": "Candles, tapers and the like",
+  "name_vi": "Candles, tapers and the like"
+ },
+ "3407": {
+  "name_en": "Modelling pastes, including those for children",
+  "name_vi": "Modelling pastes, including those for children"
+ },
+ "3501": {
+  "name_en": "Casein, caseinates and other casein derivatives",
+  "name_vi": "Casein, caseinates and other casein derivatives"
+ },
+ "3502": {
+  "name_en": "Albumins (including concentrates of two or more whey…",
+  "name_vi": "Albumins (including concentrates of two or more whey…"
+ },
+ "3503": {
+  "name_en": "Gelatin (including gelatin in rectangular sheets,…",
+  "name_vi": "Gelatin (including gelatin in rectangular sheets,…"
+ },
+ "3504": {
+  "name_en": "Peptones and their derivatives",
+  "name_vi": "Peptones and their derivatives"
+ },
+ "3505": {
+  "name_en": "Dextrins and other modified starches (e.g.…",
+  "name_vi": "Dextrins and other modified starches (e.g.…"
+ },
+ "3506": {
+  "name_en": "Prepared glues and other prepared adhesives, n.e.c. or…",
+  "name_vi": "Prepared glues and other prepared adhesives, n.e.c. or…"
+ },
+ "3507": {
+  "name_en": "Enzymes",
+  "name_vi": "Enzymes"
+ },
+ "3601": {
+  "name_en": "Explosives",
+  "name_vi": "Explosives"
+ },
+ "3602": {
+  "name_en": "Prepared explosives, other than propellent powders",
+  "name_vi": "Prepared explosives, other than propellent powders"
+ },
+ "3603": {
+  "name_en": "Safety fuses",
+  "name_vi": "Safety fuses"
+ },
+ "3604": {
+  "name_en": "Fireworks, signalling flares, rain rockets, fog…",
+  "name_vi": "Fireworks, signalling flares, rain rockets, fog…"
+ },
+ "3605": {
+  "name_en": "Matches",
+  "name_vi": "Matches"
+ },
+ "3606": {
+  "name_en": "Ferro-cerium and other pyrophoric alloys in all forms",
+  "name_vi": "Ferro-cerium and other pyrophoric alloys in all forms"
+ },
+ "3701": {
+  "name_en": "Photographic plates and film in the flat, sensitised,…",
+  "name_vi": "Photographic plates and film in the flat, sensitised,…"
+ },
+ "3702": {
+  "name_en": "Photographic film in rolls, sensitised, unexposed, of…",
+  "name_vi": "Photographic film in rolls, sensitised, unexposed, of…"
+ },
+ "3703": {
+  "name_en": "Photographic paper, paperboard and textiles",
+  "name_vi": "Photographic paper, paperboard and textiles"
+ },
+ "3704": {
+  "name_en": "Photographic plates, film, paper, paperboard and…",
+  "name_vi": "Photographic plates, film, paper, paperboard and…"
+ },
+ "3705": {
+  "name_en": "Photographic plates and film",
+  "name_vi": "Photographic plates and film"
+ },
+ "3706": {
+  "name_en": "Cinematographic film",
+  "name_vi": "Cinematographic film"
+ },
+ "3707": {
+  "name_en": "Chemical preparations for photographic uses (other…",
+  "name_vi": "Chemical preparations for photographic uses (other…"
+ },
+ "3801": {
+  "name_en": "Artificial graphite",
+  "name_vi": "Artificial graphite"
+ },
+ "3802": {
+  "name_en": "Activated carbon",
+  "name_vi": "Activated carbon"
+ },
+ "3803": {
+  "name_en": "Tall oil, whether or not refined",
+  "name_vi": "Tall oil, whether or not refined"
+ },
+ "3804": {
+  "name_en": "Residual lyes from the manufacture of wood pulp,…",
+  "name_vi": "Residual lyes from the manufacture of wood pulp,…"
+ },
+ "3805": {
+  "name_en": "Gum, wood or sulphate turpentine, other terpenic oils",
+  "name_vi": "Gum, wood or sulphate turpentine, other terpenic oils"
+ },
+ "3806": {
+  "name_en": "Rosin and resin acids and derivatives thereof",
+  "name_vi": "Rosin and resin acids and derivatives thereof"
+ },
+ "3807": {
+  "name_en": "Wood tar",
+  "name_vi": "Wood tar"
+ },
+ "3808": {
+  "name_en": "Insecticides, rodenticides, fungicides, herbicides,…",
+  "name_vi": "Insecticides, rodenticides, fungicides, herbicides,…"
+ },
+ "3809": {
+  "name_en": "Finishing agents, dye carriers to accelerate the…",
+  "name_vi": "Finishing agents, dye carriers to accelerate the…"
+ },
+ "3810": {
+  "name_en": "Metal-pickling preparations",
+  "name_vi": "Metal-pickling preparations"
+ },
+ "3811": {
+  "name_en": "Anti-knock preparations, oxidation and gum inhibitors,…",
+  "name_vi": "Anti-knock preparations, oxidation and gum inhibitors,…"
+ },
+ "3812": {
+  "name_en": "Prepared rubber accelerators",
+  "name_vi": "Prepared rubber accelerators"
+ },
+ "3813": {
+  "name_en": "Preparations and charges for fire extinguishers",
+  "name_vi": "Preparations and charges for fire extinguishers"
+ },
+ "3814": {
+  "name_en": "Organic composite solvents and thinners",
+  "name_vi": "Organic composite solvents and thinners"
+ },
+ "3815": {
+  "name_en": "Reaction initiators, reaction accelerators and…",
+  "name_vi": "Reaction initiators, reaction accelerators and…"
+ },
+ "3816": {
+  "name_en": "Refractory cements, mortars, concretes and similar…",
+  "name_vi": "Refractory cements, mortars, concretes and similar…"
+ },
+ "3817": {
+  "name_en": "Mixed alkylbenzenes and mixed alkylnaphthalenes, other…",
+  "name_vi": "Mixed alkylbenzenes and mixed alkylnaphthalenes, other…"
+ },
+ "3818": {
+  "name_en": "Chemical elements doped for use in electronics, in the…",
+  "name_vi": "Chemical elements doped for use in electronics, in the…"
+ },
+ "3819": {
+  "name_en": "Hydraulic brake fluids and other prepared liquids for…",
+  "name_vi": "Hydraulic brake fluids and other prepared liquids for…"
+ },
+ "3820": {
+  "name_en": "Anti-freezing preparations and prepared de-icing fluids",
+  "name_vi": "Anti-freezing preparations and prepared de-icing fluids"
+ },
+ "3821": {
+  "name_en": "Prepared culture media for the development or…",
+  "name_vi": "Prepared culture media for the development or…"
+ },
+ "3822": {
+  "name_en": "Reagents",
+  "name_vi": "Reagents"
+ },
+ "3823": {
+  "name_en": "Industrial monocarboxylic fatty acids",
+  "name_vi": "Industrial monocarboxylic fatty acids"
+ },
+ "3824": {
+  "name_en": "Prepared binders for foundry moulds or cores",
+  "name_vi": "Prepared binders for foundry moulds or cores"
+ },
+ "3825": {
+  "name_en": "Residual products of the chemical or allied industries",
+  "name_vi": "Residual products of the chemical or allied industries"
+ },
+ "3826": {
+  "name_en": "Biodiesel and mixtures thereof",
+  "name_vi": "Biodiesel and mixtures thereof"
+ },
+ "3827": {
+  "name_en": "Mixtures containing halogenated derivatives of…",
+  "name_vi": "Mixtures containing halogenated derivatives of…"
+ },
+ "3901": {
+  "name_en": "Polymers of ethylene, in primary forms",
+  "name_vi": "Polymers of ethylene, in primary forms"
+ },
+ "3902": {
+  "name_en": "Polymers of propylene or of other olefins, in primary…",
+  "name_vi": "Polymers of propylene or of other olefins, in primary…"
+ },
+ "3903": {
+  "name_en": "Polymers of styrene, in primary forms",
+  "name_vi": "Polymers of styrene, in primary forms"
+ },
+ "3904": {
+  "name_en": "Polymers of vinyl chloride or of other halogenated…",
+  "name_vi": "Polymers of vinyl chloride or of other halogenated…"
+ },
+ "3905": {
+  "name_en": "Polymers of vinyl acetate or of other vinyl esters, in…",
+  "name_vi": "Polymers of vinyl acetate or of other vinyl esters, in…"
+ },
+ "3906": {
+  "name_en": "Acrylic polymers in primary forms",
+  "name_vi": "Acrylic polymers in primary forms"
+ },
+ "3907": {
+  "name_en": "Polyacetals, other polyethers and epoxide resins, in…",
+  "name_vi": "Polyacetals, other polyethers and epoxide resins, in…"
+ },
+ "3908": {
+  "name_en": "Polyamides in primary forms",
+  "name_vi": "Polyamides in primary forms"
+ },
+ "3909": {
+  "name_en": "Amino-resins, phenolic resins and polyurethanes, in…",
+  "name_vi": "Amino-resins, phenolic resins and polyurethanes, in…"
+ },
+ "3910": {
+  "name_en": "Silicones in primary forms",
+  "name_vi": "Silicones in primary forms"
+ },
+ "3911": {
+  "name_en": "Petroleum resins, coumarone-indene resins,…",
+  "name_vi": "Petroleum resins, coumarone-indene resins,…"
+ },
+ "3912": {
+  "name_en": "Cellulose and its chemical derivatives, n.e.c. or…",
+  "name_vi": "Cellulose and its chemical derivatives, n.e.c. or…"
+ },
+ "3913": {
+  "name_en": "Natural polymers (e.g. alginic acid) and modified…",
+  "name_vi": "Natural polymers (e.g. alginic acid) and modified…"
+ },
+ "3914": {
+  "name_en": "Ion-exchangers",
+  "name_vi": "Ion-exchangers"
+ },
+ "3915": {
+  "name_en": "Waste, parings and scrap, of plastics",
+  "name_vi": "Waste, parings and scrap, of plastics"
+ },
+ "3916": {
+  "name_en": "Monofilament of which any cross-sectional dimension…",
+  "name_vi": "Monofilament of which any cross-sectional dimension…"
+ },
+ "3917": {
+  "name_en": "Tubes, pipes and hoses and fittings thereof (for…",
+  "name_vi": "Tubes, pipes and hoses and fittings thereof (for…"
+ },
+ "3918": {
+  "name_en": "Floor coverings of plastics, self-adhesive or not, in…",
+  "name_vi": "Floor coverings of plastics, self-adhesive or not, in…"
+ },
+ "3919": {
+  "name_en": "Self-adhesive plates, sheets, film, foil, tape, strip…",
+  "name_vi": "Self-adhesive plates, sheets, film, foil, tape, strip…"
+ },
+ "3920": {
+  "name_en": "Plastics",
+  "name_vi": "Plastics"
+ },
+ "3921": {
+  "name_en": "Plastic plates, sheets, film, foil and strip n.e.c. in…",
+  "name_vi": "Plastic plates, sheets, film, foil and strip n.e.c. in…"
+ },
+ "3922": {
+  "name_en": "Sanitary ware",
+  "name_vi": "Sanitary ware"
+ },
+ "3923": {
+  "name_en": "Plastic articles for the conveyance or packing of goods",
+  "name_vi": "Plastic articles for the conveyance or packing of goods"
+ },
+ "3924": {
+  "name_en": "Tableware, kitchenware, other household articles and…",
+  "name_vi": "Tableware, kitchenware, other household articles and…"
+ },
+ "3925": {
+  "name_en": "Plastics",
+  "name_vi": "Plastics"
+ },
+ "3926": {
+  "name_en": "Articles of plastics and articles of other materials…",
+  "name_vi": "Articles of plastics and articles of other materials…"
+ },
+ "4002": {
+  "name_en": "Synthetic rubber and factice derived from oils, in…",
+  "name_vi": "Synthetic rubber and factice derived from oils, in…"
+ },
+ "4003": {
+  "name_en": "Reclaimed rubber in primary forms or in plates, sheets…",
+  "name_vi": "Reclaimed rubber in primary forms or in plates, sheets…"
+ },
+ "4004": {
+  "name_en": "Waste, parings and scrap of rubber (other than hard…",
+  "name_vi": "Waste, parings and scrap of rubber (other than hard…"
+ },
+ "4005": {
+  "name_en": "Compounded rubber, unvulcanised, in primary forms or…",
+  "name_vi": "Compounded rubber, unvulcanised, in primary forms or…"
+ },
+ "4006": {
+  "name_en": "Unvulcanised rubber in other forms (e.g. rods, tubes…",
+  "name_vi": "Unvulcanised rubber in other forms (e.g. rods, tubes…"
+ },
+ "4007": {
+  "name_en": "Vulcanised rubber thread and cord",
+  "name_vi": "Vulcanised rubber thread and cord"
+ },
+ "4008": {
+  "name_en": "Plates, sheets, strip, rods and profile shapes, of…",
+  "name_vi": "Plates, sheets, strip, rods and profile shapes, of…"
+ },
+ "4009": {
+  "name_en": "Tubes, pipes and hoses, of vulcanised rubber (other…",
+  "name_vi": "Tubes, pipes and hoses, of vulcanised rubber (other…"
+ },
+ "4010": {
+  "name_en": "Conveyor or transmission belts or belting, of…",
+  "name_vi": "Conveyor or transmission belts or belting, of…"
+ },
+ "4011": {
+  "name_en": "New pneumatic tyres, of rubber",
+  "name_vi": "New pneumatic tyres, of rubber"
+ },
+ "4012": {
+  "name_en": "Retreaded or used pneumatic tyres of rubber",
+  "name_vi": "Retreaded or used pneumatic tyres of rubber"
+ },
+ "4013": {
+  "name_en": "Inner tubes, of rubber",
+  "name_vi": "Inner tubes, of rubber"
+ },
+ "4014": {
+  "name_en": "Hygienic or pharmaceutical articles (including teats),…",
+  "name_vi": "Hygienic or pharmaceutical articles (including teats),…"
+ },
+ "4015": {
+  "name_en": "Articles of apparel and clothing accessories…",
+  "name_vi": "Articles of apparel and clothing accessories…"
+ },
+ "4016": {
+  "name_en": "Articles of vulcanised rubber other than hard rubber,…",
+  "name_vi": "Articles of vulcanised rubber other than hard rubber,…"
+ },
+ "4017": {
+  "name_en": "Hard rubber (e.g. ebonite) in all forms, including…",
+  "name_vi": "Hard rubber (e.g. ebonite) in all forms, including…"
+ },
+ "4101": {
+  "name_en": "Raw hides and skins of bovine (including buffalo) or…",
+  "name_vi": "Raw hides and skins of bovine (including buffalo) or…"
+ },
+ "4102": {
+  "name_en": "Raw skins of sheep or lambs (fresh, salted, dried,…",
+  "name_vi": "Raw skins of sheep or lambs (fresh, salted, dried,…"
+ },
+ "4103": {
+  "name_en": "Raw hides and skins n.e.c in headings no. 4101, 4102",
+  "name_vi": "Raw hides and skins n.e.c in headings no. 4101, 4102"
+ },
+ "4104": {
+  "name_en": "Tanned or crust hides and skins of bovine (including…",
+  "name_vi": "Tanned or crust hides and skins of bovine (including…"
+ },
+ "4105": {
+  "name_en": "Tanned or crust skins of sheep and lambs, without wool…",
+  "name_vi": "Tanned or crust skins of sheep and lambs, without wool…"
+ },
+ "4106": {
+  "name_en": "Tanned or crust hides and skins of other animals,…",
+  "name_vi": "Tanned or crust hides and skins of other animals,…"
+ },
+ "4107": {
+  "name_en": "Leather further prepared after tanning or crusting,…",
+  "name_vi": "Leather further prepared after tanning or crusting,…"
+ },
+ "4112": {
+  "name_en": "Leather further prepared after tanning or crusting,…",
+  "name_vi": "Leather further prepared after tanning or crusting,…"
+ },
+ "4113": {
+  "name_en": "Leather further prepared after tanning or crusting,…",
+  "name_vi": "Leather further prepared after tanning or crusting,…"
+ },
+ "4114": {
+  "name_en": "Chamois (including combination chamois) leather",
+  "name_vi": "Chamois (including combination chamois) leather"
+ },
+ "4115": {
+  "name_en": "Composition leather with a basis of leather or leather…",
+  "name_vi": "Composition leather with a basis of leather or leather…"
+ },
+ "4201": {
+  "name_en": "Saddlery and harness for any animal (including traces,…",
+  "name_vi": "Saddlery and harness for any animal (including traces,…"
+ },
+ "4202": {
+  "name_en": "Trunks",
+  "name_vi": "Trunks"
+ },
+ "4203": {
+  "name_en": "Articles of apparel and clothing accessories, of…",
+  "name_vi": "Articles of apparel and clothing accessories, of…"
+ },
+ "4205": {
+  "name_en": "Leather or composition leather articles n.e.c. in…",
+  "name_vi": "Leather or composition leather articles n.e.c. in…"
+ },
+ "4206": {
+  "name_en": "Articles of gut (other than silk-worm gut), of…",
+  "name_vi": "Articles of gut (other than silk-worm gut), of…"
+ },
+ "4301": {
+  "name_en": "Raw furskins (including heads, tails, paws, other…",
+  "name_vi": "Raw furskins (including heads, tails, paws, other…"
+ },
+ "4302": {
+  "name_en": "Tanned or dressed furskins (including heads, tails,…",
+  "name_vi": "Tanned or dressed furskins (including heads, tails,…"
+ },
+ "4303": {
+  "name_en": "Articles of apparel, clothing accessories and other…",
+  "name_vi": "Articles of apparel, clothing accessories and other…"
+ },
+ "4304": {
+  "name_en": "Artificial fur and articles thereof",
+  "name_vi": "Artificial fur and articles thereof"
+ },
+ "4402": {
+  "name_en": "Wood charcoal (including shell or nut charcoal),…",
+  "name_vi": "Wood charcoal (including shell or nut charcoal),…"
+ },
+ "4403": {
+  "name_en": "Wood in the rough, whether or not stripped of bark or…",
+  "name_vi": "Wood in the rough, whether or not stripped of bark or…"
+ },
+ "4404": {
+  "name_en": "Hoopwood",
+  "name_vi": "Hoopwood"
+ },
+ "4405": {
+  "name_en": "Wood wool",
+  "name_vi": "Wood wool"
+ },
+ "4406": {
+  "name_en": "Railway or tramway sleepers (cross-ties) of wood",
+  "name_vi": "Railway or tramway sleepers (cross-ties) of wood"
+ },
+ "4408": {
+  "name_en": "Sheets for veneering (including those obtained by…",
+  "name_vi": "Sheets for veneering (including those obtained by…"
+ },
+ "4409": {
+  "name_en": "Wood (including strips, friezes for parquet flooring,…",
+  "name_vi": "Wood (including strips, friezes for parquet flooring,…"
+ },
+ "4410": {
+  "name_en": "Particle board, oriented strand board (OSB) and…",
+  "name_vi": "Particle board, oriented strand board (OSB) and…"
+ },
+ "4411": {
+  "name_en": "Fibreboard of wood or other ligneous materials,…",
+  "name_vi": "Fibreboard of wood or other ligneous materials,…"
+ },
+ "4412": {
+  "name_en": "Plywood, veneered panels and similar laminated wood",
+  "name_vi": "Plywood, veneered panels and similar laminated wood"
+ },
+ "4413": {
+  "name_en": "Densified wood, in blocks, plates, strips or profile…",
+  "name_vi": "Densified wood, in blocks, plates, strips or profile…"
+ },
+ "4414": {
+  "name_en": "Wooden frames",
+  "name_vi": "Wooden frames"
+ },
+ "4415": {
+  "name_en": "Packing cases, boxes, crates, drums and similar…",
+  "name_vi": "Packing cases, boxes, crates, drums and similar…"
+ },
+ "4416": {
+  "name_en": "Casks, barrels, vats, tubs and other coopers' products…",
+  "name_vi": "Casks, barrels, vats, tubs and other coopers' products…"
+ },
+ "4417": {
+  "name_en": "Tools, tool bodies, tool handles, broom or brush…",
+  "name_vi": "Tools, tool bodies, tool handles, broom or brush…"
+ },
+ "4418": {
+  "name_en": "Builders' joinery and carpentry of wood, including…",
+  "name_vi": "Builders' joinery and carpentry of wood, including…"
+ },
+ "4419": {
+  "name_en": "Tableware and kitchenware, of wood",
+  "name_vi": "Tableware and kitchenware, of wood"
+ },
+ "4420": {
+  "name_en": "Wood marquetry and inlaid wood",
+  "name_vi": "Wood marquetry and inlaid wood"
+ },
+ "4421": {
+  "name_en": "Wooden articles n.e.c. in heading no. 4414 to 4420",
+  "name_vi": "Wooden articles n.e.c. in heading no. 4414 to 4420"
+ },
+ "4501": {
+  "name_en": "Natural cork, raw or simply prepared",
+  "name_vi": "Natural cork, raw or simply prepared"
+ },
+ "4502": {
+  "name_en": "Natural cork, debacked or roughly squared, or in…",
+  "name_vi": "Natural cork, debacked or roughly squared, or in…"
+ },
+ "4503": {
+  "name_en": "Cork",
+  "name_vi": "Cork"
+ },
+ "4504": {
+  "name_en": "Agglomerated cork (with or without a binding…",
+  "name_vi": "Agglomerated cork (with or without a binding…"
+ },
+ "4601": {
+  "name_en": "Plaits and similar products of plaiting materials,…",
+  "name_vi": "Plaits and similar products of plaiting materials,…"
+ },
+ "4602": {
+  "name_en": "Basketwork, wickerwork and other articles, made…",
+  "name_vi": "Basketwork, wickerwork and other articles, made…"
+ },
+ "4701": {
+  "name_en": "Wood pulp, mechanical wood pulp",
+  "name_vi": "Wood pulp, mechanical wood pulp"
+ },
+ "4702": {
+  "name_en": "Chemical wood pulp, dissolving grades",
+  "name_vi": "Chemical wood pulp, dissolving grades"
+ },
+ "4703": {
+  "name_en": "Chemical wood pulp, soda or sulphate, other than…",
+  "name_vi": "Chemical wood pulp, soda or sulphate, other than…"
+ },
+ "4704": {
+  "name_en": "Chemical wood pulp, sulphite, other than dissolving grades",
+  "name_vi": "Chemical wood pulp, sulphite, other than dissolving grades"
+ },
+ "4705": {
+  "name_en": "Wood pulp obtained by a combination of mechanical and…",
+  "name_vi": "Wood pulp obtained by a combination of mechanical and…"
+ },
+ "4706": {
+  "name_en": "Pulps of fibres derived from recovered (waste and…",
+  "name_vi": "Pulps of fibres derived from recovered (waste and…"
+ },
+ "4707": {
+  "name_en": "Waste and scrap of paper and paperboard",
+  "name_vi": "Waste and scrap of paper and paperboard"
+ },
+ "4801": {
+  "name_en": "Newsprint, in rolls or sheets",
+  "name_vi": "Newsprint, in rolls or sheets"
+ },
+ "4802": {
+  "name_en": "Uncoated paper and paperboard, used for writing,…",
+  "name_vi": "Uncoated paper and paperboard, used for writing,…"
+ },
+ "4803": {
+  "name_en": "Tissue, towel, napkin stock or similar",
+  "name_vi": "Tissue, towel, napkin stock or similar"
+ },
+ "4804": {
+  "name_en": "Uncoated kraft paper and paperboard, in rolls or…",
+  "name_vi": "Uncoated kraft paper and paperboard, in rolls or…"
+ },
+ "4805": {
+  "name_en": "Uncoated paper and paperboard n.e.c., in rolls or sheets",
+  "name_vi": "Uncoated paper and paperboard n.e.c., in rolls or sheets"
+ },
+ "4806": {
+  "name_en": "Vegetable parchment, greaseproof papers, tracing…",
+  "name_vi": "Vegetable parchment, greaseproof papers, tracing…"
+ },
+ "4807": {
+  "name_en": "Composite paper and paperboard, (made by sticking…",
+  "name_vi": "Composite paper and paperboard, (made by sticking…"
+ },
+ "4808": {
+  "name_en": "Paper and paperboard, corrugated (with or without…",
+  "name_vi": "Paper and paperboard, corrugated (with or without…"
+ },
+ "4809": {
+  "name_en": "Carbon paper, self copy paper, and other copying or…",
+  "name_vi": "Carbon paper, self copy paper, and other copying or…"
+ },
+ "4810": {
+  "name_en": "Paper and paperboard, coated one or both sides with…",
+  "name_vi": "Paper and paperboard, coated one or both sides with…"
+ },
+ "4811": {
+  "name_en": "Paper, paperboard, cellulose wadding and webs of…",
+  "name_vi": "Paper, paperboard, cellulose wadding and webs of…"
+ },
+ "4812": {
+  "name_en": "Filter blocks, slabs and plates of paper pulp",
+  "name_vi": "Filter blocks, slabs and plates of paper pulp"
+ },
+ "4813": {
+  "name_en": "Cigarette paper, whether or not cut to size or in the…",
+  "name_vi": "Cigarette paper, whether or not cut to size or in the…"
+ },
+ "4814": {
+  "name_en": "Wallpaper and similar wall coverings",
+  "name_vi": "Wallpaper and similar wall coverings"
+ },
+ "4816": {
+  "name_en": "Carbon paper, self-copy paper and other copying or…",
+  "name_vi": "Carbon paper, self-copy paper and other copying or…"
+ },
+ "4817": {
+  "name_en": "Envelopes, letter cards, plain postcards and…",
+  "name_vi": "Envelopes, letter cards, plain postcards and…"
+ },
+ "4818": {
+  "name_en": "Toilet paper, width 36cm or less or cut to size/shape",
+  "name_vi": "Toilet paper, width 36cm or less or cut to size/shape"
+ },
+ "4819": {
+  "name_en": "Cartons, boxes, cases, bags and the like, of paper,…",
+  "name_vi": "Cartons, boxes, cases, bags and the like, of paper,…"
+ },
+ "4820": {
+  "name_en": "Registers, account books, diaries and similar",
+  "name_vi": "Registers, account books, diaries and similar"
+ },
+ "4821": {
+  "name_en": "Paper or paperboard labels of all kinds, whether or…",
+  "name_vi": "Paper or paperboard labels of all kinds, whether or…"
+ },
+ "4822": {
+  "name_en": "Bobbins, spools, cops and similar supports of paper…",
+  "name_vi": "Bobbins, spools, cops and similar supports of paper…"
+ },
+ "4823": {
+  "name_en": "Paper, paperboard, cellulose wadding and webs of…",
+  "name_vi": "Paper, paperboard, cellulose wadding and webs of…"
+ },
+ "4901": {
+  "name_en": "Printed books, brochures, leaflets and similar printed…",
+  "name_vi": "Printed books, brochures, leaflets and similar printed…"
+ },
+ "4902": {
+  "name_en": "Newspapers, journals and periodicals, whether or not…",
+  "name_vi": "Newspapers, journals and periodicals, whether or not…"
+ },
+ "4903": {
+  "name_en": "Children's picture, drawing or colouring books",
+  "name_vi": "Children's picture, drawing or colouring books"
+ },
+ "4904": {
+  "name_en": "Music, printed or in manuscript, whether or not bound…",
+  "name_vi": "Music, printed or in manuscript, whether or not bound…"
+ },
+ "4905": {
+  "name_en": "Maps and hydrographic or similar charts of all kinds,…",
+  "name_vi": "Maps and hydrographic or similar charts of all kinds,…"
+ },
+ "4906": {
+  "name_en": "Plans and drawings",
+  "name_vi": "Plans and drawings"
+ },
+ "4907": {
+  "name_en": "Unused postage, revenue or similar stamps of current…",
+  "name_vi": "Unused postage, revenue or similar stamps of current…"
+ },
+ "4908": {
+  "name_en": "Transfers (decalcomanias)",
+  "name_vi": "Transfers (decalcomanias)"
+ },
+ "4909": {
+  "name_en": "Printed or illustrated postcards",
+  "name_vi": "Printed or illustrated postcards"
+ },
+ "4910": {
+  "name_en": "Calendars of any kind, printed, including calendar blocks",
+  "name_vi": "Calendars of any kind, printed, including calendar blocks"
+ },
+ "4911": {
+  "name_en": "Printed matter, n.e.c., including printed pictures and…",
+  "name_vi": "Printed matter, n.e.c., including printed pictures and…"
+ },
+ "5001": {
+  "name_en": "Silk-worm cocoons suitable for reeling",
+  "name_vi": "Silk-worm cocoons suitable for reeling"
+ },
+ "5002": {
+  "name_en": "Raw silk (not thrown)",
+  "name_vi": "Raw silk (not thrown)"
+ },
+ "5003": {
+  "name_en": "Silk waste (including cocoons unsuitable for reeling,…",
+  "name_vi": "Silk waste (including cocoons unsuitable for reeling,…"
+ },
+ "5004": {
+  "name_en": "Silk",
+  "name_vi": "Silk"
+ },
+ "5005": {
+  "name_en": "Yarn spun from silk waste, not put up for retail sale",
+  "name_vi": "Yarn spun from silk waste, not put up for retail sale"
+ },
+ "5006": {
+  "name_en": "Silk yarn and yarn spun from silk waste, put up for…",
+  "name_vi": "Silk yarn and yarn spun from silk waste, put up for…"
+ },
+ "5007": {
+  "name_en": "Woven fabrics of silk or of silk waste",
+  "name_vi": "Woven fabrics of silk or of silk waste"
+ },
+ "5101": {
+  "name_en": "Wool, not carded or combed",
+  "name_vi": "Wool, not carded or combed"
+ },
+ "5102": {
+  "name_en": "Fine or coarse animal hair, not carded or combed",
+  "name_vi": "Fine or coarse animal hair, not carded or combed"
+ },
+ "5103": {
+  "name_en": "Waste of wool or of fine or coarse animal hair,…",
+  "name_vi": "Waste of wool or of fine or coarse animal hair,…"
+ },
+ "5104": {
+  "name_en": "Wool, or fine or coarse animal hair",
+  "name_vi": "Wool, or fine or coarse animal hair"
+ },
+ "5105": {
+  "name_en": "Wool and fine or coarse animal hair",
+  "name_vi": "Wool and fine or coarse animal hair"
+ },
+ "5106": {
+  "name_en": "Yarn of carded wool, not put up for retail sale",
+  "name_vi": "Yarn of carded wool, not put up for retail sale"
+ },
+ "5107": {
+  "name_en": "Yarn of combed wool, not put up for retail sale",
+  "name_vi": "Yarn of combed wool, not put up for retail sale"
+ },
+ "5108": {
+  "name_en": "Yarn of fine animal hair (carded or combed), not put…",
+  "name_vi": "Yarn of fine animal hair (carded or combed), not put…"
+ },
+ "5109": {
+  "name_en": "Yarn of wool or of fine animal hair, put up for retail…",
+  "name_vi": "Yarn of wool or of fine animal hair, put up for retail…"
+ },
+ "5110": {
+  "name_en": "Yarn of coarse animal hair or of horsehair (including…",
+  "name_vi": "Yarn of coarse animal hair or of horsehair (including…"
+ },
+ "5111": {
+  "name_en": "Woven fabrics of carded wool or of carded fine animal hair",
+  "name_vi": "Woven fabrics of carded wool or of carded fine animal hair"
+ },
+ "5112": {
+  "name_en": "Woven fabrics of combed wool or of combed fine animal hair",
+  "name_vi": "Woven fabrics of combed wool or of combed fine animal hair"
+ },
+ "5113": {
+  "name_en": "Woven fabrics of coarse animal hair or of horsehair",
+  "name_vi": "Woven fabrics of coarse animal hair or of horsehair"
+ },
+ "5201": {
+  "name_en": "Cotton",
+  "name_vi": "Cotton"
+ },
+ "5202": {
+  "name_en": "Cotton waste (including yarn waste and garnetted stock)",
+  "name_vi": "Cotton waste (including yarn waste and garnetted stock)"
+ },
+ "5203": {
+  "name_en": "Cotton, carded or combed",
+  "name_vi": "Cotton, carded or combed"
+ },
+ "5204": {
+  "name_en": "Cotton sewing thread, whether or not put up for retail…",
+  "name_vi": "Cotton sewing thread, whether or not put up for retail…"
+ },
+ "5205": {
+  "name_en": "Cotton yarn (other than sewing thread), containing 85%…",
+  "name_vi": "Cotton yarn (other than sewing thread), containing 85%…"
+ },
+ "5206": {
+  "name_en": "Cotton yarn (other than sewing thread), containing…",
+  "name_vi": "Cotton yarn (other than sewing thread), containing…"
+ },
+ "5207": {
+  "name_en": "Cotton yarn (other than sewing thread), put up for…",
+  "name_vi": "Cotton yarn (other than sewing thread), put up for…"
+ },
+ "5208": {
+  "name_en": "Woven fabrics of cotton, containing 85% or more by…",
+  "name_vi": "Woven fabrics of cotton, containing 85% or more by…"
+ },
+ "5209": {
+  "name_en": "Woven fabrics of cotton, containing 85% or more by…",
+  "name_vi": "Woven fabrics of cotton, containing 85% or more by…"
+ },
+ "5210": {
+  "name_en": "Woven fabrics of cotton, containing less than 85% by…",
+  "name_vi": "Woven fabrics of cotton, containing less than 85% by…"
+ },
+ "5211": {
+  "name_en": "Woven fabrics of cotton, containing less than 85% by…",
+  "name_vi": "Woven fabrics of cotton, containing less than 85% by…"
+ },
+ "5212": {
+  "name_en": "Other woven fabrics of cotton, n.e.c. in chapter 52",
+  "name_vi": "Other woven fabrics of cotton, n.e.c. in chapter 52"
+ },
+ "5301": {
+  "name_en": "Flax, raw or processed but not spun",
+  "name_vi": "Flax, raw or processed but not spun"
+ },
+ "5302": {
+  "name_en": "True hemp (cannabis sativa L.), raw or processed but…",
+  "name_vi": "True hemp (cannabis sativa L.), raw or processed but…"
+ },
+ "5303": {
+  "name_en": "Jute and other textile bast fibres (not flax, true…",
+  "name_vi": "Jute and other textile bast fibres (not flax, true…"
+ },
+ "5305": {
+  "name_en": "Coconut, abaca (Manila hemp or Musa textilis Nee),…",
+  "name_vi": "Coconut, abaca (Manila hemp or Musa textilis Nee),…"
+ },
+ "5306": {
+  "name_en": "Flax yarn",
+  "name_vi": "Flax yarn"
+ },
+ "5307": {
+  "name_en": "Yarn of jute or of other textile bast fibres of…",
+  "name_vi": "Yarn of jute or of other textile bast fibres of…"
+ },
+ "5308": {
+  "name_en": "Yarn of other vegetable textile fibres",
+  "name_vi": "Yarn of other vegetable textile fibres"
+ },
+ "5309": {
+  "name_en": "Woven fabrics of flax",
+  "name_vi": "Woven fabrics of flax"
+ },
+ "5310": {
+  "name_en": "Woven fabrics of jute, other textile bast fibres of…",
+  "name_vi": "Woven fabrics of jute, other textile bast fibres of…"
+ },
+ "5311": {
+  "name_en": "Woven fabrics of other vegetable textile fibres",
+  "name_vi": "Woven fabrics of other vegetable textile fibres"
+ },
+ "5401": {
+  "name_en": "Sewing thread of man-made filaments, whether or not…",
+  "name_vi": "Sewing thread of man-made filaments, whether or not…"
+ },
+ "5402": {
+  "name_en": "Synthetic filament yarn (other than sewing thread),…",
+  "name_vi": "Synthetic filament yarn (other than sewing thread),…"
+ },
+ "5403": {
+  "name_en": "Artificial filament yarn (other than sewing thread),…",
+  "name_vi": "Artificial filament yarn (other than sewing thread),…"
+ },
+ "5404": {
+  "name_en": "Synthetic monofilament of 67 decitex or more, of which…",
+  "name_vi": "Synthetic monofilament of 67 decitex or more, of which…"
+ },
+ "5405": {
+  "name_en": "Artificial monofilament of 67 decitex or more, no…",
+  "name_vi": "Artificial monofilament of 67 decitex or more, no…"
+ },
+ "5406": {
+  "name_en": "Man-made filament yarn (other than sewing thread), put…",
+  "name_vi": "Man-made filament yarn (other than sewing thread), put…"
+ },
+ "5407": {
+  "name_en": "Woven fabrics of synthetic filament yarn, including…",
+  "name_vi": "Woven fabrics of synthetic filament yarn, including…"
+ },
+ "5408": {
+  "name_en": "Woven fabrics of artificial filament yarn including…",
+  "name_vi": "Woven fabrics of artificial filament yarn including…"
+ },
+ "5501": {
+  "name_en": "Synthetic filament tow",
+  "name_vi": "Synthetic filament tow"
+ },
+ "5502": {
+  "name_en": "Artificial filament tow",
+  "name_vi": "Artificial filament tow"
+ },
+ "5503": {
+  "name_en": "Synthetic staple fibres, not carded, combed or…",
+  "name_vi": "Synthetic staple fibres, not carded, combed or…"
+ },
+ "5504": {
+  "name_en": "Artificial staple fibres, not carded, combed or…",
+  "name_vi": "Artificial staple fibres, not carded, combed or…"
+ },
+ "5505": {
+  "name_en": "Waste (including noils, yarn waste and garnetted…",
+  "name_vi": "Waste (including noils, yarn waste and garnetted…"
+ },
+ "5506": {
+  "name_en": "Synthetic staple fibres, carded, combed or otherwise…",
+  "name_vi": "Synthetic staple fibres, carded, combed or otherwise…"
+ },
+ "5507": {
+  "name_en": "Artificial staple fibres, carded, combed or otherwise…",
+  "name_vi": "Artificial staple fibres, carded, combed or otherwise…"
+ },
+ "5508": {
+  "name_en": "Sewing thread of man-made staple fibres, whether or…",
+  "name_vi": "Sewing thread of man-made staple fibres, whether or…"
+ },
+ "5509": {
+  "name_en": "Yarn (other than sewing thread) of synthetic staple…",
+  "name_vi": "Yarn (other than sewing thread) of synthetic staple…"
+ },
+ "5510": {
+  "name_en": "Yarn (other than sewing thread) of artificial staple…",
+  "name_vi": "Yarn (other than sewing thread) of artificial staple…"
+ },
+ "5511": {
+  "name_en": "Yarn (not sewing thread), of man-made staple fibres,…",
+  "name_vi": "Yarn (not sewing thread), of man-made staple fibres,…"
+ },
+ "5512": {
+  "name_en": "Woven fabrics of synthetic staple fibres, containing…",
+  "name_vi": "Woven fabrics of synthetic staple fibres, containing…"
+ },
+ "5513": {
+  "name_en": "Woven fabrics of synthetic staple fibres, containing…",
+  "name_vi": "Woven fabrics of synthetic staple fibres, containing…"
+ },
+ "5514": {
+  "name_en": "Woven fabrics of synthetic staple fibres, containing…",
+  "name_vi": "Woven fabrics of synthetic staple fibres, containing…"
+ },
+ "5515": {
+  "name_en": "Woven fabrics of synthetic staple fibres, n.e.c. in…",
+  "name_vi": "Woven fabrics of synthetic staple fibres, n.e.c. in…"
+ },
+ "5516": {
+  "name_en": "Woven fabrics of artificial staple fibres",
+  "name_vi": "Woven fabrics of artificial staple fibres"
+ },
+ "5601": {
+  "name_en": "Wadding of textile materials and articles thereof",
+  "name_vi": "Wadding of textile materials and articles thereof"
+ },
+ "5602": {
+  "name_en": "Felt",
+  "name_vi": "Felt"
+ },
+ "5603": {
+  "name_en": "Nonwovens",
+  "name_vi": "Nonwovens"
+ },
+ "5604": {
+  "name_en": "Rubber thread and cord, textile covered",
+  "name_vi": "Rubber thread and cord, textile covered"
+ },
+ "5605": {
+  "name_en": "Yarn",
+  "name_vi": "Yarn"
+ },
+ "5606": {
+  "name_en": "Yarn and strip and the like of heading no. 5404 or…",
+  "name_vi": "Yarn and strip and the like of heading no. 5404 or…"
+ },
+ "5607": {
+  "name_en": "Twine, cordage, ropes and cables, whether or not…",
+  "name_vi": "Twine, cordage, ropes and cables, whether or not…"
+ },
+ "5608": {
+  "name_en": "Twine, cordage or rope",
+  "name_vi": "Twine, cordage or rope"
+ },
+ "5609": {
+  "name_en": "Articles of yarn, strip or the like of heading no.…",
+  "name_vi": "Articles of yarn, strip or the like of heading no.…"
+ },
+ "5701": {
+  "name_en": "Carpets and other textile floor coverings",
+  "name_vi": "Carpets and other textile floor coverings"
+ },
+ "5702": {
+  "name_en": "Carpets and other textile floor coverings",
+  "name_vi": "Carpets and other textile floor coverings"
+ },
+ "5703": {
+  "name_en": "Carpets and other textile floor coverings (including turf)",
+  "name_vi": "Carpets and other textile floor coverings (including turf)"
+ },
+ "5704": {
+  "name_en": "Carpets and other textile floor coverings",
+  "name_vi": "Carpets and other textile floor coverings"
+ },
+ "5705": {
+  "name_en": "Carpets and other textile floor coverings",
+  "name_vi": "Carpets and other textile floor coverings"
+ },
+ "5801": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "5802": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "5803": {
+  "name_en": "Gauze",
+  "name_vi": "Gauze"
+ },
+ "5804": {
+  "name_en": "Tulles and other net fabrics",
+  "name_vi": "Tulles and other net fabrics"
+ },
+ "5805": {
+  "name_en": "Tapestries",
+  "name_vi": "Tapestries"
+ },
+ "5806": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "5807": {
+  "name_en": "Labels, badges and similar articles",
+  "name_vi": "Labels, badges and similar articles"
+ },
+ "5808": {
+  "name_en": "Braids in the piece",
+  "name_vi": "Braids in the piece"
+ },
+ "5809": {
+  "name_en": "Fabrics, woven",
+  "name_vi": "Fabrics, woven"
+ },
+ "5810": {
+  "name_en": "Embroidery",
+  "name_vi": "Embroidery"
+ },
+ "5811": {
+  "name_en": "Quilted textile products",
+  "name_vi": "Quilted textile products"
+ },
+ "5901": {
+  "name_en": "Textile fabrics, gum or amylaceous substance coated,…",
+  "name_vi": "Textile fabrics, gum or amylaceous substance coated,…"
+ },
+ "5902": {
+  "name_en": "Textile fabrics",
+  "name_vi": "Textile fabrics"
+ },
+ "5903": {
+  "name_en": "Textile fabrics impregnated, coated, covered or…",
+  "name_vi": "Textile fabrics impregnated, coated, covered or…"
+ },
+ "5904": {
+  "name_en": "Linoleum, whether or not cut to shape",
+  "name_vi": "Linoleum, whether or not cut to shape"
+ },
+ "5905": {
+  "name_en": "Textile wall coverings",
+  "name_vi": "Textile wall coverings"
+ },
+ "5906": {
+  "name_en": "Textile fabrics, rubberised",
+  "name_vi": "Textile fabrics, rubberised"
+ },
+ "5907": {
+  "name_en": "Textile fabrics",
+  "name_vi": "Textile fabrics"
+ },
+ "5908": {
+  "name_en": "Textile wicks, woven, plaited or knitted",
+  "name_vi": "Textile wicks, woven, plaited or knitted"
+ },
+ "5909": {
+  "name_en": "Textile hose piping and similar textile tubing",
+  "name_vi": "Textile hose piping and similar textile tubing"
+ },
+ "5910": {
+  "name_en": "Textiles",
+  "name_vi": "Textiles"
+ },
+ "5911": {
+  "name_en": "Textile products and articles for technical uses",
+  "name_vi": "Textile products and articles for technical uses"
+ },
+ "6001": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "6002": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "6003": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "6004": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "6005": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "6006": {
+  "name_en": "Fabrics",
+  "name_vi": "Fabrics"
+ },
+ "6101": {
+  "name_en": "Coats",
+  "name_vi": "Coats"
+ },
+ "6102": {
+  "name_en": "Coats",
+  "name_vi": "Coats"
+ },
+ "6103": {
+  "name_en": "Suits, ensembles, jackets, blazers, trousers, bib and…",
+  "name_vi": "Suits, ensembles, jackets, blazers, trousers, bib and…"
+ },
+ "6104": {
+  "name_en": "Suits, ensembles, jackets, dresses, skirts, divided…",
+  "name_vi": "Suits, ensembles, jackets, dresses, skirts, divided…"
+ },
+ "6105": {
+  "name_en": "Shirts",
+  "name_vi": "Shirts"
+ },
+ "6106": {
+  "name_en": "Blouses, shirts and shirt-blouses",
+  "name_vi": "Blouses, shirts and shirt-blouses"
+ },
+ "6107": {
+  "name_en": "Underpants, briefs, nightshirts, pyjamas, bathrobes,…",
+  "name_vi": "Underpants, briefs, nightshirts, pyjamas, bathrobes,…"
+ },
+ "6108": {
+  "name_en": "Slips, petticoats, briefs, panties, nightdresses,…",
+  "name_vi": "Slips, petticoats, briefs, panties, nightdresses,…"
+ },
+ "6111": {
+  "name_en": "Garments and clothing accessories, babies'",
+  "name_vi": "Garments and clothing accessories, babies'"
+ },
+ "6112": {
+  "name_en": "Track suits, ski suits and swimwear",
+  "name_vi": "Track suits, ski suits and swimwear"
+ },
+ "6113": {
+  "name_en": "Garments made up of knitted or crocheted fabrics of…",
+  "name_vi": "Garments made up of knitted or crocheted fabrics of…"
+ },
+ "6114": {
+  "name_en": "Garments",
+  "name_vi": "Garments"
+ },
+ "6115": {
+  "name_en": "Hosiery",
+  "name_vi": "Hosiery"
+ },
+ "6116": {
+  "name_en": "Gloves, mittens and mitts",
+  "name_vi": "Gloves, mittens and mitts"
+ },
+ "6117": {
+  "name_en": "Clothing accessories",
+  "name_vi": "Clothing accessories"
+ },
+ "6201": {
+  "name_en": "Overcoats, car-coats, capes, cloaks, anoraks…",
+  "name_vi": "Overcoats, car-coats, capes, cloaks, anoraks…"
+ },
+ "6202": {
+  "name_en": "Coats",
+  "name_vi": "Coats"
+ },
+ "6203": {
+  "name_en": "Suits, ensembles, jackets, blazers, trousers, bib and…",
+  "name_vi": "Suits, ensembles, jackets, blazers, trousers, bib and…"
+ },
+ "6204": {
+  "name_en": "Suits, ensembles, jackets, dresses, skirts, divided…",
+  "name_vi": "Suits, ensembles, jackets, dresses, skirts, divided…"
+ },
+ "6205": {
+  "name_en": "Shirts",
+  "name_vi": "Shirts"
+ },
+ "6206": {
+  "name_en": "Blouses, shirts and shirt-blouses",
+  "name_vi": "Blouses, shirts and shirt-blouses"
+ },
+ "6207": {
+  "name_en": "Singlets and other vests, underpants, briefs,…",
+  "name_vi": "Singlets and other vests, underpants, briefs,…"
+ },
+ "6208": {
+  "name_en": "Singlets and other vests, slips, petticoats, briefs,…",
+  "name_vi": "Singlets and other vests, slips, petticoats, briefs,…"
+ },
+ "6209": {
+  "name_en": "Garments and clothing accessories",
+  "name_vi": "Garments and clothing accessories"
+ },
+ "6210": {
+  "name_en": "Garments made up of fabrics of heading no. 5602, 5603,…",
+  "name_vi": "Garments made up of fabrics of heading no. 5602, 5603,…"
+ },
+ "6211": {
+  "name_en": "Track suits, swimwear and other garments (not knitted…",
+  "name_vi": "Track suits, swimwear and other garments (not knitted…"
+ },
+ "6212": {
+  "name_en": "Brassieres, girdles, corsets, braces, suspenders,…",
+  "name_vi": "Brassieres, girdles, corsets, braces, suspenders,…"
+ },
+ "6213": {
+  "name_en": "Handkerchiefs (not knitted or crocheted)",
+  "name_vi": "Handkerchiefs (not knitted or crocheted)"
+ },
+ "6214": {
+  "name_en": "Shawls, scarves, mufflers, mantillas, veils and the…",
+  "name_vi": "Shawls, scarves, mufflers, mantillas, veils and the…"
+ },
+ "6215": {
+  "name_en": "Ties, bow ties and cravats (not knitted or crocheted)",
+  "name_vi": "Ties, bow ties and cravats (not knitted or crocheted)"
+ },
+ "6216": {
+  "name_en": "Gloves, mittens and mitts (not knitted or crocheted)",
+  "name_vi": "Gloves, mittens and mitts (not knitted or crocheted)"
+ },
+ "6217": {
+  "name_en": "Clothing accessories n.e.c.",
+  "name_vi": "Clothing accessories n.e.c."
+ },
+ "6301": {
+  "name_en": "Blankets and travelling rugs",
+  "name_vi": "Blankets and travelling rugs"
+ },
+ "6302": {
+  "name_en": "Bed linen, table linen, toilet linen and kitchen linen",
+  "name_vi": "Bed linen, table linen, toilet linen and kitchen linen"
+ },
+ "6303": {
+  "name_en": "Curtains (including drapes) and interior blinds",
+  "name_vi": "Curtains (including drapes) and interior blinds"
+ },
+ "6304": {
+  "name_en": "Furnishing articles",
+  "name_vi": "Furnishing articles"
+ },
+ "6305": {
+  "name_en": "Sacks and bags, of a kind used for the packing of goods",
+  "name_vi": "Sacks and bags, of a kind used for the packing of goods"
+ },
+ "6306": {
+  "name_en": "Tarpaulins, awnings and sunblinds",
+  "name_vi": "Tarpaulins, awnings and sunblinds"
+ },
+ "6307": {
+  "name_en": "Textiles",
+  "name_vi": "Textiles"
+ },
+ "6308": {
+  "name_en": "Textiles",
+  "name_vi": "Textiles"
+ },
+ "6309": {
+  "name_en": "Textiles",
+  "name_vi": "Textiles"
+ },
+ "6310": {
+  "name_en": "Rags",
+  "name_vi": "Rags"
+ },
+ "6401": {
+  "name_en": "Footwear",
+  "name_vi": "Footwear"
+ },
+ "6402": {
+  "name_en": "Footwear",
+  "name_vi": "Footwear"
+ },
+ "6404": {
+  "name_en": "Footwear",
+  "name_vi": "Footwear"
+ },
+ "6405": {
+  "name_en": "Footwear",
+  "name_vi": "Footwear"
+ },
+ "6406": {
+  "name_en": "Footwear",
+  "name_vi": "Footwear"
+ },
+ "6501": {
+  "name_en": "Hat-forms, hat bodies and hoods of felt, neither…",
+  "name_vi": "Hat-forms, hat bodies and hoods of felt, neither…"
+ },
+ "6502": {
+  "name_en": "Hat-shapes",
+  "name_vi": "Hat-shapes"
+ },
+ "6504": {
+  "name_en": "Hats and other headgear",
+  "name_vi": "Hats and other headgear"
+ },
+ "6505": {
+  "name_en": "Hats and other headgear",
+  "name_vi": "Hats and other headgear"
+ },
+ "6506": {
+  "name_en": "Headgear",
+  "name_vi": "Headgear"
+ },
+ "6507": {
+  "name_en": "Head-bands, linings, covers, hat foundations, hat…",
+  "name_vi": "Head-bands, linings, covers, hat foundations, hat…"
+ },
+ "6601": {
+  "name_en": "Umbrellas",
+  "name_vi": "Umbrellas"
+ },
+ "6602": {
+  "name_en": "Walking-sticks, seat-sticks, whips, riding-crops and…",
+  "name_vi": "Walking-sticks, seat-sticks, whips, riding-crops and…"
+ },
+ "6603": {
+  "name_en": "Trimmings, parts and accessories of articles of…",
+  "name_vi": "Trimmings, parts and accessories of articles of…"
+ },
+ "6701": {
+  "name_en": "Skin and other parts of birds with their feather or down",
+  "name_vi": "Skin and other parts of birds with their feather or down"
+ },
+ "6702": {
+  "name_en": "Flowers, foliage and fruit, artificial, and parts thereof",
+  "name_vi": "Flowers, foliage and fruit, artificial, and parts thereof"
+ },
+ "6703": {
+  "name_en": "Human hair, dressed, thinned, bleached or otherwise worked",
+  "name_vi": "Human hair, dressed, thinned, bleached or otherwise worked"
+ },
+ "6704": {
+  "name_en": "Wigs, false beards, eyebrows and eyelashes, switches…",
+  "name_vi": "Wigs, false beards, eyebrows and eyelashes, switches…"
+ },
+ "6801": {
+  "name_en": "Stone",
+  "name_vi": "Stone"
+ },
+ "6802": {
+  "name_en": "Monumental or building stone, worked (except slate)…",
+  "name_vi": "Monumental or building stone, worked (except slate)…"
+ },
+ "6803": {
+  "name_en": "Slate, worked",
+  "name_vi": "Slate, worked"
+ },
+ "6804": {
+  "name_en": "Millstones, grindstones, grinding wheels, etc without…",
+  "name_vi": "Millstones, grindstones, grinding wheels, etc without…"
+ },
+ "6805": {
+  "name_en": "Abrasive powder or grain",
+  "name_vi": "Abrasive powder or grain"
+ },
+ "6806": {
+  "name_en": "Slag, rock wool and similar mineral wools",
+  "name_vi": "Slag, rock wool and similar mineral wools"
+ },
+ "6807": {
+  "name_en": "Asphalt or similar material",
+  "name_vi": "Asphalt or similar material"
+ },
+ "6808": {
+  "name_en": "Panels, boards, tiles, blocks and the like",
+  "name_vi": "Panels, boards, tiles, blocks and the like"
+ },
+ "6809": {
+  "name_en": "Plaster or compositions based on plaster",
+  "name_vi": "Plaster or compositions based on plaster"
+ },
+ "6810": {
+  "name_en": "Cement, concrete or artificial stone",
+  "name_vi": "Cement, concrete or artificial stone"
+ },
+ "6811": {
+  "name_en": "Asbestos-cement, of cellulose fibre-cement or the like",
+  "name_vi": "Asbestos-cement, of cellulose fibre-cement or the like"
+ },
+ "6812": {
+  "name_en": "Fabricated asbestos fibres",
+  "name_vi": "Fabricated asbestos fibres"
+ },
+ "6813": {
+  "name_en": "Friction material and articles thereof (e.g. sheets,…",
+  "name_vi": "Friction material and articles thereof (e.g. sheets,…"
+ },
+ "6814": {
+  "name_en": "Mica",
+  "name_vi": "Mica"
+ },
+ "6815": {
+  "name_en": "Stone or other mineral substances",
+  "name_vi": "Stone or other mineral substances"
+ },
+ "6901": {
+  "name_en": "Bricks, blocks, tiles and other ceramic goods of…",
+  "name_vi": "Bricks, blocks, tiles and other ceramic goods of…"
+ },
+ "6902": {
+  "name_en": "Refractory bricks, blocks, tiles and similar…",
+  "name_vi": "Refractory bricks, blocks, tiles and similar…"
+ },
+ "6903": {
+  "name_en": "Ceramic goods",
+  "name_vi": "Ceramic goods"
+ },
+ "6904": {
+  "name_en": "Ceramic building bricks, floor blocks, support or…",
+  "name_vi": "Ceramic building bricks, floor blocks, support or…"
+ },
+ "6905": {
+  "name_en": "Roofing tiles, chimney-pots, cowls, chimney liners,…",
+  "name_vi": "Roofing tiles, chimney-pots, cowls, chimney liners,…"
+ },
+ "6906": {
+  "name_en": "Ceramic pipes, conduits, guttering and pipe fittings",
+  "name_vi": "Ceramic pipes, conduits, guttering and pipe fittings"
+ },
+ "6907": {
+  "name_en": "Ceramic flags and paving, hearth or wall tiles",
+  "name_vi": "Ceramic flags and paving, hearth or wall tiles"
+ },
+ "6909": {
+  "name_en": "Ceramic ware for laboratory, chemical, other technical…",
+  "name_vi": "Ceramic ware for laboratory, chemical, other technical…"
+ },
+ "6910": {
+  "name_en": "Ceramic sinks, wash basins, wash basin pedestals,…",
+  "name_vi": "Ceramic sinks, wash basins, wash basin pedestals,…"
+ },
+ "6911": {
+  "name_en": "Tableware, kitchenware, other household articles and…",
+  "name_vi": "Tableware, kitchenware, other household articles and…"
+ },
+ "6912": {
+  "name_en": "Ceramic tableware, kitchenware, other household…",
+  "name_vi": "Ceramic tableware, kitchenware, other household…"
+ },
+ "6913": {
+  "name_en": "Statuettes and other ornamental ceramic articles",
+  "name_vi": "Statuettes and other ornamental ceramic articles"
+ },
+ "6914": {
+  "name_en": "Ceramic articles",
+  "name_vi": "Ceramic articles"
+ },
+ "7001": {
+  "name_en": "Glass",
+  "name_vi": "Glass"
+ },
+ "7002": {
+  "name_en": "Glass in balls (other than microspheres of heading no.…",
+  "name_vi": "Glass in balls (other than microspheres of heading no.…"
+ },
+ "7003": {
+  "name_en": "Glass",
+  "name_vi": "Glass"
+ },
+ "7004": {
+  "name_en": "Glass",
+  "name_vi": "Glass"
+ },
+ "7005": {
+  "name_en": "Glass",
+  "name_vi": "Glass"
+ },
+ "7006": {
+  "name_en": "Glass of heading no. 7003, 7004 or 7005, bent,…",
+  "name_vi": "Glass of heading no. 7003, 7004 or 7005, bent,…"
+ },
+ "7007": {
+  "name_en": "Safety glass, consisting of toughened (tempered) or…",
+  "name_vi": "Safety glass, consisting of toughened (tempered) or…"
+ },
+ "7008": {
+  "name_en": "Glass",
+  "name_vi": "Glass"
+ },
+ "7009": {
+  "name_en": "Glass mirrors",
+  "name_vi": "Glass mirrors"
+ },
+ "7010": {
+  "name_en": "Carboys, bottles, flasks, jars, pots, phials,…",
+  "name_vi": "Carboys, bottles, flasks, jars, pots, phials,…"
+ },
+ "7011": {
+  "name_en": "Glass envelopes (including bulbs and tubes), open and…",
+  "name_vi": "Glass envelopes (including bulbs and tubes), open and…"
+ },
+ "7013": {
+  "name_en": "Glassware of a kind used for table, kitchen, toilet,…",
+  "name_vi": "Glassware of a kind used for table, kitchen, toilet,…"
+ },
+ "7014": {
+  "name_en": "Signalling glassware and optical elements of glass…",
+  "name_vi": "Signalling glassware and optical elements of glass…"
+ },
+ "7015": {
+  "name_en": "Clock, watch and similar glasses, glasses for…",
+  "name_vi": "Clock, watch and similar glasses, glasses for…"
+ },
+ "7016": {
+  "name_en": "Glass",
+  "name_vi": "Glass"
+ },
+ "7017": {
+  "name_en": "Laboratory, hygienic or pharmaceutical glassware,…",
+  "name_vi": "Laboratory, hygienic or pharmaceutical glassware,…"
+ },
+ "7018": {
+  "name_en": "Glass beads, imitation pearls, precious or…",
+  "name_vi": "Glass beads, imitation pearls, precious or…"
+ },
+ "7019": {
+  "name_en": "Glass fibres (including glass wool) and articles…",
+  "name_vi": "Glass fibres (including glass wool) and articles…"
+ },
+ "7020": {
+  "name_en": "Glass",
+  "name_vi": "Glass"
+ },
+ "7101": {
+  "name_en": "Pearls",
+  "name_vi": "Pearls"
+ },
+ "7102": {
+  "name_en": "Diamonds, whether or not worked, but not mounted or set",
+  "name_vi": "Diamonds, whether or not worked, but not mounted or set"
+ },
+ "7103": {
+  "name_en": "Precious (excluding diamond) and semi-precious stone",
+  "name_vi": "Precious (excluding diamond) and semi-precious stone"
+ },
+ "7104": {
+  "name_en": "Stones",
+  "name_vi": "Stones"
+ },
+ "7105": {
+  "name_en": "Dust and powder of natural or synthetic precious or…",
+  "name_vi": "Dust and powder of natural or synthetic precious or…"
+ },
+ "7106": {
+  "name_en": "Silver (including silver plated with gold or platinum)",
+  "name_vi": "Silver (including silver plated with gold or platinum)"
+ },
+ "7107": {
+  "name_en": "Base metals clad with silver",
+  "name_vi": "Base metals clad with silver"
+ },
+ "7108": {
+  "name_en": "Gold (including gold plated with platinum) unwrought…",
+  "name_vi": "Gold (including gold plated with platinum) unwrought…"
+ },
+ "7109": {
+  "name_en": "Base metals or silver, clad with gold, not further…",
+  "name_vi": "Base metals or silver, clad with gold, not further…"
+ },
+ "7110": {
+  "name_en": "Platinum",
+  "name_vi": "Platinum"
+ },
+ "7111": {
+  "name_en": "Base metals, silver or gold, clad with platinum",
+  "name_vi": "Base metals, silver or gold, clad with platinum"
+ },
+ "7112": {
+  "name_en": "Waste and scrap of precious metal or of metal clad…",
+  "name_vi": "Waste and scrap of precious metal or of metal clad…"
+ },
+ "7113": {
+  "name_en": "Jewellery articles and parts thereof, of precious…",
+  "name_vi": "Jewellery articles and parts thereof, of precious…"
+ },
+ "7114": {
+  "name_en": "Articles of goldsmiths' or silversmiths' wares and…",
+  "name_vi": "Articles of goldsmiths' or silversmiths' wares and…"
+ },
+ "7115": {
+  "name_en": "Articles of precious metal or of metal clad with…",
+  "name_vi": "Articles of precious metal or of metal clad with…"
+ },
+ "7116": {
+  "name_en": "Articles of natural or cultured pearls, precious or…",
+  "name_vi": "Articles of natural or cultured pearls, precious or…"
+ },
+ "7117": {
+  "name_en": "Imitation jewellery",
+  "name_vi": "Imitation jewellery"
+ },
+ "7118": {
+  "name_en": "Coin",
+  "name_vi": "Coin"
+ },
+ "7201": {
+  "name_en": "Pig iron and spiegeleisen in pigs, blocks or other…",
+  "name_vi": "Pig iron and spiegeleisen in pigs, blocks or other…"
+ },
+ "7202": {
+  "name_en": "Ferro-alloys",
+  "name_vi": "Ferro-alloys"
+ },
+ "7203": {
+  "name_en": "Ferrous products obtained by direct reduction of iron…",
+  "name_vi": "Ferrous products obtained by direct reduction of iron…"
+ },
+ "7204": {
+  "name_en": "Ferrous waste and scrap",
+  "name_vi": "Ferrous waste and scrap"
+ },
+ "7205": {
+  "name_en": "Granules and powders, of pig iron, spiegeleisen, iron…",
+  "name_vi": "Granules and powders, of pig iron, spiegeleisen, iron…"
+ },
+ "7206": {
+  "name_en": "Iron and non-alloy steel in ingots or other primary…",
+  "name_vi": "Iron and non-alloy steel in ingots or other primary…"
+ },
+ "7207": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7208": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7209": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7210": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7211": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7212": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7213": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7214": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7215": {
+  "name_en": "Iron or non-alloy steel",
+  "name_vi": "Iron or non-alloy steel"
+ },
+ "7216": {
+  "name_en": "Iron or non-alloy steel, angles, shapes and sections",
+  "name_vi": "Iron or non-alloy steel, angles, shapes and sections"
+ },
+ "7217": {
+  "name_en": "Wire of iron or non-alloy steel",
+  "name_vi": "Wire of iron or non-alloy steel"
+ },
+ "7218": {
+  "name_en": "Stainless steel in ingots or other primary forms",
+  "name_vi": "Stainless steel in ingots or other primary forms"
+ },
+ "7219": {
+  "name_en": "Stainless steel",
+  "name_vi": "Stainless steel"
+ },
+ "7220": {
+  "name_en": "Stainless steel",
+  "name_vi": "Stainless steel"
+ },
+ "7221": {
+  "name_en": "Stainless steel bars and rods, hot-rolled, in…",
+  "name_vi": "Stainless steel bars and rods, hot-rolled, in…"
+ },
+ "7222": {
+  "name_en": "Stainless steel bars and rods, angles, shapes and sections",
+  "name_vi": "Stainless steel bars and rods, angles, shapes and sections"
+ },
+ "7223": {
+  "name_en": "Stainless steel wire",
+  "name_vi": "Stainless steel wire"
+ },
+ "7224": {
+  "name_en": "Alloy steel in ingots or other primary forms,…",
+  "name_vi": "Alloy steel in ingots or other primary forms,…"
+ },
+ "7225": {
+  "name_en": "Alloy steel flat-rolled products, of a width 600mm or more",
+  "name_vi": "Alloy steel flat-rolled products, of a width 600mm or more"
+ },
+ "7226": {
+  "name_en": "Alloy steel flat-rolled products, of a width of less…",
+  "name_vi": "Alloy steel flat-rolled products, of a width of less…"
+ },
+ "7227": {
+  "name_en": "Steel, alloy",
+  "name_vi": "Steel, alloy"
+ },
+ "7228": {
+  "name_en": "Alloy steel bars, rods, shapes and sections",
+  "name_vi": "Alloy steel bars, rods, shapes and sections"
+ },
+ "7229": {
+  "name_en": "Wire of other alloy steel",
+  "name_vi": "Wire of other alloy steel"
+ },
+ "7301": {
+  "name_en": "Iron or steel sheet piling, whether or not drilled,…",
+  "name_vi": "Iron or steel sheet piling, whether or not drilled,…"
+ },
+ "7302": {
+  "name_en": "Railway or tramway track constructions of iron or steel",
+  "name_vi": "Railway or tramway track constructions of iron or steel"
+ },
+ "7303": {
+  "name_en": "Tubes, pipes and hollow profiles, of cast iron",
+  "name_vi": "Tubes, pipes and hollow profiles, of cast iron"
+ },
+ "7304": {
+  "name_en": "Tubes, pipes and hollow profiles, seamless, of iron…",
+  "name_vi": "Tubes, pipes and hollow profiles, seamless, of iron…"
+ },
+ "7305": {
+  "name_en": "Iron or steel (excluding cast iron)",
+  "name_vi": "Iron or steel (excluding cast iron)"
+ },
+ "7306": {
+  "name_en": "Iron or steel (excluding cast iron)",
+  "name_vi": "Iron or steel (excluding cast iron)"
+ },
+ "7307": {
+  "name_en": "Tube or pipe fittings (e.g. couplings, elbows,…",
+  "name_vi": "Tube or pipe fittings (e.g. couplings, elbows,…"
+ },
+ "7308": {
+  "name_en": "Structures of iron or steel and parts thereof",
+  "name_vi": "Structures of iron or steel and parts thereof"
+ },
+ "7309": {
+  "name_en": "Reservoirs, tanks, vats and similar containers",
+  "name_vi": "Reservoirs, tanks, vats and similar containers"
+ },
+ "7310": {
+  "name_en": "Tanks, casks, drums, cans, boxes and similar…",
+  "name_vi": "Tanks, casks, drums, cans, boxes and similar…"
+ },
+ "7311": {
+  "name_en": "Containers for compressed or liquefied gas, of iron or…",
+  "name_vi": "Containers for compressed or liquefied gas, of iron or…"
+ },
+ "7312": {
+  "name_en": "Stranded wire, ropes, cables, plaited bands, slings…",
+  "name_vi": "Stranded wire, ropes, cables, plaited bands, slings…"
+ },
+ "7313": {
+  "name_en": "Barbed wire of iron or steel",
+  "name_vi": "Barbed wire of iron or steel"
+ },
+ "7314": {
+  "name_en": "Cloth (including endless bands), grill, netting and…",
+  "name_vi": "Cloth (including endless bands), grill, netting and…"
+ },
+ "7315": {
+  "name_en": "Chain and parts thereof, of iron or steel",
+  "name_vi": "Chain and parts thereof, of iron or steel"
+ },
+ "7316": {
+  "name_en": "Anchors, grapnels and parts thereof, of iron or steel",
+  "name_vi": "Anchors, grapnels and parts thereof, of iron or steel"
+ },
+ "7317": {
+  "name_en": "Nails, tacks, drawing pins, corrugated nails, staples…",
+  "name_vi": "Nails, tacks, drawing pins, corrugated nails, staples…"
+ },
+ "7318": {
+  "name_en": "Screws, bolts, nuts, coach screws, screw hooks,…",
+  "name_vi": "Screws, bolts, nuts, coach screws, screw hooks,…"
+ },
+ "7319": {
+  "name_en": "Sewing and knitting needles, bodkins, crochet hooks,…",
+  "name_vi": "Sewing and knitting needles, bodkins, crochet hooks,…"
+ },
+ "7320": {
+  "name_en": "Springs and leaves for springs, of iron or steel",
+  "name_vi": "Springs and leaves for springs, of iron or steel"
+ },
+ "7321": {
+  "name_en": "Stoves, ranges, grates, cookers (those with subsidiary…",
+  "name_vi": "Stoves, ranges, grates, cookers (those with subsidiary…"
+ },
+ "7322": {
+  "name_en": "Radiators for central heating, not electrically heated…",
+  "name_vi": "Radiators for central heating, not electrically heated…"
+ },
+ "7323": {
+  "name_en": "Table, kitchen, other household articles and parts, of…",
+  "name_vi": "Table, kitchen, other household articles and parts, of…"
+ },
+ "7324": {
+  "name_en": "Sanitary ware and parts thereof, of iron or steel",
+  "name_vi": "Sanitary ware and parts thereof, of iron or steel"
+ },
+ "7325": {
+  "name_en": "Iron or steel",
+  "name_vi": "Iron or steel"
+ },
+ "7326": {
+  "name_en": "Iron or steel",
+  "name_vi": "Iron or steel"
+ },
+ "7401": {
+  "name_en": "Copper mattes",
+  "name_vi": "Copper mattes"
+ },
+ "7402": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7403": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7404": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7405": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7406": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7407": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7408": {
+  "name_en": "Copper wire",
+  "name_vi": "Copper wire"
+ },
+ "7409": {
+  "name_en": "Copper plates, sheets and strip",
+  "name_vi": "Copper plates, sheets and strip"
+ },
+ "7410": {
+  "name_en": "Copper foil (whether or not printed or backed with…",
+  "name_vi": "Copper foil (whether or not printed or backed with…"
+ },
+ "7411": {
+  "name_en": "Copper tubes and pipes",
+  "name_vi": "Copper tubes and pipes"
+ },
+ "7412": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7413": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7415": {
+  "name_en": "Copper, nails, tacks, drawing pins, staples (not those…",
+  "name_vi": "Copper, nails, tacks, drawing pins, staples (not those…"
+ },
+ "7418": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7419": {
+  "name_en": "Copper",
+  "name_vi": "Copper"
+ },
+ "7501": {
+  "name_en": "Nickel mattes",
+  "name_vi": "Nickel mattes"
+ },
+ "7502": {
+  "name_en": "Nickel",
+  "name_vi": "Nickel"
+ },
+ "7503": {
+  "name_en": "Nickel",
+  "name_vi": "Nickel"
+ },
+ "7504": {
+  "name_en": "Nickel",
+  "name_vi": "Nickel"
+ },
+ "7505": {
+  "name_en": "Nickel",
+  "name_vi": "Nickel"
+ },
+ "7506": {
+  "name_en": "Nickel",
+  "name_vi": "Nickel"
+ },
+ "7507": {
+  "name_en": "Nickel",
+  "name_vi": "Nickel"
+ },
+ "7508": {
+  "name_en": "Nickel",
+  "name_vi": "Nickel"
+ },
+ "7601": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7602": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7603": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7604": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7605": {
+  "name_en": "Aluminium wire",
+  "name_vi": "Aluminium wire"
+ },
+ "7606": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7607": {
+  "name_en": "Aluminium foil (whether or not printed or backed with…",
+  "name_vi": "Aluminium foil (whether or not printed or backed with…"
+ },
+ "7608": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7609": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7610": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7611": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7612": {
+  "name_en": "Aluminium casks, drums, cans, boxes etc (including…",
+  "name_vi": "Aluminium casks, drums, cans, boxes etc (including…"
+ },
+ "7613": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7614": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7615": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7616": {
+  "name_en": "Aluminium",
+  "name_vi": "Aluminium"
+ },
+ "7801": {
+  "name_en": "Lead",
+  "name_vi": "Lead"
+ },
+ "7802": {
+  "name_en": "Lead",
+  "name_vi": "Lead"
+ },
+ "7804": {
+  "name_en": "Lead",
+  "name_vi": "Lead"
+ },
+ "7806": {
+  "name_en": "Lead",
+  "name_vi": "Lead"
+ },
+ "7901": {
+  "name_en": "Zinc",
+  "name_vi": "Zinc"
+ },
+ "7902": {
+  "name_en": "Zinc",
+  "name_vi": "Zinc"
+ },
+ "7903": {
+  "name_en": "Zinc",
+  "name_vi": "Zinc"
+ },
+ "7904": {
+  "name_en": "Zinc",
+  "name_vi": "Zinc"
+ },
+ "7905": {
+  "name_en": "Zinc",
+  "name_vi": "Zinc"
+ },
+ "7907": {
+  "name_en": "Zinc",
+  "name_vi": "Zinc"
+ },
+ "8001": {
+  "name_en": "Tin",
+  "name_vi": "Tin"
+ },
+ "8002": {
+  "name_en": "Tin",
+  "name_vi": "Tin"
+ },
+ "8003": {
+  "name_en": "Tin",
+  "name_vi": "Tin"
+ },
+ "8007": {
+  "name_en": "Tin",
+  "name_vi": "Tin"
+ },
+ "8101": {
+  "name_en": "Tungsten (wolfram)",
+  "name_vi": "Tungsten (wolfram)"
+ },
+ "8102": {
+  "name_en": "Molybdenum",
+  "name_vi": "Molybdenum"
+ },
+ "8103": {
+  "name_en": "Tantalum",
+  "name_vi": "Tantalum"
+ },
+ "8104": {
+  "name_en": "Magnesium",
+  "name_vi": "Magnesium"
+ },
+ "8105": {
+  "name_en": "Cobalt",
+  "name_vi": "Cobalt"
+ },
+ "8106": {
+  "name_en": "Bismuth",
+  "name_vi": "Bismuth"
+ },
+ "8108": {
+  "name_en": "Titanium",
+  "name_vi": "Titanium"
+ },
+ "8109": {
+  "name_en": "Zirconium",
+  "name_vi": "Zirconium"
+ },
+ "8110": {
+  "name_en": "Antimony",
+  "name_vi": "Antimony"
+ },
+ "8111": {
+  "name_en": "Manganese",
+  "name_vi": "Manganese"
+ },
+ "8112": {
+  "name_en": "Beryllium, chromium, hafnium, rhenium, thallium,…",
+  "name_vi": "Beryllium, chromium, hafnium, rhenium, thallium,…"
+ },
+ "8113": {
+  "name_en": "Cermets",
+  "name_vi": "Cermets"
+ },
+ "8201": {
+  "name_en": "Tools, hand",
+  "name_vi": "Tools, hand"
+ },
+ "8202": {
+  "name_en": "Tools, hand",
+  "name_vi": "Tools, hand"
+ },
+ "8203": {
+  "name_en": "Tools, hand",
+  "name_vi": "Tools, hand"
+ },
+ "8204": {
+  "name_en": "Tools, hand",
+  "name_vi": "Tools, hand"
+ },
+ "8205": {
+  "name_en": "Tools, hand",
+  "name_vi": "Tools, hand"
+ },
+ "8206": {
+  "name_en": "Tools, hand",
+  "name_vi": "Tools, hand"
+ },
+ "8207": {
+  "name_en": "Tools, interchangeable",
+  "name_vi": "Tools, interchangeable"
+ },
+ "8208": {
+  "name_en": "Knives and cutting blades, for machines or for…",
+  "name_vi": "Knives and cutting blades, for machines or for…"
+ },
+ "8209": {
+  "name_en": "Tools",
+  "name_vi": "Tools"
+ },
+ "8210": {
+  "name_en": "Tools",
+  "name_vi": "Tools"
+ },
+ "8211": {
+  "name_en": "Knives",
+  "name_vi": "Knives"
+ },
+ "8212": {
+  "name_en": "Razors and razor blades",
+  "name_vi": "Razors and razor blades"
+ },
+ "8213": {
+  "name_en": "Scissors",
+  "name_vi": "Scissors"
+ },
+ "8214": {
+  "name_en": "Cutlery",
+  "name_vi": "Cutlery"
+ },
+ "8215": {
+  "name_en": "Cutlery",
+  "name_vi": "Cutlery"
+ },
+ "8301": {
+  "name_en": "Padlocks and locks (key, combination, electrically…",
+  "name_vi": "Padlocks and locks (key, combination, electrically…"
+ },
+ "8302": {
+  "name_en": "Base metal mountings, fittings and similar articles…",
+  "name_vi": "Base metal mountings, fittings and similar articles…"
+ },
+ "8303": {
+  "name_en": "Safes",
+  "name_vi": "Safes"
+ },
+ "8304": {
+  "name_en": "Office equipment",
+  "name_vi": "Office equipment"
+ },
+ "8305": {
+  "name_en": "Stationery",
+  "name_vi": "Stationery"
+ },
+ "8306": {
+  "name_en": "Bells, gongs and the like",
+  "name_vi": "Bells, gongs and the like"
+ },
+ "8307": {
+  "name_en": "Tubing",
+  "name_vi": "Tubing"
+ },
+ "8308": {
+  "name_en": "Clasps, frames with clasps, buckles, buckle-clasps,…",
+  "name_vi": "Clasps, frames with clasps, buckles, buckle-clasps,…"
+ },
+ "8309": {
+  "name_en": "Stoppers, caps, lids (including crown corks, screw…",
+  "name_vi": "Stoppers, caps, lids (including crown corks, screw…"
+ },
+ "8310": {
+  "name_en": "Sign plates, name plates, address plates and similar…",
+  "name_vi": "Sign plates, name plates, address plates and similar…"
+ },
+ "8311": {
+  "name_en": "Wires, rods, tubes, plates, electrodes of base metal…",
+  "name_vi": "Wires, rods, tubes, plates, electrodes of base metal…"
+ },
+ "8401": {
+  "name_en": "Nuclear reactors",
+  "name_vi": "Nuclear reactors"
+ },
+ "8402": {
+  "name_en": "Boilers",
+  "name_vi": "Boilers"
+ },
+ "8403": {
+  "name_en": "Central heating boilers",
+  "name_vi": "Central heating boilers"
+ },
+ "8404": {
+  "name_en": "Auxiliary plant for use with boilers of heading no.…",
+  "name_vi": "Auxiliary plant for use with boilers of heading no.…"
+ },
+ "8405": {
+  "name_en": "Generators for producer or water gas with or without…",
+  "name_vi": "Generators for producer or water gas with or without…"
+ },
+ "8406": {
+  "name_en": "Turbines",
+  "name_vi": "Turbines"
+ },
+ "8407": {
+  "name_en": "Reciprocating or rotary internal combustion piston engines",
+  "name_vi": "Reciprocating or rotary internal combustion piston engines"
+ },
+ "8408": {
+  "name_en": "Compression-ignition internal combustion piston…",
+  "name_vi": "Compression-ignition internal combustion piston…"
+ },
+ "8409": {
+  "name_en": "Parts suitable for use solely or principally with the…",
+  "name_vi": "Parts suitable for use solely or principally with the…"
+ },
+ "8410": {
+  "name_en": "Turbines",
+  "name_vi": "Turbines"
+ },
+ "8411": {
+  "name_en": "Turbo-jets, turbo-propellers and other gas turbines",
+  "name_vi": "Turbo-jets, turbo-propellers and other gas turbines"
+ },
+ "8412": {
+  "name_en": "Engines and motors",
+  "name_vi": "Engines and motors"
+ },
+ "8413": {
+  "name_en": "Pumps",
+  "name_vi": "Pumps"
+ },
+ "8414": {
+  "name_en": "Air or vacuum pumps, air or other gas compressors and fans",
+  "name_vi": "Air or vacuum pumps, air or other gas compressors and fans"
+ },
+ "8415": {
+  "name_en": "Air conditioning machines",
+  "name_vi": "Air conditioning machines"
+ },
+ "8416": {
+  "name_en": "Furnace burners for liquid fuel, for pulverised solid…",
+  "name_vi": "Furnace burners for liquid fuel, for pulverised solid…"
+ },
+ "8417": {
+  "name_en": "Furnaces and ovens",
+  "name_vi": "Furnaces and ovens"
+ },
+ "8418": {
+  "name_en": "Refrigerators, freezers and other refrigerating or…",
+  "name_vi": "Refrigerators, freezers and other refrigerating or…"
+ },
+ "8419": {
+  "name_en": "Machinery, plant (not domestic), or laboratory equipment",
+  "name_vi": "Machinery, plant (not domestic), or laboratory equipment"
+ },
+ "8420": {
+  "name_en": "Machines",
+  "name_vi": "Machines"
+ },
+ "8421": {
+  "name_en": "Centrifuges, including centrifugal dryers",
+  "name_vi": "Centrifuges, including centrifugal dryers"
+ },
+ "8422": {
+  "name_en": "Dish washing machines",
+  "name_vi": "Dish washing machines"
+ },
+ "8423": {
+  "name_en": "Weighing machines",
+  "name_vi": "Weighing machines"
+ },
+ "8424": {
+  "name_en": "Mechanical appliances for projecting, dispersing or…",
+  "name_vi": "Mechanical appliances for projecting, dispersing or…"
+ },
+ "8425": {
+  "name_en": "Pulley tackle and hoists other than skip hoists",
+  "name_vi": "Pulley tackle and hoists other than skip hoists"
+ },
+ "8426": {
+  "name_en": "Derricks, cranes, including cable cranes, mobile…",
+  "name_vi": "Derricks, cranes, including cable cranes, mobile…"
+ },
+ "8427": {
+  "name_en": "Fork-lift and other works trucks",
+  "name_vi": "Fork-lift and other works trucks"
+ },
+ "8428": {
+  "name_en": "Lifting, handling, loading or unloading machinery",
+  "name_vi": "Lifting, handling, loading or unloading machinery"
+ },
+ "8429": {
+  "name_en": "Bulldozers, graders, levellers, scrapers, angledozers,…",
+  "name_vi": "Bulldozers, graders, levellers, scrapers, angledozers,…"
+ },
+ "8430": {
+  "name_en": "Moving, grading, levelling, scraping, excavating,…",
+  "name_vi": "Moving, grading, levelling, scraping, excavating,…"
+ },
+ "8431": {
+  "name_en": "Machinery parts",
+  "name_vi": "Machinery parts"
+ },
+ "8432": {
+  "name_en": "Agricultural, horticultural or forestry machinery for…",
+  "name_vi": "Agricultural, horticultural or forestry machinery for…"
+ },
+ "8433": {
+  "name_en": "Harvesting and threshing machinery, straw and fodder…",
+  "name_vi": "Harvesting and threshing machinery, straw and fodder…"
+ },
+ "8434": {
+  "name_en": "Milking machines and dairy machinery",
+  "name_vi": "Milking machines and dairy machinery"
+ },
+ "8435": {
+  "name_en": "Presses, crushers and similar machinery",
+  "name_vi": "Presses, crushers and similar machinery"
+ },
+ "8436": {
+  "name_en": "Agricultural, horticultural, forestry,…",
+  "name_vi": "Agricultural, horticultural, forestry,…"
+ },
+ "8437": {
+  "name_en": "Machines for cleaning, sorting, grading seed, grain,…",
+  "name_vi": "Machines for cleaning, sorting, grading seed, grain,…"
+ },
+ "8438": {
+  "name_en": "Machinery n.e.c. in this chapter, for the industrial…",
+  "name_vi": "Machinery n.e.c. in this chapter, for the industrial…"
+ },
+ "8439": {
+  "name_en": "Machinery",
+  "name_vi": "Machinery"
+ },
+ "8440": {
+  "name_en": "Book-binding machinery",
+  "name_vi": "Book-binding machinery"
+ },
+ "8441": {
+  "name_en": "Machines",
+  "name_vi": "Machines"
+ },
+ "8442": {
+  "name_en": "Machinery, apparatus and equipment (excluding machines…",
+  "name_vi": "Machinery, apparatus and equipment (excluding machines…"
+ },
+ "8443": {
+  "name_en": "Printing machinery",
+  "name_vi": "Printing machinery"
+ },
+ "8444": {
+  "name_en": "Textile machinery",
+  "name_vi": "Textile machinery"
+ },
+ "8445": {
+  "name_en": "Textile machinery",
+  "name_vi": "Textile machinery"
+ },
+ "8446": {
+  "name_en": "Weaving machines (looms)",
+  "name_vi": "Weaving machines (looms)"
+ },
+ "8447": {
+  "name_en": "Knitting machines, stitch-bonding machines and…",
+  "name_vi": "Knitting machines, stitch-bonding machines and…"
+ },
+ "8448": {
+  "name_en": "Machinery, auxiliary",
+  "name_vi": "Machinery, auxiliary"
+ },
+ "8449": {
+  "name_en": "Machinery",
+  "name_vi": "Machinery"
+ },
+ "8450": {
+  "name_en": "Household or laundry-type washing machines",
+  "name_vi": "Household or laundry-type washing machines"
+ },
+ "8451": {
+  "name_en": "Machinery (not of heading no. 8450) for washing,…",
+  "name_vi": "Machinery (not of heading no. 8450) for washing,…"
+ },
+ "8452": {
+  "name_en": "Sewing machines",
+  "name_vi": "Sewing machines"
+ },
+ "8453": {
+  "name_en": "Machinery for preparing, tanning or working hides,…",
+  "name_vi": "Machinery for preparing, tanning or working hides,…"
+ },
+ "8454": {
+  "name_en": "Converters, ladles, ingot moulds and casting machines",
+  "name_vi": "Converters, ladles, ingot moulds and casting machines"
+ },
+ "8455": {
+  "name_en": "Metal-rolling mills and rolls therefor",
+  "name_vi": "Metal-rolling mills and rolls therefor"
+ },
+ "8456": {
+  "name_en": "Machine-tools",
+  "name_vi": "Machine-tools"
+ },
+ "8457": {
+  "name_en": "Machining centres, unit construction machines (single…",
+  "name_vi": "Machining centres, unit construction machines (single…"
+ },
+ "8458": {
+  "name_en": "Lathes for removing metal",
+  "name_vi": "Lathes for removing metal"
+ },
+ "8459": {
+  "name_en": "Machine-tools",
+  "name_vi": "Machine-tools"
+ },
+ "8460": {
+  "name_en": "Machine-tools",
+  "name_vi": "Machine-tools"
+ },
+ "8461": {
+  "name_en": "Machine-tools",
+  "name_vi": "Machine-tools"
+ },
+ "8462": {
+  "name_en": "Machine-tools (including presses) for working metal by…",
+  "name_vi": "Machine-tools (including presses) for working metal by…"
+ },
+ "8463": {
+  "name_en": "Machine-tools",
+  "name_vi": "Machine-tools"
+ },
+ "8464": {
+  "name_en": "Machine-tools",
+  "name_vi": "Machine-tools"
+ },
+ "8465": {
+  "name_en": "Machine-tools",
+  "name_vi": "Machine-tools"
+ },
+ "8466": {
+  "name_en": "Parts & accessories suited for use only/mainly with…",
+  "name_vi": "Parts & accessories suited for use only/mainly with…"
+ },
+ "8467": {
+  "name_en": "Tools",
+  "name_vi": "Tools"
+ },
+ "8468": {
+  "name_en": "Machinery and apparatus for soldering, brazing,…",
+  "name_vi": "Machinery and apparatus for soldering, brazing,…"
+ },
+ "8470": {
+  "name_en": "Calculating machines and pocket-size data recording,…",
+  "name_vi": "Calculating machines and pocket-size data recording,…"
+ },
+ "8471": {
+  "name_en": "Automatic data processing machines and units thereof,…",
+  "name_vi": "Automatic data processing machines and units thereof,…"
+ },
+ "8472": {
+  "name_en": "Office machines",
+  "name_vi": "Office machines"
+ },
+ "8473": {
+  "name_en": "Machinery",
+  "name_vi": "Machinery"
+ },
+ "8474": {
+  "name_en": "Machinery for sorting, screening, separating, washing,…",
+  "name_vi": "Machinery for sorting, screening, separating, washing,…"
+ },
+ "8475": {
+  "name_en": "Machines",
+  "name_vi": "Machines"
+ },
+ "8476": {
+  "name_en": "Automatic goods-vending machines (e.g. postage stamp,…",
+  "name_vi": "Automatic goods-vending machines (e.g. postage stamp,…"
+ },
+ "8477": {
+  "name_en": "Machinery",
+  "name_vi": "Machinery"
+ },
+ "8478": {
+  "name_en": "Machinery",
+  "name_vi": "Machinery"
+ },
+ "8479": {
+  "name_en": "Machinery and mechanical appliances",
+  "name_vi": "Machinery and mechanical appliances"
+ },
+ "8480": {
+  "name_en": "Moulding boxes for metal foundry, moulding patterns,…",
+  "name_vi": "Moulding boxes for metal foundry, moulding patterns,…"
+ },
+ "8481": {
+  "name_en": "Taps, cocks, valves and similar appliances for pipes,…",
+  "name_vi": "Taps, cocks, valves and similar appliances for pipes,…"
+ },
+ "8482": {
+  "name_en": "Ball or roller bearings",
+  "name_vi": "Ball or roller bearings"
+ },
+ "8483": {
+  "name_en": "Transmission shafts (including cam and crank) and cranks",
+  "name_vi": "Transmission shafts (including cam and crank) and cranks"
+ },
+ "8484": {
+  "name_en": "Gaskets and similar joints of metal sheeting combined…",
+  "name_vi": "Gaskets and similar joints of metal sheeting combined…"
+ },
+ "8485": {
+  "name_en": "Machines for additive manufacturing",
+  "name_vi": "Machines for additive manufacturing"
+ },
+ "8486": {
+  "name_en": "Machines and apparatus of a kind used solely or…",
+  "name_vi": "Machines and apparatus of a kind used solely or…"
+ },
+ "8487": {
+  "name_en": "Machinery parts",
+  "name_vi": "Machinery parts"
+ },
+ "8501": {
+  "name_en": "Electric motors and generators (excluding generating sets)",
+  "name_vi": "Electric motors and generators (excluding generating sets)"
+ },
+ "8502": {
+  "name_en": "Electric generating sets and rotary converters",
+  "name_vi": "Electric generating sets and rotary converters"
+ },
+ "8503": {
+  "name_en": "Electric motors and generators",
+  "name_vi": "Electric motors and generators"
+ },
+ "8504": {
+  "name_en": "Electric transformers, static converters (e.g.…",
+  "name_vi": "Electric transformers, static converters (e.g.…"
+ },
+ "8505": {
+  "name_en": "Electro-magnets",
+  "name_vi": "Electro-magnets"
+ },
+ "8506": {
+  "name_en": "Cells and batteries",
+  "name_vi": "Cells and batteries"
+ },
+ "8507": {
+  "name_en": "Electric accumulators, including separators therefor",
+  "name_vi": "Electric accumulators, including separators therefor"
+ },
+ "8508": {
+  "name_en": "Vacuum cleaners",
+  "name_vi": "Vacuum cleaners"
+ },
+ "8509": {
+  "name_en": "Electro-mechanical domestic appliances",
+  "name_vi": "Electro-mechanical domestic appliances"
+ },
+ "8510": {
+  "name_en": "Shavers, hair clippers and hair removing appliances,…",
+  "name_vi": "Shavers, hair clippers and hair removing appliances,…"
+ },
+ "8511": {
+  "name_en": "Ignition or starting equipment",
+  "name_vi": "Ignition or starting equipment"
+ },
+ "8512": {
+  "name_en": "Lighting or visual signalling equipment (excluding…",
+  "name_vi": "Lighting or visual signalling equipment (excluding…"
+ },
+ "8513": {
+  "name_en": "Lamps",
+  "name_vi": "Lamps"
+ },
+ "8514": {
+  "name_en": "Industrial or laboratory electric furnaces and ovens…",
+  "name_vi": "Industrial or laboratory electric furnaces and ovens…"
+ },
+ "8515": {
+  "name_en": "Electric (electrically heated gas) soldering, brazing,…",
+  "name_vi": "Electric (electrically heated gas) soldering, brazing,…"
+ },
+ "8516": {
+  "name_en": "Electric water, space, soil heaters",
+  "name_vi": "Electric water, space, soil heaters"
+ },
+ "8518": {
+  "name_en": "Microphones and their stands",
+  "name_vi": "Microphones and their stands"
+ },
+ "8519": {
+  "name_en": "Sound recording or reproducing apparatus",
+  "name_vi": "Sound recording or reproducing apparatus"
+ },
+ "8521": {
+  "name_en": "Video recording or reproducing apparatus",
+  "name_vi": "Video recording or reproducing apparatus"
+ },
+ "8522": {
+  "name_en": "Sound or video recording apparatus",
+  "name_vi": "Sound or video recording apparatus"
+ },
+ "8523": {
+  "name_en": "Discs, tapes, solid-state non-volatile storage…",
+  "name_vi": "Discs, tapes, solid-state non-volatile storage…"
+ },
+ "8524": {
+  "name_en": "Flat panel display modules, whether or not…",
+  "name_vi": "Flat panel display modules, whether or not…"
+ },
+ "8525": {
+  "name_en": "Transmission apparatus for radio-broadcasting or…",
+  "name_vi": "Transmission apparatus for radio-broadcasting or…"
+ },
+ "8526": {
+  "name_en": "Radar apparatus, radio navigational aid apparatus and…",
+  "name_vi": "Radar apparatus, radio navigational aid apparatus and…"
+ },
+ "8527": {
+  "name_en": "Reception apparatus for radio-broadcasting, whether or…",
+  "name_vi": "Reception apparatus for radio-broadcasting, whether or…"
+ },
+ "8528": {
+  "name_en": "Monitors and projectors, not incorporating television…",
+  "name_vi": "Monitors and projectors, not incorporating television…"
+ },
+ "8529": {
+  "name_en": "Transmission apparatus",
+  "name_vi": "Transmission apparatus"
+ },
+ "8530": {
+  "name_en": "Signalling, safety or traffic control equipment",
+  "name_vi": "Signalling, safety or traffic control equipment"
+ },
+ "8531": {
+  "name_en": "Signalling apparatus",
+  "name_vi": "Signalling apparatus"
+ },
+ "8532": {
+  "name_en": "Electrical capacitors",
+  "name_vi": "Electrical capacitors"
+ },
+ "8533": {
+  "name_en": "Electrical resistors (including rheostats and…",
+  "name_vi": "Electrical resistors (including rheostats and…"
+ },
+ "8534": {
+  "name_en": "Circuits",
+  "name_vi": "Circuits"
+ },
+ "8535": {
+  "name_en": "Electrical apparatus for switching, protecting…",
+  "name_vi": "Electrical apparatus for switching, protecting…"
+ },
+ "8536": {
+  "name_en": "Electrical apparatus for switching, protecting…",
+  "name_vi": "Electrical apparatus for switching, protecting…"
+ },
+ "8537": {
+  "name_en": "Boards, panels, consoles, desks, cabinets, bases with…",
+  "name_vi": "Boards, panels, consoles, desks, cabinets, bases with…"
+ },
+ "8538": {
+  "name_en": "Electrical apparatus",
+  "name_vi": "Electrical apparatus"
+ },
+ "8539": {
+  "name_en": "Lamps",
+  "name_vi": "Lamps"
+ },
+ "8540": {
+  "name_en": "Thermionic, cold cathode or photo-cathode valves and…",
+  "name_vi": "Thermionic, cold cathode or photo-cathode valves and…"
+ },
+ "8541": {
+  "name_en": "Semiconductor devices (e.g. diodes, transistors,…",
+  "name_vi": "Semiconductor devices (e.g. diodes, transistors,…"
+ },
+ "8543": {
+  "name_en": "Electrical machines and apparatus",
+  "name_vi": "Electrical machines and apparatus"
+ },
+ "8544": {
+  "name_en": "Insulated wire, cable and other electric conductors,…",
+  "name_vi": "Insulated wire, cable and other electric conductors,…"
+ },
+ "8545": {
+  "name_en": "Carbon electrodes, carbon brushes, lamp carbons,…",
+  "name_vi": "Carbon electrodes, carbon brushes, lamp carbons,…"
+ },
+ "8546": {
+  "name_en": "Electrical insulators of any material",
+  "name_vi": "Electrical insulators of any material"
+ },
+ "8547": {
+  "name_en": "Insulating fittings",
+  "name_vi": "Insulating fittings"
+ },
+ "8548": {
+  "name_en": "Electrical parts of machinery or apparatus",
+  "name_vi": "Electrical parts of machinery or apparatus"
+ },
+ "8549": {
+  "name_en": "Electrical and electronic waste and scrap",
+  "name_vi": "Electrical and electronic waste and scrap"
+ },
+ "8601": {
+  "name_en": "Rail locomotives",
+  "name_vi": "Rail locomotives"
+ },
+ "8602": {
+  "name_en": "Rail locomotives",
+  "name_vi": "Rail locomotives"
+ },
+ "8603": {
+  "name_en": "Railway or tramway coaches, vans and trucks",
+  "name_vi": "Railway or tramway coaches, vans and trucks"
+ },
+ "8604": {
+  "name_en": "Railway or tramway maintenance or service vehicles",
+  "name_vi": "Railway or tramway maintenance or service vehicles"
+ },
+ "8605": {
+  "name_en": "Railway or tramway coaches",
+  "name_vi": "Railway or tramway coaches"
+ },
+ "8606": {
+  "name_en": "Railway or tramway goods vans and wagons",
+  "name_vi": "Railway or tramway goods vans and wagons"
+ },
+ "8607": {
+  "name_en": "Railway or tramway locomotives or rolling stock",
+  "name_vi": "Railway or tramway locomotives or rolling stock"
+ },
+ "8608": {
+  "name_en": "Railway or tramway track fixtures and fittings",
+  "name_vi": "Railway or tramway track fixtures and fittings"
+ },
+ "8609": {
+  "name_en": "Containers",
+  "name_vi": "Containers"
+ },
+ "8701": {
+  "name_en": "Tractors",
+  "name_vi": "Tractors"
+ },
+ "8702": {
+  "name_en": "Vehicles",
+  "name_vi": "Vehicles"
+ },
+ "8704": {
+  "name_en": "Vehicles",
+  "name_vi": "Vehicles"
+ },
+ "8705": {
+  "name_en": "Special purpose motor vehicles",
+  "name_vi": "Special purpose motor vehicles"
+ },
+ "8706": {
+  "name_en": "Chassis",
+  "name_vi": "Chassis"
+ },
+ "8707": {
+  "name_en": "Bodies",
+  "name_vi": "Bodies"
+ },
+ "8708": {
+  "name_en": "Motor vehicles",
+  "name_vi": "Motor vehicles"
+ },
+ "8709": {
+  "name_en": "Works trucks, self-propelled, (not fitted with lifting…",
+  "name_vi": "Works trucks, self-propelled, (not fitted with lifting…"
+ },
+ "8710": {
+  "name_en": "Tanks and other armoured fighting vehicles",
+  "name_vi": "Tanks and other armoured fighting vehicles"
+ },
+ "8711": {
+  "name_en": "Motorcycles (including mopeds) and cycles",
+  "name_vi": "Motorcycles (including mopeds) and cycles"
+ },
+ "8712": {
+  "name_en": "Bicycles and other cycles",
+  "name_vi": "Bicycles and other cycles"
+ },
+ "8713": {
+  "name_en": "Carriages for disabled persons",
+  "name_vi": "Carriages for disabled persons"
+ },
+ "8714": {
+  "name_en": "Vehicles",
+  "name_vi": "Vehicles"
+ },
+ "8715": {
+  "name_en": "Baby carriages and parts thereof",
+  "name_vi": "Baby carriages and parts thereof"
+ },
+ "8716": {
+  "name_en": "Trailers and semi-trailers",
+  "name_vi": "Trailers and semi-trailers"
+ },
+ "8801": {
+  "name_en": "Balloons and dirigibles",
+  "name_vi": "Balloons and dirigibles"
+ },
+ "8802": {
+  "name_en": "Aircraft n.e.c. in heading no. 8801, except unmanned…",
+  "name_vi": "Aircraft n.e.c. in heading no. 8801, except unmanned…"
+ },
+ "8804": {
+  "name_en": "Parachutes (including dirigible parachutes and…",
+  "name_vi": "Parachutes (including dirigible parachutes and…"
+ },
+ "8805": {
+  "name_en": "Aircraft launching gear, deck-arrestor or similar…",
+  "name_vi": "Aircraft launching gear, deck-arrestor or similar…"
+ },
+ "8806": {
+  "name_en": "Unmanned aircraft",
+  "name_vi": "Unmanned aircraft"
+ },
+ "8807": {
+  "name_en": "Aircraft",
+  "name_vi": "Aircraft"
+ },
+ "8901": {
+  "name_en": "Cruise ships, excursion boats, ferry-boats, cargo…",
+  "name_vi": "Cruise ships, excursion boats, ferry-boats, cargo…"
+ },
+ "8902": {
+  "name_en": "Fishing vessels, factory ships and other vessels",
+  "name_vi": "Fishing vessels, factory ships and other vessels"
+ },
+ "8903": {
+  "name_en": "Yachts and other vessels",
+  "name_vi": "Yachts and other vessels"
+ },
+ "8904": {
+  "name_en": "Tugs and pusher craft",
+  "name_vi": "Tugs and pusher craft"
+ },
+ "8905": {
+  "name_en": "Light-vessels, fire-floats, dredgers, floating cranes,…",
+  "name_vi": "Light-vessels, fire-floats, dredgers, floating cranes,…"
+ },
+ "8906": {
+  "name_en": "Vessels",
+  "name_vi": "Vessels"
+ },
+ "8907": {
+  "name_en": "Boats, floating structures, other (for e.g. rafts,…",
+  "name_vi": "Boats, floating structures, other (for e.g. rafts,…"
+ },
+ "8908": {
+  "name_en": "Vessels and other floating structures",
+  "name_vi": "Vessels and other floating structures"
+ },
+ "9001": {
+  "name_en": "Optical fibres and optical fibre bundles",
+  "name_vi": "Optical fibres and optical fibre bundles"
+ },
+ "9002": {
+  "name_en": "Lenses, prisms, mirrors and other optical elements, of…",
+  "name_vi": "Lenses, prisms, mirrors and other optical elements, of…"
+ },
+ "9003": {
+  "name_en": "Frames and mountings",
+  "name_vi": "Frames and mountings"
+ },
+ "9004": {
+  "name_en": "Spectacles, goggles and the like",
+  "name_vi": "Spectacles, goggles and the like"
+ },
+ "9005": {
+  "name_en": "Binoculars, monoculars, other optical telescopes,…",
+  "name_vi": "Binoculars, monoculars, other optical telescopes,…"
+ },
+ "9006": {
+  "name_en": "Cameras, photographic (excluding cinematographic)",
+  "name_vi": "Cameras, photographic (excluding cinematographic)"
+ },
+ "9007": {
+  "name_en": "Cinematographic cameras and projectors, whether or not…",
+  "name_vi": "Cinematographic cameras and projectors, whether or not…"
+ },
+ "9008": {
+  "name_en": "Image projectors, other than cinematographic",
+  "name_vi": "Image projectors, other than cinematographic"
+ },
+ "9010": {
+  "name_en": "Photographic (including cinematographic) laboratory…",
+  "name_vi": "Photographic (including cinematographic) laboratory…"
+ },
+ "9011": {
+  "name_en": "Microscopes, compound optical",
+  "name_vi": "Microscopes, compound optical"
+ },
+ "9012": {
+  "name_en": "Microscopes (excluding optical microscopes)",
+  "name_vi": "Microscopes (excluding optical microscopes)"
+ },
+ "9013": {
+  "name_en": "Lasers, other than laser diodes",
+  "name_vi": "Lasers, other than laser diodes"
+ },
+ "9014": {
+  "name_en": "Navigational instruments and appliances",
+  "name_vi": "Navigational instruments and appliances"
+ },
+ "9015": {
+  "name_en": "Surveying (including photogrammetrical surveying),…",
+  "name_vi": "Surveying (including photogrammetrical surveying),…"
+ },
+ "9016": {
+  "name_en": "Balances",
+  "name_vi": "Balances"
+ },
+ "9017": {
+  "name_en": "Drawing, marking-out, mathematical calculating…",
+  "name_vi": "Drawing, marking-out, mathematical calculating…"
+ },
+ "9018": {
+  "name_en": "Instruments and appliances used in medical, surgical,…",
+  "name_vi": "Instruments and appliances used in medical, surgical,…"
+ },
+ "9019": {
+  "name_en": "Mechano-therapy, massage appliances",
+  "name_vi": "Mechano-therapy, massage appliances"
+ },
+ "9020": {
+  "name_en": "Breathing appliances and gas masks",
+  "name_vi": "Breathing appliances and gas masks"
+ },
+ "9021": {
+  "name_en": "Orthopaedic appliances",
+  "name_vi": "Orthopaedic appliances"
+ },
+ "9022": {
+  "name_en": "Apparatus based on the use of x-rays or of alpha,…",
+  "name_vi": "Apparatus based on the use of x-rays or of alpha,…"
+ },
+ "9023": {
+  "name_en": "Instruments, apparatus and models, designed for…",
+  "name_vi": "Instruments, apparatus and models, designed for…"
+ },
+ "9024": {
+  "name_en": "Machines and appliances for testing the hardness,…",
+  "name_vi": "Machines and appliances for testing the hardness,…"
+ },
+ "9025": {
+  "name_en": "Hydrometers and similar floating instruments,…",
+  "name_vi": "Hydrometers and similar floating instruments,…"
+ },
+ "9026": {
+  "name_en": "Instruments, apparatus for measuring or checking the…",
+  "name_vi": "Instruments, apparatus for measuring or checking the…"
+ },
+ "9027": {
+  "name_en": "Instruments and apparatus",
+  "name_vi": "Instruments and apparatus"
+ },
+ "9028": {
+  "name_en": "Gas, liquid or electricity supply or production…",
+  "name_vi": "Gas, liquid or electricity supply or production…"
+ },
+ "9029": {
+  "name_en": "Revolution counter, production counters, taximeters,…",
+  "name_vi": "Revolution counter, production counters, taximeters,…"
+ },
+ "9030": {
+  "name_en": "Instruments, apparatus for measuring, checking…",
+  "name_vi": "Instruments, apparatus for measuring, checking…"
+ },
+ "9031": {
+  "name_en": "Measuring or checking instruments, appliances and…",
+  "name_vi": "Measuring or checking instruments, appliances and…"
+ },
+ "9032": {
+  "name_en": "Regulating or controlling instruments and apparatus",
+  "name_vi": "Regulating or controlling instruments and apparatus"
+ },
+ "9033": {
+  "name_en": "Machines and appliances, instruments or apparatus of…",
+  "name_vi": "Machines and appliances, instruments or apparatus of…"
+ },
+ "9101": {
+  "name_en": "Wrist-watches, pocket-watches, stop-watches and other…",
+  "name_vi": "Wrist-watches, pocket-watches, stop-watches and other…"
+ },
+ "9102": {
+  "name_en": "Wrist-watches, pocket-watches, stop-watches and other…",
+  "name_vi": "Wrist-watches, pocket-watches, stop-watches and other…"
+ },
+ "9103": {
+  "name_en": "Clocks",
+  "name_vi": "Clocks"
+ },
+ "9104": {
+  "name_en": "Instrument panel clocks and clocks of a similar type…",
+  "name_vi": "Instrument panel clocks and clocks of a similar type…"
+ },
+ "9105": {
+  "name_en": "Clocks, other, n.e.c.",
+  "name_vi": "Clocks, other, n.e.c."
+ },
+ "9106": {
+  "name_en": "Time of day recording apparatus and apparatus for…",
+  "name_vi": "Time of day recording apparatus and apparatus for…"
+ },
+ "9107": {
+  "name_en": "Time switches",
+  "name_vi": "Time switches"
+ },
+ "9108": {
+  "name_en": "Watch movements",
+  "name_vi": "Watch movements"
+ },
+ "9109": {
+  "name_en": "Clock movements",
+  "name_vi": "Clock movements"
+ },
+ "9110": {
+  "name_en": "Watch or clock movements, complete, unassembled or…",
+  "name_vi": "Watch or clock movements, complete, unassembled or…"
+ },
+ "9111": {
+  "name_en": "Watch cases and parts thereof",
+  "name_vi": "Watch cases and parts thereof"
+ },
+ "9112": {
+  "name_en": "Clock cases and cases of a similar type for other…",
+  "name_vi": "Clock cases and cases of a similar type for other…"
+ },
+ "9113": {
+  "name_en": "Watch straps, watch bands, watch bracelets and parts…",
+  "name_vi": "Watch straps, watch bands, watch bracelets and parts…"
+ },
+ "9114": {
+  "name_en": "Clock or watch parts",
+  "name_vi": "Clock or watch parts"
+ },
+ "9201": {
+  "name_en": "Pianos",
+  "name_vi": "Pianos"
+ },
+ "9202": {
+  "name_en": "Musical instruments",
+  "name_vi": "Musical instruments"
+ },
+ "9205": {
+  "name_en": "Musical instruments",
+  "name_vi": "Musical instruments"
+ },
+ "9206": {
+  "name_en": "Musical instruments",
+  "name_vi": "Musical instruments"
+ },
+ "9207": {
+  "name_en": "Musical instruments",
+  "name_vi": "Musical instruments"
+ },
+ "9208": {
+  "name_en": "Musical boxes, fairground and mechanical street…",
+  "name_vi": "Musical boxes, fairground and mechanical street…"
+ },
+ "9209": {
+  "name_en": "Musical instrument parts (for example, mechanisms for…",
+  "name_vi": "Musical instrument parts (for example, mechanisms for…"
+ },
+ "9301": {
+  "name_en": "Military weapons",
+  "name_vi": "Military weapons"
+ },
+ "9302": {
+  "name_en": "Revolvers and pistols",
+  "name_vi": "Revolvers and pistols"
+ },
+ "9303": {
+  "name_en": "Firearms",
+  "name_vi": "Firearms"
+ },
+ "9304": {
+  "name_en": "Firearms",
+  "name_vi": "Firearms"
+ },
+ "9305": {
+  "name_en": "Firearms",
+  "name_vi": "Firearms"
+ },
+ "9306": {
+  "name_en": "Bombs, grenades, torpedoes, mines, missiles and…",
+  "name_vi": "Bombs, grenades, torpedoes, mines, missiles and…"
+ },
+ "9307": {
+  "name_en": "Arms",
+  "name_vi": "Arms"
+ },
+ "9401": {
+  "name_en": "Seats (not those of heading no. 9402), whether or not…",
+  "name_vi": "Seats (not those of heading no. 9402), whether or not…"
+ },
+ "9402": {
+  "name_en": "Furniture",
+  "name_vi": "Furniture"
+ },
+ "9404": {
+  "name_en": "Mattress supports",
+  "name_vi": "Mattress supports"
+ },
+ "9405": {
+  "name_en": "Luminaires and light fittings",
+  "name_vi": "Luminaires and light fittings"
+ },
+ "9406": {
+  "name_en": "Buildings",
+  "name_vi": "Buildings"
+ },
+ "9503": {
+  "name_en": "Tricycles, scooters, pedal cars and similar wheeled toys",
+  "name_vi": "Tricycles, scooters, pedal cars and similar wheeled toys"
+ },
+ "9504": {
+  "name_en": "Video game consoles and machines, articles for…",
+  "name_vi": "Video game consoles and machines, articles for…"
+ },
+ "9505": {
+  "name_en": "Festive, carnival or other entertainment articles,…",
+  "name_vi": "Festive, carnival or other entertainment articles,…"
+ },
+ "9506": {
+  "name_en": "Gymnastics, athletics, other sports (including table…",
+  "name_vi": "Gymnastics, athletics, other sports (including table…"
+ },
+ "9507": {
+  "name_en": "Fishing rods, fish-hooks and other line fishing tackle",
+  "name_vi": "Fishing rods, fish-hooks and other line fishing tackle"
+ },
+ "9508": {
+  "name_en": "Travelling circuses and travelling menageries,…",
+  "name_vi": "Travelling circuses and travelling menageries,…"
+ },
+ "9601": {
+  "name_en": "Ivory, bone, tortoise-shell, horn, antlers, coral,…",
+  "name_vi": "Ivory, bone, tortoise-shell, horn, antlers, coral,…"
+ },
+ "9602": {
+  "name_en": "Vegetable, mineral carving material and articles of…",
+  "name_vi": "Vegetable, mineral carving material and articles of…"
+ },
+ "9603": {
+  "name_en": "Brooms, brushes (including parts of machines), hand…",
+  "name_vi": "Brooms, brushes (including parts of machines), hand…"
+ },
+ "9604": {
+  "name_en": "Hand sieves and hand riddles",
+  "name_vi": "Hand sieves and hand riddles"
+ },
+ "9605": {
+  "name_en": "Travel sets",
+  "name_vi": "Travel sets"
+ },
+ "9606": {
+  "name_en": "Buttons, press-fasteners, snap-fasteners and…",
+  "name_vi": "Buttons, press-fasteners, snap-fasteners and…"
+ },
+ "9607": {
+  "name_en": "Slide fasteners and parts thereof",
+  "name_vi": "Slide fasteners and parts thereof"
+ },
+ "9608": {
+  "name_en": "Pens",
+  "name_vi": "Pens"
+ },
+ "9609": {
+  "name_en": "Pencils (not of heading no. 9608), crayons, pencil…",
+  "name_vi": "Pencils (not of heading no. 9608), crayons, pencil…"
+ },
+ "9610": {
+  "name_en": "Slates and boards, with writing or drawing surfaces,…",
+  "name_vi": "Slates and boards, with writing or drawing surfaces,…"
+ },
+ "9611": {
+  "name_en": "Stamps",
+  "name_vi": "Stamps"
+ },
+ "9612": {
+  "name_en": "Typewriter, similar ribbons, inked, otherwise prepared…",
+  "name_vi": "Typewriter, similar ribbons, inked, otherwise prepared…"
+ },
+ "9613": {
+  "name_en": "Cigarette lighters and other lighters, whether or not…",
+  "name_vi": "Cigarette lighters and other lighters, whether or not…"
+ },
+ "9614": {
+  "name_en": "Smoking pipes (including pipe bowls) and cigar or…",
+  "name_vi": "Smoking pipes (including pipe bowls) and cigar or…"
+ },
+ "9615": {
+  "name_en": "Combs, hair-slides and similar",
+  "name_vi": "Combs, hair-slides and similar"
+ },
+ "9616": {
+  "name_en": "Scent sprays and similar toilet sprays and mounts and…",
+  "name_vi": "Scent sprays and similar toilet sprays and mounts and…"
+ },
+ "9617": {
+  "name_en": "Vacuum flasks and other vacuum vessels, complete with…",
+  "name_vi": "Vacuum flasks and other vacuum vessels, complete with…"
+ },
+ "9618": {
+  "name_en": "Tailors' dummies and other lay figures",
+  "name_vi": "Tailors' dummies and other lay figures"
+ },
+ "9619": {
+  "name_en": "Sanitary towels (pads) and tampons, napkins (diapers),…",
+  "name_vi": "Sanitary towels (pads) and tampons, napkins (diapers),…"
+ },
+ "9620": {
+  "name_en": "Monopods, bipods, tripods and similar articles",
+  "name_vi": "Monopods, bipods, tripods and similar articles"
+ },
+ "9701": {
+  "name_en": "Paintings, drawings and pastels, executed entirely by hand",
+  "name_vi": "Paintings, drawings and pastels, executed entirely by hand"
+ },
+ "9702": {
+  "name_en": "Engravings, prints and lithographs",
+  "name_vi": "Engravings, prints and lithographs"
+ },
+ "9703": {
+  "name_en": "Sculptures and statuary",
+  "name_vi": "Sculptures and statuary"
+ },
+ "9704": {
+  "name_en": "Stamps, postage or revenue",
+  "name_vi": "Stamps, postage or revenue"
+ },
+ "9705": {
+  "name_en": "Collections and collectors' pieces",
+  "name_vi": "Collections and collectors' pieces"
+ },
+ "9706": {
+  "name_en": "Antiques",
+  "name_vi": "Antiques"
+ },
+ "9999": {
+  "name_en": "Commodities not specified according to kind",
+  "name_vi": "Commodities not specified according to kind"
+ }
+}

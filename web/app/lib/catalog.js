@@ -7,9 +7,10 @@
  * @limits   Data + pure search. No I/O.
  * @affects  Used by SearchBox (client) + page.js (covered vs locked routing).
  */
+import HS4 from "./catalog-hs4.json";
 
 // level: "category" (HS-4 group) | "product" (HS-6). All covered = a snapshot exists.
-export const CATALOG = [
+const CURATED = [
   { hs6: "TOTAL", level: "category", name_en: "All products", name_vi: "Tất cả sản phẩm",
     synonyms: ["all", "total", "tất cả", "tat ca", "everything", "tổng"] },
 
@@ -91,6 +92,11 @@ export const CATALOG = [
   { hs6: "1511", level: "category", name_en: "Palm oil", name_vi: "Dầu cọ",
     synonyms: ["palm oil", "dầu cọ", "dau co", "palm"] },
 ];
+
+
+// Every official HS4 heading (1,208, HS-2022 titles, English for now) merged in after the curated
+// entries — so the curated Vietnamese names + synonyms always win the search ranking.
+export const CATALOG = [...CURATED, ...HS4];
 
 const BY_HS = Object.fromEntries(CATALOG.map((c) => [c.hs6, c]));
 

@@ -7,13 +7,21 @@
  * @affects  Rendered on page.js from snapshot.feed + the active flow.
  */
 import Link from "next/link";
-import { bandArrow, bandLabel, fmtPct, fmtUSD, sigColor } from "../lib/format.js";
+import { bandArrow, bandLabel, fmtPct, fmtPeriod, fmtUSD, isFeedSignal, sigColor, slotFor } from "../lib/format.js";
 
-export default function GlobalFeed({ feed, flow, lang, t, hs, sort = "signal", tools }) {
+export default function GlobalFeed({ countries, flow, freq = "A", lang, t, hs, sort = "value-desc", tools }) {
   const nm = (x) => (lang === "en" ? x.name_en : x.name_vi) || "";
   const loc = lang === "en" ? "en" : "vi";
-  let items = flow === "all" ? feed : feed.filter((f) => f.flow === flow);
-  items = [...items];
+  const metric = flow === "export" ? "exp" : "imp";
+  // Derive the feed from the countries at the chosen grain, so the M/Q/A toggle switches it too.
+  const items = [];
+  for (const c of countries) {
+    const slot = slotFor(c[metric], freq);
+    if (!slot || !isFeedSignal(slot.band)) continue;
+    items.push({ code: c.code, name_en: c.name_en, name_vi: c.name_vi, flow,
+                 value_usd: slot.value_usd, yoy_delta: slot.yoy_delta, band: slot.band,
+                 direction: slot.direction, period: slot.period });
+  }
   if (sort === "name-asc") items.sort((a, b) => nm(a).localeCompare(nm(b), loc));
   else if (sort === "name-desc") items.sort((a, b) => nm(b).localeCompare(nm(a), loc));
   else if (sort === "change-desc") items.sort((a, b) => (b.yoy_delta || 0) - (a.yoy_delta || 0));
@@ -41,7 +49,7 @@ export default function GlobalFeed({ feed, flow, lang, t, hs, sort = "signal", t
                 <span className={`flowtag ${m.flow}`}>{flowLabel}</span>
                 <span className="feed-val">{fmtUSD(m.value_usd)}</span>
                 <span className="feed-band" style={{ color }}>{bandLabel(m.band, lang)}</span>
-                <span className="muted">{m.period}</span>
+                <span className="muted">{fmtPeriod(m.period, lang)}</span>
               </div>
             </li>
           );

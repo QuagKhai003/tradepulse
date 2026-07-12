@@ -18,7 +18,7 @@ import Globe from "react-globe.gl";
 import { geoCentroid } from "d3-geo";
 import { feature } from "topojson-client";
 import worldData from "world-atlas/countries-110m.json";
-import { fmtPct, fmtUSD } from "../lib/format.js";
+import { fmtPct, fmtUSD, slotFor } from "../lib/format.js";
 // NB: the 50m border data (~0.75MB) is dynamically imported on first zoom-in (see updateBorders),
 // so it stays OUT of the initial route compile + client bundle.
 
@@ -62,7 +62,7 @@ function buildLines(g, rings) {
   return lines;
 }
 
-export default function GlobeInner({ countries, metric, hs, lang }) {
+export default function GlobeInner({ countries, metric, hs, lang, freq = "A" }) {
   const router = useRouter();
   const globeRef = useRef();
   const wrapRef = useRef();
@@ -105,7 +105,7 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
     const out = [];
     for (const f of features) {
       const d = byId[norm(f.id)];
-      const slot = d && d[metric];
+      const slot = slotFor(d && d[metric], freq);
       if (!slot || slot.band === "none") continue;
       const [lng, lat] = geoCentroid(f);
       if (!isFinite(lat) || !isFinite(lng)) continue;
@@ -113,7 +113,7 @@ export default function GlobeInner({ countries, metric, hs, lang }) {
                  band: slot.band, direction: slot.direction, val: slot.value_usd, yoy: slot.yoy_delta });
     }
     return out;
-  }, [features, byId, metric, lang]);
+  }, [features, byId, metric, lang, freq]);
 
   const maxVal = useMemo(() => Math.max(1, ...points.map((p) => p.val)), [points]);
   const rings = useMemo(

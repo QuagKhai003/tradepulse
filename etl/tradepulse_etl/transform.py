@@ -8,13 +8,17 @@ transform.py — raw source record -> trade_flows row.
 """
 from __future__ import annotations
 
+from .config import freq_of
+
 
 def transform_record(raw: dict, source_name: str) -> dict:
+    period = str(raw["period"])
     return {
         "reporter": int(raw["reporterCode"]),
         "partner": int(raw["partnerCode"]),
         "hs6": str(raw["cmdCode"]),
-        "period": str(raw["period"]),
+        "period": period,
+        "freq": freq_of(period),           # 'A'/'Q'/'M' — grain, for the UI toggle
         "flow": str(raw["flowCode"]),
         "value_usd": float(raw["primaryValue"]),
         "quantity": (float(raw["netWgt"]) if raw.get("netWgt") is not None else None),

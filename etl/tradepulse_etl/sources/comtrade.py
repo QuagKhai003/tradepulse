@@ -41,19 +41,29 @@ def _chunks(items: list, n: int) -> list[list]:
     return [items[i:i + n] for i in range(0, len(items), n)]
 
 
+def _quarter_of(month: str) -> str:
+    """'YYYYMM' -> 'YYYY-Qn' (which quarter a month belongs to, for incremental skip)."""
+    y, m = month[:4], int(month[4:6])
+    return f"{y}-Q{(m - 1) // 3 + 1}"
+
+
 class ComtradeSource:
     name = "comtrade"
 
     PERIODS_PER_CALL = 12   # authenticated /data hard limit: "Maximum number of periods is 12"
+    MONTHLY_ALL_CHUNK = 1   # all-reporters monthly is heavy -> ONE month per call (12 -> timeout)
 
     def __init__(self, key: str | None = None, months: int = 24, years: int = 6,
-                 months_sourcing: int = 24, timeout: int = 60, pause: float = 1.2):
+                 months_sourcing: int = 24, timeout: int = 60, pause: float = 1.2,
+                 freqs: tuple[str, ...] = ("A",), quarterly_hs: list[str] | None = None):
         self.key = key
         self.months = months
         self.years = years
         self.months_sourcing = months_sourcing
         self.timeout = timeout
         self.pause = pause
+        self.freqs = freqs          # ('A',) annual only; ('A','Q') also monthly->quarterly (fresher)
+        self.quarterly_hs = set(quarterly_hs) if quarterly_hs else None   # bound the quarterly pull
 
     # --- quarterly + all-partner data for a few focus reporters (drill-down sourcing) ---
     def pull_sourcing(self, hs_codes: list[str], reporters: list[int]) -> list[dict]:
@@ -72,23 +82,50 @@ class ComtradeSource:
                     time.sleep(self.pause)
         return self._to_quarters(monthly)
 
-    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None) -> list[dict]:
-        if self.key:
-            return self._pull_authenticated(hs_codes)
-        return self._pull_keyless(",".join(hs_codes), reporters)
+    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None,
+             skip: frozenset = frozenset()) -> list[dict]:
+        if not self.key:
+            return self._pull_keyless(",".join(hs_codes), reporters)
+        out: list[dict] = []
+        if "A" in self.freqs:
+            out += self._pull_annual(hs_codes, skip)
+        if "Q" in self.freqs:
+            out += self._pull_quarterly(hs_codes, skip)
+        return out
 
     # --- authenticated: per HS, ALL reporters, BOTH flows, World partner; ANNUAL (light + global) ---
-    def _pull_authenticated(self, hs_codes: list[str]) -> list[dict]:
-        # One annual call per (HS, year) returns every country, both flows (X+M). Per-HS keeps each
-        # all-country payload small enough to be reliable (a combined multi-HS call times out).
+    def _pull_annual(self, hs_codes: list[str], skip: frozenset = frozenset()) -> list[dict]:
+        # One annual call per (HS, year) returns every country, both flows (X+M). Skip (hs, year) pairs
+        # already stored + final — that's the incremental win (a re-run only fetches the recent years).
         rows: list[dict] = []
         for hs in hs_codes:
             for year in self._recent_years(self.years):
+                if (hs, str(year)) in skip:
+                    continue
                 params = {"cmdCode": hs, "flowCode": "M,X", "partnerCode": "0", "period": year}
                 data = self._get(f"{DATA_ANNUAL}?{urllib.parse.urlencode(params)}", auth=True)
                 rows += [r for r in data if _is_total_row(r)]
                 time.sleep(self.pause)
         return self._normalise_annual(rows)
+
+    # --- authenticated: per HS, ALL reporters, World partner, BOTH flows; MONTHLY -> QUARTERS ---
+    def _pull_quarterly(self, hs_codes: list[str], skip: frozenset = frozenset()) -> list[dict]:
+        # Monthly all-reporters World totals aggregated to COMPLETE quarters (>=3 months). ONE month per
+        # call (all-country monthly is heavy; 12-period calls time out). Bounded to core products, and
+        # skips months whose quarter is already stored + final (incremental).
+        codes = [hs for hs in hs_codes if hs != "TOTAL"
+                 and (self.quarterly_hs is None or hs in self.quarterly_hs)]
+        months = self._recent_months(self.months)
+        rows: list[dict] = []
+        for hs in codes:
+            for chunk in _chunks(months, self.MONTHLY_ALL_CHUNK):
+                if all((hs, _quarter_of(m)) in skip for m in chunk):
+                    continue
+                params = {"cmdCode": hs, "flowCode": "M,X", "partnerCode": "0", "period": ",".join(chunk)}
+                data = self._get(f"{DATA_MONTHLY}?{urllib.parse.urlencode(params)}", auth=True)
+                rows += [r for r in data if _is_world_total(r)]
+                time.sleep(self.pause)
+        return self._to_quarters(rows)
 
     # --- keyless: annual World-only, one call per reporter×year (tested fallback) ---
     def _pull_keyless(self, hs: str, reporters: list[int]) -> list[dict]:

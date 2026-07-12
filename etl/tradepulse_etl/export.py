@@ -29,7 +29,7 @@ def _name_vi(code: int) -> str:
 
 
 def build_snapshot(conn, generated_at: str, hs6: str = "440131") -> dict:
-    flows = [r for r in _flows(conn) if r["hs6"] == hs6 and r["partner"] == config.PARTNER_WORLD]
+    flows = _flows(conn, hs6)
     signals = {(s["reporter"], s["flow"], s["period"]): s for s in _signals(conn, hs6)}
     latest = max((r["period"] for r in flows), default=None)
     sources = {r["source"] for r in flows}
@@ -39,39 +39,54 @@ def build_snapshot(conn, generated_at: str, hs6: str = "440131") -> dict:
     for r in flows:
         by_rep.setdefault(r["reporter"], {}).setdefault(r["flow"], []).append(r)
 
-    countries, feed = [], []
+    countries = []
     for code, flows_by in by_rep.items():
-        entry = {"code": code, "name_en": country_name(code), "name_vi": _name_vi(code),
-                 "exp": None, "imp": None}
-        for flow, slot in ((config.FLOW_EXPORT, "exp"), (config.FLOW_IMPORT, "imp")):
-            series = sorted(flows_by.get(flow, []), key=lambda r: r["period"])
-            if not series:
+        # SHORT keys (c/e/i) + names NOT stored per product (they'd repeat in all 1,240 files — see
+        # countries.json). The web loader expands both back, so components are unchanged.
+        entry = {"c": code, "e": None, "i": None}
+        for flow, slot in ((config.FLOW_EXPORT, "e"), (config.FLOW_IMPORT, "i")):
+            rows = flows_by.get(flow, [])
+            if not rows:
                 continue
-            cur = series[-1]
-            sig = signals.get((code, flow, cur["period"]))
-            band = sig["band"] if sig else "none"
-            yoy = sig["yoy_delta"] if sig else None
-            direction = (_direction(yoy) if sig and band != "new" else None)
-            entry[slot] = {"value_usd": cur["value_usd"], "period": cur["period"],
-                           "yoy_delta": yoy, "band": band, "direction": direction,
-                           "history": [{"period": r["period"], "value_usd": r["value_usd"]} for r in series]}
-            if band in BAND_RANK:
-                feed.append({"code": code, "name_en": entry["name_en"], "name_vi": entry["name_vi"],
-                             "flow": "export" if flow == config.FLOW_EXPORT else "import",
-                             "value_usd": cur["value_usd"], "yoy_delta": yoy, "band": band,
-                             "direction": direction, "period": cur["period"]})
-        if entry["exp"] or entry["imp"]:
+            # Build one sub-slot per grain (A/Q/M) so the UI can toggle; default = annual (stable),
+            # else the freshest available. Each grain keeps its OWN latest value + history + signal.
+            by_fq: dict[str, list] = {}
+            for r in rows:
+                by_fq.setdefault(r.get("freq") or "A", []).append(r)
+            per_freq = {}
+            for fq, rws in by_fq.items():
+                series = sorted(rws, key=lambda r: r["period"])
+                cur = series[-1]
+                per_freq[fq] = _slot(cur, signals.get((code, flow, cur["period"])), series)
+            default_fq = "A" if "A" in per_freq else sorted(per_freq)[0]
+            d = per_freq[default_fq]
+            # `bf` holds ONLY the non-default grains — never a copy of the default (that duplication
+            # doubled every file). The web's slotFor() falls back to the top-level slot for the default.
+            others = {fq: s for fq, s in per_freq.items() if fq != default_fq}
+            entry[slot] = {**d, **({"bf": others} if others else {})}
+        if entry["e"] or entry["i"]:
             countries.append(entry)
 
-    countries.sort(key=lambda c: max((c["exp"] or {}).get("value_usd", 0),
-                                     (c["imp"] or {}).get("value_usd", 0)), reverse=True)
-    feed.sort(key=lambda f: (BAND_RANK[f["band"]], -f["value_usd"]))
+    countries.sort(key=lambda c: max((c["e"] or {}).get("v", 0), (c["i"] or {}).get("v", 0)), reverse=True)
     product = config.PRODUCTS.get(hs6, {"name_en": hs6, "name_vi": hs6})
+    # No `feed` array: the web derives the signal feed from `countries` at the chosen grain, so shipping
+    # it again was pure duplication.
     return {
         "generated_at": generated_at, "hs6": hs6, "product": product,
         "latest_period": latest, "is_sample": ("fixture" in sources), "sources": sorted(sources),
-        "countries": countries, "feed": feed[:FEED_CAP],
+        "countries": countries,
     }
+
+
+def write_countries(conn, path: Path | str) -> Path:
+    """Country names ONCE, shared by every product snapshot (they used to repeat in all 1,240 files)."""
+    from .db import fetch_flows
+    codes = sorted({r["reporter"] for r in fetch_flows(conn)})
+    data = {str(c): {"name_en": country_name(c), "name_vi": _name_vi(c)} for c in codes}
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    return path
 
 
 def write_snapshot(snapshot: dict, path: Path | str = DEFAULT_SNAPSHOT) -> Path:
@@ -81,13 +96,29 @@ def write_snapshot(snapshot: dict, path: Path | str = DEFAULT_SNAPSHOT) -> Path:
     return path
 
 
+def _slot(cur: dict, sig: dict | None, series: list) -> dict:
+    """One grain's display slot. SLIM: history is bare values (`h`) aligned to the snapshot-level
+    `periods[freq]` list, and country names live in the shared countries.json — the web loader
+    rehydrates both, so components see the same shape. Keeps 1,240 products shippable."""
+    band = sig["band"] if sig else "none"
+    yoy = sig["yoy_delta"] if sig else None
+    direction = _direction(yoy) if sig and band != "new" else None
+    # Only what the MAP renders, with SHORT keys (the loader expands them back, so components are
+    # unchanged). No history (the 6-pt series was the biggest cost x 226 countries x 2 flows x 1,240
+    # files) and no source/published_date (never displayed — the freshness stamp uses `period`).
+    return {"v": round(cur["value_usd"]), "p": cur["period"], "f": cur.get("freq"),
+            "y": (round(yoy, 4) if yoy is not None else None), "b": band, "d": direction}
+
+
 def _direction(yoy: float) -> str:
     return "up" if (yoy or 0) >= 0 else "down"
 
 
-def _flows(conn):
-    from .db import fetch_flows
-    return fetch_flows(conn)
+def _flows(conn, hs6: str):
+    """Only this product's World rows — an INDEXED query. (Reading the whole table per product turned
+    1,240 exports into ~1e9 row reads.)"""
+    sql = "SELECT * FROM trade_flows WHERE hs6 = ? AND partner = ?"
+    return [dict(r) for r in conn.execute(sql, (hs6, config.PARTNER_WORLD)).fetchall()]
 
 
 def _signals(conn, hs6):
