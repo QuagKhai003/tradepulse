@@ -67,6 +67,11 @@ QUARTERLY_HS = [hs for hs in SOURCING_HS if hs != "TOTAL"]
 # heavy). Vietnam (exporter) + the pilot import markets. Others show annual history only.
 FOCUS_REPORTERS = [704, 392, 410, 842, 826]
 
+# NOTE (2026-07-13): Japan (e-Stat) + Korea (data.go.kr) national sources are NOT used — e-Stat's trade
+# tables use Japan's 概況品 classification (not HS) and KCS's key/endpoint is unreliable. Comtrade
+# already covers Japan (392) + Korea (410) in HS, so nothing is lost; only the "fresher monthly" bonus
+# is skipped for those two. The fresh national primaries are US (census), EU (eurostat), UK (hmrc).
+
 # --- Destination markets (plan §3): slug -> codes + bilingual names ---
 # reporter = the importing country whose customs report the flow (importer-reported default, §6.4).
 MARKETS = {
@@ -119,6 +124,7 @@ SOURCE_AUTHORITY = {
 # Comtrade; the offline fixture always loses to any real source.
 SOURCE_PRIORITY = {
     "census": 10, "eurostat": 10, "hmrc": 10, "estat": 10, "kcs": 10,
+    "baci": 40,        # cleaned/reconciled global bulk — preferred over the raw Comtrade API
     "comtrade": 50,
     "fixture": 99,
 }

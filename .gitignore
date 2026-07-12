@@ -49,6 +49,10 @@ playwright-report/
 # --- Data pulls & caches (raw trade data is re-pullable, not source) ---
 data/raw/
 data/cache/
+# CEPII BACI bulk files (~700MB, re-downloadable)
+data/baci/
+# derived SQLite DB, rebuilt by the ETL
+data/*.sqlite
 # generated web snapshots + sourcing (rebuilt by the ETL; not source)
 web/public/data/snapshot*.json
 web/public/data/sourcing*.json
