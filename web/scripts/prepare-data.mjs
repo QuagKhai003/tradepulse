@@ -22,7 +22,7 @@ const PY = process.platform === "win32" ? "python" : "python3";
 // Everyday refresh = LIGHT: Comtrade annual (global) + US Census, merged + incremental (only the
 // revisable window re-fetches). Census skips cleanly without CENSUS_API_KEY. Quarterly (the M/Q/A
 // toggle) is a heavier, deliberate run: add `--freq AQ`. See docs/DATA_SOURCES.md.
-const ETL_ARGS = ["-m", "tradepulse_etl", "--source", "comtrade,census,eurostat", "--freq", "A"];
+const ETL_ARGS = ["-m", "tradepulse_etl", "--source", "comtrade,census,eurostat,hmrc", "--freq", "A"];
 
 function ageHours(p) {
   return (Date.now() - statSync(p).mtimeMs) / 3_600_000;

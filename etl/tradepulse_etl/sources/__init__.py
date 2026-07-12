@@ -8,5 +8,7 @@ from .census import USCensusSource
 from .comtrade import ComtradeSource
 from .eurostat import EurostatSource
 from .fixture import FixtureSource
+from .ukhmrc import UKHmrcSource
 
-__all__ = ["TradeSource", "FixtureSource", "ComtradeSource", "USCensusSource", "EurostatSource"]
+__all__ = ["TradeSource", "FixtureSource", "ComtradeSource", "USCensusSource",
+           "EurostatSource", "UKHmrcSource"]
