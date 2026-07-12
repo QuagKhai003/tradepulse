@@ -18,6 +18,8 @@ class TradeSource(Protocol):
 
     name: str
 
-    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None) -> list[dict]:
-        """Raw records for HS x reporters x partners (quarterly, import flow). partners=None => all."""
+    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None,
+             skip: frozenset = frozenset()) -> list[dict]:
+        """Raw records for HS x reporters x partners. partners=None => all. `skip` is a set of
+        (hs6, period) that are already stored + final — the source must NOT re-fetch them (incremental)."""
         ...

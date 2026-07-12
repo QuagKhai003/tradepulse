@@ -134,3 +134,30 @@ def freq_of(period: str) -> str:
     if len(p) == 6 and p.isdigit():
         return "M"
     return "A"
+
+
+# --- Incremental refresh (production): only re-fetch the REVISABLE window; final periods stay put.
+# Trade data is revised for a while then frozen — so 2021 is fetched once, but recent periods keep
+# updating each run. Cuts a full re-pull down to a few recent periods after the first run. ---
+REVISION_YEARS = 2      # always re-pull the latest ~2 years (annual figures get revised that long)
+REVISION_MONTHS = 6     # always re-pull the latest ~6 months (recent quarters get revised)
+
+
+def _period_end_ym(period: str) -> tuple[int, int]:
+    """(year, month) of the period's LAST month: annual->Dec, 'YYYY-Qn'->quarter end, 'YYYYMM'->itself."""
+    p = str(period)
+    if "-Q" in p:
+        y, q = p.split("-Q")
+        return int(y), int(q) * 3
+    if len(p) == 6 and p.isdigit():
+        return int(p[:4]), int(p[4:])
+    return int(p), 12
+
+
+def is_final(period: str, today) -> bool:
+    """A stored period is 'final' — won't be re-fetched — once it is older than the revision window."""
+    ey, em = _period_end_ym(period)
+    months_ago = (today.year - ey) * 12 + (today.month - em)
+    if freq_of(period) == "A":
+        return months_ago > REVISION_YEARS * 12
+    return months_ago > REVISION_MONTHS

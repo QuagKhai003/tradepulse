@@ -40,7 +40,8 @@ class USCensusSource:
         self.timeout = timeout
         self.pause = pause
 
-    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None) -> list[dict]:
+    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None,
+             skip: frozenset = frozenset()) -> list[dict]:
         if not self.key:
             print("[census] no CENSUS_API_KEY — skipping (keyless is rejected by the API)")
             return []
@@ -50,6 +51,8 @@ class USCensusSource:
                 continue
             comm_lvl = f"HS{len(hs)}"    # HS4 category vs HS6 product
             for year in self._recent_years(self.years):
+                if (hs, str(year)) in skip:   # already stored + final -> don't re-fetch (incremental)
+                    continue
                 for flow, (url, comm_var, val_var) in _FLOW.items():
                     # No CTY_CODE -> Census returns the single all-country total (see @warn).
                     params = {"get": val_var, comm_var: hs, "YEAR": str(year),

@@ -41,6 +41,12 @@ def _chunks(items: list, n: int) -> list[list]:
     return [items[i:i + n] for i in range(0, len(items), n)]
 
 
+def _quarter_of(month: str) -> str:
+    """'YYYYMM' -> 'YYYY-Qn' (which quarter a month belongs to, for incremental skip)."""
+    y, m = month[:4], int(month[4:6])
+    return f"{y}-Q{(m - 1) // 3 + 1}"
+
+
 class ComtradeSource:
     name = "comtrade"
 
@@ -76,23 +82,26 @@ class ComtradeSource:
                     time.sleep(self.pause)
         return self._to_quarters(monthly)
 
-    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None) -> list[dict]:
+    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None,
+             skip: frozenset = frozenset()) -> list[dict]:
         if not self.key:
             return self._pull_keyless(",".join(hs_codes), reporters)
         out: list[dict] = []
         if "A" in self.freqs:
-            out += self._pull_annual(hs_codes)
+            out += self._pull_annual(hs_codes, skip)
         if "Q" in self.freqs:
-            out += self._pull_quarterly(hs_codes)
+            out += self._pull_quarterly(hs_codes, skip)
         return out
 
     # --- authenticated: per HS, ALL reporters, BOTH flows, World partner; ANNUAL (light + global) ---
-    def _pull_annual(self, hs_codes: list[str]) -> list[dict]:
-        # One annual call per (HS, year) returns every country, both flows (X+M). Per-HS keeps each
-        # all-country payload small enough to be reliable (a combined multi-HS call times out).
+    def _pull_annual(self, hs_codes: list[str], skip: frozenset = frozenset()) -> list[dict]:
+        # One annual call per (HS, year) returns every country, both flows (X+M). Skip (hs, year) pairs
+        # already stored + final — that's the incremental win (a re-run only fetches the recent years).
         rows: list[dict] = []
         for hs in hs_codes:
             for year in self._recent_years(self.years):
+                if (hs, str(year)) in skip:
+                    continue
                 params = {"cmdCode": hs, "flowCode": "M,X", "partnerCode": "0", "period": year}
                 data = self._get(f"{DATA_ANNUAL}?{urllib.parse.urlencode(params)}", auth=True)
                 rows += [r for r in data if _is_total_row(r)]
@@ -100,16 +109,18 @@ class ComtradeSource:
         return self._normalise_annual(rows)
 
     # --- authenticated: per HS, ALL reporters, World partner, BOTH flows; MONTHLY -> QUARTERS ---
-    def _pull_quarterly(self, hs_codes: list[str]) -> list[dict]:
-        # Monthly all-reporters World totals aggregated to COMPLETE quarters (>=3 months). Fresher than
-        # annual; drives quarterly signals + the M/Q/A toggle. ONE month per call (all-country monthly
-        # is heavy; 12-period calls time out). Bounded to the core products (self.quarterly_hs).
+    def _pull_quarterly(self, hs_codes: list[str], skip: frozenset = frozenset()) -> list[dict]:
+        # Monthly all-reporters World totals aggregated to COMPLETE quarters (>=3 months). ONE month per
+        # call (all-country monthly is heavy; 12-period calls time out). Bounded to core products, and
+        # skips months whose quarter is already stored + final (incremental).
         codes = [hs for hs in hs_codes if hs != "TOTAL"
                  and (self.quarterly_hs is None or hs in self.quarterly_hs)]
         months = self._recent_months(self.months)
         rows: list[dict] = []
         for hs in codes:
             for chunk in _chunks(months, self.MONTHLY_ALL_CHUNK):
+                if all((hs, _quarter_of(m)) in skip for m in chunk):
+                    continue
                 params = {"cmdCode": hs, "flowCode": "M,X", "partnerCode": "0", "period": ",".join(chunk)}
                 data = self._get(f"{DATA_MONTHLY}?{urllib.parse.urlencode(params)}", auth=True)
                 rows += [r for r in data if _is_world_total(r)]

@@ -10,6 +10,7 @@ pipeline.py — orchestrate one ETL run: pull -> store raw -> transform -> upser
 from __future__ import annotations
 
 import json
+from datetime import date
 from pathlib import Path
 
 from . import config
@@ -53,15 +54,24 @@ def run(source: TradeSource, conn, *, raw_dir: Path = RAW_DIR) -> int:
     return run_multi([source], conn, raw_dir=raw_dir)
 
 
-def run_multi(sources: list[TradeSource], conn, *, raw_dir: Path = RAW_DIR) -> int:
+def run_multi(sources: list[TradeSource], conn, *, raw_dir: Path = RAW_DIR, today=None) -> int:
     """Pull every source, transform each (tagged with its own name), then MERGE to one row per cell
-    (national authority > freshness > priority — see merge.py) before the upsert. Never sums sources."""
+    (national authority > freshness > priority — see merge.py) before the upsert. Never sums sources.
+    INCREMENTAL: (hs6, period) pairs already stored + final are skipped, so a re-run only fetches the
+    revisable recent window (not the whole history again)."""
     reporters = [m["reporter"] for m in config.MARKETS.values()]
+    skip = frozenset(_final_stored(conn, today or date.today()))
     all_rows: list[dict] = []
     for source in sources:
         # All covered products; partners=None so the source decides (authenticated = all countries).
-        raw = source.pull(config.COVERED_HS, reporters, None)
+        raw = source.pull(config.COVERED_HS, reporters, None, skip=skip)
         _store_raw(raw, source.name, raw_dir)
         all_rows += transform_all(raw, source.name)
     merged = merge_flows(all_rows)
     return upsert_trade_flows(conn, merged)
+
+
+def _final_stored(conn, today) -> set:
+    """(hs6, period) pairs already in trade_flows AND final (outside the revision window)."""
+    rows = conn.execute("SELECT DISTINCT hs6, period FROM trade_flows").fetchall()
+    return {(hs6, period) for hs6, period in rows if config.is_final(period, today)}

@@ -21,7 +21,9 @@ class FixtureSource:
     def __init__(self, path: Path | str = FIXTURE_PATH):
         self.path = Path(path)
 
-    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None) -> list[dict]:
+    def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None,
+             skip: frozenset = frozenset()) -> list[dict]:
+        # skip is ignored — the fixture is a fixed local sample (no incremental fetch to save).
         records = json.loads(self.path.read_text(encoding="utf-8"))
         hs, rep = set(hs_codes), set(reporters)
         par = set(partners) if partners else None   # None => all partners
