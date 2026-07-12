@@ -7,7 +7,7 @@
  * @affects  Rendered on page.js from snapshot.feed + the active flow.
  */
 import Link from "next/link";
-import { bandArrow, bandLabel, fmtPct, fmtUSD, sigColor } from "../lib/format.js";
+import { bandArrow, bandLabel, fmtPct, fmtPeriod, fmtUSD, sigColor } from "../lib/format.js";
 
 export default function GlobalFeed({ feed, flow, lang, t, hs, sort = "signal", tools }) {
   const nm = (x) => (lang === "en" ? x.name_en : x.name_vi) || "";
@@ -41,7 +41,7 @@ export default function GlobalFeed({ feed, flow, lang, t, hs, sort = "signal", t
                 <span className={`flowtag ${m.flow}`}>{flowLabel}</span>
                 <span className="feed-val">{fmtUSD(m.value_usd)}</span>
                 <span className="feed-band" style={{ color }}>{bandLabel(m.band, lang)}</span>
-                <span className="muted">{m.period}</span>
+                <span className="muted">{fmtPeriod(m.period, lang)}</span>
               </div>
             </li>
           );

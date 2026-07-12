@@ -13,9 +13,9 @@ import QualPanel from "../../components/QualPanel.js";
 import { loadSnapshot } from "../../lib/snapshot.js";
 import { loadSourcing } from "../../lib/sourcing.js";
 import { t } from "../../lib/i18n.js";
-import { bandArrow, bandColor, bandLabel, fmtPct, fmtUSD } from "../../lib/format.js";
+import { bandArrow, bandColor, bandLabel, fmtPct, fmtPeriod, fmtUSD } from "../../lib/format.js";
 
-function FlowPanel({ title, slot, t: tr }) {
+function FlowPanel({ title, slot, t: tr, lang }) {
   if (!slot) return <div className="panel"><h2>{title}</h2><p className="muted">—</p></div>;
   const color = bandColor(slot.band, slot.direction);
   const hasSig = slot.band && slot.band !== "none";
@@ -29,7 +29,7 @@ function FlowPanel({ title, slot, t: tr }) {
         {hasSig
           ? <span className="cband" style={{ color }}>{bandArrow(slot.band, slot.direction)} {bandLabel(slot.band, "vi")} · {fmtPct(slot.yoy_delta)}</span>
           : <span className="muted">{tr.noSignal}</span>}
-        <span className="muted"> · {slot.period}</span>
+        <span className="muted"> · {fmtPeriod(slot.period, lang)}</span>
       </div>
       <div className="spark">
         {hist.map((h) => (
@@ -86,8 +86,8 @@ export default async function CountryPage({ params, searchParams }) {
       </section>
 
       <section className="drillgrid">
-        <FlowPanel title={tr.exportsLabel} slot={c.exp} t={tr} />
-        <FlowPanel title={tr.importsLabel} slot={c.imp} t={tr} />
+        <FlowPanel title={tr.exportsLabel} slot={c.exp} t={tr} lang={lang} />
+        <FlowPanel title={tr.importsLabel} slot={c.imp} t={tr} lang={lang} />
       </section>
 
       <QualPanel hs={hs} code={c.code} product={product} country={name} lang={lang} t={tr} />
