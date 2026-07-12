@@ -58,6 +58,11 @@ COVERED_HS = list(PRODUCTS.keys())
 # get the map/signals + annual history.
 SOURCING_HS = ["TOTAL", "440131", "4407", "090240", "090111", "030617", "080131", "100630"]
 
+# Quarterly (monthly->quarters) is heavier per call — all-reporters monthly must be pulled ONE month
+# at a time (12-period all-country calls time out). So only the core products get quarterly (excl.
+# TOTAL, whose all-commodity payload is too big). This feeds the M/Q/A toggle for these products.
+QUARTERLY_HS = [hs for hs in SOURCING_HS if hs != "TOTAL"]
+
 # Focus countries for the quarterly partner-sourcing drill-down (all-countries quarterly is too
 # heavy). Vietnam (exporter) + the pilot import markets. Others show annual history only.
 FOCUS_REPORTERS = [704, 392, 410, 842, 826]

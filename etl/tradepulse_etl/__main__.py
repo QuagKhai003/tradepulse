@@ -28,6 +28,8 @@ def main() -> None:
                     help="data source(s), comma-separated: fixture | comtrade | census "
                          "(e.g. 'comtrade,census' — merged, one number per cell)")
     ap.add_argument("--period", default="2025", help="period for the comtrade source")
+    ap.add_argument("--freq", default="A", choices=["A", "AQ"],
+                    help="grain(s) for comtrade: A=annual (default), AQ=annual + monthly->quarterly")
     ap.add_argument("--db", default=str(DEFAULT_DB), help="SQLite path")
     ap.add_argument("--snapshot", default=str(DEFAULT_SNAPSHOT), help="web snapshot output path")
     args = ap.parse_args()
@@ -35,7 +37,7 @@ def main() -> None:
     now_iso = datetime.now(timezone.utc).isoformat()
     conn = connect(args.db)
 
-    sources = get_sources(args.source.split(","))
+    sources = get_sources(args.source.split(","), freqs=tuple(args.freq))
     n = run_multi(sources, conn)
 
     prev = fetch_signals(conn)                       # state before this run (for band crossings)

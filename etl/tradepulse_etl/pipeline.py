@@ -21,22 +21,23 @@ from .transform import transform_all
 RAW_DIR = Path(__file__).resolve().parents[2] / "data" / "raw"
 
 
-def get_source(kind: str, period: str | None = None) -> TradeSource:
+def get_source(kind: str, period: str | None = None, freqs: tuple[str, ...] = ("A",)) -> TradeSource:
     if kind == "fixture":
         return FixtureSource()
     if kind == "comtrade":
         from .settings import comtrade_key
         key = comtrade_key()
-        print(f"[comtrade] mode={'authenticated monthly+partners' if key else 'keyless annual World-only'}")
-        return ComtradeSource(key=key)
+        qhs = config.QUARTERLY_HS if "Q" in freqs else None
+        print(f"[comtrade] mode={'authenticated' if key else 'keyless annual World-only'} freqs={freqs}")
+        return ComtradeSource(key=key, freqs=freqs, quarterly_hs=qhs)
     if kind == "census":
         from .settings import census_key
         return USCensusSource(key=census_key())
     raise ValueError(f"unknown source: {kind!r} (use 'fixture', 'comtrade' or 'census')")
 
 
-def get_sources(kinds: list[str]) -> list[TradeSource]:
-    return [get_source(k.strip()) for k in kinds if k.strip()]
+def get_sources(kinds: list[str], freqs: tuple[str, ...] = ("A",)) -> list[TradeSource]:
+    return [get_source(k.strip(), freqs=freqs) for k in kinds if k.strip()]
 
 
 def _store_raw(records: list[dict], source_name: str, raw_dir: Path) -> Path:
