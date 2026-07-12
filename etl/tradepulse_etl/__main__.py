@@ -63,10 +63,10 @@ def main() -> None:
 
     # Tier 2: quarterly partner sourcing for the focus reporters (needs the Comtrade key).
     if getattr(source, "key", None):
-        from .config import FOCUS_REPORTERS
+        from .config import FOCUS_REPORTERS, SOURCING_HS
         from .sourcing import build_sourcing, write_sourcing
         srcs = []
-        for hs in COVERED_HS:
+        for hs in SOURCING_HS:
             rows = source.pull_sourcing([hs], FOCUS_REPORTERS)
             sm = build_sourcing(rows, hs)
             if sm:

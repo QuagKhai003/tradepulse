@@ -3,7 +3,7 @@
 > Single source of truth for the CURRENT moment. Update at the start and end of every
 > session. History goes in `docs/progress/`, not here.
 
-**Last updated:** 2026-07-11 (map-first realignment ADR-0003: global map, both flows, toggle, drill)
+**Last updated:** 2026-07-12 (globe-3d branch: AI-slop pass — humanist font, contrast, portal sort, align)
 
 ## Phase
 **Phase 1 MVP complete + map-first realignment (ADR-0003, 3.1–3.4 done).** `npm run dev` auto-fetches.
@@ -18,6 +18,10 @@ Data = REAL Comtrade, authenticated, **annual all-countries both flows** (quarte
 qualifications: global both-flows map per product (7 covered); export/import/all toggle; global feed;
 `/country/[code]` drill with quarterly partner-sourcing charts (focus markets) + a **market-entry
 qualifications panel** (covered pairs show sourced checklist, uncovered log demand). 22 tests green.
+**IN FLIGHT (branch `feature/globe-3d`, NOT merged — awaiting owner approval):** stunning 3D WebGL
+globe hero (react-globe.gl) + all-products default + client-state pills (no reload) + AI-slop pass
+(Plus Jakarta Sans, dark-panel contrast, portal sort menu, top-20 alignment, "Tìm kiếm quốc gia" +
+globe icon, "Khối lượng giao dịch"). Compile: cold `/` 6.6s (three.js floor), warm/HMR <0.6s.
 **NEXT: nothing queued.** Options: real email/Zalo alert delivery + login (Phase 2), mirror-based VN
 sourcing, more requirement pages (per demand telemetry), or Stage 0 validation with the live demo.
 Note: full data refresh = 112 Comtrade calls (~6 min); `prepare-data` threshold = 7 days.

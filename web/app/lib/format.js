@@ -70,10 +70,12 @@ export function bandColor(band, direction) {
 
 export const MAP_NEUTRAL = "#eef2f7"; // countries with no covered data
 
-// Strong, readable colour for signal TEXT (the light band tints fail contrast on white).
-// Direction carries meaning: green = rising, red = falling.
-export function sigColor(band, direction) {
-  if (band === "new") return "#7c3aed";
-  if (band === "minor" || band === "none") return "#64748b";
-  return direction === "down" ? "#b91c1c" : "#15803d";
+// Strong, readable colour for signal TEXT. Direction carries meaning: green = rising, red = falling.
+// `dark` returns brighter tints that clear 4.5:1 on the dark glass panels (the deep #15803d/#b91c1c
+// and #64748b all fail on ~#0d142a); the light values stay readable on white.
+export function sigColor(band, direction, dark = false) {
+  if (band === "new") return dark ? "#a78bfa" : "#7c3aed";
+  if (band === "minor" || band === "none") return dark ? "#9fb0d0" : "#64748b";
+  if (direction === "down") return dark ? "#fb7185" : "#b91c1c";
+  return dark ? "#4ade80" : "#15803d";
 }

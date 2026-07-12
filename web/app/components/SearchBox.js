@@ -40,10 +40,10 @@ export default function SearchBox({ lang, placeholder }) {
             <li key={c.hs6}>
               <button type="button" className="search-opt" onMouseDown={() => pick(c.hs6)}>
                 <span className="search-name">{lang === "en" ? c.name_en : c.name_vi}</span>
-                <span className="search-hs">HS {c.hs6}</span>
-                <span className={`search-tag ${c.covered ? "on" : "off"}`}>
-                  {c.covered ? (lang === "en" ? "data" : "có dữ liệu")
-                             : (lang === "en" ? "soon" : "sắp có")}
+                {c.hs6 !== "TOTAL" && <span className="search-hs">HS {c.hs6}</span>}
+                <span className={`search-tag ${c.level}`}>
+                  {c.level === "category" ? (lang === "en" ? "Category" : "Loại")
+                                          : (lang === "en" ? "Product" : "Sản phẩm")}
                 </span>
               </button>
             </li>

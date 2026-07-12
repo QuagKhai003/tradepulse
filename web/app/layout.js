@@ -1,14 +1,25 @@
 /**
  * layout.js — root layout (plan §10.4: Vietnamese default).
- * @context  Wraps every page; loads the type system (Inter for UI incl. Vietnamese, JetBrains Mono
- *           for numerals — the terminal/data feel) + global CSS. HTML lang defaults to vi.
+ * @context  Two-role type system: Plus Jakarta Sans = body/labels (text role); Be Vietnam Pro =
+ *           headings + data numerals (display role). Both carry the Vietnamese subset, both humanist
+ *           (no monospace/terminal look). Hierarchy comes from a fixed 4-5 step size scale + weight.
  * @affects  All routes.
  */
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 
-const sans = Inter({ subsets: ["latin", "latin-ext", "vietnamese"], variable: "--font-sans", display: "swap" });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+const sans = Plus_Jakarta_Sans({
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-sans",
+  display: "swap",
+  weight: ["400", "600", "700"],   // 500 dropped — only .permo used it and 400 covers it
+});
+const display = Be_Vietnam_Pro({
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["600", "700", "800"],
+});
 
 export const metadata = {
   title: "TradePulse — Ra-đa nhu cầu xuất khẩu",
@@ -17,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="vi" className={`${sans.variable} ${display.variable}`}>
       <body>{children}</body>
     </html>
   );
