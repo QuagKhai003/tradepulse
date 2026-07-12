@@ -37,6 +37,13 @@ export function fmtPeriod(period, lang = "vi") {
   return `${inw} ${p}`;
 }
 
+// Pick a country slot's sub-slot for the chosen grain (A/Q/M); fall back to the default slot when the
+// product has no data at that grain (quarterly is bounded to core products).
+export function slotFor(slot, freq) {
+  if (!slot) return slot;
+  return (slot.by_freq && slot.by_freq[freq]) || slot;
+}
+
 export function fmtTons(kg) {
   if (kg == null) return null;
   const t = kg / 1000;

@@ -7,7 +7,7 @@
  * @affects  Rendered in the left overlay panel on page.js.
  */
 import Link from "next/link";
-import { fmtPct, fmtUSD, sigColor } from "../lib/format.js";
+import { fmtPct, fmtUSD, sigColor, slotFor } from "../lib/format.js";
 
 function Flow({ tag, cls, slot }) {
   if (!slot) return <span className="tcf"><i className={`tcf-tag ${cls}`}>{tag}</i><b className="tcf-val num">—</b><em /></span>;
@@ -21,7 +21,7 @@ function Flow({ tag, cls, slot }) {
   );
 }
 
-export default function TopCountries({ countries, lang, t, hs }) {
+export default function TopCountries({ countries, lang, t, hs, freq = "A" }) {
   const rows = [...countries]
     .sort((a, b) => ((b.exp?.value_usd || 0) + (b.imp?.value_usd || 0)) - ((a.exp?.value_usd || 0) + (a.imp?.value_usd || 0)));
   return (
@@ -34,8 +34,8 @@ export default function TopCountries({ countries, lang, t, hs }) {
               <span className="tc-rank num">{i + 1}</span>
               <span className="tc-name">{lang === "en" ? c.name_en : c.name_vi}</span>
               <span className="tc-flows">
-                <Flow tag={t.exportsShort} cls="export" slot={c.exp} />
-                <Flow tag={t.importsShort} cls="import" slot={c.imp} />
+                <Flow tag={t.exportsShort} cls="export" slot={slotFor(c.exp, freq)} />
+                <Flow tag={t.importsShort} cls="import" slot={slotFor(c.imp, freq)} />
               </span>
             </Link>
           </li>

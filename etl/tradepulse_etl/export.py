@@ -44,24 +44,27 @@ def build_snapshot(conn, generated_at: str, hs6: str = "440131") -> dict:
         entry = {"code": code, "name_en": country_name(code), "name_vi": _name_vi(code),
                  "exp": None, "imp": None}
         for flow, slot in ((config.FLOW_EXPORT, "exp"), (config.FLOW_IMPORT, "imp")):
-            series = sorted(flows_by.get(flow, []), key=lambda r: r["period"])
-            if not series:
+            rows = flows_by.get(flow, [])
+            if not rows:
                 continue
-            cur = series[-1]
-            sig = signals.get((code, flow, cur["period"]))
-            band = sig["band"] if sig else "none"
-            yoy = sig["yoy_delta"] if sig else None
-            direction = (_direction(yoy) if sig and band != "new" else None)
-            entry[slot] = {"value_usd": cur["value_usd"], "period": cur["period"],
-                           "freq": cur.get("freq"), "source": cur.get("source"),
-                           "published_date": cur.get("published_date"),
-                           "yoy_delta": yoy, "band": band, "direction": direction,
-                           "history": [{"period": r["period"], "value_usd": r["value_usd"]} for r in series]}
-            if band in BAND_RANK:
+            # Build one sub-slot per grain (A/Q/M) so the UI can toggle; default = annual (stable),
+            # else the freshest available. Each grain keeps its OWN latest value + history + signal.
+            by_fq: dict[str, list] = {}
+            for r in rows:
+                by_fq.setdefault(r.get("freq") or "A", []).append(r)
+            per_freq = {}
+            for fq, rws in by_fq.items():
+                series = sorted(rws, key=lambda r: r["period"])
+                cur = series[-1]
+                per_freq[fq] = _slot(cur, signals.get((code, flow, cur["period"])), series)
+            default_fq = "A" if "A" in per_freq else sorted(per_freq)[0]
+            entry[slot] = {**per_freq[default_fq], "by_freq": per_freq}
+            d = per_freq[default_fq]
+            if d["band"] in BAND_RANK:
                 feed.append({"code": code, "name_en": entry["name_en"], "name_vi": entry["name_vi"],
                              "flow": "export" if flow == config.FLOW_EXPORT else "import",
-                             "value_usd": cur["value_usd"], "yoy_delta": yoy, "band": band,
-                             "direction": direction, "period": cur["period"]})
+                             "value_usd": d["value_usd"], "yoy_delta": d["yoy_delta"], "band": d["band"],
+                             "direction": d["direction"], "period": d["period"]})
         if entry["exp"] or entry["imp"]:
             countries.append(entry)
 
@@ -81,6 +84,17 @@ def write_snapshot(snapshot: dict, path: Path | str = DEFAULT_SNAPSHOT) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(snapshot, ensure_ascii=False, indent=1), encoding="utf-8")
     return path
+
+
+def _slot(cur: dict, sig: dict | None, series: list) -> dict:
+    """One grain's display slot: latest value + its signal + that grain's own history."""
+    band = sig["band"] if sig else "none"
+    yoy = sig["yoy_delta"] if sig else None
+    direction = _direction(yoy) if sig and band != "new" else None
+    return {"value_usd": cur["value_usd"], "period": cur["period"], "freq": cur.get("freq"),
+            "source": cur.get("source"), "published_date": cur.get("published_date"),
+            "yoy_delta": yoy, "band": band, "direction": direction,
+            "history": [{"period": r["period"], "value_usd": r["value_usd"]} for r in series]}
 
 
 def _direction(yoy: float) -> str:

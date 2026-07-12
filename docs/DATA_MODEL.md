@@ -29,7 +29,8 @@
 **Country-centric (ADR-0003).** The Next.js app reads this file (seam). One product; both flows. Shape:
 `{ generated_at, hs6, product{name_en,name_vi}, latest_period, is_sample, sources[],
 countries[ {code, name_en, name_vi,
-  exp{value_usd,period,freq,source,published_date,yoy_delta,band,direction,history[{period,value_usd}]} | null,
+  exp{value_usd,period,freq,source,published_date,yoy_delta,band,direction,history[…],
+      by_freq{A:{…slot…}, Q:{…slot…}}} | null,   // grain toggle; default slot = annual (freshest fallback)
   imp{ …same… } | null } ],
 feed[ {code,name_en,name_vi, flow:'export'|'import', value_usd,yoy_delta,band,direction,period} ] }`.
 `exp` = flow X, `imp` = flow M. Consumed by `web/app/lib/snapshot.js` → SSR by `web/app/page.js`
