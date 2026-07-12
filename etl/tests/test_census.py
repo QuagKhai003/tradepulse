@@ -1,24 +1,19 @@
 """
 test_census.py — US Census aggregation (sources/census.py). Pure, offline (no network).
-@context  Proves the Census array-of-arrays parses into ONE World-total raw row per (hs, year, flow):
-          sums every partner country, skips the header + Census 'total' sentinel (no double-count),
-          and yields a Comtrade-shaped record the transform/merge steps understand.
+@context  The Census query is UNGROUPED (no CTY_CODE) so the response is the single all-country total
+          — proves _aggregate parses it into ONE World raw row per (hs, year, flow), Comtrade-shaped.
+          (Grouping by CTY_CODE would mix in overlapping region aggregates → triple-count; see census.py.)
 """
 import unittest
 
 from tradepulse_etl.sources.census import USCensusSource
 
-# Census-shaped response: header row, then [CTY_CODE, value] per country. '-' = total sentinel.
-TABLE = [
-    ["CTY_CODE", "ALL_VAL_YR"],
-    ["5700", "1000"],     # a country
-    ["5880", "2500"],     # another country
-    ["-", "3500"],        # 'TOTAL FOR ALL COUNTRIES' sentinel — must be skipped, not summed
-]
+# Census ungrouped response: header, then the all-country total row.
+TABLE = [["ALL_VAL_YR"], ["6190000000"]]
 
 
 class CensusTest(unittest.TestCase):
-    def test_world_total_sums_countries_only(self):
+    def test_world_total(self):
         out = USCensusSource._aggregate(TABLE, "090111", 2025, "X", "ALL_VAL_YR")
         self.assertEqual(len(out), 1)
         row = out[0]
@@ -27,15 +22,15 @@ class CensusTest(unittest.TestCase):
         self.assertEqual(row["cmdCode"], "090111")
         self.assertEqual(row["period"], "2025")
         self.assertEqual(row["flowCode"], "X")
-        self.assertEqual(row["primaryValue"], 3500.0)         # 1000 + 2500, NOT 7000 (sentinel skipped)
+        self.assertEqual(row["primaryValue"], 6_190_000_000.0)
         self.assertEqual(row["publishedDate"], "2025-12")
 
     def test_empty_or_headeronly_yields_nothing(self):
         self.assertEqual(USCensusSource._aggregate([], "090111", 2025, "X", "ALL_VAL_YR"), [])
-        self.assertEqual(USCensusSource._aggregate([["CTY_CODE", "ALL_VAL_YR"]], "090111", 2025, "X", "ALL_VAL_YR"), [])
+        self.assertEqual(USCensusSource._aggregate([["ALL_VAL_YR"]], "090111", 2025, "X", "ALL_VAL_YR"), [])
 
     def test_zero_total_dropped(self):
-        table = [["CTY_CODE", "GEN_VAL_YR"], ["5700", "0"]]
+        table = [["GEN_VAL_YR"], ["0"]]
         self.assertEqual(USCensusSource._aggregate(table, "440131", 2024, "M", "GEN_VAL_YR"), [])
 
 

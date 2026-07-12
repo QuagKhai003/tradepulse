@@ -5,6 +5,9 @@ census.py — US Census International Trade source (first fresh NATIONAL primary
           covered HS (both flows) so the merge step lets it OVERRIDE Comtrade for reporter=842. Grain
           here is annual (value-to-date at MONTH=12); quarterly/monthly + per-partner breakdown are the
           next increment (kept out now to avoid shipping a guessed country-code crosswalk = wrong data).
+@warn     Do NOT group by CTY_CODE to get the total: Census returns overlapping region aggregates
+          (LAFTA, OECD, "South America"…) alongside countries, so summing them triple-counts. We query
+          WITHOUT CTY_CODE → Census returns the single all-country total directly.
 @done     pull() -> Comtrade-shaped raw rows (reporter=842, partner=World); _aggregate() pure + tested.
 @limits   Network I/O in _get only. US-only (ignores other reporters). Needs CENSUS_API_KEY (free).
 @affects  Implements base.TradeSource; merged with Comtrade in pipeline. Tested by tests/test_census.py.
@@ -48,31 +51,28 @@ class USCensusSource:
             comm_lvl = f"HS{len(hs)}"    # HS4 category vs HS6 product
             for year in self._recent_years(self.years):
                 for flow, (url, comm_var, val_var) in _FLOW.items():
-                    params = {"get": f"CTY_CODE,{val_var}", comm_var: hs, "YEAR": str(year),
+                    # No CTY_CODE -> Census returns the single all-country total (see @warn).
+                    params = {"get": val_var, comm_var: hs, "YEAR": str(year),
                               "MONTH": "12", "COMM_LVL": comm_lvl, "key": self.key}
                     table = self._get(f"{url}?{urllib.parse.urlencode(params)}")
                     rows += self._aggregate(table, hs, year, flow, val_var)
                     time.sleep(self.pause)
         return rows
 
-    # --- pure: Census array-of-arrays -> one World-total raw row per (hs, year, flow) ---
+    # --- pure: Census array-of-arrays (all-country total) -> one World raw row per (hs, year, flow) ---
     @staticmethod
     def _aggregate(table: list[list], hs: str, year: int, flow: str, val_var: str) -> list[dict]:
-        """Sum the annual value over every partner country -> the US World total. Order-independent;
-        skips the header row and any Census 'total-for-all-countries' sentinel to avoid double-count."""
+        """The query is ungrouped, so the response is the all-country total (usually one row). Sum the
+        value column defensively. Order-independent."""
         if not table or len(table) < 2:
             return []
         header = table[0]
         try:
             vi = header.index(val_var)
-            ci = header.index("CTY_CODE")
         except ValueError:
             return []
         total = 0.0
         for r in table[1:]:
-            code = str(r[ci]).strip()
-            if not code.isdigit():       # '-' / 'X' = Census total sentinel — skip (we sum ourselves)
-                continue
             try:
                 total += float(r[vi])
             except (TypeError, ValueError):
