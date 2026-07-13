@@ -93,17 +93,24 @@ def build_snapshot(conn, generated_at: str, hs6: str = "440131") -> dict:
 
 
 def build_tenders(conn, hs6: str, today: str) -> list[dict]:
-    """OPEN tenders only. TED's 'ACTIVE' scope means the notice is published, NOT that it is still
-    open — so drop anything whose deadline has passed. No-deadline notices (prior-information) are
-    kept: they are an early demand signal. Buyer ORGANISATION + official link only (Golden Rule)."""
+    """OPEN tenders only, and only the ones actually ABOUT this product. Two filters:
+    1. TED's 'ACTIVE' scope means the notice is PUBLISHED, not still open -> drop passed deadlines.
+       (No-deadline prior-information notices are kept: an early demand signal, not an error.)
+    2. Drop match_kind='basket' — the product is one buried line item of a big mixed contract (a
+       school food framework that lists tea among 100 items is not a tea lead). Only a whole
+       'contract' or a real 'lot' is biddable. See sources/ted.py @warn.
+    Buyer ORGANISATION + official link only (Golden Rule)."""
     from .db import fetch_tenders
     rows = fetch_tenders(conn, hs6)
     out = []
     for r in rows:
         if r["deadline"] and r["deadline"] < today:
             continue
+        if (r["match_kind"] or "basket") == "basket":
+            continue
         out.append({"id": r["id"], "title": _subject(r["title"]), "buyer": r["buyer"],
                     "buyer_country": r["buyer_country"], "buyer_code": _m49(r["buyer_country"]),
+                    "match": r["match_kind"], "cpv": r["cpv"],
                     "deadline": r["deadline"], "published": r["published"], "url": r["url"]})
     return out
 

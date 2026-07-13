@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS tenders (
     hs6             TEXT    NOT NULL,   -- the covered product this notice was matched to
     source          TEXT    NOT NULL,   -- 'ted'
     cpv             TEXT,               -- the classification that matched
+    match_kind      TEXT,               -- 'contract' | 'lot' | 'basket' (basket = buried line item)
     title           TEXT    NOT NULL,
     buyer           TEXT,               -- buying ORGANISATION (never a person)
     buyer_country   TEXT,               -- ISO3
@@ -82,6 +83,9 @@ def connect(db_path: Path | str = DEFAULT_DB) -> sqlite3.Connection:
 
 def _migrate(conn: sqlite3.Connection) -> None:
     """Add columns that post-date an existing dev DB (the sqlite is derived + rebuildable)."""
+    tcols = {r[1] for r in conn.execute("PRAGMA table_info(tenders)")}
+    if tcols and "match_kind" not in tcols:
+        conn.execute("ALTER TABLE tenders ADD COLUMN match_kind TEXT")
     cols = {r[1] for r in conn.execute("PRAGMA table_info(trade_flows)")}
     if "freq" not in cols:
         conn.execute("ALTER TABLE trade_flows ADD COLUMN freq TEXT")
@@ -149,10 +153,13 @@ def upsert_tenders(conn: sqlite3.Connection, rows: list[dict]) -> int:
     """Idempotent on (id, hs6) — re-scraping a notice refreshes it, never duplicates."""
     sql = """
         INSERT INTO tenders
-            (id, hs6, source, cpv, title, buyer, buyer_country, published, deadline, url, scraped_at)
+            (id, hs6, source, cpv, match_kind, title, buyer, buyer_country, published, deadline, url,
+             scraped_at)
         VALUES
-            (:id, :hs6, :source, :cpv, :title, :buyer, :buyer_country, :published, :deadline, :url, :scraped_at)
+            (:id, :hs6, :source, :cpv, :match_kind, :title, :buyer, :buyer_country, :published,
+             :deadline, :url, :scraped_at)
         ON CONFLICT(id, hs6) DO UPDATE SET
+            match_kind=excluded.match_kind,
             title=excluded.title, buyer=excluded.buyer, buyer_country=excluded.buyer_country,
             published=excluded.published, deadline=excluded.deadline, url=excluded.url,
             scraped_at=excluded.scraped_at

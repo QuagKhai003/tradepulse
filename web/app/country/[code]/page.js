@@ -126,7 +126,7 @@ export default async function CountryPage({ params, searchParams }) {
           {tHere.length > 0 ? (
             <>
               <h3 className="tender-sub">{tr.tendersHere} {name} <span className="muted">({tHere.length})</span></h3>
-              <TenderList tenders={tHere} lang={lang} t={tr} />
+              <TenderList tenders={tHere} lang={lang} t={tr} product={product} />
             </>
           ) : (
             <p className="muted tender-note">{tr.tendersNoneHere} {name}. {tr.tendersElsewhereNote}</p>
@@ -134,7 +134,7 @@ export default async function CountryPage({ params, searchParams }) {
           {tElse.length > 0 && (
             <>
               <h3 className="tender-sub">{tr.tendersElsewhere} <span className="muted">({tElse.length})</span></h3>
-              <TenderList tenders={tElse} lang={lang} t={tr} />
+              <TenderList tenders={tElse} lang={lang} t={tr} product={product} />
             </>
           )}
           <p className="muted tender-note">{tr.tenderSource}</p>

@@ -97,7 +97,7 @@ export default function HeroClient({ snapshot, tenders = [], hs, initialLang, in
         <MotionPanel from="right" delay={0.05} className="panel-col right glasscol">
           {panelTabs && <div className="panel-tabsrow">{panelTabs}</div>}
           {panel === "tenders"
-            ? <TenderList tenders={tenders} lang={lang} t={tr} />
+            ? <TenderList tenders={tenders} lang={lang} t={tr} product={product} />
             : <GlobalFeed countries={snapshot.countries} flow={flow} freq={freq} lang={lang} t={tr} hs={hs} sort={sort} tools={feedTools} />}
         </MotionPanel>
 

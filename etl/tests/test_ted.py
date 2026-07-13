@@ -6,7 +6,7 @@ test_ted.py — TED notice -> tender row (sources/ted.py). Pure, offline.
 """
 import unittest
 
-from tradepulse_etl.sources.ted import TedSource, _text
+from tradepulse_etl.sources.ted import _match_kind, TedSource, _text
 
 NOTICE = {
     "publication-number": "8046-2026",
@@ -44,3 +44,29 @@ class TedTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MatchKindTest(unittest.TestCase):
+    """A CPV search hits a notice if the code appears ANYWHERE — including as one buried line item of
+    a 100-item food framework. Only a whole contract or a real lot is a lead."""
+
+    def test_main_contract_cpv_is_a_contract(self):
+        n = {"main-classification-proc": ["15863000"], "main-classification-lot": []}
+        self.assertEqual(_match_kind(n, "15863000"), "contract")
+
+    def test_child_cpv_counts(self):                        # 15863200 black tea is a child of tea
+        n = {"main-classification-proc": ["15863200"], "main-classification-lot": []}
+        self.assertEqual(_match_kind(n, "15863000"), "contract")
+
+    def test_lot_main_cpv_is_a_lot(self):
+        n = {"main-classification-proc": ["15800000"], "main-classification-lot": ["15863000"]}
+        self.assertEqual(_match_kind(n, "15863000"), "lot")
+
+    def test_buried_line_item_is_a_basket(self):            # the bread contract that also lists tea
+        n = {"main-classification-proc": ["15811000"], "main-classification-lot": ["15811100"],
+             "additional-classification-lot": ["15863000"]}
+        self.assertEqual(_match_kind(n, "15863000"), "basket")
+
+    def test_unrelated_prefix_does_not_match(self):         # 15863000 stem '15863' must not eat 158631x
+        n = {"main-classification-proc": ["15864100"], "main-classification-lot": []}
+        self.assertEqual(_match_kind(n, "15863000"), "basket")

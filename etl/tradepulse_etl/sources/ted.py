@@ -6,6 +6,13 @@ ted.py — EU TED tenders: FORWARD demand (who is buying right now), plan §9.2 
 @warn     TED classifies by CPV, not HS -> config.TENDER_CPV maps each covered product to the CPV(s)
           that actually return its notices (each verified live). Titles/buyers are MULTILINGUAL dicts
           (prefer English). Prior-information notices have NO deadline — that's valid, not an error.
+@warn     A CPV search matches a notice if the code appears ANYWHERE in it — including as one buried
+          line item of a 100-item food framework. A school buying a food basket that happens to list
+          tea is NOT a tea lead. So every notice is classified against the searched CPV:
+            contract = the notice's MAIN cpv is this product  (a real, biddable contract)
+            lot      = a LOT's main cpv is this product       (a real, biddable lot)
+            basket   = the code only appears in the additional/full list (noise -> dropped at export)
+          Measured 2026-07-14: tea = 0 contract / 19 lot / 60 basket; wood fuel = 85 / 1 / 14.
 @golden   We surface the buying ORGANISATION + the official notice link only. Never a contact person.
 @done     pull() -> tender rows; _notice() pure + tested.
 @limits   Network in _post only. Deterministic given a response (scraped_at is passed in).
@@ -20,7 +27,25 @@ import urllib.request
 API = "https://api.ted.europa.eu/v3/notices/search"
 NOTICE_URL = "https://ted.europa.eu/en/notice/{}"
 FIELDS = ["publication-number", "notice-title", "buyer-name", "buyer-country",
-          "deadline-receipt-tender-date-lot", "publication-date", "classification-cpv"]
+          "deadline-receipt-tender-date-lot", "publication-date", "classification-cpv",
+          "main-classification-proc", "main-classification-lot"]
+
+
+def _stem(cpv: str) -> str:
+    """CPV is hierarchical with trailing zeros: 15863000 (tea) is the parent of 15863200 (black tea).
+    Strip the zeros and a child is any code starting with the stem."""
+    return cpv.rstrip("0") or cpv
+
+
+def _match_kind(notice: dict, cpv: str) -> str:
+    """How this product relates to the notice — see the @warn above."""
+    stem = _stem(cpv)
+    hit = lambda field: any(str(c).startswith(stem) for c in (notice.get(field) or []))
+    if hit("main-classification-proc"):
+        return "contract"
+    if hit("main-classification-lot"):
+        return "lot"
+    return "basket"
 
 
 def _text(v) -> str | None:
@@ -77,6 +102,7 @@ class TedSource:
             "hs6": hs6,
             "source": "ted",
             "cpv": cpv,
+            "match_kind": _match_kind(n, cpv),
             "title": title,
             "buyer": _text(n.get("buyer-name")),                 # organisation, never a person
             "buyer_country": _text(n.get("buyer-country")),
