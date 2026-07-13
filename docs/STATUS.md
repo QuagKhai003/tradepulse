@@ -3,7 +3,7 @@
 > Single source of truth for the CURRENT moment. Update at the start and end of every
 > session. History goes in `docs/progress/`, not here.
 
-**Last updated:** 2026-07-13 (multi-source data spine + 1,240-product catalog MERGED to main)
+**Last updated:** 2026-07-14 (tender feed + view fixes + EN-only; full Comtrade refresh RUNNING)
 
 ## Phase
 **Phase 1 MVP complete + map-first realignment (ADR-0003, 3.1–3.4 done).** `npm run dev` auto-fetches.
@@ -31,11 +31,29 @@ Census / EU Eurostat / UK HMRC** (fresh national primaries; EUR/GBP -> USD via E
 national sources dropped on purpose (Comtrade covers them in HS). Incremental refresh (frozen periods
 never re-fetched) + per-product persistence. `freq` (A/Q/M) + Nam/Quy toggle across map/ranking/feed.
 **Catalog: 1,240 products** (every official HS4 heading + 32 curated w/ Vietnamese names). Slim snapshot
-(310KB -> 48KB) so all ship (59MB); indexed export = 1,239 snapshots in 96s. **50 offline tests green.**
+(310KB -> 64KB) so all ship (79MB incl. history); indexed export = 1,239 snapshots in 96s. **61 offline tests green.**
 
-**NEXT (same frame):** feed-by-freq; more national sources (HMRC/Eurostat keyless, JP/KR need keys);
-then new signal types (prices/tenders/border-rejections/rule-changes). Then Phase-2 alerts + login.
-Note: full data refresh = 112 Comtrade calls (~6 min); `prepare-data` threshold = 7 days.
+**IN FLIGHT — branch `feat/tender-feed` (NOT merged, needs owner approval):**
+- **Tenders (Phase 2.2)** — EU TED, keyless, CPV-mapped: 670 open notices across 18 products. Right-panel
+  tab on the globe + each country page lists **its own** public buyers' open tenders. English subject only.
+- **View fixes (2026-07-14 owner review):** panel-header overflow (flow/grain moved to a globe control
+  bar); country page has its own product search (switching product stays on the country); exports/imports
+  panels aligned; **history restored** to the slim snapshot (shared period index; 59MB -> 79MB); the
+  freshness chip now shows *that country's* latest period ("Data as of"), not the snapshot-wide max.
+- **English-only (ADR-0004):** `i18n.VI_ENABLED = false` — 1,208 of 1,240 products still have
+  English-only names, so the VN UI was showing English content anyway. Strings stay; one flag to revert.
+
+**DATA CURRENCY — being fixed right now.** Owner spotted "newest data is 2024" in 2026. Cause: BACI
+(bulk history) **ends at 2023**, and the Comtrade API had only ever covered **13 products** before its
+quota throttled — so 1,227 products were frozen at 2023. Fix: Comtrade `cmdCode` takes a comma-separated
+list, so annual pulls now **batch 10 products/call** (full refresh of the two non-final years: ~2,480
+calls -> **~248**), with a halving retry when the API's 100k-row cap truncates a batch.
+**A 1,240-product refresh of 2024 + 2025 is RUNNING (started 2026-07-14 05:43, ~2-5h).** When it lands:
+`cd etl && python -m tradepulse_etl --export-only` to rebuild the snapshots.
+
+**NEXT:** merge `feat/tender-feed` (owner approval); then new signal types (prices / border-rejections /
+rule-changes). Phase-2 alerts + login. Zalo deferred by owner.
+Note: `prepare-data` staleness threshold = 7 days; 2023 and older are `is_final` and never re-fetched.
 
 ## How to run (ONE command)
 ```
