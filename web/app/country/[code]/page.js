@@ -79,8 +79,12 @@ export default async function CountryPage({ params, searchParams }) {
   const product = lang === "en" ? snap.product.name_en : snap.product.name_vi;
   const isPellets = hs === "440131";
   const sourcing = (await loadSourcing(hs))?.[String(c.code)] || null;
-  // Tenders THIS country's public buyers have open for THIS product (EU TED; buyer_code is M49).
-  const tenders = (await loadTenders(hs)).filter((x) => String(x.buyer_code) === String(c.code));
+  // Open tenders for THIS PRODUCT — this country's own buyers first, the rest below. Filtering to the
+  // country alone hid the section entirely for every non-EU country (TED covers EU public buyers only),
+  // which reads as "no demand" when it actually means "no coverage here".
+  const allTenders = await loadTenders(hs);
+  const tHere = allTenders.filter((x) => String(x.buyer_code) === String(c.code));
+  const tElse = allTenders.filter((x) => String(x.buyer_code) !== String(c.code));
   // The country's OWN latest period — not the snapshot-wide max, which reads as a lie next to figures
   // from an earlier year (the map's newest country can be a year ahead of this one).
   const asOf = [c.exp?.period, c.imp?.period].filter(Boolean).sort().pop() || snap.latest_period;
@@ -102,7 +106,7 @@ export default async function CountryPage({ params, searchParams }) {
         <h1>{name} · {product}</h1>
         <div className="chips">
           <span className="chip hs">HS {snap.hs6}</span>
-          <span className="chip muted">{tr.asOf} {fmtPeriod(asOf, lang)}</span>
+          <span className="chip muted">{tr.asOf} {asOf}</span>
         </div>
         <div className="actions">
           <WatchButton watchKey={`signal:${snap.hs6}:${c.code}`} meta={{ hs6: snap.hs6, market: String(c.code), kind: "signal" }}
@@ -116,10 +120,24 @@ export default async function CountryPage({ params, searchParams }) {
         <FlowPanel title={tr.importsLabel} slot={c.imp} t={tr} lang={lang} />
       </section>
 
-      {tenders.length > 0 && (
+      {allTenders.length > 0 && (
         <section className="panel tender-sec">
-          <h2>{tr.tendersHere} <span className="muted">({tenders.length})</span></h2>
-          <TenderList tenders={tenders} lang={lang} t={tr} />
+          <h2>{tr.tendersFor} {product}</h2>
+          {tHere.length > 0 ? (
+            <>
+              <h3 className="tender-sub">{tr.tendersHere} {name} <span className="muted">({tHere.length})</span></h3>
+              <TenderList tenders={tHere} lang={lang} t={tr} />
+            </>
+          ) : (
+            <p className="muted tender-note">{tr.tendersNoneHere} {name}. {tr.tendersElsewhereNote}</p>
+          )}
+          {tElse.length > 0 && (
+            <>
+              <h3 className="tender-sub">{tr.tendersElsewhere} <span className="muted">({tElse.length})</span></h3>
+              <TenderList tenders={tElse} lang={lang} t={tr} />
+            </>
+          )}
+          <p className="muted tender-note">{tr.tenderSource}</p>
         </section>
       )}
 

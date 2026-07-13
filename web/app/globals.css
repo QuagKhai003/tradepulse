@@ -199,6 +199,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .drillgrid > .panel { display: flex; flex-direction: column; }
 .tender-sec { margin-top: 16px; }
 .tender-sec > h2 { margin: 0 0 10px; font-size: 15px; }
+.tender-sub { margin: 14px 0 6px; font-size: 13px; font-weight: 650; color: var(--fg); }
+.tender-note { font-size: 12px; margin: 10px 0 0; }
 .panel h3 { margin: 0 0 8px; font-size: 13px; font-weight: 650; text-transform: none; letter-spacing: normal; color: var(--muted); }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
 
@@ -211,9 +213,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .watchbtn.on { background: #fffbeb; border-color: #fcd34d; color: #b45309; }
 
 /* sparkline */
-.spark { display: flex; align-items: flex-end; gap: 6px; height: 92px; }
+.spark { display: flex; align-items: flex-end; gap: 10px; height: 120px; margin-top: auto; padding-top: 8px; }
 .spark-bar { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
-.spark-bar > div { width: 66%; border-radius: 3px 3px 0 0; min-height: 2px; }
+.spark-bar > div { width: 100%; max-width: 34px; border-radius: 4px 4px 0 0; min-height: 3px; opacity: .85; }
 .spark-x { font-size: 9px; margin-top: 5px; white-space: nowrap; color: var(--muted); }
 
 /* sourcing chart */
