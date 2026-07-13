@@ -10,6 +10,7 @@
 import { useState } from "react";
 import GlobeHero from "./GlobeHero.js";
 import GlobalFeed from "./GlobalFeed.js";
+import TenderList from "./TenderList.js";
 import TopCountries from "./TopCountries.js";
 import SearchBox from "./SearchBox.js";
 import BrowseCountries from "./BrowseCountries.js";
@@ -33,11 +34,12 @@ function Segmented({ options, value, onChange, size = "md" }) {
   );
 }
 
-export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
+export default function HeroClient({ snapshot, tenders = [], hs, initialLang, initialFlow }) {
   const [lang, setLang] = useState(initialLang);
   const [flow, setFlow] = useState(initialFlow);
   const [sort, setSort] = useState("value-desc");
   const [freq, setFreq] = useState("A");
+  const [panel, setPanel] = useState("signals");   // right panel: signals | tenders
   const tr = t(lang);
   const metric = flow === "export" ? "exp" : "imp";
   const isTotal = hs === "TOTAL";
@@ -56,7 +58,14 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
     <Segmented idBase="freq-ind" value={freq} onChange={setFreq} size="sm"
       options={[{ v: "A", label: tr.freqYear }, { v: "Q", label: tr.freqQuarter }]} />
   ) : null;
-  const feedTools = (<><SortMenu value={sort} onChange={setSort} t={tr} />{freqToggle}{flowToggle}</>);
+  // The right panel switches between the SIGNAL feed (where demand moved) and TENDERS (who is buying
+  // now). Tenders only exist for products with CPV coverage, so the tab is hidden when there are none.
+  const panelTabs = tenders.length > 0 ? (
+    <Segmented idBase="panel-ind" value={panel} onChange={setPanel} size="sm"
+      options={[{ v: "signals", label: tr.tabSignals }, { v: "tenders", label: `${tr.tabTenders} ${tenders.length}` }]} />
+  ) : null;
+  const feedTools = (<><SortMenu value={sort} onChange={setSort} t={tr} />{freqToggle}{flowToggle}{panelTabs}</>);
+  const tenderTools = panelTabs;
 
   return (
     <main className="home">
@@ -83,7 +92,9 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
         </MotionPanel>
 
         <MotionPanel from="right" delay={0.05} className="panel-col right glasscol">
-          <GlobalFeed countries={snapshot.countries} flow={flow} freq={freq} lang={lang} t={tr} hs={hs} sort={sort} tools={feedTools} />
+          {panel === "tenders"
+            ? <TenderList tenders={tenders} lang={lang} t={tr} tools={tenderTools} />
+            : <GlobalFeed countries={snapshot.countries} flow={flow} freq={freq} lang={lang} t={tr} hs={hs} sort={sort} tools={feedTools} />}
         </MotionPanel>
 
         <div className="hero-foot">

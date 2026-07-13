@@ -78,6 +78,29 @@ def build_snapshot(conn, generated_at: str, hs6: str = "440131") -> dict:
     }
 
 
+def build_tenders(conn, hs6: str, today: str) -> list[dict]:
+    """OPEN tenders only. TED's 'ACTIVE' scope means the notice is published, NOT that it is still
+    open — so drop anything whose deadline has passed. No-deadline notices (prior-information) are
+    kept: they are an early demand signal. Buyer ORGANISATION + official link only (Golden Rule)."""
+    from .db import fetch_tenders
+    rows = fetch_tenders(conn, hs6)
+    out = []
+    for r in rows:
+        if r["deadline"] and r["deadline"] < today:
+            continue
+        out.append({"id": r["id"], "title": r["title"], "buyer": r["buyer"],
+                    "buyer_country": r["buyer_country"], "deadline": r["deadline"],
+                    "published": r["published"], "url": r["url"]})
+    return out
+
+
+def write_tenders(tenders: list[dict], path: Path | str) -> Path:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(tenders, ensure_ascii=False), encoding="utf-8")
+    return path
+
+
 def write_countries(conn, path: Path | str) -> Path:
     """Country names ONCE, shared by every product snapshot (they used to repeat in all 1,240 files)."""
     from .db import fetch_flows

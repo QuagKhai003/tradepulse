@@ -56,6 +56,7 @@ data/*.sqlite
 # generated web snapshots + sourcing (rebuilt by the ETL; not source)
 web/public/data/snapshot*.json
 web/public/data/sourcing*.json
+web/public/data/tenders-*.json
 # locked-page telemetry + watches + alerts (raw capture logs)
 data/locked_clicks.ndjson
 data/watches.ndjson

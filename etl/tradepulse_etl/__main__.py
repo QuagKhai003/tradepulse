@@ -15,7 +15,8 @@ from pathlib import Path
 
 from .alerts import rollup_locked_clicks, signal_alerts
 from .db import DEFAULT_DB, connect, count_trade_flows, fetch_flows, fetch_signals, upsert_signals
-from .export import DEFAULT_SNAPSHOT, build_snapshot, write_countries, write_snapshot
+from .export import (DEFAULT_SNAPSHOT, build_snapshot, build_tenders, write_countries,
+                     write_snapshot, write_tenders)
 from .pipeline import get_sources, run_multi
 from .signals import compute_signals
 
@@ -32,6 +33,8 @@ def main() -> None:
                     help="grain(s) for comtrade: A=annual (default), AQ=annual + monthly->quarterly")
     ap.add_argument("--db", default=str(DEFAULT_DB), help="SQLite path")
     ap.add_argument("--snapshot", default=str(DEFAULT_SNAPSHOT), help="web snapshot output path")
+    ap.add_argument("--tenders", action="store_true",
+                    help="also pull EU TED tenders (forward demand: who is buying now)")
     args = ap.parse_args()
 
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -78,6 +81,23 @@ def main() -> None:
                 write_sourcing(sm, default_path.parent / f"sourcing-{hs}.json")
                 srcs.append(f"{hs}:{len(sm)}r")
         print(f"[tradepulse] sourcing (quarterly, {len(FOCUS_REPORTERS)} focus reporters) [{' '.join(srcs)}]")
+
+    # --- Forward demand: EU TED tenders (who is buying RIGHT NOW) — plan §9.2 / Phase 2.2 ---
+    if args.tenders:
+        from datetime import date, timedelta
+        from .config import TENDER_CPV, TENDER_LOOKBACK_DAYS
+        from .db import upsert_tenders
+        from .sources.ted import TedSource
+        today = date.today()
+        since = (today - timedelta(days=TENDER_LOOKBACK_DAYS)).strftime("%Y%m%d")
+        rows = TedSource().pull(TENDER_CPV, since, now_iso)
+        upsert_tenders(conn, rows)
+        open_n = 0
+        for hs in TENDER_CPV:
+            ten = build_tenders(conn, hs, today.isoformat())
+            write_tenders(ten, default_path.parent / f"tenders-{hs}.json")
+            open_n += len(ten)
+        print(f"[tradepulse] tenders: {len(rows)} scraped, {open_n} still open, {len(TENDER_CPV)} products")
 
     _print_rollup()
 

@@ -48,6 +48,18 @@ export function slotFor(slot, freq) {
 const FEED_BANDS = new Set(["surge", "collapse", "significant", "moderate", "new"]);
 export function isFeedSignal(band) { return FEED_BANDS.has(band); }
 
+// Tender deadline -> {label, soon}. `soon` = closes within 14 days (worth acting on now).
+export function fmtDeadline(deadline, lang = "vi") {
+  if (!deadline) return { label: lang === "en" ? "open" : "đang mở", soon: false };
+  const d = new Date(deadline + "T00:00:00Z");
+  const days = Math.ceil((d - new Date()) / 86400000);
+  const soon = days >= 0 && days <= 14;
+  if (days < 0) return { label: lang === "en" ? "closed" : "đã đóng", soon: false };
+  if (days === 0) return { label: lang === "en" ? "today" : "hôm nay", soon: true };
+  const label = lang === "en" ? `${days}d left` : `còn ${days} ngày`;
+  return { label, soon };
+}
+
 export function fmtTons(kg) {
   if (kg == null) return null;
   const t = kg / 1000;

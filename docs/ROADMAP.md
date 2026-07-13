@@ -35,9 +35,9 @@ All 9 batches done + merged. Data + content are SAMPLE; Stage 0 willingness-to-p
 | # | Task | Status |
 |---|------|--------|
 | 2.1 | Second vertical (from Stage 0 feedback + locked-page clicks) | ⬜ |
-| 2.2 | Tender feed productized (Korean utility + EU TED) | ⬜ |
+| 2.2 | Tender feed productized (EU TED live; Korean genco tenders are ActiveX/login-walled — deferred) | ✅ |
 | 2.3 | Zalo OA alerts | ⬜ |
-| 2.4 | Monthly national-stats freshness for covered markets | ⬜ |
+| 2.4 | Monthly national-stats freshness for covered markets (US Census, EU Eurostat, UK HMRC) | ✅ |
 
 ## Phase 3 — ongoing
 Markets/verticals strictly by locked-page telemetry. Curated-contact upgrade only if users

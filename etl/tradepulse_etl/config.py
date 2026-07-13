@@ -58,6 +58,33 @@ MARKETS = {
     "gb": {"name_en": "United Kingdom", "name_vi": "Anh",                "reporter": 826},
 }
 
+# --- Tenders (plan §9.2, Phase 2.2): FORWARD demand — who is buying RIGHT NOW. ---
+# EU TED classifies by CPV, not HS, so each covered product maps to the CPV code(s) that actually
+# return its tenders. Every code below was verified live against TED (real active notices).
+# Golden Rule: we surface the public BUYER ORGANISATION + the official notice link only — never a
+# named contact person.
+TENDER_CPV = {
+    "440131": ["09111400"],              # wood pellets  -> wood fuels
+    "4401":   ["09111400"],              # wood fuel
+    "4407":   ["03410000"],              # sawn wood     -> wood
+    "0901":   ["15861000"],              # coffee
+    "090111": ["15861000"],
+    "090121": ["15861000"],
+    "0902":   ["15863000"],              # tea
+    "090240": ["15863000"],
+    "090210": ["15863000"],
+    "1006":   ["03211300"],              # rice
+    "100630": ["03211300"],
+    "100640": ["03211300"],
+    "0306":   ["03310000"],              # crustaceans   -> fish & aquatic products
+    "030617": ["03310000"],
+    "0801":   ["03222000"],              # nuts          -> fruit & nuts
+    "080131": ["03222000"],
+    "080132": ["03222000"],
+    "0904":   ["15872100"],              # pepper
+}
+TENDER_LOOKBACK_DAYS = 365               # how far back to ask TED for still-ACTIVE notices
+
 PARTNER_WORLD = 0      # aggregate of all partners
 PARTNER_VIETNAM = 704  # for VN import-share on drill-down (plan §7.3)
 

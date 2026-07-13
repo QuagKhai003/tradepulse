@@ -48,6 +48,25 @@ CREATE TABLE IF NOT EXISTS signals (
 );
 
 CREATE INDEX IF NOT EXISTS ix_signals_hs6 ON signals (hs6);
+
+-- Forward demand (plan §10.2, Phase 2.2): public procurement notices = who is buying RIGHT NOW.
+-- Public buyer ORGANISATION + official link only — never a named contact (Golden Rule).
+CREATE TABLE IF NOT EXISTS tenders (
+    id              TEXT    NOT NULL,   -- source notice id (TED publication-number)
+    hs6             TEXT    NOT NULL,   -- the covered product this notice was matched to
+    source          TEXT    NOT NULL,   -- 'ted'
+    cpv             TEXT,               -- the classification that matched
+    title           TEXT    NOT NULL,
+    buyer           TEXT,               -- buying ORGANISATION (never a person)
+    buyer_country   TEXT,               -- ISO3
+    published       TEXT,
+    deadline        TEXT,               -- nullable (prior-information notices have none)
+    url             TEXT    NOT NULL,
+    scraped_at      TEXT    NOT NULL,
+    PRIMARY KEY (id, hs6)
+);
+
+CREATE INDEX IF NOT EXISTS ix_tenders_hs6 ON tenders (hs6);
 """
 
 
@@ -117,3 +136,25 @@ def upsert_signals(conn: sqlite3.Connection, rows: list[dict]) -> int:
     with conn:
         conn.executemany(sql, rows)
     return len(rows)
+
+
+def upsert_tenders(conn: sqlite3.Connection, rows: list[dict]) -> int:
+    """Idempotent on (id, hs6) — re-scraping a notice refreshes it, never duplicates."""
+    sql = """
+        INSERT INTO tenders
+            (id, hs6, source, cpv, title, buyer, buyer_country, published, deadline, url, scraped_at)
+        VALUES
+            (:id, :hs6, :source, :cpv, :title, :buyer, :buyer_country, :published, :deadline, :url, :scraped_at)
+        ON CONFLICT(id, hs6) DO UPDATE SET
+            title=excluded.title, buyer=excluded.buyer, buyer_country=excluded.buyer_country,
+            published=excluded.published, deadline=excluded.deadline, url=excluded.url,
+            scraped_at=excluded.scraped_at
+    """
+    with conn:
+        conn.executemany(sql, rows)
+    return len(rows)
+
+
+def fetch_tenders(conn: sqlite3.Connection, hs6: str) -> list[dict]:
+    sql = "SELECT * FROM tenders WHERE hs6 = ? ORDER BY (deadline IS NULL), deadline, published DESC"
+    return [dict(r) for r in conn.execute(sql, (hs6,)).fetchall()]

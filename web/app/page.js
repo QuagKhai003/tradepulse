@@ -9,6 +9,7 @@ import HeroClient from "./components/HeroClient.js";
 import SearchBox from "./components/SearchBox.js";
 import LockedProduct from "./components/LockedProduct.js";
 import { loadSnapshot } from "./lib/snapshot.js";
+import { loadTenders } from "./lib/tenders.js";
 import { lookup } from "./lib/catalog.js";
 import { t } from "./lib/i18n.js";
 
@@ -18,13 +19,14 @@ export default async function Page({ searchParams }) {
   const flow = ["export", "import"].includes(sp.flow) ? sp.flow : "import";
   const tr = t(lang);
   const snap = await loadSnapshot(sp.hs);
+  const tenders = await loadTenders((snap && snap.hs6) || sp.hs);
   if (!snap && !sp.hs) return <main className="page"><div className="empty">{tr.noData}</div></main>;
 
   const hs = (snap && snap.hs6) || sp.hs || "440131";
   const covered = !!snap && snap.countries?.length > 0;
 
   if (covered) {
-    return <HeroClient snapshot={snap} hs={hs} initialLang={lang} initialFlow={flow} />;
+    return <HeroClient snapshot={snap} tenders={tenders} hs={hs} initialLang={lang} initialFlow={flow} />;
   }
 
   // uncovered product -> locked "coming soon" (server-rendered)
