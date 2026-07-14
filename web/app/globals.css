@@ -647,3 +647,4 @@ a.lockmask:hover { color: var(--accent); }
 .est-tag { display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 700; letter-spacing: .03em;
   text-transform: uppercase; color: #b45309; background: rgba(245,158,11,.14); padding: 1px 6px;
   border-radius: 5px; vertical-align: middle; cursor: help; }
+.mfeed-src { opacity: .8; }

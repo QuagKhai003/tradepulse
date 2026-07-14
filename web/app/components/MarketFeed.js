@@ -111,6 +111,7 @@ export default function MarketFeed({ tenders = [], sellers = [], orders = [], pr
                 <p>{t.cpvNear} <b>{cpv.label}</b> <span className="num">({cpv.cpv})</span></p>
               )}
               {cpv?.exact && <p>{t.cpvExact} <span className="num">{cpv.cpv}</span></p>}
+              <p className="mfeed-src">{t.tenderSource}</p>
             </div>
           </div>
 

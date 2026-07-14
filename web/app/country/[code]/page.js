@@ -89,15 +89,24 @@ export default async function CountryPage({ params, searchParams }) {
   const tHere = allTenders.filter((x) => String(x.buyer_code) === String(c.code));
   const tElse = allTenders.filter((x) => String(x.buyer_code) !== String(c.code));
   // Sellers BASED here, and every past order this country took part in — as the buyer OR the seller.
-  // Both are the country-scoped slice of the same evidence the globe view shows for the product.
-  const sellersHere = (await loadSellers(hs)).filter((x) => String(x.seller_code) === String(c.code));
+  // The whole PRODUCT market, ordered so this country comes first — same treatment the buyers list
+  // already gets. Scoping to the country alone emptied these tabs for anyone absent from EU public
+  // procurement (Vietnam never appears there), which reads as "no market" when it means "our award
+  // source is EU-only". Vietnamese exporters will populate the top once the registries land.
+  const allSellers = await loadSellers(hs);
+  const sellersHere = [
+    ...allSellers.filter((x) => String(x.seller_code) === String(c.code)),
+    ...allSellers.filter((x) => String(x.seller_code) !== String(c.code)),
+  ];
   const allOrders = await loadAwards(hs);
   const cpv = await loadCpvMatch(hs);
   // Free tier sees the first few parties; the rest are locked. Decided on the SERVER — a gate the
   // client could flip is not a gate (plan §11).
   const openCount = (await getTier()) === "paid" ? Infinity : FREE_PROFILE_LIMIT;
-  const ordersHere = allOrders.filter((x) => String(x.buyer_code) === String(c.code)
-                                          || String(x.seller_code) === String(c.code));
+  const ordersHere = [
+    ...allOrders.filter((x) => String(x.buyer_code) === String(c.code) || String(x.seller_code) === String(c.code)),
+    ...allOrders.filter((x) => String(x.buyer_code) !== String(c.code) && String(x.seller_code) !== String(c.code)),
+  ];
   // The country's OWN latest period — not the snapshot-wide max, which reads as a lie next to figures
   // from an earlier year (the map's newest country can be a year ahead of this one).
   const asOf = [c.exp?.period, c.imp?.period].filter(Boolean).sort().pop() || snap.latest_period;
