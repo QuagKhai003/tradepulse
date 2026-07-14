@@ -151,3 +151,38 @@ class MirrorTest(unittest.TestCase):
         blob = " ".join(seen)
         self.assertNotIn(f"period={date.today().year - 1}", blob)   # frontier year skipped
         self.assertIn(f"period={date.today().year - 2}", blob)      # well-covered year pulled
+
+
+class PreviewFailoverTest(unittest.TestCase):
+    """When the keyed /data call fails (throttle), fall over to the keyless /public/v1/preview path."""
+
+    def test_failover_rewrites_url_and_drops_key(self):
+        src = ComtradeSource(key="k", pause=0)
+        seen = {}
+
+        def fake_open(req, timeout):
+            seen["url"] = req.full_url
+            seen["has_key"] = "Ocp-Apim-Subscription-Key" in req.headers
+
+            class R:
+                def __enter__(s): return s
+                def __exit__(s, *a): return False
+                def read(s): return b'{"data":[{"reporterCode":704}]}'
+            return R()
+
+        import urllib.request
+        orig = urllib.request.urlopen
+        urllib.request.urlopen = fake_open
+        try:
+            out = src._preview_fallback(
+                "https://comtradeapi.un.org/data/v1/get/C/A/HS?cmdCode=0901", {"x": 1})
+        finally:
+            urllib.request.urlopen = orig
+        self.assertIn("/public/v1/preview/", seen["url"])   # keyed path -> preview path
+        self.assertNotIn("/data/v1/get/", seen["url"])
+        self.assertFalse(seen["has_key"])                    # preview is keyless
+        self.assertEqual(out, [{"reporterCode": 704}])
+
+    def test_failover_skips_non_keyed_urls(self):
+        src = ComtradeSource(key="k", pause=0)
+        self.assertIsNone(src._preview_fallback("https://example.com/other", {}))

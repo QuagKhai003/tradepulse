@@ -76,6 +76,7 @@ class ComtradeSource:
         self.pause = pause
         self.freqs = freqs          # ('A',) annual only; ('A','Q') also monthly->quarterly (fresher)
         self.quarterly_hs = set(quarterly_hs) if quarterly_hs else None   # bound the quarterly pull
+        self._fellover = False   # log the preview failover only once per run
 
     # --- quarterly + all-partner data for a few focus reporters (drill-down sourcing) ---
     def pull_sourcing(self, hs_codes: list[str], reporters: list[int]) -> list[dict]:
@@ -214,8 +215,32 @@ class ComtradeSource:
                 if attempt == 0:
                     time.sleep(self.pause * 4)
                     continue
+                # Keyed API failed (throttle/timeout). Fail over to the KEYLESS preview endpoint —
+                # same data, a separate throttle — so a Comtrade rate-limit degrades coverage instead
+                # of zeroing it. Preview caps responses at 500 rows, so a big all-reporters query comes
+                # back PARTIAL: better a partial recent period than an empty one. Logged when used.
+                fb = self._preview_fallback(url, headers)
+                if fb is not None:
+                    return fb
                 print(f"[comtrade] warn: {type(e).__name__}:{getattr(e, 'code', '')} for {url[:80]}")
                 return []
+
+    def _preview_fallback(self, url: str, keyed_headers: dict) -> list[dict] | None:
+        """Retry a keyed /data/v1/get call against the keyless /public/v1/preview path (drops the key).
+        Returns rows on success (possibly capped at 500), or None if the URL isn't keyed or it also fails."""
+        if "/data/v1/get/" not in url:
+            return None
+        purl = url.replace("/data/v1/get/", "/public/v1/preview/")
+        try:
+            req = urllib.request.Request(purl, headers={"User-Agent": "tradepulse/0.1"})
+            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+                data = json.loads(resp.read().decode("utf-8")).get("data", []) or []
+            if not self._fellover:
+                print("[comtrade] rate-limited -> using keyless preview failover (coverage may be partial)")
+                self._fellover = True
+            return data
+        except Exception:  # noqa: BLE001 — the failover itself failed; caller logs + returns []
+            return None
 
     # --- monthly rows -> complete-quarter records (keeps the partner dimension) ---
     @staticmethod
