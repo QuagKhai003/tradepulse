@@ -4,7 +4,7 @@
  *           open deadline. Written by the ETL from EU TED (tenders-<hs>.json), already filtered to
  *           still-open notices.
  * @limits   Server-only (node:fs). Missing file -> [] (product simply has no tender coverage).
- * @affects  Consumed by app/page.js -> HeroClient -> TenderList / SellerList / OrderList.
+ * @affects  Consumed by country/[code]/page.js -> MarketFeed.
  */
 import { readFile } from "node:fs/promises";
 import path from "node:path";

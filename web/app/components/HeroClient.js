@@ -58,7 +58,7 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
   ) : null;
   // The globe answers ONE question — where is demand moving — so this panel is the signal feed, and
   // nothing else. Buyers / sellers / past orders are about a specific market, so they live on the
-  // country page you click into (CountryTabs), where that question is the one you are actually asking.
+  // country page you click into (MarketFeed), where that question is the one you are actually asking.
   // Only the SORT belongs to the feed. Flow + grain drive the GLOBE, so they live on the globe
   // control bar below — cramming all four into a 346px panel header overflowed it.
   const feedTools = <SortMenu value={sort} onChange={setSort} t={tr} />;

@@ -11,7 +11,7 @@ import WatchButton from "../../components/WatchButton.js";
 import PartnerTable from "../../components/PartnerTable.js";
 import SourcingChart from "../../components/SourcingChart.js";
 import QualPanel from "../../components/QualPanel.js";
-import CountryTabs from "../../components/CountryTabs.js";
+import MarketFeed from "../../components/MarketFeed.js";
 import { loadSnapshot } from "../../lib/snapshot.js";
 import { loadSourcing } from "../../lib/sourcing.js";
 import { loadAwards, loadCpvMatch, loadSellers, loadTenders } from "../../lib/tenders.js";
@@ -132,10 +132,12 @@ export default async function CountryPage({ params, searchParams }) {
         <FlowPanel title={tr.importsLabel} slot={c.imp} t={tr} lang={lang} />
       </section>
 
-      {/* who buys, who sells, and what has already been sold — for THIS product in THIS country */}
-      <CountryTabs tHere={tHere} tElse={tElse} sellers={sellersHere} orders={ordersHere}
-                   product={product} country={name} cpv={cpv} hs={hs} lang={lang} t={tr}
-                   openCount={openCount} />
+      {/* who buys, who sells, and what has already been sold — for THIS product in THIS country.
+          Buyers here come first, then the rest of the market: a Vietnamese exporter looking at Japan
+          wants Japan's buyers, but a buyer elsewhere for the same product is still a lead, not noise. */}
+      <MarketFeed tenders={[...tHere, ...tElse]} sellers={sellersHere} orders={ordersHere}
+                  product={product} country={name} cpv={cpv} hs={hs} lang={lang} t={tr}
+                  openCount={openCount} />
 
       <QualPanel hs={hs} code={c.code} product={product} country={name} lang={lang} t={tr} />
 

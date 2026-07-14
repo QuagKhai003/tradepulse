@@ -597,3 +597,49 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .company-src { color: var(--muted); }
 a.lockmask { text-decoration: none; }
 a.lockmask:hover { color: var(--accent); }
+
+/* ===== Market feed: master-detail (list left, the picked record held in view on the right) ===== */
+.mfeed { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm); padding: 22px 24px 20px; margin-top: 22px; }
+.mfeed-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap;
+  gap: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+.mfeed-title { margin: 0; font-size: 17px; font-weight: 750; letter-spacing: -.01em; }
+.mfeed-sub { margin: 4px 0 0; font-size: 13px; }
+.mfeed-tabs { display: flex; gap: 2px; }
+.mfeed-empty { margin: 6px 0 0; font-size: 14px; line-height: 1.6; }
+
+.mfeed-body { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; }
+@media (max-width: 900px) { .mfeed-body { grid-template-columns: 1fr; } }
+
+.mfeed-list ul { list-style: none; margin: 0; padding: 0; max-height: 460px; overflow-y: auto; }
+.mfeed-list li + li { border-top: 1px solid var(--line); }
+.mrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;
+  text-align: left; background: none; border: 0; cursor: pointer; font: inherit; color: inherit;
+  padding: 11px 12px; border-radius: var(--r); text-decoration: none; }
+.mrow:hover { background: rgba(99,102,241,.06); }
+.mrow.on { background: rgba(99,102,241,.10); box-shadow: inset 2px 0 0 var(--accent); }
+.mrow-name { font-weight: 650; font-size: 14px; letter-spacing: -.01em; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; }
+.mrow-meta { display: flex; align-items: center; gap: 10px; flex: none; }
+.mrow-cty { font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
+.mrow-fact { font-size: 12px; font-weight: 650; color: var(--muted); white-space: nowrap; }
+/* locked: the whole row blurs and cannot be picked — the COUNT above still tells the truth */
+.mrow.locked { cursor: pointer; position: relative; }
+.mrow.locked .mrow-blur { display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex: 1; min-width: 0; filter: blur(4px); user-select: none; opacity: .75; }
+.mrow-lock { font-size: 11px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.mrow.locked:hover .mrow-lock { color: var(--accent); }
+
+.mfeed-foot { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 10px; }
+.mfeed-foot p { margin: 0 0 4px; font-size: 12px; line-height: 1.5; }
+
+.mfeed-detail { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 18px; align-self: start; position: sticky; top: 16px; }
+.mdet-tags { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.mdet-name { margin: 0 0 14px; font-size: 17px; font-weight: 750; letter-spacing: -.01em; }
+.mfeed-detail .modal-dl { display: block; margin-bottom: 14px; }
+.mdet-row { display: grid; grid-template-columns: 116px 1fr; gap: 14px; padding: 7px 0; font-size: 13px; }
+.mdet-row + .mdet-row { border-top: 1px solid var(--line); }
+.mdet-row dt { color: var(--muted); }
+.mdet-row dd { margin: 0; word-break: break-word; }
+.mdet-empty { font-size: 13px; text-align: center; padding: 40px 10px; }
