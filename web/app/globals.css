@@ -184,13 +184,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .flowtag.import { background: var(--brand-tint); color: var(--brand-ink); }
 
 /* ============ drill / panels ============ */
-/* prominent 'back to map' button (was a faint link) */
-.back { display: inline-flex; align-items: center; gap: 7px; min-height: 42px; margin-bottom: 14px;
-  padding: 0 18px; font-size: 15px; font-weight: 700; color: var(--brand-ink); text-decoration: none;
-  background: var(--brand-tint); border: 1px solid rgba(99,102,241,.28); border-radius: var(--pill);
-  transition: background .15s var(--ease), border-color .15s var(--ease), transform .1s var(--ease); }
-.back:hover { background: #e2e5ff; border-color: var(--brand); }
-.back:active { transform: translateY(1px); }
+/* prominent 'back to map' link — bigger + bold + brand colour, but NOT a pill button */
+.back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px;
+  font-size: 16px; font-weight: 700; color: var(--brand); text-decoration: none; }
+.back:hover { color: var(--brand-ink); text-decoration: underline; text-underline-offset: 3px; }
 .drillhead { margin-bottom: 18px; }
 .drillhead h1 { font-size: clamp(20px, 2.6vw, 26px); }
 .drillgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
