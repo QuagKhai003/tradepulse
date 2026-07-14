@@ -660,3 +660,13 @@ a.lockmask:hover { color: var(--accent); }
   color: #aeb9d6; }
 .hero-controls-bar .seg { min-width: 168px; }          /* both pills the same width, not text-sized */
 .hero-controls-bar .seg-opt { flex: 1 1 0; }           /* the two options inside each pill are equal */
+
+/* country-page header: same search+browse POSITION as the globe (centered), light theme */
+.topbar-country { display: grid; grid-template-columns: 1fr minmax(0, 640px) 1fr; align-items: center; gap: 16px; }
+.topbar-country .brand { justify-self: start; }
+.topbar-country .langswitch { justify-self: end; }
+.topbar-country .hero-search-top { justify-self: center; width: 100%; position: static; }
+/* the light variant keeps the default (light) search input, not the globe's dark glass */
+.hero-search-top--light .search-input { background-color: var(--panel); border-color: var(--line-strong); color: var(--ink); }
+.hero-search-top--light .search-input::placeholder { color: var(--muted); }
+@media (max-width: 720px) { .topbar-country { grid-template-columns: 1fr; } .topbar-country .hero-search-top { justify-self: stretch; } }

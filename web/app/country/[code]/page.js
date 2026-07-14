@@ -7,6 +7,7 @@
  */
 import Link from "next/link";
 import SearchBox from "../../components/SearchBox.js";
+import BrowseCountries from "../../components/BrowseCountries.js";
 import WatchButton from "../../components/WatchButton.js";
 import PartnerTable from "../../components/PartnerTable.js";
 import SourcingChart from "../../components/SourcingChart.js";
@@ -66,9 +67,12 @@ export default async function CountryPage({ params, searchParams }) {
     const prod = lang === "en" ? snap.product.name_en : snap.product.name_vi;
     return (
       <main className="page">
-        <header className="topbar">
+        <header className="topbar topbar-country">
           <div className="brand"><Link className="logo" href={backHome}>◈ TradePulse</Link></div>
-          <div className="country-search"><SearchBox lang={lang} placeholder={tr.searchHere} countryCode={code} /></div>
+          <div className="hero-search-top hero-search-top--light">
+            <SearchBox lang={lang} placeholder={tr.searchHere} countryCode={code} />
+            <BrowseCountries countries={snap.countries} lang={lang} hs={hs} label={tr.browseCountries} />
+          </div>
           {VI_ENABLED && <a className="langswitch" href={`?lang=${lang === "en" ? "vi" : "en"}`}>{tr.lang}</a>}
         </header>
         <Link className="back" href={backHome}>{tr.backMap}</Link>
@@ -114,10 +118,14 @@ export default async function CountryPage({ params, searchParams }) {
 
   return (
     <main className="page">
-      <header className="topbar">
+      {/* header mirrors the globe's layout — search + browse centered — but with country-page behaviour:
+          search stays on THIS country (swaps product), browse jumps to ANOTHER country (keeps product). */}
+      <header className="topbar topbar-country">
         <div className="brand"><Link className="logo" href={backHome}>◈ TradePulse</Link></div>
-        {/* Switch product WITHOUT going back to the globe — stays on this country. */}
-        <div className="country-search"><SearchBox lang={lang} placeholder={tr.searchHere} countryCode={c.code} /></div>
+        <div className="hero-search-top hero-search-top--light">
+          <SearchBox lang={lang} placeholder={tr.searchHere} countryCode={c.code} />
+          <BrowseCountries countries={snap.countries} lang={lang} hs={hs} label={tr.browseCountries} />
+        </div>
         {VI_ENABLED && <a className="langswitch" href={`?lang=${lang === "en" ? "vi" : "en"}`}>{tr.lang}</a>}
       </header>
 
