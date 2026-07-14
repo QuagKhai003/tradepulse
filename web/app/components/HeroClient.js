@@ -37,7 +37,7 @@ function Segmented({ options, value, onChange, size = "md" }) {
 }
 
 export default function HeroClient({ snapshot, tenders = [], sellers = [], orders = [],
-                                    curatedSellers = [], hs, initialLang, initialFlow }) {
+                                    curatedSellers = [], cpv = null, hs, initialLang, initialFlow }) {
   const [lang, setLang] = useState(initialLang);
   const [flow, setFlow] = useState(initialFlow);
   const [sort, setSort] = useState("none");   // open unsorted: the snapshot order, as shipped
@@ -107,9 +107,9 @@ export default function HeroClient({ snapshot, tenders = [], sellers = [], order
 
         <MotionPanel from="right" delay={0.05} className="panel-col right glasscol">
           {panelTabs && <div className="panel-tabsrow">{panelTabs}</div>}
-          {panel === "buyers" && <TenderList tenders={tenders} lang={lang} t={tr} product={product} />}
-          {panel === "sellers" && <SellerList sellers={sellers} curated={curatedSellers} product={product} t={tr} />}
-          {panel === "orders" && <OrderList orders={orders} product={product} t={tr} />}
+          {panel === "buyers" && <TenderList tenders={tenders} lang={lang} t={tr} product={product} cpv={cpv} />}
+          {panel === "sellers" && <SellerList sellers={sellers} curated={curatedSellers} product={product} t={tr} cpv={cpv} />}
+          {panel === "orders" && <OrderList orders={orders} product={product} t={tr} cpv={cpv} />}
           {panel === "signals" && (
             <GlobalFeed countries={snapshot.countries} flow={flow} freq={freq} lang={lang} t={tr} hs={hs}
                         sort={sort} tools={feedTools} />

@@ -58,12 +58,14 @@ MARKETS = {
     "gb": {"name_en": "United Kingdom", "name_vi": "Anh",                "reporter": 826},
 }
 
-# --- Tenders (plan §9.2, Phase 2.2): FORWARD demand — who is buying RIGHT NOW. ---
-# EU TED classifies by CPV, not HS, so each covered product maps to the CPV code(s) that actually
-# return its tenders. Every code below was verified live against TED (real active notices).
-# Golden Rule: we surface the public BUYER ORGANISATION + the official notice link only — never a
-# named contact person.
-TENDER_CPV = {
+# --- Tenders + awards (plan §9.2): FORWARD demand (who is buying now) and PAST ORDERS (who won). ---
+# EU TED classifies by CPV, not HS, and no official HS<->CPV crosswalk exists. Two layers:
+#   1. TENDER_CPV_MANUAL below — hand-mapped and hand-checked for the pilot products. Authoritative.
+#   2. reference/cpv_by_hs.json — generated for every other product by _gen_cpv.py, which proposes a
+#      CPV from the HS heading's text and then VERIFIES it live against TED (a code is kept only if
+#      TED really files on-product notices under it). The manual map always wins on conflict.
+# Golden Rule: public BUYER/WINNER ORGANISATION + the official notice link only — never a contact person.
+TENDER_CPV_MANUAL = {
     "440131": ["09111400"],              # wood pellets  -> wood fuels
     "4401":   ["09111400"],              # wood fuel
     "4407":   ["03410000"],              # sawn wood     -> wood
@@ -83,6 +85,17 @@ TENDER_CPV = {
     "080132": ["03222000"],
     "0904":   ["15872100"],              # pepper
 }
+
+_CPV_MAP_PATH = Path(__file__).resolve().parent / "reference" / "cpv_by_hs.json"
+try:
+    _CPV_GENERATED = json.loads(_CPV_MAP_PATH.read_text(encoding="utf-8"))
+except FileNotFoundError:                # not generated yet -> the pilot products still work
+    _CPV_GENERATED = {}
+
+# hand-checked codes override the generated ones; everything else comes from the verified map
+TENDER_CPV = {hs: v["cpv"] for hs, v in _CPV_GENERATED.items()}
+TENDER_CPV.update(TENDER_CPV_MANUAL)
+
 TENDER_LOOKBACK_DAYS = 365
 # Awards look back further: a past order stays evidence that a company SELLS this product long after
 # the contract closed — that is the point of the sellers list.

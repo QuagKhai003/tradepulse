@@ -16,7 +16,7 @@ import SellerList from "../../components/SellerList.js";
 import OrderList from "../../components/OrderList.js";
 import { loadSnapshot } from "../../lib/snapshot.js";
 import { loadSourcing } from "../../lib/sourcing.js";
-import { loadAwards, loadSellers, loadTenders } from "../../lib/tenders.js";
+import { loadAwards, loadCpvMatch, loadSellers, loadTenders } from "../../lib/tenders.js";
 import { resolveLang, t, VI_ENABLED } from "../../lib/i18n.js";
 import { bandArrow, bandColor, bandLabel, fmtPct, fmtPeriod, fmtUSD } from "../../lib/format.js";
 
@@ -91,6 +91,7 @@ export default async function CountryPage({ params, searchParams }) {
   // Both are the country-scoped slice of the same evidence the globe view shows for the product.
   const sellersHere = (await loadSellers(hs)).filter((x) => String(x.seller_code) === String(c.code));
   const allOrders = await loadAwards(hs);
+  const cpv = await loadCpvMatch(hs);
   const ordersHere = allOrders.filter((x) => String(x.buyer_code) === String(c.code)
                                           || String(x.seller_code) === String(c.code));
   // The country's OWN latest period — not the snapshot-wide max, which reads as a lie next to figures
@@ -134,7 +135,7 @@ export default async function CountryPage({ params, searchParams }) {
           {tHere.length > 0 ? (
             <>
               <h3 className="tender-sub">{tr.tendersHere} {name} <span className="muted">({tHere.length})</span></h3>
-              <TenderList tenders={tHere} lang={lang} t={tr} product={product} />
+              <TenderList tenders={tHere} lang={lang} t={tr} product={product} cpv={cpv} />
             </>
           ) : (
             <p className="muted tender-note">{tr.tendersNoneHere} {name}. {tr.tendersElsewhereNote}</p>
@@ -152,7 +153,7 @@ export default async function CountryPage({ params, searchParams }) {
       {sellersHere.length > 0 && (
         <section className="panel tender-sec">
           <h2>{tr.sellersIn} {name}</h2>
-          <SellerList sellers={sellersHere} product={product} t={tr} />
+          <SellerList sellers={sellersHere} product={product} t={tr} cpv={cpv} />
           <p className="muted tender-note">{tr.sellerNote}</p>
         </section>
       )}
@@ -160,7 +161,7 @@ export default async function CountryPage({ params, searchParams }) {
       {ordersHere.length > 0 && (
         <section className="panel tender-sec">
           <h2>{tr.ordersIn} {name}</h2>
-          <OrderList orders={ordersHere} product={product} t={tr} />
+          <OrderList orders={ordersHere} product={product} t={tr} cpv={cpv} />
           <p className="muted tender-note">{tr.orderNote}</p>
         </section>
       )}

@@ -9,7 +9,7 @@ import HeroClient from "./components/HeroClient.js";
 import SearchBox from "./components/SearchBox.js";
 import LockedProduct from "./components/LockedProduct.js";
 import { loadSnapshot } from "./lib/snapshot.js";
-import { loadAwards, loadSellers, loadTenders } from "./lib/tenders.js";
+import { loadAwards, loadCpvMatch, loadSellers, loadTenders } from "./lib/tenders.js";
 import { loadCompanies, FREE_PROFILE_LIMIT } from "./lib/companies.js";
 import { getTier } from "./lib/tier.js";
 import { lookup } from "./lib/catalog.js";
@@ -25,6 +25,7 @@ export default async function Page({ searchParams }) {
   // Past orders (awarded contracts) + the sellers derived from them, plus any hand-curated sellers.
   const orders = await loadAwards((snap && snap.hs6) || sp.hs);
   const sellers = await loadSellers((snap && snap.hs6) || sp.hs);
+  const cpv = await loadCpvMatch((snap && snap.hs6) || sp.hs);
   const companies = await loadCompanies((snap && snap.hs6) || sp.hs);
   const paid = (await getTier()) === "paid";
   const curatedAll = (companies?.companies || []).filter((c) => c.role === "seller");
@@ -37,7 +38,8 @@ export default async function Page({ searchParams }) {
 
   if (covered) {
     return <HeroClient snapshot={snap} tenders={tenders} sellers={sellers} orders={orders}
-                       curatedSellers={curatedSellers} hs={hs} initialLang={lang} initialFlow={flow} />;
+                       curatedSellers={curatedSellers} cpv={cpv} hs={hs} initialLang={lang}
+                       initialFlow={flow} />;
   }
 
   // uncovered product -> locked "coming soon" (server-rendered)

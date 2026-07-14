@@ -1,0 +1,5234 @@
+{
+ "0101": {
+  "cpv": [
+   "03322300"
+  ],
+  "label": "Horses",
+  "score": 1.0,
+  "verified_notices": 7
+ },
+ "0104": {
+  "cpv": [
+   "03331000"
+  ],
+  "label": "Fresh milk from sheep and goats",
+  "score": 0.8,
+  "verified_notices": 9
+ },
+ "0105": {
+  "cpv": [
+   "15112100"
+  ],
+  "label": "Fresh poultry",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "0106": {
+  "cpv": [
+   "03325000"
+  ],
+  "label": "Small animals",
+  "score": 0.8,
+  "verified_notices": 36
+ },
+ "0201": {
+  "cpv": [
+   "15111000"
+  ],
+  "label": "Bovine meat",
+  "score": 0.8,
+  "verified_notices": 24
+ },
+ "0202": {
+  "cpv": [
+   "15111000"
+  ],
+  "label": "Bovine meat",
+  "score": 0.8,
+  "verified_notices": 24
+ },
+ "0203": {
+  "cpv": [
+   "15131700"
+  ],
+  "label": "Meat preparations",
+  "score": 0.7,
+  "verified_notices": 34
+ },
+ "0204": {
+  "cpv": [
+   "03322100"
+  ],
+  "label": "Sheep",
+  "score": 0.6,
+  "verified_notices": 1
+ },
+ "0205": {
+  "cpv": [
+   "15131700"
+  ],
+  "label": "Meat preparations",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "0208": {
+  "cpv": [
+   "15131700"
+  ],
+  "label": "Meat preparations",
+  "score": 0.6,
+  "verified_notices": 34
+ },
+ "0210": {
+  "cpv": [
+   "15131700"
+  ],
+  "label": "Meat preparations",
+  "score": 0.6,
+  "verified_notices": 34
+ },
+ "0301": {
+  "cpv": [
+   "03311000"
+  ],
+  "label": "Fish",
+  "score": 1.0,
+  "verified_notices": 32
+ },
+ "0302": {
+  "cpv": [
+   "03311000"
+  ],
+  "label": "Fish",
+  "score": 1.0,
+  "verified_notices": 32
+ },
+ "0303": {
+  "cpv": [
+   "03311000"
+  ],
+  "label": "Fish",
+  "score": 1.0,
+  "verified_notices": 32
+ },
+ "0304": {
+  "cpv": [
+   "15211100"
+  ],
+  "label": "Fresh fish fillets",
+  "score": 1.0,
+  "verified_notices": 21
+ },
+ "0305": {
+  "cpv": [
+   "03311000"
+  ],
+  "label": "Fish",
+  "score": 1.0,
+  "verified_notices": 32
+ },
+ "0306": {
+  "cpv": [
+   "03312000"
+  ],
+  "label": "Crustaceans",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "0401": {
+  "cpv": [
+   "15510000"
+  ],
+  "label": "Milk and cream",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "0402": {
+  "cpv": [
+   "15510000"
+  ],
+  "label": "Milk and cream",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "0406": {
+  "cpv": [
+   "15542000"
+  ],
+  "label": "Fresh cheese",
+  "score": 0.7,
+  "verified_notices": 17
+ },
+ "0407": {
+  "cpv": [
+   "03142500"
+  ],
+  "label": "Eggs",
+  "score": 0.7,
+  "verified_notices": 19
+ },
+ "0408": {
+  "cpv": [
+   "03142500"
+  ],
+  "label": "Eggs",
+  "score": 0.7,
+  "verified_notices": 19
+ },
+ "0409": {
+  "cpv": [
+   "15831600"
+  ],
+  "label": "Honey",
+  "score": 1.0,
+  "verified_notices": 13
+ },
+ "0410": {
+  "cpv": [
+   "03142000"
+  ],
+  "label": "Animal products",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "0502": {
+  "cpv": [
+   "03323000"
+  ],
+  "label": "Pigs",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "0601": {
+  "cpv": [
+   "03451200"
+  ],
+  "label": "Flower bulbs",
+  "score": 0.8,
+  "verified_notices": 16
+ },
+ "0602": {
+  "cpv": [
+   "03451000"
+  ],
+  "label": "Plants",
+  "score": 1.0,
+  "verified_notices": 17
+ },
+ "0603": {
+  "cpv": [
+   "03121200"
+  ],
+  "label": "Cut flowers",
+  "score": 0.8,
+  "verified_notices": 27
+ },
+ "0701": {
+  "cpv": [
+   "03212100"
+  ],
+  "label": "Potatoes",
+  "score": 1.0,
+  "verified_notices": 33
+ },
+ "0702": {
+  "cpv": [
+   "03221240"
+  ],
+  "label": "Tomatoes",
+  "score": 1.0,
+  "verified_notices": 33
+ },
+ "0703": {
+  "cpv": [
+   "03221113"
+  ],
+  "label": "Onions",
+  "score": 1.0,
+  "verified_notices": 33
+ },
+ "0705": {
+  "cpv": [
+   "03221310"
+  ],
+  "label": "Lettuce",
+  "score": 1.0,
+  "verified_notices": 12
+ },
+ "0706": {
+  "cpv": [
+   "03221112"
+  ],
+  "label": "Carrots",
+  "score": 1.0,
+  "verified_notices": 32
+ },
+ "0707": {
+  "cpv": [
+   "03221270"
+  ],
+  "label": "Cucumbers",
+  "score": 0.7,
+  "verified_notices": 27
+ },
+ "0708": {
+  "cpv": [
+   "03212210"
+  ],
+  "label": "Dried leguminous vegetables",
+  "score": 1.0,
+  "verified_notices": 22
+ },
+ "0709": {
+  "cpv": [
+   "15331170"
+  ],
+  "label": "Frozen vegetables",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "0710": {
+  "cpv": [
+   "15331170"
+  ],
+  "label": "Frozen vegetables",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "0711": {
+  "cpv": [
+   "15331480"
+  ],
+  "label": "Provisionally preserved vegetables",
+  "score": 1.0,
+  "verified_notices": 39
+ },
+ "0712": {
+  "cpv": [
+   "15331170"
+  ],
+  "label": "Frozen vegetables",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "0713": {
+  "cpv": [
+   "03212210"
+  ],
+  "label": "Dried leguminous vegetables",
+  "score": 1.0,
+  "verified_notices": 22
+ },
+ "0801": {
+  "cpv": [
+   "15332300"
+  ],
+  "label": "Processed nuts",
+  "score": 0.8,
+  "verified_notices": 5
+ },
+ "0802": {
+  "cpv": [
+   "15332300"
+  ],
+  "label": "Processed nuts",
+  "score": 0.8,
+  "verified_notices": 5
+ },
+ "0803": {
+  "cpv": [
+   "03222111"
+  ],
+  "label": "Bananas",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "0805": {
+  "cpv": [
+   "03222200"
+  ],
+  "label": "Citrus fruit",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "0806": {
+  "cpv": [
+   "03222340"
+  ],
+  "label": "Grapes",
+  "score": 1.0,
+  "verified_notices": 17
+ },
+ "0807": {
+  "cpv": [
+   "15332180"
+  ],
+  "label": "Melons",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "0808": {
+  "cpv": [
+   "03222321"
+  ],
+  "label": "Apples",
+  "score": 1.0,
+  "verified_notices": 36
+ },
+ "0809": {
+  "cpv": [
+   "03222331"
+  ],
+  "label": "Apricots",
+  "score": 1.0,
+  "verified_notices": 26
+ },
+ "0810": {
+  "cpv": [
+   "15332410"
+  ],
+  "label": "Dried fruit",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "0811": {
+  "cpv": [
+   "03222000"
+  ],
+  "label": "Fruit and nuts",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "0812": {
+  "cpv": [
+   "03222000"
+  ],
+  "label": "Fruit and nuts",
+  "score": 0.7,
+  "verified_notices": 27
+ },
+ "0813": {
+  "cpv": [
+   "15332410"
+  ],
+  "label": "Dried fruit",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "0814": {
+  "cpv": [
+   "03222200"
+  ],
+  "label": "Citrus fruit",
+  "score": 0.7,
+  "verified_notices": 34
+ },
+ "0901": {
+  "cpv": [
+   "15861000"
+  ],
+  "label": "Coffee",
+  "score": 1.0,
+  "verified_notices": 20
+ },
+ "090111": {
+  "cpv": [
+   "15861000"
+  ],
+  "label": "Coffee",
+  "score": 1.0,
+  "verified_notices": 20
+ },
+ "090121": {
+  "cpv": [
+   "15861100"
+  ],
+  "label": "Roasted coffee",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "0902": {
+  "cpv": [
+   "15863000"
+  ],
+  "label": "Tea",
+  "score": 1.0,
+  "verified_notices": 18
+ },
+ "090240": {
+  "cpv": [
+   "15863200"
+  ],
+  "label": "Black tea",
+  "score": 1.0,
+  "verified_notices": 4
+ },
+ "0904": {
+  "cpv": [
+   "15872100"
+  ],
+  "label": "Pepper",
+  "score": 1.0,
+  "verified_notices": 37
+ },
+ "0909": {
+  "cpv": [
+   "03111000"
+  ],
+  "label": "Seeds",
+  "score": 0.7,
+  "verified_notices": 25
+ },
+ "1001": {
+  "cpv": [
+   "03211100"
+  ],
+  "label": "Wheat",
+  "score": 0.7,
+  "verified_notices": 39
+ },
+ "1003": {
+  "cpv": [
+   "03211400"
+  ],
+  "label": "Barley",
+  "score": 1.0,
+  "verified_notices": 21
+ },
+ "1004": {
+  "cpv": [
+   "03211600"
+  ],
+  "label": "Oats",
+  "score": 1.0,
+  "verified_notices": 17
+ },
+ "1005": {
+  "cpv": [
+   "03211200"
+  ],
+  "label": "Maize",
+  "score": 1.0,
+  "verified_notices": 38
+ },
+ "1006": {
+  "cpv": [
+   "03211300"
+  ],
+  "label": "Rice",
+  "score": 1.0,
+  "verified_notices": 17
+ },
+ "100630": {
+  "cpv": [
+   "15614200"
+  ],
+  "label": "Milled rice",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "1007": {
+  "cpv": [
+   "03211900"
+  ],
+  "label": "Grain products",
+  "score": 0.7,
+  "verified_notices": 19
+ },
+ "1101": {
+  "cpv": [
+   "15612100"
+  ],
+  "label": "Wheat flour",
+  "score": 0.8,
+  "verified_notices": 32
+ },
+ "1102": {
+  "cpv": [
+   "15613300"
+  ],
+  "label": "Cereal products",
+  "score": 0.7,
+  "verified_notices": 24
+ },
+ "1103": {
+  "cpv": [
+   "15613300"
+  ],
+  "label": "Cereal products",
+  "score": 0.7,
+  "verified_notices": 24
+ },
+ "1108": {
+  "cpv": [
+   "15623000"
+  ],
+  "label": "Starches",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "1109": {
+  "cpv": [
+   "03211100"
+  ],
+  "label": "Wheat",
+  "score": 0.7,
+  "verified_notices": 39
+ },
+ "1204": {
+  "cpv": [
+   "03111000"
+  ],
+  "label": "Seeds",
+  "score": 0.7,
+  "verified_notices": 25
+ },
+ "1205": {
+  "cpv": [
+   "03111000"
+  ],
+  "label": "Seeds",
+  "score": 0.6,
+  "verified_notices": 25
+ },
+ "1209": {
+  "cpv": [
+   "03111800"
+  ],
+  "label": "Fruit seeds",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "1211": {
+  "cpv": [
+   "03451000"
+  ],
+  "label": "Plants",
+  "score": 1.0,
+  "verified_notices": 17
+ },
+ "1212": {
+  "cpv": [
+   "03221210"
+  ],
+  "label": "Beans",
+  "score": 0.7,
+  "verified_notices": 31
+ },
+ "1213": {
+  "cpv": [
+   "03114100"
+  ],
+  "label": "Straw",
+  "score": 0.6,
+  "verified_notices": 18
+ },
+ "1301": {
+  "cpv": [
+   "03422000"
+  ],
+  "label": "Lac",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "1302": {
+  "cpv": [
+   "15892100"
+  ],
+  "label": "Vegetable saps",
+  "score": 0.8,
+  "verified_notices": 3
+ },
+ "1401": {
+  "cpv": [
+   "15333000"
+  ],
+  "label": "Vegetable by-products",
+  "score": 0.6,
+  "verified_notices": 36
+ },
+ "1502": {
+  "cpv": [
+   "15412000"
+  ],
+  "label": "Fats",
+  "score": 0.6,
+  "verified_notices": 11
+ },
+ "1506": {
+  "cpv": [
+   "15400000"
+  ],
+  "label": "Animal or vegetable oils and fats",
+  "score": 0.75,
+  "verified_notices": 13
+ },
+ "1509": {
+  "cpv": [
+   "15411110"
+  ],
+  "label": "Olive oil",
+  "score": 0.7,
+  "verified_notices": 31
+ },
+ "1510": {
+  "cpv": [
+   "15411100"
+  ],
+  "label": "Vegetable oils",
+  "score": 1.0,
+  "verified_notices": 26
+ },
+ "1515": {
+  "cpv": [
+   "15400000"
+  ],
+  "label": "Animal or vegetable oils and fats",
+  "score": 0.66,
+  "verified_notices": 13
+ },
+ "1516": {
+  "cpv": [
+   "15412100"
+  ],
+  "label": "Animal fats",
+  "score": 1.0,
+  "verified_notices": 7
+ },
+ "1517": {
+  "cpv": [
+   "15431100"
+  ],
+  "label": "Margarine",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "1518": {
+  "cpv": [
+   "15412100"
+  ],
+  "label": "Animal fats",
+  "score": 1.0,
+  "verified_notices": 7
+ },
+ "1520": {
+  "cpv": [
+   "24964000"
+  ],
+  "label": "Glycerol",
+  "score": 1.0,
+  "verified_notices": 7
+ },
+ "1601": {
+  "cpv": [
+   "15131130"
+  ],
+  "label": "Sausages",
+  "score": 1.0,
+  "verified_notices": 25
+ },
+ "1602": {
+  "cpv": [
+   "15131700"
+  ],
+  "label": "Meat preparations",
+  "score": 0.7,
+  "verified_notices": 34
+ },
+ "1603": {
+  "cpv": [
+   "15119600"
+  ],
+  "label": "Fish meat",
+  "score": 0.6,
+  "verified_notices": 29
+ },
+ "1604": {
+  "cpv": [
+   "15235000"
+  ],
+  "label": "Preserved fish",
+  "score": 1.0,
+  "verified_notices": 26
+ },
+ "1605": {
+  "cpv": [
+   "15251000"
+  ],
+  "label": "Frozen crustaceans",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "1703": {
+  "cpv": [
+   "15831400"
+  ],
+  "label": "Molasses",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "1704": {
+  "cpv": [
+   "15842000"
+  ],
+  "label": "Chocolate and sugar confectionery",
+  "score": 1.0,
+  "verified_notices": 28
+ },
+ "1801": {
+  "cpv": [
+   "15841000"
+  ],
+  "label": "Cocoa",
+  "score": 0.7,
+  "verified_notices": 19
+ },
+ "1802": {
+  "cpv": [
+   "15841000"
+  ],
+  "label": "Cocoa",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "1803": {
+  "cpv": [
+   "15841000"
+  ],
+  "label": "Cocoa",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "1804": {
+  "cpv": [
+   "15841000"
+  ],
+  "label": "Cocoa",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "1805": {
+  "cpv": [
+   "15841000"
+  ],
+  "label": "Cocoa",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "1902": {
+  "cpv": [
+   "15851210"
+  ],
+  "label": "Prepared pasta",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "1905": {
+  "cpv": [
+   "15811100"
+  ],
+  "label": "Bread",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "2001": {
+  "cpv": [
+   "15331170"
+  ],
+  "label": "Frozen vegetables",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "2002": {
+  "cpv": [
+   "15331134"
+  ],
+  "label": "Processed tomatoes",
+  "score": 0.8,
+  "verified_notices": 25
+ },
+ "2004": {
+  "cpv": [
+   "15331170"
+  ],
+  "label": "Frozen vegetables",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "2005": {
+  "cpv": [
+   "15331170"
+  ],
+  "label": "Frozen vegetables",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "2006": {
+  "cpv": [
+   "15331170"
+  ],
+  "label": "Frozen vegetables",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "2007": {
+  "cpv": [
+   "15332290"
+  ],
+  "label": "Jams",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "2008": {
+  "cpv": [
+   "15332410"
+  ],
+  "label": "Dried fruit",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "2009": {
+  "cpv": [
+   "15321000"
+  ],
+  "label": "Fruit juices",
+  "score": 0.8,
+  "verified_notices": 19
+ },
+ "2101": {
+  "cpv": [
+   "15892200"
+  ],
+  "label": "Vegetable extracts",
+  "score": 0.8,
+  "verified_notices": 5
+ },
+ "2103": {
+  "cpv": [
+   "15871260"
+  ],
+  "label": "Sauces",
+  "score": 0.7,
+  "verified_notices": 12
+ },
+ "2104": {
+  "cpv": [
+   "15891000"
+  ],
+  "label": "Soups and broths",
+  "score": 0.8,
+  "verified_notices": 16
+ },
+ "2105": {
+  "cpv": [
+   "15555100"
+  ],
+  "label": "Ice cream",
+  "score": 0.8,
+  "verified_notices": 11
+ },
+ "2203": {
+  "cpv": [
+   "15960000"
+  ],
+  "label": "Malt beer",
+  "score": 0.7,
+  "verified_notices": 17
+ },
+ "2206": {
+  "cpv": [
+   "15950000"
+  ],
+  "label": "Non-distilled fermented beverages",
+  "score": 0.8,
+  "verified_notices": 9
+ },
+ "2209": {
+  "cpv": [
+   "15871100"
+  ],
+  "label": "Vinegar and vinegar substitutes",
+  "score": 0.7,
+  "verified_notices": 19
+ },
+ "2302": {
+  "cpv": [
+   "15615000"
+  ],
+  "label": "Bran",
+  "score": 1.0,
+  "verified_notices": 36
+ },
+ "2308": {
+  "cpv": [
+   "15333000"
+  ],
+  "label": "Vegetable by-products",
+  "score": 0.7,
+  "verified_notices": 36
+ },
+ "2401": {
+  "cpv": [
+   "15991000"
+  ],
+  "label": "Tobacco goods",
+  "score": 1.0,
+  "verified_notices": 7
+ },
+ "2402": {
+  "cpv": [
+   "15991100"
+  ],
+  "label": "Cigars",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "2404": {
+  "cpv": [
+   "15991000"
+  ],
+  "label": "Tobacco goods",
+  "score": 0.7,
+  "verified_notices": 7
+ },
+ "2501": {
+  "cpv": [
+   "14410000"
+  ],
+  "label": "Rock salt",
+  "score": 0.8,
+  "verified_notices": 39
+ },
+ "2504": {
+  "cpv": [
+   "14814000"
+  ],
+  "label": "Artificial graphite",
+  "score": 0.8,
+  "verified_notices": 1
+ },
+ "2507": {
+  "cpv": [
+   "14222000"
+  ],
+  "label": "Kaolin",
+  "score": 0.6,
+  "verified_notices": 3
+ },
+ "2510": {
+  "cpv": [
+   "14311100"
+  ],
+  "label": "Natural calcium",
+  "score": 0.8,
+  "verified_notices": 15
+ },
+ "2516": {
+  "cpv": [
+   "14212320"
+  ],
+  "label": "Crushed granite",
+  "score": 0.8,
+  "verified_notices": 12
+ },
+ "2517": {
+  "cpv": [
+   "14212110"
+  ],
+  "label": "Pebbles",
+  "score": 1.0,
+  "verified_notices": 3
+ },
+ "2519": {
+  "cpv": [
+   "14782000"
+  ],
+  "label": "Magnesium",
+  "score": 0.6,
+  "verified_notices": 7
+ },
+ "2601": {
+  "cpv": [
+   "14611000"
+  ],
+  "label": "Iron ores",
+  "score": 0.8,
+  "verified_notices": 8
+ },
+ "2619": {
+  "cpv": [
+   "14630000"
+  ],
+  "label": "Slag, dross, ferrous waste and scrap",
+  "score": 0.76,
+  "verified_notices": 9
+ },
+ "2620": {
+  "cpv": [
+   "14630000"
+  ],
+  "label": "Slag, dross, ferrous waste and scrap",
+  "score": 0.68,
+  "verified_notices": 9
+ },
+ "2701": {
+  "cpv": [
+   "09111100"
+  ],
+  "label": "Coal",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "2702": {
+  "cpv": [
+   "09112100"
+  ],
+  "label": "Lignite",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "2703": {
+  "cpv": [
+   "09112200"
+  ],
+  "label": "Peat",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "2704": {
+  "cpv": [
+   "09113000"
+  ],
+  "label": "Coke",
+  "score": 0.7,
+  "verified_notices": 10
+ },
+ "2708": {
+  "cpv": [
+   "09113000"
+  ],
+  "label": "Coke",
+  "score": 0.7,
+  "verified_notices": 10
+ },
+ "2710": {
+  "cpv": [
+   "09211820"
+  ],
+  "label": "Petroleum oils",
+  "score": 0.64,
+  "verified_notices": 14
+ },
+ "2712": {
+  "cpv": [
+   "09221100"
+  ],
+  "label": "Petroleum jelly",
+  "score": 1.0,
+  "verified_notices": 16
+ },
+ "2713": {
+  "cpv": [
+   "09113000"
+  ],
+  "label": "Coke",
+  "score": 0.7,
+  "verified_notices": 10
+ },
+ "2803": {
+  "cpv": [
+   "24311800"
+  ],
+  "label": "Carbon",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "2804": {
+  "cpv": [
+   "24111600"
+  ],
+  "label": "Hydrogen",
+  "score": 1.0,
+  "verified_notices": 28
+ },
+ "2805": {
+  "cpv": [
+   "24311300"
+  ],
+  "label": "Alkali metals",
+  "score": 0.7,
+  "verified_notices": 2
+ },
+ "2806": {
+  "cpv": [
+   "24311470"
+  ],
+  "label": "Hydrogen chloride",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "2807": {
+  "cpv": [
+   "24311411"
+  ],
+  "label": "Sulphuric acid",
+  "score": 1.0,
+  "verified_notices": 28
+ },
+ "2808": {
+  "cpv": [
+   "24411000"
+  ],
+  "label": "Nitric acid and salts",
+  "score": 0.867,
+  "verified_notices": 19
+ },
+ "2811": {
+  "cpv": [
+   "24112000"
+  ],
+  "label": "Inorganic oxygen compounds",
+  "score": 0.85,
+  "verified_notices": 15
+ },
+ "2814": {
+  "cpv": [
+   "24413000"
+  ],
+  "label": "Ammonia",
+  "score": 1.0,
+  "verified_notices": 31
+ },
+ "2815": {
+  "cpv": [
+   "24311520"
+  ],
+  "label": "Sodium hydroxide",
+  "score": 1.0,
+  "verified_notices": 30
+ },
+ "2816": {
+  "cpv": [
+   "24212650"
+  ],
+  "label": "Magnesium hydroxide",
+  "score": 0.8,
+  "verified_notices": 4
+ },
+ "2817": {
+  "cpv": [
+   "24211100"
+  ],
+  "label": "Zinc oxide",
+  "score": 0.8,
+  "verified_notices": 2
+ },
+ "2819": {
+  "cpv": [
+   "24212000"
+  ],
+  "label": "Chromium, manganese, magnesium, lead and copper oxides and hydroxides",
+  "score": 0.771,
+  "verified_notices": 7
+ },
+ "2820": {
+  "cpv": [
+   "24212000"
+  ],
+  "label": "Chromium, manganese, magnesium, lead and copper oxides and hydroxides",
+  "score": 0.714,
+  "verified_notices": 7
+ },
+ "2821": {
+  "cpv": [
+   "24311511"
+  ],
+  "label": "Iron pyrites and iron oxides",
+  "score": 0.667,
+  "verified_notices": 1
+ },
+ "2822": {
+  "cpv": [
+   "24210000"
+  ],
+  "label": "Oxides, peroxides and hydroxides",
+  "score": 0.667,
+  "verified_notices": 39
+ },
+ "2824": {
+  "cpv": [
+   "24212000"
+  ],
+  "label": "Chromium, manganese, magnesium, lead and copper oxides and hydroxides",
+  "score": 0.714,
+  "verified_notices": 7
+ },
+ "2827": {
+  "cpv": [
+   "24312120"
+  ],
+  "label": "Chlorides",
+  "score": 1.0,
+  "verified_notices": 37
+ },
+ "2828": {
+  "cpv": [
+   "24312200"
+  ],
+  "label": "Hypochlorites and chlorates",
+  "score": 0.8,
+  "verified_notices": 39
+ },
+ "2829": {
+  "cpv": [
+   "24312000"
+  ],
+  "label": "Metallic halogenates; hypochlorites, chlorates and perchlorates",
+  "score": 0.76,
+  "verified_notices": 38
+ },
+ "2832": {
+  "cpv": [
+   "24313100"
+  ],
+  "label": "Sulphides, sulphites and sulphates",
+  "score": 0.733,
+  "verified_notices": 42
+ },
+ "2833": {
+  "cpv": [
+   "24313120"
+  ],
+  "label": "Sulphates",
+  "score": 1.0,
+  "verified_notices": 44
+ },
+ "2835": {
+  "cpv": [
+   "24313200"
+  ],
+  "label": "Phosphinates, phosphonates, phosphates and polyphosphates",
+  "score": 0.8,
+  "verified_notices": 8
+ },
+ "2836": {
+  "cpv": [
+   "24313300"
+  ],
+  "label": "Carbonates",
+  "score": 1.0,
+  "verified_notices": 33
+ },
+ "2837": {
+  "cpv": [
+   "24315210"
+  ],
+  "label": "Cyanides",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "2839": {
+  "cpv": [
+   "24315600"
+  ],
+  "label": "Silicates",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "2842": {
+  "cpv": [
+   "24311410"
+  ],
+  "label": "Inorganic acids",
+  "score": 0.7,
+  "verified_notices": 31
+ },
+ "2846": {
+  "cpv": [
+   "24315500"
+  ],
+  "label": "Compounds of rare earth metals",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "2847": {
+  "cpv": [
+   "24315300"
+  ],
+  "label": "Hydrogen peroxide",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "2849": {
+  "cpv": [
+   "24311120"
+  ],
+  "label": "Carbides",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "2901": {
+  "cpv": [
+   "24321110"
+  ],
+  "label": "Saturated acyclic hydrocarbons",
+  "score": 0.867,
+  "verified_notices": 15
+ },
+ "2904": {
+  "cpv": [
+   "24322000"
+  ],
+  "label": "Alcohols, phenols, phenol-alcohols and their halogenated, sulphonated, nitrated or nitrosated derivatives; industrial fatty alcohols",
+  "score": 0.76,
+  "verified_notices": 29
+ },
+ "2906": {
+  "cpv": [
+   "24322200"
+  ],
+  "label": "Monohydric alcohols",
+  "score": 0.8,
+  "verified_notices": 34
+ },
+ "2907": {
+  "cpv": [
+   "24322400"
+  ],
+  "label": "Phenols and derivatives",
+  "score": 0.8,
+  "verified_notices": 7
+ },
+ "2908": {
+  "cpv": [
+   "24322000"
+  ],
+  "label": "Alcohols, phenols, phenol-alcohols and their halogenated, sulphonated, nitrated or nitrosated derivatives; industrial fatty alcohols",
+  "score": 0.72,
+  "verified_notices": 29
+ },
+ "2915": {
+  "cpv": [
+   "24311410"
+  ],
+  "label": "Inorganic acids",
+  "score": 0.8,
+  "verified_notices": 31
+ },
+ "2916": {
+  "cpv": [
+   "24311410"
+  ],
+  "label": "Inorganic acids",
+  "score": 0.8,
+  "verified_notices": 31
+ },
+ "2917": {
+  "cpv": [
+   "24311410"
+  ],
+  "label": "Inorganic acids",
+  "score": 0.8,
+  "verified_notices": 31
+ },
+ "2918": {
+  "cpv": [
+   "24311410"
+  ],
+  "label": "Inorganic acids",
+  "score": 0.8,
+  "verified_notices": 31
+ },
+ "2920": {
+  "cpv": [
+   "24311410"
+  ],
+  "label": "Inorganic acids",
+  "score": 0.64,
+  "verified_notices": 31
+ },
+ "2921": {
+  "cpv": [
+   "24324100"
+  ],
+  "label": "Amine function compounds",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "2924": {
+  "cpv": [
+   "24324100"
+  ],
+  "label": "Amine function compounds",
+  "score": 0.667,
+  "verified_notices": 5
+ },
+ "2925": {
+  "cpv": [
+   "24324100"
+  ],
+  "label": "Amine function compounds",
+  "score": 0.667,
+  "verified_notices": 5
+ },
+ "2926": {
+  "cpv": [
+   "24324100"
+  ],
+  "label": "Amine function compounds",
+  "score": 0.667,
+  "verified_notices": 5
+ },
+ "2929": {
+  "cpv": [
+   "24324100"
+  ],
+  "label": "Amine function compounds",
+  "score": 0.667,
+  "verified_notices": 5
+ },
+ "2931": {
+  "cpv": [
+   "24112000"
+  ],
+  "label": "Inorganic oxygen compounds",
+  "score": 0.667,
+  "verified_notices": 15
+ },
+ "2936": {
+  "cpv": [
+   "33616100"
+  ],
+  "label": "Provitamins",
+  "score": 1.0,
+  "verified_notices": 4
+ },
+ "2937": {
+  "cpv": [
+   "33642100"
+  ],
+  "label": "Pituitary, hypothalamic hormones and analogues",
+  "score": 0.7,
+  "verified_notices": 16
+ },
+ "2941": {
+  "cpv": [
+   "33631400"
+  ],
+  "label": "Antibiotics and chemotherapeutics for dermatological use",
+  "score": 0.7,
+  "verified_notices": 17
+ },
+ "2942": {
+  "cpv": [
+   "24324000"
+  ],
+  "label": "Organic compounds with nitrogen functions",
+  "score": 0.8,
+  "verified_notices": 23
+ },
+ "3002": {
+  "cpv": [
+   "33141570"
+  ],
+  "label": "Human blood",
+  "score": 1.0,
+  "verified_notices": 33
+ },
+ "3005": {
+  "cpv": [
+   "33141115"
+  ],
+  "label": "Medical wadding",
+  "score": 0.8,
+  "verified_notices": 24
+ },
+ "3006": {
+  "cpv": [
+   "33680000"
+  ],
+  "label": "Pharmaceutical articles",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "3203": {
+  "cpv": [
+   "24224000"
+  ],
+  "label": "Colouring matter",
+  "score": 0.64,
+  "verified_notices": 15
+ },
+ "3204": {
+  "cpv": [
+   "24224000"
+  ],
+  "label": "Colouring matter",
+  "score": 0.7,
+  "verified_notices": 15
+ },
+ "3206": {
+  "cpv": [
+   "24224000"
+  ],
+  "label": "Colouring matter",
+  "score": 0.8,
+  "verified_notices": 15
+ },
+ "3207": {
+  "cpv": [
+   "24200000"
+  ],
+  "label": "Dyes and pigments",
+  "score": 0.8,
+  "verified_notices": 27
+ },
+ "3212": {
+  "cpv": [
+   "24200000"
+  ],
+  "label": "Dyes and pigments",
+  "score": 0.8,
+  "verified_notices": 27
+ },
+ "3301": {
+  "cpv": [
+   "24951200"
+  ],
+  "label": "Additives for oils",
+  "score": 0.8,
+  "verified_notices": 14
+ },
+ "3305": {
+  "cpv": [
+   "33711600"
+  ],
+  "label": "Hair preparations and articles",
+  "score": 1.0,
+  "verified_notices": 21
+ },
+ "3306": {
+  "cpv": [
+   "33711700"
+  ],
+  "label": "Articles and preparations for oral or dental hygiene",
+  "score": 1.0,
+  "verified_notices": 28
+ },
+ "3401": {
+  "cpv": [
+   "33711900"
+  ],
+  "label": "Soap",
+  "score": 1.0,
+  "verified_notices": 12
+ },
+ "3407": {
+  "cpv": [
+   "24952000"
+  ],
+  "label": "Modelling pastes",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "3506": {
+  "cpv": [
+   "24911200"
+  ],
+  "label": "Adhesives",
+  "score": 0.7,
+  "verified_notices": 21
+ },
+ "3507": {
+  "cpv": [
+   "24965000"
+  ],
+  "label": "Enzymes",
+  "score": 1.0,
+  "verified_notices": 16
+ },
+ "3601": {
+  "cpv": [
+   "24612000"
+  ],
+  "label": "Miscellaneous explosives",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "3602": {
+  "cpv": [
+   "24612000"
+  ],
+  "label": "Miscellaneous explosives",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "3604": {
+  "cpv": [
+   "24613200"
+  ],
+  "label": "Fireworks",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "3702": {
+  "cpv": [
+   "38650000"
+  ],
+  "label": "Photographic equipment",
+  "score": 0.6,
+  "verified_notices": 16
+ },
+ "3703": {
+  "cpv": [
+   "38650000"
+  ],
+  "label": "Photographic equipment",
+  "score": 0.7,
+  "verified_notices": 16
+ },
+ "3704": {
+  "cpv": [
+   "24931000"
+  ],
+  "label": "Photographic plates and films",
+  "score": 0.867,
+  "verified_notices": 31
+ },
+ "3705": {
+  "cpv": [
+   "24931000"
+  ],
+  "label": "Photographic plates and films",
+  "score": 0.667,
+  "verified_notices": 31
+ },
+ "3707": {
+  "cpv": [
+   "38650000"
+  ],
+  "label": "Photographic equipment",
+  "score": 0.6,
+  "verified_notices": 16
+ },
+ "3802": {
+  "cpv": [
+   "24954100"
+  ],
+  "label": "New activated carbon",
+  "score": 1.0,
+  "verified_notices": 32
+ },
+ "3804": {
+  "cpv": [
+   "24327500"
+  ],
+  "label": "Residual lyes from the manufacture of wood pulp",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "3808": {
+  "cpv": [
+   "24452000"
+  ],
+  "label": "Insecticides",
+  "score": 1.0,
+  "verified_notices": 26
+ },
+ "3813": {
+  "cpv": [
+   "24951230"
+  ],
+  "label": "Fire-extinguisher charges",
+  "score": 0.667,
+  "verified_notices": 5
+ },
+ "3816": {
+  "cpv": [
+   "24957200"
+  ],
+  "label": "Additives for cements, mortars or concretes",
+  "score": 0.6,
+  "verified_notices": 14
+ },
+ "3819": {
+  "cpv": [
+   "24951300"
+  ],
+  "label": "Hydraulic fluids",
+  "score": 0.7,
+  "verified_notices": 24
+ },
+ "3820": {
+  "cpv": [
+   "24951311"
+  ],
+  "label": "Anti-freezing preparations",
+  "score": 0.7,
+  "verified_notices": 13
+ },
+ "3822": {
+  "cpv": [
+   "33696300"
+  ],
+  "label": "Chemical reagents",
+  "score": 0.8,
+  "verified_notices": 22
+ },
+ "3823": {
+  "cpv": [
+   "24323000"
+  ],
+  "label": "Industrial monocarboxylic fatty acids",
+  "score": 1.0,
+  "verified_notices": 33
+ },
+ "3909": {
+  "cpv": [
+   "19522000"
+  ],
+  "label": "Resins",
+  "score": 0.7,
+  "verified_notices": 23
+ },
+ "3911": {
+  "cpv": [
+   "19522000"
+  ],
+  "label": "Resins",
+  "score": 0.7,
+  "verified_notices": 23
+ },
+ "3915": {
+  "cpv": [
+   "44613800"
+  ],
+  "label": "Containers for waste material",
+  "score": 0.8,
+  "verified_notices": 29
+ },
+ "3917": {
+  "cpv": [
+   "44164310"
+  ],
+  "label": "Tubes and fittings",
+  "score": 1.0,
+  "verified_notices": 37
+ },
+ "3918": {
+  "cpv": [
+   "44112200"
+  ],
+  "label": "Floor coverings",
+  "score": 0.8,
+  "verified_notices": 6
+ },
+ "3921": {
+  "cpv": [
+   "19520000"
+  ],
+  "label": "Plastic products",
+  "score": 0.7,
+  "verified_notices": 28
+ },
+ "3922": {
+  "cpv": [
+   "44411000"
+  ],
+  "label": "Sanitary ware",
+  "score": 1.0,
+  "verified_notices": 24
+ },
+ "3923": {
+  "cpv": [
+   "19520000"
+  ],
+  "label": "Plastic products",
+  "score": 0.6,
+  "verified_notices": 28
+ },
+ "4001": {
+  "cpv": [
+   "19510000"
+  ],
+  "label": "Rubber products",
+  "score": 0.7,
+  "verified_notices": 22
+ },
+ "4002": {
+  "cpv": [
+   "19710000"
+  ],
+  "label": "Synthetic rubber",
+  "score": 0.6,
+  "verified_notices": 2
+ },
+ "4008": {
+  "cpv": [
+   "34946121"
+  ],
+  "label": "Fishplates and sole plates",
+  "score": 0.733,
+  "verified_notices": 13
+ },
+ "4012": {
+  "cpv": [
+   "34913200"
+  ],
+  "label": "Retreaded tyres",
+  "score": 0.7,
+  "verified_notices": 12
+ },
+ "4016": {
+  "cpv": [
+   "19510000"
+  ],
+  "label": "Rubber products",
+  "score": 0.6,
+  "verified_notices": 22
+ },
+ "4017": {
+  "cpv": [
+   "19510000"
+  ],
+  "label": "Rubber products",
+  "score": 0.7,
+  "verified_notices": 22
+ },
+ "4115": {
+  "cpv": [
+   "19100000"
+  ],
+  "label": "Leather",
+  "score": 0.6,
+  "verified_notices": 12
+ },
+ "4201": {
+  "cpv": [
+   "18910000"
+  ],
+  "label": "Saddlery",
+  "score": 0.6,
+  "verified_notices": 12
+ },
+ "4202": {
+  "cpv": [
+   "18924000"
+  ],
+  "label": "Trunks",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "4203": {
+  "cpv": [
+   "18420000"
+  ],
+  "label": "Clothing accessories",
+  "score": 0.8,
+  "verified_notices": 28
+ },
+ "4205": {
+  "cpv": [
+   "19100000"
+  ],
+  "label": "Leather",
+  "score": 0.7,
+  "verified_notices": 12
+ },
+ "4401": {
+  "cpv": [
+   "03413000"
+  ],
+  "label": "Fuel wood",
+  "score": 1.0,
+  "verified_notices": 41
+ },
+ "440131": {
+  "cpv": [
+   "03410000"
+  ],
+  "label": "Wood",
+  "score": 0.7,
+  "verified_notices": 27
+ },
+ "4402": {
+  "cpv": [
+   "03410000"
+  ],
+  "label": "Wood",
+  "score": 0.7,
+  "verified_notices": 27
+ },
+ "4403": {
+  "cpv": [
+   "03414000"
+  ],
+  "label": "Rough wood",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "4405": {
+  "cpv": [
+   "03410000"
+  ],
+  "label": "Wood",
+  "score": 0.7,
+  "verified_notices": 27
+ },
+ "4407": {
+  "cpv": [
+   "03410000"
+  ],
+  "label": "Wood",
+  "score": 0.7,
+  "verified_notices": 27
+ },
+ "4408": {
+  "cpv": [
+   "39512100"
+  ],
+  "label": "Sheets",
+  "score": 0.7,
+  "verified_notices": 20
+ },
+ "4409": {
+  "cpv": [
+   "03410000"
+  ],
+  "label": "Wood",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "4410": {
+  "cpv": [
+   "44191300"
+  ],
+  "label": "Particle board",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "4411": {
+  "cpv": [
+   "44191400"
+  ],
+  "label": "Fibreboard",
+  "score": 0.6,
+  "verified_notices": 5
+ },
+ "4412": {
+  "cpv": [
+   "44191100"
+  ],
+  "label": "Plywood",
+  "score": 1.0,
+  "verified_notices": 25
+ },
+ "4414": {
+  "cpv": [
+   "44142000"
+  ],
+  "label": "Frames",
+  "score": 0.7,
+  "verified_notices": 3
+ },
+ "4415": {
+  "cpv": [
+   "44619100"
+  ],
+  "label": "Cases",
+  "score": 0.7,
+  "verified_notices": 49
+ },
+ "4416": {
+  "cpv": [
+   "44614000"
+  ],
+  "label": "Casks",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "4417": {
+  "cpv": [
+   "44510000"
+  ],
+  "label": "Tools",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "4418": {
+  "cpv": [
+   "44220000"
+  ],
+  "label": "Builders' joinery",
+  "score": 0.7,
+  "verified_notices": 10
+ },
+ "4419": {
+  "cpv": [
+   "39221100"
+  ],
+  "label": "Kitchenware",
+  "score": 0.7,
+  "verified_notices": 15
+ },
+ "4420": {
+  "cpv": [
+   "03410000"
+  ],
+  "label": "Wood",
+  "score": 0.6,
+  "verified_notices": 27
+ },
+ "4501": {
+  "cpv": [
+   "03431000"
+  ],
+  "label": "Natural cork",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "4502": {
+  "cpv": [
+   "03431000"
+  ],
+  "label": "Natural cork",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "4503": {
+  "cpv": [
+   "03430000"
+  ],
+  "label": "Cork",
+  "score": 1.0,
+  "verified_notices": 4
+ },
+ "4504": {
+  "cpv": [
+   "03430000"
+  ],
+  "label": "Cork",
+  "score": 0.7,
+  "verified_notices": 4
+ },
+ "4801": {
+  "cpv": [
+   "22991000"
+  ],
+  "label": "Paper for newsprint",
+  "score": 0.8,
+  "verified_notices": 1
+ },
+ "4802": {
+  "cpv": [
+   "22990000"
+  ],
+  "label": "Newsprint, handmade paper and other uncoated paper or paperboard for graphic purposes",
+  "score": 0.771,
+  "verified_notices": 29
+ },
+ "4804": {
+  "cpv": [
+   "22990000"
+  ],
+  "label": "Newsprint, handmade paper and other uncoated paper or paperboard for graphic purposes",
+  "score": 0.621,
+  "verified_notices": 29
+ },
+ "4805": {
+  "cpv": [
+   "22990000"
+  ],
+  "label": "Newsprint, handmade paper and other uncoated paper or paperboard for graphic purposes",
+  "score": 0.771,
+  "verified_notices": 29
+ },
+ "4807": {
+  "cpv": [
+   "30197610"
+  ],
+  "label": "Composite paper and paperboard",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "4808": {
+  "cpv": [
+   "22993400"
+  ],
+  "label": "Corrugated paper or paperboard",
+  "score": 1.0,
+  "verified_notices": 12
+ },
+ "4810": {
+  "cpv": [
+   "30197610"
+  ],
+  "label": "Composite paper and paperboard",
+  "score": 0.867,
+  "verified_notices": 10
+ },
+ "4811": {
+  "cpv": [
+   "30197610"
+  ],
+  "label": "Composite paper and paperboard",
+  "score": 0.867,
+  "verified_notices": 10
+ },
+ "4812": {
+  "cpv": [
+   "44111600"
+  ],
+  "label": "Blocks",
+  "score": 0.7,
+  "verified_notices": 8
+ },
+ "4817": {
+  "cpv": [
+   "30199230"
+  ],
+  "label": "Envelopes",
+  "score": 1.0,
+  "verified_notices": 28
+ },
+ "4819": {
+  "cpv": [
+   "44617100"
+  ],
+  "label": "Cartons",
+  "score": 1.0,
+  "verified_notices": 30
+ },
+ "4820": {
+  "cpv": [
+   "30142200"
+  ],
+  "label": "Cash registers",
+  "score": 0.8,
+  "verified_notices": 15
+ },
+ "4823": {
+  "cpv": [
+   "30197610"
+  ],
+  "label": "Composite paper and paperboard",
+  "score": 0.867,
+  "verified_notices": 10
+ },
+ "4901": {
+  "cpv": [
+   "22110000"
+  ],
+  "label": "Printed books",
+  "score": 1.0,
+  "verified_notices": 39
+ },
+ "4902": {
+  "cpv": [
+   "22210000"
+  ],
+  "label": "Newspapers",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "4904": {
+  "cpv": [
+   "22114400"
+  ],
+  "label": "Printed music",
+  "score": 1.0,
+  "verified_notices": 13
+ },
+ "4907": {
+  "cpv": [
+   "30131400"
+  ],
+  "label": "Postage machines",
+  "score": 0.7,
+  "verified_notices": 8
+ },
+ "4909": {
+  "cpv": [
+   "22310000"
+  ],
+  "label": "Postcards",
+  "score": 0.6,
+  "verified_notices": 6
+ },
+ "4910": {
+  "cpv": [
+   "30199792"
+  ],
+  "label": "Calendars",
+  "score": 1.0,
+  "verified_notices": 16
+ },
+ "4911": {
+  "cpv": [
+   "22900000"
+  ],
+  "label": "Miscellaneous printed matter",
+  "score": 1.0,
+  "verified_notices": 15
+ },
+ "5007": {
+  "cpv": [
+   "19210000"
+  ],
+  "label": "Woven fabrics",
+  "score": 0.7,
+  "verified_notices": 30
+ },
+ "5113": {
+  "cpv": [
+   "19210000"
+  ],
+  "label": "Woven fabrics",
+  "score": 0.6,
+  "verified_notices": 30
+ },
+ "5204": {
+  "cpv": [
+   "19435100"
+  ],
+  "label": "Sewing thread",
+  "score": 0.8,
+  "verified_notices": 5
+ },
+ "5208": {
+  "cpv": [
+   "19212000"
+  ],
+  "label": "Woven fabrics of cotton",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "5209": {
+  "cpv": [
+   "19212000"
+  ],
+  "label": "Woven fabrics of cotton",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "5210": {
+  "cpv": [
+   "19212000"
+  ],
+  "label": "Woven fabrics of cotton",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "5211": {
+  "cpv": [
+   "19212000"
+  ],
+  "label": "Woven fabrics of cotton",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "5212": {
+  "cpv": [
+   "19212000"
+  ],
+  "label": "Woven fabrics of cotton",
+  "score": 1.0,
+  "verified_notices": 19
+ },
+ "5307": {
+  "cpv": [
+   "19430000"
+  ],
+  "label": "Textile yarn and thread of natural fibres",
+  "score": 0.6,
+  "verified_notices": 7
+ },
+ "5308": {
+  "cpv": [
+   "19436000"
+  ],
+  "label": "Vegetable textile-fibre yarn",
+  "score": 0.75,
+  "verified_notices": 2
+ },
+ "5309": {
+  "cpv": [
+   "19210000"
+  ],
+  "label": "Woven fabrics",
+  "score": 0.8,
+  "verified_notices": 30
+ },
+ "5310": {
+  "cpv": [
+   "19210000"
+  ],
+  "label": "Woven fabrics",
+  "score": 0.8,
+  "verified_notices": 30
+ },
+ "5311": {
+  "cpv": [
+   "19210000"
+  ],
+  "label": "Woven fabrics",
+  "score": 0.64,
+  "verified_notices": 30
+ },
+ "5401": {
+  "cpv": [
+   "19435100"
+  ],
+  "label": "Sewing thread",
+  "score": 0.64,
+  "verified_notices": 5
+ },
+ "5404": {
+  "cpv": [
+   "19724000"
+  ],
+  "label": "Synthetic monofilament",
+  "score": 0.7,
+  "verified_notices": 27
+ },
+ "5407": {
+  "cpv": [
+   "19211000"
+  ],
+  "label": "Synthetic woven fabrics",
+  "score": 0.76,
+  "verified_notices": 32
+ },
+ "5408": {
+  "cpv": [
+   "19210000"
+  ],
+  "label": "Woven fabrics",
+  "score": 0.64,
+  "verified_notices": 30
+ },
+ "5501": {
+  "cpv": [
+   "19721000"
+  ],
+  "label": "Synthetic filament tow",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "5502": {
+  "cpv": [
+   "19721000"
+  ],
+  "label": "Synthetic filament tow",
+  "score": 0.667,
+  "verified_notices": 2
+ },
+ "5503": {
+  "cpv": [
+   "19720000"
+  ],
+  "label": "Synthetic fibres",
+  "score": 0.8,
+  "verified_notices": 37
+ },
+ "5506": {
+  "cpv": [
+   "19720000"
+  ],
+  "label": "Synthetic fibres",
+  "score": 0.8,
+  "verified_notices": 37
+ },
+ "5508": {
+  "cpv": [
+   "19435100"
+  ],
+  "label": "Sewing thread",
+  "score": 0.6,
+  "verified_notices": 5
+ },
+ "5511": {
+  "cpv": [
+   "19435000"
+  ],
+  "label": "Sewing thread and yarn of natural fibres",
+  "score": 0.92,
+  "verified_notices": 5
+ },
+ "5512": {
+  "cpv": [
+   "19211000"
+  ],
+  "label": "Synthetic woven fabrics",
+  "score": 0.76,
+  "verified_notices": 32
+ },
+ "5513": {
+  "cpv": [
+   "19211000"
+  ],
+  "label": "Synthetic woven fabrics",
+  "score": 0.76,
+  "verified_notices": 32
+ },
+ "5514": {
+  "cpv": [
+   "19211000"
+  ],
+  "label": "Synthetic woven fabrics",
+  "score": 0.76,
+  "verified_notices": 32
+ },
+ "5515": {
+  "cpv": [
+   "19211000"
+  ],
+  "label": "Synthetic woven fabrics",
+  "score": 0.76,
+  "verified_notices": 32
+ },
+ "5604": {
+  "cpv": [
+   "19510000"
+  ],
+  "label": "Rubber products",
+  "score": 0.6,
+  "verified_notices": 22
+ },
+ "5607": {
+  "cpv": [
+   "39541140"
+  ],
+  "label": "Twine",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "5608": {
+  "cpv": [
+   "39541140"
+  ],
+  "label": "Twine",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "5807": {
+  "cpv": [
+   "39561130"
+  ],
+  "label": "Textile labels and badges",
+  "score": 0.867,
+  "verified_notices": 27
+ },
+ "5808": {
+  "cpv": [
+   "39561141"
+  ],
+  "label": "Braids",
+  "score": 0.7,
+  "verified_notices": 1
+ },
+ "5809": {
+  "cpv": [
+   "19210000"
+  ],
+  "label": "Woven fabrics",
+  "score": 1.0,
+  "verified_notices": 30
+ },
+ "5810": {
+  "cpv": [
+   "39561000"
+  ],
+  "label": "Tulle, lace, narrow-woven fabrics, trimmings and embroidery",
+  "score": 0.657,
+  "verified_notices": 21
+ },
+ "5811": {
+  "cpv": [
+   "39563600"
+  ],
+  "label": "Quilted textile products",
+  "score": 1.0,
+  "verified_notices": 3
+ },
+ "5901": {
+  "cpv": [
+   "19513000"
+  ],
+  "label": "Rubberised textile fabrics",
+  "score": 0.867,
+  "verified_notices": 6
+ },
+ "5902": {
+  "cpv": [
+   "19513000"
+  ],
+  "label": "Rubberised textile fabrics",
+  "score": 0.867,
+  "verified_notices": 6
+ },
+ "5905": {
+  "cpv": [
+   "39192000"
+  ],
+  "label": "Textile wall coverings",
+  "score": 1.0,
+  "verified_notices": 4
+ },
+ "5906": {
+  "cpv": [
+   "19513000"
+  ],
+  "label": "Rubberised textile fabrics",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "5907": {
+  "cpv": [
+   "19513000"
+  ],
+  "label": "Rubberised textile fabrics",
+  "score": 0.867,
+  "verified_notices": 6
+ },
+ "5908": {
+  "cpv": [
+   "39560000"
+  ],
+  "label": "Miscellaneous textile articles",
+  "score": 0.7,
+  "verified_notices": 17
+ },
+ "5910": {
+  "cpv": [
+   "19513200"
+  ],
+  "label": "Adhesive tape of rubberised textiles",
+  "score": 0.7,
+  "verified_notices": 2
+ },
+ "5911": {
+  "cpv": [
+   "39563500"
+  ],
+  "label": "Textile articles for technical uses",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "6101": {
+  "cpv": [
+   "18210000"
+  ],
+  "label": "Coats",
+  "score": 1.0,
+  "verified_notices": 24
+ },
+ "6102": {
+  "cpv": [
+   "18210000"
+  ],
+  "label": "Coats",
+  "score": 1.0,
+  "verified_notices": 24
+ },
+ "6103": {
+  "cpv": [
+   "18222100"
+  ],
+  "label": "Suits",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "6104": {
+  "cpv": [
+   "18222100"
+  ],
+  "label": "Suits",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "6105": {
+  "cpv": [
+   "18331000"
+  ],
+  "label": "T-shirts",
+  "score": 1.0,
+  "verified_notices": 21
+ },
+ "6107": {
+  "cpv": [
+   "18312000"
+  ],
+  "label": "Underpants",
+  "score": 1.0,
+  "verified_notices": 4
+ },
+ "6108": {
+  "cpv": [
+   "18311000"
+  ],
+  "label": "Slips",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "6109": {
+  "cpv": [
+   "18331000"
+  ],
+  "label": "T-shirts",
+  "score": 1.0,
+  "verified_notices": 21
+ },
+ "6111": {
+  "cpv": [
+   "18420000"
+  ],
+  "label": "Clothing accessories",
+  "score": 0.8,
+  "verified_notices": 28
+ },
+ "6112": {
+  "cpv": [
+   "18222100"
+  ],
+  "label": "Suits",
+  "score": 0.7,
+  "verified_notices": 8
+ },
+ "6113": {
+  "cpv": [
+   "19250000"
+  ],
+  "label": "Knitted or crocheted fabrics",
+  "score": 0.76,
+  "verified_notices": 26
+ },
+ "6114": {
+  "cpv": [
+   "18300000"
+  ],
+  "label": "Garments",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "6116": {
+  "cpv": [
+   "18424000"
+  ],
+  "label": "Gloves",
+  "score": 1.0,
+  "verified_notices": 30
+ },
+ "6117": {
+  "cpv": [
+   "18420000"
+  ],
+  "label": "Clothing accessories",
+  "score": 1.0,
+  "verified_notices": 28
+ },
+ "6202": {
+  "cpv": [
+   "18210000"
+  ],
+  "label": "Coats",
+  "score": 1.0,
+  "verified_notices": 24
+ },
+ "6203": {
+  "cpv": [
+   "18222100"
+  ],
+  "label": "Suits",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "6204": {
+  "cpv": [
+   "18222100"
+  ],
+  "label": "Suits",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "6205": {
+  "cpv": [
+   "18331000"
+  ],
+  "label": "T-shirts",
+  "score": 1.0,
+  "verified_notices": 21
+ },
+ "6207": {
+  "cpv": [
+   "18318400"
+  ],
+  "label": "Vests",
+  "score": 0.7,
+  "verified_notices": 16
+ },
+ "6208": {
+  "cpv": [
+   "18318400"
+  ],
+  "label": "Vests",
+  "score": 0.7,
+  "verified_notices": 16
+ },
+ "6209": {
+  "cpv": [
+   "18420000"
+  ],
+  "label": "Clothing accessories",
+  "score": 0.8,
+  "verified_notices": 28
+ },
+ "6211": {
+  "cpv": [
+   "18222100"
+  ],
+  "label": "Suits",
+  "score": 0.7,
+  "verified_notices": 8
+ },
+ "6213": {
+  "cpv": [
+   "18421000"
+  ],
+  "label": "Handkerchiefs",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "6215": {
+  "cpv": [
+   "18423000"
+  ],
+  "label": "Ties",
+  "score": 1.0,
+  "verified_notices": 17
+ },
+ "6216": {
+  "cpv": [
+   "18424000"
+  ],
+  "label": "Gloves",
+  "score": 1.0,
+  "verified_notices": 30
+ },
+ "6217": {
+  "cpv": [
+   "18420000"
+  ],
+  "label": "Clothing accessories",
+  "score": 1.0,
+  "verified_notices": 28
+ },
+ "6301": {
+  "cpv": [
+   "39511000"
+  ],
+  "label": "Blankets and travelling rugs",
+  "score": 1.0,
+  "verified_notices": 22
+ },
+ "6302": {
+  "cpv": [
+   "39512000"
+  ],
+  "label": "Bed linen",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "6303": {
+  "cpv": [
+   "39515100"
+  ],
+  "label": "Curtains",
+  "score": 1.0,
+  "verified_notices": 18
+ },
+ "6304": {
+  "cpv": [
+   "39516000"
+  ],
+  "label": "Furnishing articles",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "6305": {
+  "cpv": [
+   "18930000"
+  ],
+  "label": "Sacks and bags",
+  "score": 1.0,
+  "verified_notices": 30
+ },
+ "6306": {
+  "cpv": [
+   "39522110"
+  ],
+  "label": "Tarpaulins",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "6307": {
+  "cpv": [
+   "19513200"
+  ],
+  "label": "Adhesive tape of rubberised textiles",
+  "score": 0.7,
+  "verified_notices": 2
+ },
+ "6308": {
+  "cpv": [
+   "19513200"
+  ],
+  "label": "Adhesive tape of rubberised textiles",
+  "score": 0.7,
+  "verified_notices": 2
+ },
+ "6309": {
+  "cpv": [
+   "19513200"
+  ],
+  "label": "Adhesive tape of rubberised textiles",
+  "score": 0.7,
+  "verified_notices": 2
+ },
+ "6310": {
+  "cpv": [
+   "39542000"
+  ],
+  "label": "Rags",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "6401": {
+  "cpv": [
+   "18840000"
+  ],
+  "label": "Parts of footwear",
+  "score": 1.0,
+  "verified_notices": 13
+ },
+ "6402": {
+  "cpv": [
+   "18840000"
+  ],
+  "label": "Parts of footwear",
+  "score": 1.0,
+  "verified_notices": 13
+ },
+ "6403": {
+  "cpv": [
+   "18813000"
+  ],
+  "label": "Footwear with uppers of leather",
+  "score": 0.867,
+  "verified_notices": 28
+ },
+ "6404": {
+  "cpv": [
+   "18840000"
+  ],
+  "label": "Parts of footwear",
+  "score": 1.0,
+  "verified_notices": 13
+ },
+ "6405": {
+  "cpv": [
+   "18840000"
+  ],
+  "label": "Parts of footwear",
+  "score": 1.0,
+  "verified_notices": 13
+ },
+ "6406": {
+  "cpv": [
+   "18840000"
+  ],
+  "label": "Parts of footwear",
+  "score": 1.0,
+  "verified_notices": 13
+ },
+ "6504": {
+  "cpv": [
+   "18440000"
+  ],
+  "label": "Hats and headgear",
+  "score": 1.0,
+  "verified_notices": 22
+ },
+ "6505": {
+  "cpv": [
+   "18440000"
+  ],
+  "label": "Hats and headgear",
+  "score": 1.0,
+  "verified_notices": 22
+ },
+ "6506": {
+  "cpv": [
+   "18443300"
+  ],
+  "label": "Headgear",
+  "score": 1.0,
+  "verified_notices": 15
+ },
+ "6801": {
+  "cpv": [
+   "14212430"
+  ],
+  "label": "Stone chippings",
+  "score": 0.8,
+  "verified_notices": 29
+ },
+ "6802": {
+  "cpv": [
+   "44912000"
+  ],
+  "label": "Miscellaneous building stone",
+  "score": 0.8,
+  "verified_notices": 26
+ },
+ "6803": {
+  "cpv": [
+   "44930000"
+  ],
+  "label": "Slate",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "6805": {
+  "cpv": [
+   "14812000"
+  ],
+  "label": "Abrasive powder or grain",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "6806": {
+  "cpv": [
+   "14630000"
+  ],
+  "label": "Slag, dross, ferrous waste and scrap",
+  "score": 0.68,
+  "verified_notices": 9
+ },
+ "6807": {
+  "cpv": [
+   "44113620"
+  ],
+  "label": "Asphalt",
+  "score": 1.0,
+  "verified_notices": 20
+ },
+ "6808": {
+  "cpv": [
+   "44175000"
+  ],
+  "label": "Panels",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "6810": {
+  "cpv": [
+   "44111200"
+  ],
+  "label": "Cement",
+  "score": 1.0,
+  "verified_notices": 28
+ },
+ "6811": {
+  "cpv": [
+   "44111200"
+  ],
+  "label": "Cement",
+  "score": 0.7,
+  "verified_notices": 28
+ },
+ "6901": {
+  "cpv": [
+   "44111100"
+  ],
+  "label": "Bricks",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "6902": {
+  "cpv": [
+   "44111100"
+  ],
+  "label": "Bricks",
+  "score": 0.7,
+  "verified_notices": 23
+ },
+ "6903": {
+  "cpv": [
+   "44111900"
+  ],
+  "label": "Ceramic flags",
+  "score": 0.8,
+  "verified_notices": 9
+ },
+ "6904": {
+  "cpv": [
+   "44111100"
+  ],
+  "label": "Bricks",
+  "score": 0.6,
+  "verified_notices": 23
+ },
+ "6905": {
+  "cpv": [
+   "44111700"
+  ],
+  "label": "Tiles",
+  "score": 0.7,
+  "verified_notices": 8
+ },
+ "6906": {
+  "cpv": [
+   "44163100"
+  ],
+  "label": "Pipes",
+  "score": 0.7,
+  "verified_notices": 16
+ },
+ "6907": {
+  "cpv": [
+   "44111900"
+  ],
+  "label": "Ceramic flags",
+  "score": 0.8,
+  "verified_notices": 9
+ },
+ "6911": {
+  "cpv": [
+   "39221200"
+  ],
+  "label": "Tableware",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "6912": {
+  "cpv": [
+   "39221200"
+  ],
+  "label": "Tableware",
+  "score": 0.7,
+  "verified_notices": 5
+ },
+ "6913": {
+  "cpv": [
+   "39298400"
+  ],
+  "label": "Statuettes",
+  "score": 0.6,
+  "verified_notices": 3
+ },
+ "6914": {
+  "cpv": [
+   "44111900"
+  ],
+  "label": "Ceramic flags",
+  "score": 0.8,
+  "verified_notices": 9
+ },
+ "7001": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "7002": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 0.7,
+  "verified_notices": 14
+ },
+ "7003": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "7004": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "7005": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "7006": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 0.7,
+  "verified_notices": 14
+ },
+ "7007": {
+  "cpv": [
+   "39299200"
+  ],
+  "label": "Safety glass",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "7008": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "7009": {
+  "cpv": [
+   "39299300"
+  ],
+  "label": "Glass mirrors",
+  "score": 1.0,
+  "verified_notices": 7
+ },
+ "7010": {
+  "cpv": [
+   "39226210"
+  ],
+  "label": "Carboys",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "7011": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 0.7,
+  "verified_notices": 14
+ },
+ "7013": {
+  "cpv": [
+   "39299000"
+  ],
+  "label": "Glassware",
+  "score": 0.7,
+  "verified_notices": 20
+ },
+ "7016": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "7017": {
+  "cpv": [
+   "39181000"
+  ],
+  "label": "Laboratory benching",
+  "score": 0.8,
+  "verified_notices": 13
+ },
+ "7019": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 0.7,
+  "verified_notices": 14
+ },
+ "7020": {
+  "cpv": [
+   "14820000"
+  ],
+  "label": "Glass",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "7106": {
+  "cpv": [
+   "14523300"
+  ],
+  "label": "Silver",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "7108": {
+  "cpv": [
+   "14523200"
+  ],
+  "label": "Gold",
+  "score": 1.0,
+  "verified_notices": 4
+ },
+ "7109": {
+  "cpv": [
+   "14523300"
+  ],
+  "label": "Silver",
+  "score": 0.6,
+  "verified_notices": 5
+ },
+ "7110": {
+  "cpv": [
+   "14523400"
+  ],
+  "label": "Platinum",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "7112": {
+  "cpv": [
+   "18513300"
+  ],
+  "label": "Articles of precious metal",
+  "score": 0.64,
+  "verified_notices": 2
+ },
+ "7113": {
+  "cpv": [
+   "18513000"
+  ],
+  "label": "Articles of jewellery",
+  "score": 0.7,
+  "verified_notices": 6
+ },
+ "7114": {
+  "cpv": [
+   "18513200"
+  ],
+  "label": "Goldsmiths' wares",
+  "score": 0.8,
+  "verified_notices": 2
+ },
+ "7115": {
+  "cpv": [
+   "18513300"
+  ],
+  "label": "Articles of precious metal",
+  "score": 0.8,
+  "verified_notices": 2
+ },
+ "7117": {
+  "cpv": [
+   "18513000"
+  ],
+  "label": "Articles of jewellery",
+  "score": 0.7,
+  "verified_notices": 6
+ },
+ "7201": {
+  "cpv": [
+   "14711100"
+  ],
+  "label": "Pig iron",
+  "score": 0.7,
+  "verified_notices": 5
+ },
+ "7202": {
+  "cpv": [
+   "14621000"
+  ],
+  "label": "Ferro-alloys",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "7204": {
+  "cpv": [
+   "14630000"
+  ],
+  "label": "Slag, dross, ferrous waste and scrap",
+  "score": 0.84,
+  "verified_notices": 9
+ },
+ "7219": {
+  "cpv": [
+   "14622000"
+  ],
+  "label": "Steel",
+  "score": 0.7,
+  "verified_notices": 41
+ },
+ "7220": {
+  "cpv": [
+   "14622000"
+  ],
+  "label": "Steel",
+  "score": 0.7,
+  "verified_notices": 41
+ },
+ "7223": {
+  "cpv": [
+   "14622000"
+  ],
+  "label": "Steel",
+  "score": 0.6,
+  "verified_notices": 41
+ },
+ "7227": {
+  "cpv": [
+   "14622000"
+  ],
+  "label": "Steel",
+  "score": 1.0,
+  "verified_notices": 41
+ },
+ "7228": {
+  "cpv": [
+   "14622000"
+  ],
+  "label": "Steel",
+  "score": 0.6,
+  "verified_notices": 41
+ },
+ "7229": {
+  "cpv": [
+   "14622000"
+  ],
+  "label": "Steel",
+  "score": 0.6,
+  "verified_notices": 41
+ },
+ "7301": {
+  "cpv": [
+   "44212410"
+  ],
+  "label": "Sheet piling",
+  "score": 0.7,
+  "verified_notices": 3
+ },
+ "7303": {
+  "cpv": [
+   "44164310"
+  ],
+  "label": "Tubes and fittings",
+  "score": 0.8,
+  "verified_notices": 37
+ },
+ "7304": {
+  "cpv": [
+   "44164310"
+  ],
+  "label": "Tubes and fittings",
+  "score": 0.8,
+  "verified_notices": 37
+ },
+ "7305": {
+  "cpv": [
+   "44531700"
+  ],
+  "label": "Iron or steel threaded articles",
+  "score": 0.867,
+  "verified_notices": 23
+ },
+ "7306": {
+  "cpv": [
+   "44531700"
+  ],
+  "label": "Iron or steel threaded articles",
+  "score": 0.867,
+  "verified_notices": 23
+ },
+ "7307": {
+  "cpv": [
+   "44163200"
+  ],
+  "label": "Pipe fittings",
+  "score": 0.8,
+  "verified_notices": 26
+ },
+ "7309": {
+  "cpv": [
+   "44611600"
+  ],
+  "label": "Reservoirs",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "7310": {
+  "cpv": [
+   "44611000"
+  ],
+  "label": "Tanks",
+  "score": 1.0,
+  "verified_notices": 24
+ },
+ "7311": {
+  "cpv": [
+   "44612000"
+  ],
+  "label": "Liquefied-gas containers",
+  "score": 0.85,
+  "verified_notices": 22
+ },
+ "7312": {
+  "cpv": [
+   "44311000"
+  ],
+  "label": "Stranded wire",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "7313": {
+  "cpv": [
+   "44312300"
+  ],
+  "label": "Barbed wire",
+  "score": 0.7,
+  "verified_notices": 12
+ },
+ "7314": {
+  "cpv": [
+   "44313200"
+  ],
+  "label": "Wire cloth",
+  "score": 0.8,
+  "verified_notices": 3
+ },
+ "7315": {
+  "cpv": [
+   "44542000"
+  ],
+  "label": "Parts of chain",
+  "score": 0.7,
+  "verified_notices": 7
+ },
+ "7317": {
+  "cpv": [
+   "44192200"
+  ],
+  "label": "Nails",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "7318": {
+  "cpv": [
+   "44531510"
+  ],
+  "label": "Bolts and screws",
+  "score": 1.0,
+  "verified_notices": 15
+ },
+ "7320": {
+  "cpv": [
+   "44550000"
+  ],
+  "label": "Springs",
+  "score": 0.7,
+  "verified_notices": 20
+ },
+ "7324": {
+  "cpv": [
+   "44411000"
+  ],
+  "label": "Sanitary ware",
+  "score": 0.8,
+  "verified_notices": 24
+ },
+ "7325": {
+  "cpv": [
+   "44531700"
+  ],
+  "label": "Iron or steel threaded articles",
+  "score": 0.867,
+  "verified_notices": 23
+ },
+ "7326": {
+  "cpv": [
+   "44531700"
+  ],
+  "label": "Iron or steel threaded articles",
+  "score": 0.867,
+  "verified_notices": 23
+ },
+ "7401": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 0.7,
+  "verified_notices": 10
+ },
+ "7402": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7403": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7404": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7405": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7406": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7407": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7408": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 0.7,
+  "verified_notices": 10
+ },
+ "7409": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 0.7,
+  "verified_notices": 10
+ },
+ "7410": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 0.7,
+  "verified_notices": 10
+ },
+ "7411": {
+  "cpv": [
+   "44163100"
+  ],
+  "label": "Pipes",
+  "score": 0.6,
+  "verified_notices": 16
+ },
+ "7412": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7413": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7415": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7418": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7419": {
+  "cpv": [
+   "14715000"
+  ],
+  "label": "Copper",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "7601": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7602": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7603": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7604": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7605": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 0.7,
+  "verified_notices": 11
+ },
+ "7606": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7607": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 0.7,
+  "verified_notices": 11
+ },
+ "7608": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7609": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7610": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7611": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7612": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 0.7,
+  "verified_notices": 11
+ },
+ "7613": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7614": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7615": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7616": {
+  "cpv": [
+   "14721000"
+  ],
+  "label": "Aluminium",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "7801": {
+  "cpv": [
+   "14712000"
+  ],
+  "label": "Lead",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "7802": {
+  "cpv": [
+   "14712000"
+  ],
+  "label": "Lead",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "7804": {
+  "cpv": [
+   "14712000"
+  ],
+  "label": "Lead",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "7806": {
+  "cpv": [
+   "14712000"
+  ],
+  "label": "Lead",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "8101": {
+  "cpv": [
+   "14755000"
+  ],
+  "label": "Tungsten",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "8104": {
+  "cpv": [
+   "14782000"
+  ],
+  "label": "Magnesium",
+  "score": 1.0,
+  "verified_notices": 7
+ },
+ "8108": {
+  "cpv": [
+   "14724000"
+  ],
+  "label": "Titanium",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "8109": {
+  "cpv": [
+   "14735000"
+  ],
+  "label": "Zirconium",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "8201": {
+  "cpv": [
+   "44511000"
+  ],
+  "label": "Hand tools",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "8202": {
+  "cpv": [
+   "44511000"
+  ],
+  "label": "Hand tools",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "8203": {
+  "cpv": [
+   "44511000"
+  ],
+  "label": "Hand tools",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "8204": {
+  "cpv": [
+   "44511000"
+  ],
+  "label": "Hand tools",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "8205": {
+  "cpv": [
+   "44511000"
+  ],
+  "label": "Hand tools",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "8206": {
+  "cpv": [
+   "44511000"
+  ],
+  "label": "Hand tools",
+  "score": 1.0,
+  "verified_notices": 9
+ },
+ "8207": {
+  "cpv": [
+   "44510000"
+  ],
+  "label": "Tools",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "8209": {
+  "cpv": [
+   "44510000"
+  ],
+  "label": "Tools",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "8210": {
+  "cpv": [
+   "44510000"
+  ],
+  "label": "Tools",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "8301": {
+  "cpv": [
+   "44521000"
+  ],
+  "label": "Miscellaneous padlocks and locks",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "8302": {
+  "cpv": [
+   "44523200"
+  ],
+  "label": "Mountings",
+  "score": 0.6,
+  "verified_notices": 4
+ },
+ "8303": {
+  "cpv": [
+   "44421300"
+  ],
+  "label": "Safes",
+  "score": 1.0,
+  "verified_notices": 20
+ },
+ "8306": {
+  "cpv": [
+   "44423100"
+  ],
+  "label": "Bells",
+  "score": 1.0,
+  "verified_notices": 1
+ },
+ "8307": {
+  "cpv": [
+   "44164200"
+  ],
+  "label": "Tubing",
+  "score": 1.0,
+  "verified_notices": 37
+ },
+ "8310": {
+  "cpv": [
+   "44423460"
+  ],
+  "label": "Address plates",
+  "score": 0.7,
+  "verified_notices": 6
+ },
+ "8401": {
+  "cpv": [
+   "42151000"
+  ],
+  "label": "Nuclear reactors",
+  "score": 1.0,
+  "verified_notices": 2
+ },
+ "8402": {
+  "cpv": [
+   "42161000"
+  ],
+  "label": "Hot-water boilers",
+  "score": 0.733,
+  "verified_notices": 11
+ },
+ "8403": {
+  "cpv": [
+   "42131110"
+  ],
+  "label": "Central-heating radiator valves",
+  "score": 0.6,
+  "verified_notices": 5
+ },
+ "8404": {
+  "cpv": [
+   "42164000"
+  ],
+  "label": "Auxiliary plant for use with boilers",
+  "score": 0.88,
+  "verified_notices": 26
+ },
+ "8405": {
+  "cpv": [
+   "42980000"
+  ],
+  "label": "Gas generators",
+  "score": 0.64,
+  "verified_notices": 26
+ },
+ "8406": {
+  "cpv": [
+   "42113000"
+  ],
+  "label": "Parts of turbines",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "8410": {
+  "cpv": [
+   "42113000"
+  ],
+  "label": "Parts of turbines",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "8412": {
+  "cpv": [
+   "42124100"
+  ],
+  "label": "Parts of engines or motors",
+  "score": 1.0,
+  "verified_notices": 30
+ },
+ "8413": {
+  "cpv": [
+   "42122000"
+  ],
+  "label": "Pumps",
+  "score": 1.0,
+  "verified_notices": 33
+ },
+ "8414": {
+  "cpv": [
+   "42124300"
+  ],
+  "label": "Parts of air or vacuum pumps, of air or gas compressors",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "8415": {
+  "cpv": [
+   "42512500"
+  ],
+  "label": "Parts of air-conditioning machines",
+  "score": 1.0,
+  "verified_notices": 12
+ },
+ "8416": {
+  "cpv": [
+   "42310000"
+  ],
+  "label": "Furnace burners",
+  "score": 0.7,
+  "verified_notices": 15
+ },
+ "8417": {
+  "cpv": [
+   "42390000"
+  ],
+  "label": "Parts of furnace burners, furnaces or ovens",
+  "score": 0.8,
+  "verified_notices": 32
+ },
+ "8421": {
+  "cpv": [
+   "42931000"
+  ],
+  "label": "Centrifuges",
+  "score": 1.0,
+  "verified_notices": 16
+ },
+ "8422": {
+  "cpv": [
+   "42716110"
+  ],
+  "label": "Washing equipment",
+  "score": 0.7,
+  "verified_notices": 22
+ },
+ "8423": {
+  "cpv": [
+   "42923100"
+  ],
+  "label": "Weighing machinery",
+  "score": 1.0,
+  "verified_notices": 24
+ },
+ "8424": {
+  "cpv": [
+   "42924700"
+  ],
+  "label": "Mechanical appliances for projecting, dispersing or spraying",
+  "score": 0.9,
+  "verified_notices": 31
+ },
+ "8425": {
+  "cpv": [
+   "42411000"
+  ],
+  "label": "Pulley tackle and hoists",
+  "score": 0.85,
+  "verified_notices": 7
+ },
+ "8427": {
+  "cpv": [
+   "42415200"
+  ],
+  "label": "Works trucks",
+  "score": 0.7,
+  "verified_notices": 21
+ },
+ "8428": {
+  "cpv": [
+   "42418000"
+  ],
+  "label": "Lifting, handling, loading or unloading machinery",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "8429": {
+  "cpv": [
+   "43211000"
+  ],
+  "label": "Bulldozers",
+  "score": 1.0,
+  "verified_notices": 40
+ },
+ "8430": {
+  "cpv": [
+   "42419540"
+  ],
+  "label": "Parts of moving walkways",
+  "score": 0.8,
+  "verified_notices": 6
+ },
+ "8432": {
+  "cpv": [
+   "16810000"
+  ],
+  "label": "Parts of agricultural machinery",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "8433": {
+  "cpv": [
+   "16340000"
+  ],
+  "label": "Harvesting and threshing machinery",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8435": {
+  "cpv": [
+   "42636000"
+  ],
+  "label": "Presses",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "8436": {
+  "cpv": [
+   "16810000"
+  ],
+  "label": "Parts of agricultural machinery",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "8437": {
+  "cpv": [
+   "42972000"
+  ],
+  "label": "Parts of cleaning machines",
+  "score": 1.0,
+  "verified_notices": 4
+ },
+ "8443": {
+  "cpv": [
+   "42991200"
+  ],
+  "label": "Printing machinery",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "8446": {
+  "cpv": [
+   "42713000"
+  ],
+  "label": "Weaving machines",
+  "score": 1.0,
+  "verified_notices": 12
+ },
+ "8447": {
+  "cpv": [
+   "42714000"
+  ],
+  "label": "Knitting machines",
+  "score": 1.0,
+  "verified_notices": 3
+ },
+ "8448": {
+  "cpv": [
+   "42164000"
+  ],
+  "label": "Auxiliary plant for use with boilers",
+  "score": 0.7,
+  "verified_notices": 26
+ },
+ "8451": {
+  "cpv": [
+   "42716110"
+  ],
+  "label": "Washing equipment",
+  "score": 0.7,
+  "verified_notices": 22
+ },
+ "8452": {
+  "cpv": [
+   "42715000"
+  ],
+  "label": "Sewing machines",
+  "score": 1.0,
+  "verified_notices": 18
+ },
+ "8453": {
+  "cpv": [
+   "16630000"
+  ],
+  "label": "Machinery for preparing animal feeding stuffs",
+  "score": 0.7,
+  "verified_notices": 17
+ },
+ "8456": {
+  "cpv": [
+   "42600000"
+  ],
+  "label": "Machine tools",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8457": {
+  "cpv": [
+   "42610000"
+  ],
+  "label": "Machine tools operated by laser and machining centres",
+  "score": 0.733,
+  "verified_notices": 27
+ },
+ "8458": {
+  "cpv": [
+   "42621000"
+  ],
+  "label": "Lathes",
+  "score": 0.6,
+  "verified_notices": 27
+ },
+ "8459": {
+  "cpv": [
+   "42600000"
+  ],
+  "label": "Machine tools",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8460": {
+  "cpv": [
+   "42600000"
+  ],
+  "label": "Machine tools",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8461": {
+  "cpv": [
+   "42600000"
+  ],
+  "label": "Machine tools",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8462": {
+  "cpv": [
+   "42630000"
+  ],
+  "label": "Metal-working machine tools",
+  "score": 1.0,
+  "verified_notices": 20
+ },
+ "8463": {
+  "cpv": [
+   "42600000"
+  ],
+  "label": "Machine tools",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8464": {
+  "cpv": [
+   "42600000"
+  ],
+  "label": "Machine tools",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8465": {
+  "cpv": [
+   "42600000"
+  ],
+  "label": "Machine tools",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8467": {
+  "cpv": [
+   "42676000"
+  ],
+  "label": "Parts of hand tools",
+  "score": 0.8,
+  "verified_notices": 6
+ },
+ "8468": {
+  "cpv": [
+   "42661100"
+  ],
+  "label": "Soldering equipment",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "8471": {
+  "cpv": [
+   "30236200"
+  ],
+  "label": "Data-processing equipment",
+  "score": 0.64,
+  "verified_notices": 11
+ },
+ "8472": {
+  "cpv": [
+   "30123000"
+  ],
+  "label": "Office and business machines",
+  "score": 0.8,
+  "verified_notices": 21
+ },
+ "8474": {
+  "cpv": [
+   "30132000"
+  ],
+  "label": "Sorting equipment",
+  "score": 1.0,
+  "verified_notices": 38
+ },
+ "8476": {
+  "cpv": [
+   "42933300"
+  ],
+  "label": "Automatic goods-vending machines",
+  "score": 1.0,
+  "verified_notices": 12
+ },
+ "8479": {
+  "cpv": [
+   "42416130"
+  ],
+  "label": "Mechanical lifts",
+  "score": 0.8,
+  "verified_notices": 8
+ },
+ "8481": {
+  "cpv": [
+   "42131000"
+  ],
+  "label": "Taps, cocks and valves",
+  "score": 1.0,
+  "verified_notices": 24
+ },
+ "8483": {
+  "cpv": [
+   "42141110"
+  ],
+  "label": "Transmission shafts",
+  "score": 1.0,
+  "verified_notices": 5
+ },
+ "8501": {
+  "cpv": [
+   "31160000"
+  ],
+  "label": "Parts of electric motors, generators and transformers",
+  "score": 0.9,
+  "verified_notices": 18
+ },
+ "8502": {
+  "cpv": [
+   "31121111"
+  ],
+  "label": "Electric rotary converters",
+  "score": 0.76,
+  "verified_notices": 8
+ },
+ "8503": {
+  "cpv": [
+   "31160000"
+  ],
+  "label": "Parts of electric motors, generators and transformers",
+  "score": 0.9,
+  "verified_notices": 18
+ },
+ "8504": {
+  "cpv": [
+   "31160000"
+  ],
+  "label": "Parts of electric motors, generators and transformers",
+  "score": 0.8,
+  "verified_notices": 18
+ },
+ "8505": {
+  "cpv": [
+   "31630000"
+  ],
+  "label": "Magnets",
+  "score": 0.7,
+  "verified_notices": 32
+ },
+ "8506": {
+  "cpv": [
+   "31400000"
+  ],
+  "label": "Accumulators, primary cells and primary batteries",
+  "score": 0.8,
+  "verified_notices": 18
+ },
+ "8507": {
+  "cpv": [
+   "31430000"
+  ],
+  "label": "Electric accumulators",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "8512": {
+  "cpv": [
+   "31620000"
+  ],
+  "label": "Sound or visual signalling apparatus",
+  "score": 0.667,
+  "verified_notices": 5
+ },
+ "8513": {
+  "cpv": [
+   "31521000"
+  ],
+  "label": "Lamps",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "8515": {
+  "cpv": [
+   "31214500"
+  ],
+  "label": "Electric switchboards",
+  "score": 0.8,
+  "verified_notices": 23
+ },
+ "8518": {
+  "cpv": [
+   "32341000"
+  ],
+  "label": "Microphones",
+  "score": 0.7,
+  "verified_notices": 9
+ },
+ "8519": {
+  "cpv": [
+   "32300000"
+  ],
+  "label": "Television and radio receivers, and sound or video recording or reproducing apparatus",
+  "score": 0.771,
+  "verified_notices": 19
+ },
+ "8521": {
+  "cpv": [
+   "32333000"
+  ],
+  "label": "Video recording or reproducing apparatus",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "8522": {
+  "cpv": [
+   "32330000"
+  ],
+  "label": "Apparatus for sound, video-recording and reproduction",
+  "score": 0.9,
+  "verified_notices": 11
+ },
+ "8525": {
+  "cpv": [
+   "32200000"
+  ],
+  "label": "Transmission apparatus for radiotelephony, radiotelegraphy, radio broadcasting and television",
+  "score": 0.8,
+  "verified_notices": 22
+ },
+ "8526": {
+  "cpv": [
+   "32352100"
+  ],
+  "label": "Parts of radio and radar equipment",
+  "score": 1.0,
+  "verified_notices": 22
+ },
+ "8527": {
+  "cpv": [
+   "32230000"
+  ],
+  "label": "Radio transmission apparatus with reception apparatus",
+  "score": 0.667,
+  "verified_notices": 14
+ },
+ "8529": {
+  "cpv": [
+   "32223000"
+  ],
+  "label": "Video transmission apparatus",
+  "score": 0.8,
+  "verified_notices": 30
+ },
+ "8530": {
+  "cpv": [
+   "31321700"
+  ],
+  "label": "Signalling cable",
+  "score": 0.8,
+  "verified_notices": 3
+ },
+ "8531": {
+  "cpv": [
+   "31321700"
+  ],
+  "label": "Signalling cable",
+  "score": 0.8,
+  "verified_notices": 3
+ },
+ "8532": {
+  "cpv": [
+   "31711150"
+  ],
+  "label": "Electrical capacitors",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "8533": {
+  "cpv": [
+   "31711131"
+  ],
+  "label": "Electrical resistors",
+  "score": 1.0,
+  "verified_notices": 4
+ },
+ "8534": {
+  "cpv": [
+   "31681300"
+  ],
+  "label": "Electrical circuits",
+  "score": 0.8,
+  "verified_notices": 5
+ },
+ "8535": {
+  "cpv": [
+   "31210000"
+  ],
+  "label": "Electrical apparatus for switching or protecting electrical circuits",
+  "score": 0.9,
+  "verified_notices": 26
+ },
+ "8536": {
+  "cpv": [
+   "31210000"
+  ],
+  "label": "Electrical apparatus for switching or protecting electrical circuits",
+  "score": 0.9,
+  "verified_notices": 26
+ },
+ "8537": {
+  "cpv": [
+   "31211100"
+  ],
+  "label": "Boards for electrical apparatus",
+  "score": 0.8,
+  "verified_notices": 15
+ },
+ "8538": {
+  "cpv": [
+   "31681410"
+  ],
+  "label": "Electrical materials",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "8539": {
+  "cpv": [
+   "31521000"
+  ],
+  "label": "Lamps",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "8542": {
+  "cpv": [
+   "31712114"
+  ],
+  "label": "Integrated electronic circuits",
+  "score": 0.867,
+  "verified_notices": 14
+ },
+ "8543": {
+  "cpv": [
+   "31681410"
+  ],
+  "label": "Electrical materials",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "8544": {
+  "cpv": [
+   "31300000"
+  ],
+  "label": "Insulated wire and cable",
+  "score": 1.0,
+  "verified_notices": 15
+ },
+ "8545": {
+  "cpv": [
+   "31660000"
+  ],
+  "label": "Carbon electrodes",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "8546": {
+  "cpv": [
+   "31681410"
+  ],
+  "label": "Electrical materials",
+  "score": 0.7,
+  "verified_notices": 27
+ },
+ "8547": {
+  "cpv": [
+   "31650000"
+  ],
+  "label": "Insulating fittings",
+  "score": 1.0,
+  "verified_notices": 22
+ },
+ "8548": {
+  "cpv": [
+   "31681410"
+  ],
+  "label": "Electrical materials",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "8601": {
+  "cpv": [
+   "34610000"
+  ],
+  "label": "Rail locomotives and tenders",
+  "score": 0.867,
+  "verified_notices": 37
+ },
+ "8602": {
+  "cpv": [
+   "34610000"
+  ],
+  "label": "Rail locomotives and tenders",
+  "score": 0.867,
+  "verified_notices": 37
+ },
+ "8603": {
+  "cpv": [
+   "34622000"
+  ],
+  "label": "Railway and tramway passenger coaches, and trolleybuses",
+  "score": 0.84,
+  "verified_notices": 32
+ },
+ "8604": {
+  "cpv": [
+   "34621200"
+  ],
+  "label": "Railway maintenance or service vehicles",
+  "score": 0.88,
+  "verified_notices": 34
+ },
+ "8605": {
+  "cpv": [
+   "34622000"
+  ],
+  "label": "Railway and tramway passenger coaches, and trolleybuses",
+  "score": 0.84,
+  "verified_notices": 32
+ },
+ "8607": {
+  "cpv": [
+   "34600000"
+  ],
+  "label": "Railway and tramway locomotives and rolling stock and associated parts",
+  "score": 0.933,
+  "verified_notices": 43
+ },
+ "8609": {
+  "cpv": [
+   "34928480"
+  ],
+  "label": "Waste and rubbish containers and bins",
+  "score": 0.7,
+  "verified_notices": 19
+ },
+ "8702": {
+  "cpv": [
+   "34224200"
+  ],
+  "label": "Parts of other vehicles",
+  "score": 1.0,
+  "verified_notices": 20
+ },
+ "8703": {
+  "cpv": [
+   "34111100"
+  ],
+  "label": "Estate cars",
+  "score": 0.8,
+  "verified_notices": 18
+ },
+ "8704": {
+  "cpv": [
+   "34224200"
+  ],
+  "label": "Parts of other vehicles",
+  "score": 1.0,
+  "verified_notices": 20
+ },
+ "8705": {
+  "cpv": [
+   "34144000"
+  ],
+  "label": "Special-purpose motor vehicles",
+  "score": 1.0,
+  "verified_notices": 42
+ },
+ "8706": {
+  "cpv": [
+   "34139000"
+  ],
+  "label": "Chassis",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "8707": {
+  "cpv": [
+   "34139200"
+  ],
+  "label": "Chassis bodies",
+  "score": 0.8,
+  "verified_notices": 26
+ },
+ "8708": {
+  "cpv": [
+   "34100000"
+  ],
+  "label": "Motor vehicles",
+  "score": 1.0,
+  "verified_notices": 46
+ },
+ "8711": {
+  "cpv": [
+   "34410000"
+  ],
+  "label": "Motorcycles",
+  "score": 1.0,
+  "verified_notices": 25
+ },
+ "8712": {
+  "cpv": [
+   "34430000"
+  ],
+  "label": "Bicycles",
+  "score": 0.7,
+  "verified_notices": 32
+ },
+ "8714": {
+  "cpv": [
+   "34224200"
+  ],
+  "label": "Parts of other vehicles",
+  "score": 1.0,
+  "verified_notices": 20
+ },
+ "8716": {
+  "cpv": [
+   "34223100"
+  ],
+  "label": "Semi-trailers",
+  "score": 1.0,
+  "verified_notices": 34
+ },
+ "8801": {
+  "cpv": [
+   "34722000"
+  ],
+  "label": "Balloons and dirigibles",
+  "score": 1.0,
+  "verified_notices": 13
+ },
+ "8802": {
+  "cpv": [
+   "34731000"
+  ],
+  "label": "Parts for aircraft",
+  "score": 0.7,
+  "verified_notices": 39
+ },
+ "8806": {
+  "cpv": [
+   "34731000"
+  ],
+  "label": "Parts for aircraft",
+  "score": 0.7,
+  "verified_notices": 39
+ },
+ "8807": {
+  "cpv": [
+   "34731000"
+  ],
+  "label": "Parts for aircraft",
+  "score": 1.0,
+  "verified_notices": 39
+ },
+ "8902": {
+  "cpv": [
+   "34513100"
+  ],
+  "label": "Fishing vessels",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "8907": {
+  "cpv": [
+   "34520000"
+  ],
+  "label": "Boats",
+  "score": 1.0,
+  "verified_notices": 33
+ },
+ "8908": {
+  "cpv": [
+   "34515000"
+  ],
+  "label": "Floating structures",
+  "score": 0.8,
+  "verified_notices": 42
+ },
+ "9002": {
+  "cpv": [
+   "33731110"
+  ],
+  "label": "Intraocular lenses",
+  "score": 0.8,
+  "verified_notices": 46
+ },
+ "9003": {
+  "cpv": [
+   "33734100"
+  ],
+  "label": "Frames and mountings for spectacles",
+  "score": 0.867,
+  "verified_notices": 2
+ },
+ "9004": {
+  "cpv": [
+   "33734000"
+  ],
+  "label": "Spectacles",
+  "score": 1.0,
+  "verified_notices": 26
+ },
+ "9005": {
+  "cpv": [
+   "38631000"
+  ],
+  "label": "Binoculars",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "9006": {
+  "cpv": [
+   "38651500"
+  ],
+  "label": "Cinematographic cameras",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "9007": {
+  "cpv": [
+   "38651500"
+  ],
+  "label": "Cinematographic cameras",
+  "score": 0.8,
+  "verified_notices": 10
+ },
+ "9008": {
+  "cpv": [
+   "38652100"
+  ],
+  "label": "Projectors",
+  "score": 0.7,
+  "verified_notices": 15
+ },
+ "9010": {
+  "cpv": [
+   "38650000"
+  ],
+  "label": "Photographic equipment",
+  "score": 1.0,
+  "verified_notices": 16
+ },
+ "9011": {
+  "cpv": [
+   "38634000"
+  ],
+  "label": "Optical microscopes",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "9012": {
+  "cpv": [
+   "38634000"
+  ],
+  "label": "Optical microscopes",
+  "score": 1.0,
+  "verified_notices": 27
+ },
+ "9013": {
+  "cpv": [
+   "38636100"
+  ],
+  "label": "Lasers",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "9014": {
+  "cpv": [
+   "38110000"
+  ],
+  "label": "Navigational instruments",
+  "score": 1.0,
+  "verified_notices": 29
+ },
+ "9015": {
+  "cpv": [
+   "38296000"
+  ],
+  "label": "Surveying instruments",
+  "score": 0.8,
+  "verified_notices": 20
+ },
+ "9016": {
+  "cpv": [
+   "38310000"
+  ],
+  "label": "Precision balances",
+  "score": 0.8,
+  "verified_notices": 25
+ },
+ "9018": {
+  "cpv": [
+   "33169000"
+  ],
+  "label": "Surgical instruments",
+  "score": 0.7,
+  "verified_notices": 36
+ },
+ "9020": {
+  "cpv": [
+   "33157100"
+  ],
+  "label": "Medical gas masks",
+  "score": 0.667,
+  "verified_notices": 20
+ },
+ "9021": {
+  "cpv": [
+   "33141740"
+  ],
+  "label": "Orthopaedic footwear",
+  "score": 0.8,
+  "verified_notices": 10
+ },
+ "9023": {
+  "cpv": [
+   "33171100"
+  ],
+  "label": "Instruments for anaesthesia",
+  "score": 0.8,
+  "verified_notices": 36
+ },
+ "9025": {
+  "cpv": [
+   "38411000"
+  ],
+  "label": "Hydrometers",
+  "score": 0.6,
+  "verified_notices": 4
+ },
+ "9026": {
+  "cpv": [
+   "38300000"
+  ],
+  "label": "Measuring instruments",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "9027": {
+  "cpv": [
+   "33171100"
+  ],
+  "label": "Instruments for anaesthesia",
+  "score": 0.8,
+  "verified_notices": 36
+ },
+ "9028": {
+  "cpv": [
+   "38432210"
+  ],
+  "label": "Gas chromatographs",
+  "score": 0.8,
+  "verified_notices": 30
+ },
+ "9029": {
+  "cpv": [
+   "38561000"
+  ],
+  "label": "Revolution counters",
+  "score": 0.7,
+  "verified_notices": 11
+ },
+ "9030": {
+  "cpv": [
+   "38300000"
+  ],
+  "label": "Measuring instruments",
+  "score": 1.0,
+  "verified_notices": 23
+ },
+ "9031": {
+  "cpv": [
+   "38300000"
+  ],
+  "label": "Measuring instruments",
+  "score": 0.8,
+  "verified_notices": 23
+ },
+ "9032": {
+  "cpv": [
+   "38570000"
+  ],
+  "label": "Regulating and controlling instruments and apparatus",
+  "score": 1.0,
+  "verified_notices": 11
+ },
+ "9033": {
+  "cpv": [
+   "33171100"
+  ],
+  "label": "Instruments for anaesthesia",
+  "score": 0.8,
+  "verified_notices": 36
+ },
+ "9301": {
+  "cpv": [
+   "35310000"
+  ],
+  "label": "Miscellaneous weapons",
+  "score": 0.7,
+  "verified_notices": 36
+ },
+ "9303": {
+  "cpv": [
+   "35320000"
+  ],
+  "label": "Firearms",
+  "score": 1.0,
+  "verified_notices": 36
+ },
+ "9304": {
+  "cpv": [
+   "35320000"
+  ],
+  "label": "Firearms",
+  "score": 1.0,
+  "verified_notices": 36
+ },
+ "9305": {
+  "cpv": [
+   "35320000"
+  ],
+  "label": "Firearms",
+  "score": 1.0,
+  "verified_notices": 36
+ },
+ "9306": {
+  "cpv": [
+   "35333100"
+  ],
+  "label": "Bombs",
+  "score": 1.0,
+  "verified_notices": 8
+ },
+ "9401": {
+  "cpv": [
+   "39111000"
+  ],
+  "label": "Seats",
+  "score": 1.0,
+  "verified_notices": 10
+ },
+ "9402": {
+  "cpv": [
+   "39151000"
+  ],
+  "label": "Miscellaneous furniture",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "9403": {
+  "cpv": [
+   "39151000"
+  ],
+  "label": "Miscellaneous furniture",
+  "score": 1.0,
+  "verified_notices": 14
+ },
+ "9404": {
+  "cpv": [
+   "39143111"
+  ],
+  "label": "Mattress supports",
+  "score": 1.0,
+  "verified_notices": 6
+ },
+ "9406": {
+  "cpv": [
+   "39715000"
+  ],
+  "label": "Water heaters and heating for buildings; plumbing equipment",
+  "score": 0.68,
+  "verified_notices": 20
+ },
+ "9603": {
+  "cpv": [
+   "39224100"
+  ],
+  "label": "Brooms",
+  "score": 1.0,
+  "verified_notices": 12
+ },
+ "9610": {
+  "cpv": [
+   "39292000"
+  ],
+  "label": "School slates or boards with writing or drawing surfaces or instruments",
+  "score": 0.886,
+  "verified_notices": 17
+ },
+ "9617": {
+  "cpv": [
+   "39221150"
+  ],
+  "label": "Vacuum flasks",
+  "score": 0.8,
+  "verified_notices": 18
+ },
+ "9619": {
+  "cpv": [
+   "39514100"
+  ],
+  "label": "Towels",
+  "score": 0.7,
+  "verified_notices": 16
+ }
+}

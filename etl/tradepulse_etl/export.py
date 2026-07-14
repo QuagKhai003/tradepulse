@@ -183,6 +183,24 @@ def build_sellers(awards: list[dict]) -> list[dict]:
     return out
 
 
+def build_cpv_match() -> dict:
+    """What CPV each product's tender feed is matched to, and whether that match is EXACT.
+
+    Coverage across 1,240 products is only honest if the user can see what it was matched to: the
+    generated map is a verified text match, so "Vegetables, dried" can land on CPV "Frozen vegetables"
+    — the right domain, not the same thing. Hand-mapped pilot products are exact. The UI prints the
+    label and flags the approximate ones, so nobody reads a related-category tender as their product.
+    """
+    out = {}
+    for hs, cpvs in config.TENDER_CPV.items():
+        gen = config._CPV_GENERATED.get(hs)
+        exact = hs in config.TENDER_CPV_MANUAL
+        out[hs] = {"cpv": cpvs[0],
+                   "label": (gen or {}).get("label") if not exact else None,
+                   "exact": exact}
+    return out
+
+
 def write_json(data, path: Path | str) -> Path:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)

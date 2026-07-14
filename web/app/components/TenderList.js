@@ -16,9 +16,10 @@
  * @affects  Rendered in HeroClient's right panel and on the country page.
  */
 import { useState } from "react";
+import CpvNote from "./CpvNote.js";
 import { fmtDeadline } from "../lib/format.js";
 
-export default function TenderList({ tenders, lang, t, tools, product }) {
+export default function TenderList({ tenders, lang, t, tools, product, cpv = null }) {
   const list = tenders || [];
   const [open, setOpen] = useState(null);
 
@@ -59,6 +60,7 @@ export default function TenderList({ tenders, lang, t, tools, product }) {
         </ul>
       )}
 
+      <CpvNote match={cpv} t={t} />
       {open && <TenderModal tender={open} product={product} lang={lang} t={t} onClose={() => setOpen(null)} />}
     </div>
   );

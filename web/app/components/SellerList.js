@@ -13,9 +13,10 @@
  * @affects  Rendered in HeroClient's right panel + the country page; data from lib/tenders loadSellers.
  */
 import { useState } from "react";
+import CpvNote from "./CpvNote.js";
 import { fmtMoney } from "../lib/format.js";
 
-export default function SellerList({ sellers = [], curated = [], product, t, tools }) {
+export default function SellerList({ sellers = [], curated = [], product, t, tools, cpv = null }) {
   const [open, setOpen] = useState(null);
   const total = sellers.length + curated.length;
 
@@ -68,6 +69,7 @@ export default function SellerList({ sellers = [], curated = [], product, t, too
           </li>
         ))}
       </ul>
+      <CpvNote match={cpv} t={t} />
       {open && <SellerModal x={open} product={product} t={t} onClose={() => setOpen(null)} />}
     </div>
   );

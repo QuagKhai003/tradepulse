@@ -15,8 +15,8 @@ from pathlib import Path
 
 from .alerts import rollup_locked_clicks, signal_alerts
 from .db import DEFAULT_DB, connect, count_trade_flows, fetch_flows, fetch_signals, upsert_signals
-from .export import (DEFAULT_SNAPSHOT, build_snapshot, build_tenders, write_countries,
-                     write_snapshot, write_tenders)
+from .export import (DEFAULT_SNAPSHOT, build_awards, build_cpv_match, build_sellers, build_snapshot,
+                     build_tenders, write_countries, write_json, write_snapshot, write_tenders)
 from .pipeline import get_sources, run_multi
 from .signals import compute_signals
 
@@ -101,6 +101,7 @@ def main() -> None:
             asince = (today - timedelta(days=AWARD_LOOKBACK_DAYS)).strftime("%Y%m%d")
             awards = ted.pull_awards(TENDER_CPV, asince, now_iso)
             upsert_awards(conn, awards)
+        write_json(build_cpv_match(), default_path.parent / "cpv-match.json")
         open_n = award_n = seller_n = 0
         for hs in TENDER_CPV:
             ten = build_tenders(conn, hs, today.isoformat())

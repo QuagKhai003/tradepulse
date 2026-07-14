@@ -41,3 +41,17 @@ async function loadList(hs, kind) {
     return [];
   }
 }
+
+// What CPV category this product's tender/award feed was matched to. `exact: false` means the match is
+// a verified TEXT match to a related CPV label (e.g. HS "Vegetables, dried" -> CPV "Frozen
+// vegetables") — the UI says so, because a related-category tender is not the same as your product.
+export async function loadCpvMatch(hs) {
+  if (!hs) return null;
+  const p = path.join(process.cwd(), "public", "data", "cpv-match.json");
+  try {
+    const map = JSON.parse(await readFile(p, "utf-8"));
+    return map[hs] || null;
+  } catch {
+    return null;
+  }
+}

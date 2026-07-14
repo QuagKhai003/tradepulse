@@ -12,9 +12,10 @@
  * @affects  Rendered in HeroClient's right panel + the country page; data from lib/tenders loadAwards.
  */
 import { useState } from "react";
+import CpvNote from "./CpvNote.js";
 import { fmtMoney } from "../lib/format.js";
 
-export default function OrderList({ orders = [], product, t, tools }) {
+export default function OrderList({ orders = [], product, t, tools, cpv = null }) {
   const [open, setOpen] = useState(null);
 
   if (!orders.length) {
@@ -49,6 +50,7 @@ export default function OrderList({ orders = [], product, t, tools }) {
           </li>
         ))}
       </ul>
+      <CpvNote match={cpv} t={t} />
       {open && <OrderModal o={open} product={product} t={t} onClose={() => setOpen(null)} />}
     </div>
   );
