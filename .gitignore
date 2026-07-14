@@ -82,3 +82,6 @@ Thumbs.db
 !.vscode/extensions.json
 *.swp
 web/public/data/countries.json
+
+# one-off ETL scripts dropped in data/
+data/*.py
