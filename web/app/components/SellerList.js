@@ -14,9 +14,16 @@
  */
 import { useState } from "react";
 import CpvNote from "./CpvNote.js";
+import PartyCard from "./PartyCard.js";
+// Rendering every row is pointless and slow: "All products" rolls up thousands, and past the first
+// screen they are locked teasers anyway. Cap the DOM and SAY what was capped — a silent truncation
+// reads as "that is all there is".
+const CAP = 60;
+
 import { fmtMoney } from "../lib/format.js";
 
-export default function SellerList({ sellers = [], curated = [], product, t, tools, cpv = null }) {
+export default function SellerList({ sellers = [], curated = [], product, t, tools, cpv = null,
+                                     openCount = Infinity }) {
   const [open, setOpen] = useState(null);
   const total = sellers.length + curated.length;
 
@@ -35,40 +42,25 @@ export default function SellerList({ sellers = [], curated = [], product, t, too
         <h2><b className="panel-n num">{total}</b> {t.tabSellers}</h2>
         {tools && <div className="panel-h-tools">{tools}</div>}
       </div>
-      <ul className="feed-list scrollx">
-        {curated.map((c) => (
-          <li key={c.id} className="feed-item">
-            <button type="button" className="tender-open" onClick={() => setOpen({ curated: c })}>
-              <div className="feed-row1">
-                <span className="feed-link">{c.name}</span>
-                <span className="tender-due">{c.country}</span>
-              </div>
-              <div className="feed-row2">
-                <span className="tender-kind contract">{t.sellerCurated}</span>
-                <span className="tender-title muted">{c.evidence_source}</span>
-              </div>
-            </button>
-          </li>
+      <div className="companies">
+        {curated.map((c, i) => (
+          <PartyCard key={c.id} t={t} locked={i >= openCount}
+            tag={t.sellerCurated} tagKind="contract" country={c.country} name={c.name}
+            meta={<span className="muted">{c.evidence_source}</span>}
+            note={`${t.cVerified} ${c.verified_date}`}
+            onClick={() => setOpen({ curated: c })} />
         ))}
-        {sellers.map((s) => (
-          <li key={`${s.seller}-${s.seller_country}`} className="feed-item">
-            <button type="button" className="tender-open" onClick={() => setOpen({ seller: s })}>
-              <div className="feed-row1">
-                <span className="feed-link">{s.seller}</span>
-                <span className="tender-due">{s.seller_country}</span>
-              </div>
-              <div className="feed-row2">
-                <span className="tender-kind lot">
-                  <b className="num">{s.wins}</b> {s.wins === 1 ? t.sellerWin : t.sellerWins}
-                </span>
-                <span className="tender-title muted">
-                  {s.value ? `${fmtMoney(s.value, s.currency)} · ` : ""}{t.sellerLast} {s.last || "—"}
-                </span>
-              </div>
-            </button>
-          </li>
+        {sellers.slice(0, CAP).map((x, i) => (
+          <PartyCard key={`${x.seller}-${x.seller_country}`} t={t}
+            locked={curated.length + i >= openCount}
+            tag={`${x.wins} ${x.wins === 1 ? t.sellerWin : t.sellerWins}`} tagKind="lot"
+            country={x.seller_country} name={x.seller}
+            meta={<span className="muted">{x.value ? `${fmtMoney(x.value, x.currency)} · ` : ""}{t.sellerLast} {x.last || "—"}</span>}
+            note={(x.buyers || []).slice(0, 2).join(", ")}
+            onClick={() => setOpen({ seller: x })} />
         ))}
-      </ul>
+      </div>
+      {sellers.length > CAP && <p className="muted tender-note">{t.showingOf.replace("{n}", CAP).replace("{total}", sellers.length)}</p>}
       <CpvNote match={cpv} t={t} />
       {open && <SellerModal x={open} product={product} t={t} onClose={() => setOpen(null)} />}
     </div>

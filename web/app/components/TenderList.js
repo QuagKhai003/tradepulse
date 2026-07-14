@@ -17,9 +17,19 @@
  */
 import { useState } from "react";
 import CpvNote from "./CpvNote.js";
-import { fmtDeadline } from "../lib/format.js";
+import PartyCard from "./PartyCard.js";
+// Rendering every row is pointless and slow: "All products" rolls up thousands, and past the first
+// screen they are locked teasers anyway. Cap the DOM and SAY what was capped — a silent truncation
+// reads as "that is all there is".
+const CAP = 60;
 
-export default function TenderList({ tenders, lang, t, tools, product, cpv = null }) {
+import { fmtDeadline } from "../lib/format.js";
+import { lookup } from "../lib/catalog.js";
+
+const productName = (hs) => (hs ? (lookup(hs)?.name_en || `HS ${hs}`) : "");
+
+export default function TenderList({ tenders, lang, t, tools, product, cpv = null, showProduct = false,
+                                     openCount = Infinity }) {
   const list = tenders || [];
   const [open, setOpen] = useState(null);
 
@@ -33,33 +43,26 @@ export default function TenderList({ tenders, lang, t, tools, product, cpv = nul
       {list.length === 0 ? (
         <p className="tender-empty muted">{t.tendersNone}</p>
       ) : (
-        <ul className="feed-list scrollx">
-          {list.map((x) => {
+        <div className="companies">
+          {list.slice(0, CAP).map((x, i) => {
             const due = fmtDeadline(x.deadline, lang);
             const isLot = x.match === "lot";
+            const locked = i >= openCount;          // free tier: the first few open, the rest paid
             return (
-              <li key={x.id} className="feed-item">
-                <button type="button" className="tender-open" onClick={() => setOpen(x)}>
-                  <div className="feed-row1">
-                    <span className="feed-link">{x.buyer || x.title}</span>
-                    <span className={`tender-due ${due.soon ? "soon" : ""}`}>{due.label}</span>
-                  </div>
-                  <div className="feed-row2">
-                    <span className="flowtag import">{x.buyer_country}</span>
-                    <span className={`tender-kind ${isLot ? "lot" : "contract"}`}>
-                      {isLot ? t.matchLot : t.matchContract}
-                    </span>
-                    <span className="tender-title muted">
-                      {isLot ? `${product || t.product} · ${t.matchInside} ${x.title}` : x.title}
-                    </span>
-                  </div>
-                </button>
-              </li>
+              <PartyCard key={x.id} t={t} locked={locked}
+                tag={showProduct ? productName(x.hs6) : (isLot ? t.matchLot : t.matchContract)}
+                tagKind={isLot ? "lot" : "contract"}
+                country={x.buyer_country}
+                name={x.buyer || x.title}
+                meta={<span className={`tender-due ${due.soon ? "soon" : ""}`}>{due.label}</span>}
+                note={isLot ? `${(showProduct ? productName(x.hs6) : product) || t.product} · ${t.matchInside} ${x.title}` : x.title}
+                onClick={() => setOpen(x)} />
             );
           })}
-        </ul>
+        </div>
       )}
 
+      {list.length > CAP && <p className="muted tender-note">{t.showingOf.replace("{n}", CAP).replace("{total}", list.length)}</p>}
       <CpvNote match={cpv} t={t} />
       {open && <TenderModal tender={open} product={product} lang={lang} t={t} onClose={() => setOpen(null)} />}
     </div>

@@ -587,3 +587,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .ctab:hover { color: var(--fg); }
 .ctab.on { color: var(--accent); border-bottom-color: var(--accent); }
 .ctab .num { font-weight: 750; opacity: .7; margin-left: 2px; }
+
+/* buyers / sellers / past orders as profile cards (the Layer-2 card, reused) */
+.tender-sec .companies { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.company-btn { text-align: left; font: inherit; color: inherit; cursor: pointer; width: 100%; }
+.company-btn:hover { border-color: var(--accent); }
+.company-btn .company-name { margin-bottom: 6px; }
+.company .tender-kind { max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.company-src { color: var(--muted); }
+a.lockmask { text-decoration: none; }
+a.lockmask:hover { color: var(--accent); }

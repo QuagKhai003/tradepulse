@@ -19,11 +19,12 @@ import SellerList from "./SellerList.js";
 import OrderList from "./OrderList.js";
 
 export default function CountryTabs({ tHere = [], tElse = [], sellers = [], orders = [],
-                                      product, country, cpv, hs, lang, t }) {
+                                      product, country, cpv, hs, lang, t, openCount = Infinity }) {
   const [tab, setTab] = useState("buyers");
-  // "All products" (HS TOTAL) is an aggregate of every heading, not a good anyone can tender for — so
-  // it has no CPV and never will. Say that, rather than showing an empty list that looks like a bug.
-  const isAggregate = hs === "TOTAL";
+  // "All products" (HS TOTAL) is not a good anyone tenders for — but the ANSWER it should give is
+  // real: EVERYTHING, across every product. So it is a rollup, and each row says which product it is
+  // for. Only a product TED has no classification for is genuinely empty.
+  const isAggregate = hs === "TOTAL" || cpv?.aggregate;
   const noCoverage = !isAggregate && !cpv;
 
   const tabs = [
@@ -32,7 +33,7 @@ export default function CountryTabs({ tHere = [], tElse = [], sellers = [], orde
     { v: "orders", label: t.tabOrders, n: orders.length },
   ];
 
-  const why = isAggregate ? t.aggregateNote : (noCoverage ? t.noCpvNote : null);
+  const why = noCoverage ? t.noCpvNote : null;
 
   return (
     <section className="panel tender-sec">
@@ -46,13 +47,15 @@ export default function CountryTabs({ tHere = [], tElse = [], sellers = [], orde
       </div>
 
       {why && <p className="muted tender-note">{why}</p>}
+      {isAggregate && <p className="muted tender-note">{t.aggregateNote}</p>}
 
       {!why && tab === "buyers" && (
         <>
           {tHere.length > 0 ? (
             <>
               <h3 className="tender-sub">{t.tendersHere} {country} <span className="muted">({tHere.length})</span></h3>
-              <TenderList tenders={tHere} lang={lang} t={t} product={product} />
+              <TenderList tenders={tHere} lang={lang} t={t} product={product} showProduct={isAggregate}
+                          openCount={openCount} />
             </>
           ) : (
             <p className="muted tender-note">{t.tendersNoneHere} {country}. {t.tendersElsewhereNote}</p>
@@ -60,7 +63,8 @@ export default function CountryTabs({ tHere = [], tElse = [], sellers = [], orde
           {tElse.length > 0 && (
             <>
               <h3 className="tender-sub">{t.tendersElsewhere} <span className="muted">({tElse.length})</span></h3>
-              <TenderList tenders={tElse} lang={lang} t={t} product={product} cpv={cpv} />
+              <TenderList tenders={tElse} lang={lang} t={t} product={product} cpv={cpv} showProduct={isAggregate}
+                          openCount={Math.max(0, openCount - tHere.length)} />
             </>
           )}
           {tHere.length === 0 && tElse.length === 0 && (
@@ -71,13 +75,14 @@ export default function CountryTabs({ tHere = [], tElse = [], sellers = [], orde
 
       {!why && tab === "sellers" && (
         sellers.length > 0
-          ? <SellerList sellers={sellers} product={product} t={t} cpv={cpv} />
+          ? <SellerList sellers={sellers} product={product} t={t} cpv={cpv} openCount={openCount} />
           : <p className="muted tender-note">{t.sellersNone} <b>{product}</b> {t.inCountry} {country}. {t.sellersWhy}</p>
       )}
 
       {!why && tab === "orders" && (
         orders.length > 0
-          ? <OrderList orders={orders} product={product} t={t} cpv={cpv} />
+          ? <OrderList orders={orders} product={product} t={t} cpv={cpv} showProduct={isAggregate}
+                       openCount={openCount} />
           : <p className="muted tender-note">{t.ordersNone} <b>{product}</b> {t.inCountry} {country}.</p>
       )}
     </section>

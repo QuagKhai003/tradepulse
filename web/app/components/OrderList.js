@@ -13,9 +13,19 @@
  */
 import { useState } from "react";
 import CpvNote from "./CpvNote.js";
-import { fmtMoney } from "../lib/format.js";
+import PartyCard from "./PartyCard.js";
+// Rendering every row is pointless and slow: "All products" rolls up thousands, and past the first
+// screen they are locked teasers anyway. Cap the DOM and SAY what was capped — a silent truncation
+// reads as "that is all there is".
+const CAP = 60;
 
-export default function OrderList({ orders = [], product, t, tools, cpv = null }) {
+import { fmtMoney } from "../lib/format.js";
+import { lookup } from "../lib/catalog.js";
+
+const productName = (hs) => (hs ? (lookup(hs)?.name_en || `HS ${hs}`) : "");
+
+export default function OrderList({ orders = [], product, t, tools, cpv = null, showProduct = false,
+                                    openCount = Infinity }) {
   const [open, setOpen] = useState(null);
 
   if (!orders.length) {
@@ -33,23 +43,20 @@ export default function OrderList({ orders = [], product, t, tools, cpv = null }
         <h2><b className="panel-n num">{orders.length}</b> {t.tabOrders}</h2>
         {tools && <div className="panel-h-tools">{tools}</div>}
       </div>
-      <ul className="feed-list scrollx">
-        {orders.map((o) => (
-          <li key={`${o.id}-${o.seller}`} className="feed-item">
-            <button type="button" className="tender-open" onClick={() => setOpen(o)}>
-              <div className="feed-row1">
-                <span className="feed-link">{o.seller}</span>
-                <span className="tender-due">{o.value ? fmtMoney(o.value, o.currency) : (o.date || "")}</span>
-              </div>
-              <div className="feed-row2">
-                <span className="flowtag import">{o.seller_country}</span>
-                {/* the arrow IS the fact: this seller sold to this buyer, per the public award notice */}
-                <span className="tender-title muted">→ {o.buyer} ({o.buyer_country})</span>
-              </div>
-            </button>
-          </li>
+      <div className="companies">
+        {orders.slice(0, CAP).map((o, i) => (
+          <PartyCard key={`${o.id}-${o.seller}`} t={t} locked={i >= openCount}
+            tag={showProduct ? productName(o.hs6) : (o.match === "lot" ? t.matchLot : t.matchContract)}
+            tagKind={o.match === "lot" ? "lot" : "contract"}
+            country={`${o.seller_country} → ${o.buyer_country}`}
+            name={o.seller}
+            /* the arrow IS the fact: this seller sold to this buyer, per the public award notice */
+            meta={<span className="muted">→ {o.buyer}</span>}
+            note={`${o.value ? fmtMoney(o.value, o.currency) + " · " : ""}${o.date || ""}`}
+            onClick={() => setOpen(o)} />
         ))}
-      </ul>
+      </div>
+      {orders.length > CAP && <p className="muted tender-note">{t.showingOf.replace("{n}", CAP).replace("{total}", orders.length)}</p>}
       <CpvNote match={cpv} t={t} />
       {open && <OrderModal o={open} product={product} t={t} onClose={() => setOpen(null)} />}
     </div>

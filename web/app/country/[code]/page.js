@@ -15,6 +15,8 @@ import CountryTabs from "../../components/CountryTabs.js";
 import { loadSnapshot } from "../../lib/snapshot.js";
 import { loadSourcing } from "../../lib/sourcing.js";
 import { loadAwards, loadCpvMatch, loadSellers, loadTenders } from "../../lib/tenders.js";
+import { FREE_PROFILE_LIMIT } from "../../lib/companies.js";
+import { getTier } from "../../lib/tier.js";
 import { resolveLang, t, VI_ENABLED } from "../../lib/i18n.js";
 import { bandArrow, bandColor, bandLabel, fmtPct, fmtPeriod, fmtUSD } from "../../lib/format.js";
 
@@ -90,6 +92,9 @@ export default async function CountryPage({ params, searchParams }) {
   const sellersHere = (await loadSellers(hs)).filter((x) => String(x.seller_code) === String(c.code));
   const allOrders = await loadAwards(hs);
   const cpv = await loadCpvMatch(hs);
+  // Free tier sees the first few parties; the rest are locked. Decided on the SERVER — a gate the
+  // client could flip is not a gate (plan §11).
+  const openCount = (await getTier()) === "paid" ? Infinity : FREE_PROFILE_LIMIT;
   const ordersHere = allOrders.filter((x) => String(x.buyer_code) === String(c.code)
                                           || String(x.seller_code) === String(c.code));
   // The country's OWN latest period — not the snapshot-wide max, which reads as a lie next to figures
@@ -129,7 +134,8 @@ export default async function CountryPage({ params, searchParams }) {
 
       {/* who buys, who sells, and what has already been sold — for THIS product in THIS country */}
       <CountryTabs tHere={tHere} tElse={tElse} sellers={sellersHere} orders={ordersHere}
-                   product={product} country={name} cpv={cpv} hs={hs} lang={lang} t={tr} />
+                   product={product} country={name} cpv={cpv} hs={hs} lang={lang} t={tr}
+                   openCount={openCount} />
 
       <QualPanel hs={hs} code={c.code} product={product} country={name} lang={lang} t={tr} />
 

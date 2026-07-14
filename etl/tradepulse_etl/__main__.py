@@ -15,8 +15,9 @@ from pathlib import Path
 
 from .alerts import rollup_locked_clicks, signal_alerts
 from .db import DEFAULT_DB, connect, count_trade_flows, fetch_flows, fetch_signals, upsert_signals
-from .export import (DEFAULT_SNAPSHOT, build_awards, build_cpv_match, build_sellers, build_snapshot,
-                     build_tenders, write_countries, write_json, write_snapshot, write_tenders)
+from .export import (DEFAULT_SNAPSHOT, build_all, build_awards, build_cpv_match, build_sellers,
+                     build_snapshot, build_tenders, write_countries, write_json, write_snapshot,
+                     write_tenders)
 from .pipeline import get_sources, run_multi
 from .signals import compute_signals
 
@@ -116,9 +117,16 @@ def main() -> None:
             write_json(se, default_path.parent / f"sellers-{hs}.json")
             award_n += len(aw)
             seller_n += len(se)
+        # "All products" rolls every product up into one view (deduped — a notice can match an HS4
+        # heading and its HS6 children, and must not be shown three times).
+        t_all, a_all, s_all = build_all(conn, today.isoformat())
+        write_tenders(t_all, default_path.parent / "tenders-TOTAL.json")
+        write_json(a_all, default_path.parent / "awards-TOTAL.json")
+        write_json(s_all, default_path.parent / "sellers-TOTAL.json")
         print(f"[tradepulse] tenders: {len(rows)} scraped, {open_n} still open | "
               f"awards: {len(awards)} scraped, {award_n} on-product, {seller_n} sellers | "
-              f"{len(TENDER_CPV)} products")
+              f"{len(TENDER_CPV)} products | ALL: {len(t_all)} open, {len(a_all)} orders, "
+              f"{len(s_all)} sellers")
 
     _print_rollup()
 

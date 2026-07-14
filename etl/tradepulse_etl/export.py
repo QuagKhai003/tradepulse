@@ -108,7 +108,7 @@ def build_tenders(conn, hs6: str, today: str) -> list[dict]:
             continue
         if (r["match_kind"] or "basket") == "basket":
             continue
-        out.append({"id": r["id"], "title": _subject(r["title"]), "buyer": r["buyer"],
+        out.append({"id": r["id"], "hs6": r["hs6"], "title": _subject(r["title"]), "buyer": r["buyer"],
                     "buyer_country": r["buyer_country"], "buyer_code": _m49(r["buyer_country"]),
                     "match": r["match_kind"], "cpv": r["cpv"],
                     "deadline": r["deadline"], "published": r["published"], "url": r["url"]})
@@ -137,7 +137,7 @@ def build_awards(conn, hs6: str) -> list[dict]:
     for r in fetch_awards(conn, hs6):
         if (r["match_kind"] or "basket") == "basket":
             continue
-        out.append({"id": r["id"], "title": _subject(r["title"]),
+        out.append({"id": r["id"], "hs6": r["hs6"], "title": _subject(r["title"]),
                     "buyer": r["buyer"], "buyer_country": r["buyer_country"],
                     "buyer_code": _m49(r["buyer_country"]),
                     "seller": r["winner"], "seller_country": r["winner_country"],
@@ -145,6 +145,26 @@ def build_awards(conn, hs6: str) -> list[dict]:
                     "match": r["match_kind"], "cpv": r["cpv"], "date": r["award_date"] or r["published"],
                     "value": r["value"], "currency": r["currency"], "url": r["url"]})
     return out
+
+
+def build_all(conn, today: str) -> tuple[list, list, list]:
+    """'All products' (HS TOTAL) is not a good — nothing tenders for it — but the ANSWER a user wants
+    from it is real: everything, across every product. So TOTAL is a ROLLUP, not an empty page.
+
+    One notice can match several of our products (an HS4 heading and its HS6 children share a CPV), so
+    tenders dedupe on the notice id and awards on (notice, winner) — otherwise the same contract would
+    be counted, and shown, three times. Each row keeps the HS it was matched under, so the aggregate
+    view can say WHICH product every line is for.
+    """
+    tenders, awards = {}, {}
+    for hs in config.TENDER_CPV:
+        for t in build_tenders(conn, hs, today):
+            tenders.setdefault(t["id"], t)
+        for a in build_awards(conn, hs):
+            awards.setdefault((a["id"], a["seller"]), a)
+    tl = sorted(tenders.values(), key=lambda t: (t["deadline"] is None, t["deadline"] or ""))
+    al = sorted(awards.values(), key=lambda a: (a["date"] or ""), reverse=True)
+    return tl, al, build_sellers(al)
 
 
 def build_sellers(awards: list[dict]) -> list[dict]:
@@ -191,7 +211,7 @@ def build_cpv_match() -> dict:
     — the right domain, not the same thing. Hand-mapped pilot products are exact. The UI prints the
     label and flags the approximate ones, so nobody reads a related-category tender as their product.
     """
-    out = {}
+    out = {"TOTAL": {"cpv": None, "label": None, "exact": False, "aggregate": True}}
     for hs, cpvs in config.TENDER_CPV.items():
         gen = config._CPV_GENERATED.get(hs)
         exact = hs in config.TENDER_CPV_MANUAL
