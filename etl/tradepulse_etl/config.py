@@ -37,7 +37,14 @@ SOURCING_HS = ["TOTAL", "440131", "4407", "090240", "090111", "030617", "080131"
 # Quarterly (monthly->quarters) is heavier per call — all-reporters monthly must be pulled ONE month
 # at a time (12-period all-country calls time out). So only the core products get quarterly (excl.
 # TOTAL, whose all-commodity payload is too big). This feeds the M/Q/A toggle for these products.
-QUARTERLY_HS = [hs for hs in CURATED_HS if hs != "TOTAL"]   # pilot products get latest-quarter data
+# Products that get monthly->quarterly (the Year/Quarter toggle): the pilot commodities + the top
+# ~150 by trade value (the headings users actually open). The rest show a greyed 'Quarter' (option 2).
+_QHS_PATH = Path(__file__).resolve().parent / "reference" / "quarterly_hs.json"
+try:
+    _QHS_EXTRA = set(json.loads(_QHS_PATH.read_text(encoding="utf-8")))
+except FileNotFoundError:
+    _QHS_EXTRA = set()
+QUARTERLY_HS = sorted(({hs for hs in CURATED_HS if hs != "TOTAL"} | _QHS_EXTRA) - {"TOTAL"})
 
 # Focus countries for the quarterly partner-sourcing drill-down (all-countries quarterly is too
 # heavy). Vietnam (exporter) + the pilot import markets. Others show annual history only.
