@@ -24,21 +24,24 @@ US_REPORTER = 842
 WORLD = 0
 EXPORTS = "https://api.census.gov/data/timeseries/intltrade/exports/hs"
 IMPORTS = "https://api.census.gov/data/timeseries/intltrade/imports/hs"
-# flow -> (endpoint, commodity var, annual value var)
+# flow -> (endpoint, commodity var, ANNUAL value var, MONTHLY value var)
 _FLOW = {
-    "X": (EXPORTS, "E_COMMODITY", "ALL_VAL_YR"),
-    "M": (IMPORTS, "I_COMMODITY", "GEN_VAL_YR"),
+    "X": (EXPORTS, "E_COMMODITY", "ALL_VAL_YR", "ALL_VAL_MO"),
+    "M": (IMPORTS, "I_COMMODITY", "GEN_VAL_YR", "GEN_VAL_MO"),
 }
 
 
 class USCensusSource:
     name = "census"
 
-    def __init__(self, key: str | None = None, years: int = 6, timeout: int = 60, pause: float = 0.6):
+    def __init__(self, key: str | None = None, years: int = 6, timeout: int = 60, pause: float = 0.6,
+                 freqs: tuple[str, ...] = ("A",), months: int = 15):
         self.key = key
         self.years = years
         self.timeout = timeout
         self.pause = pause
+        self.freqs = freqs      # ('A',) annual; ('A','Q') also monthly->quarters (US, fresh to last month)
+        self.months = months
 
     def pull(self, hs_codes: list[str], reporters: list[int], partners: list[int] | None,
              skip: frozenset = frozenset()) -> list[dict]:
@@ -53,14 +56,79 @@ class USCensusSource:
             for year in self._recent_years(self.years):
                 if (hs, str(year)) in skip:   # already stored + final -> don't re-fetch (incremental)
                     continue
-                for flow, (url, comm_var, val_var) in _FLOW.items():
+                for flow, (url, comm_var, val_var, _mo) in _FLOW.items():
                     # No CTY_CODE -> Census returns the single all-country total (see @warn).
                     params = {"get": val_var, comm_var: hs, "YEAR": str(year),
                               "MONTH": "12", "COMM_LVL": comm_lvl, "key": self.key}
                     table = self._get(f"{url}?{urllib.parse.urlencode(params)}")
                     rows += self._aggregate(table, hs, year, flow, val_var)
                     time.sleep(self.pause)
+        if "Q" in self.freqs:
+            rows += self._pull_quarterly(hs_codes, skip)
         return rows
+
+    def _pull_quarterly(self, hs_codes: list[str], skip: frozenset) -> list[dict]:
+        """Monthly US totals -> COMPLETE quarters (>=3 months). US reports ~3 weeks after month end, so
+        this is the freshest US figure and always available (independent of Comtrade)."""
+        month_val: dict[tuple, float] = {}
+        for hs in hs_codes:
+            if hs == "TOTAL":
+                continue
+            comm_lvl = f"HS{len(hs)}"
+            for ym in self._recent_months(self.months):
+                y, m = ym[:4], ym[4:]
+                for flow, (url, comm_var, _yr, mo_var) in _FLOW.items():
+                    params = {"get": mo_var, comm_var: hs, "YEAR": y, "MONTH": m,
+                              "COMM_LVL": comm_lvl, "key": self.key}
+                    table = self._get(f"{url}?{urllib.parse.urlencode(params)}")
+                    v = self._month_value(table, mo_var)
+                    if v > 0:
+                        month_val[(hs, flow, ym)] = v
+                    time.sleep(self.pause)
+        return self._to_quarters(month_val)
+
+    @staticmethod
+    def _month_value(table: list[list], val_var: str) -> float:
+        if not table or len(table) < 2:
+            return 0.0
+        try:
+            vi = table[0].index(val_var)
+        except ValueError:
+            return 0.0
+        tot = 0.0
+        for r in table[1:]:
+            try:
+                tot += float(r[vi])
+            except (TypeError, ValueError):
+                continue
+        return tot
+
+    @staticmethod
+    def _to_quarters(month_val: dict) -> list[dict]:
+        """(hs, flow, YYYYMM)->value  ->  one row per COMPLETE quarter (all 3 months present)."""
+        agg: dict[tuple, list] = {}
+        for (hs, flow, ym), v in month_val.items():
+            q = f"{ym[:4]}-Q{(int(ym[4:]) - 1) // 3 + 1}"
+            agg.setdefault((hs, flow, q), []).append(v)
+        out = []
+        for (hs, flow, q), vals in agg.items():
+            if len(vals) < 3:                    # incomplete quarter -> skip (would understate)
+                continue
+            out.append({"reporterCode": US_REPORTER, "partnerCode": WORLD, "cmdCode": hs, "period": q,
+                        "flowCode": flow, "primaryValue": round(sum(vals), 2), "netWgt": None,
+                        "qtyUnitAbbr": None, "publishedDate": None})
+        return out
+
+    @staticmethod
+    def _recent_months(n: int) -> list[str]:
+        y, m = date.today().year, date.today().month
+        out = []
+        for _ in range(n):
+            m -= 1
+            if m == 0:
+                m, y = 12, y - 1
+            out.append(f"{y}{m:02d}")
+        return out
 
     # --- pure: Census array-of-arrays (all-country total) -> one World raw row per (hs, year, flow) ---
     @staticmethod

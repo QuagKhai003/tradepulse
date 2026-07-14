@@ -36,3 +36,23 @@ class CensusTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CensusQuarterlyTest(unittest.TestCase):
+    """Monthly US values -> complete-quarter rows (fresh, independent of Comtrade)."""
+
+    def test_complete_quarter_sums_three_months(self):
+        mv = {("0901", "M", "202601"): 1.0, ("0901", "M", "202602"): 2.0, ("0901", "M", "202603"): 3.0}
+        out = USCensusSource._to_quarters(mv)
+        self.assertEqual(len(out), 1)
+        self.assertEqual(out[0]["period"], "2026-Q1")
+        self.assertEqual(out[0]["primaryValue"], 6.0)
+        self.assertEqual(out[0]["reporterCode"], 842)
+
+    def test_incomplete_quarter_is_dropped(self):
+        mv = {("0901", "M", "202601"): 1.0, ("0901", "M", "202602"): 2.0}   # only 2 of 3 months
+        self.assertEqual(USCensusSource._to_quarters(mv), [])
+
+    def test_month_value_sums_the_value_column(self):
+        table = [["GEN_VAL_MO", "MONTH"], ["100", "01"], ["50", "01"]]
+        self.assertEqual(USCensusSource._month_value(table, "GEN_VAL_MO"), 150.0)

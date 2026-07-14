@@ -35,7 +35,7 @@ def get_source(kind: str, period: str | None = None, freqs: tuple[str, ...] = ("
         return ComtradeSource(key=key, freqs=freqs, quarterly_hs=qhs)
     if kind == "census":
         from .settings import census_key
-        return USCensusSource(key=census_key())
+        return USCensusSource(key=census_key(), freqs=freqs)
     if kind == "eurostat":
         return EurostatSource()          # keyless (EU); EUR->USD via ECB FX
     if kind == "hmrc":
