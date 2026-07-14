@@ -7,7 +7,7 @@ DS-045409). API only, NO bulk download.
           Monthly -> quarters + years. Values are EUR -> USD via fx.to_usd (merge with Comtrade/Census/KCS).
 @warn     The OLD dataset DS-045409 now faults (140); DS-059341 is the current one (dims:
           freq.reporter.partner.product.flow.indicators; indicator VALUE_EUR). Product accepts HS4 or HS6.
-          The API rejects a query with too many reporter values, so members are queried in chunks of 8.
+          The API rejects a query with too many reporter values, so members are queried in small chunks.
 @done     pull() -> Comtrade-shaped raw rows (reporter=<member M49>, partner=World); _parse() pure + tested.
 @limits   Network in _get + ECBFx. Skips TOTAL (Comtrade covers it). SDMX-CSV (stdlib csv). Keyless.
 @affects  Implements the source protocol; merged in the pipeline. Tested by tests/test_eurostat.py.
@@ -26,7 +26,7 @@ from ..fx import ECBFx, to_usd
 WORLD = 0
 BASE = "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-059341"
 _FLOW = {"1": "M", "2": "X"}      # Comext flow code -> our flow
-MEMBERS_PER_CALL = 8              # DS-059341 rejects a query with too many reporter values (14 fails)
+MEMBERS_PER_CALL = 4              # DS-059341 rejects a query with too many reporter values (14 fails)
 
 # Each EU member reported INDIVIDUALLY (declarant ISO2, EL=Greece) -> our M49 reporter code, verified
 # against reference/countries.json. Query each with partner=WORLD (total trade) so it overrides the
