@@ -20,12 +20,16 @@ import { t, VI_ENABLED } from "../lib/i18n.js";
 // Segmented pill with a CSS-transitioned sliding fill (no motion lib). Options are equal-width, so the
 // indicator just translates to the active index.
 function Segmented({ options, value, onChange, size = "md" }) {
-  const idx = Math.max(0, options.findIndex((o) => o.v === value));
+  const active = options.find((o) => o.v === value && !o.disabled) ? value : options.find((o) => !o.disabled)?.v;
+  const idx = Math.max(0, options.findIndex((o) => o.v === active));
   return (
     <div className={`seg seg-${size}`}>
       <span className="seg-ind" style={{ width: `calc((100% - 6px) / ${options.length})`, transform: `translateX(${idx * 100}%)` }} />
       {options.map((o) => (
-        <button key={o.v} type="button" className={`seg-opt ${value === o.v ? "on" : ""}`} onClick={() => onChange(o.v)}>
+        <button key={o.v} type="button" aria-disabled={o.disabled || undefined}
+          title={o.disabled ? o.title : undefined}
+          className={`seg-opt ${value === o.v ? "on" : ""} ${o.disabled ? "disabled" : ""}`}
+          onClick={() => (o.disabled ? null : onChange(o.v))}>
           <span className="seg-label">{o.label}</span>
         </button>
       ))}
@@ -52,10 +56,13 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
     <Segmented idBase="flow-ind" value={flow} onChange={setFlow} size="sm"
       options={[{ v: "export", label: tr.flowExport }, { v: "import", label: tr.flowImport }]} />
   );
-  const freqToggle = hasQuarterly ? (
-    <Segmented idBase="freq-ind" value={freq} onChange={setFreq} size="sm"
-      options={[{ v: "A", label: tr.freqYear }, { v: "Q", label: tr.freqQuarter }]} />
-  ) : null;
+  // Always show the grain toggle; when this product has no quarterly data, grey out "Quarter" (with a
+  // hover note) rather than hiding the whole control — so it doesn't appear/disappear per product.
+  const freqToggle = (
+    <Segmented idBase="freq-ind" value={hasQuarterly ? freq : "A"} onChange={setFreq} size="sm"
+      options={[{ v: "A", label: tr.freqYear },
+                { v: "Q", label: tr.freqQuarter, disabled: !hasQuarterly, title: tr.noQuarterly }]} />
+  );
   // The globe answers ONE question — where is demand moving — so this panel is the signal feed, and
   // nothing else. Buyers / sellers / past orders are about a specific market, so they live on the
   // country page you click into (MarketFeed), where that question is the one you are actually asking.
@@ -96,7 +103,7 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
 
         <div className="hero-controls-bar">
           <div className="ctrl"><span className="ctrl-cap">{tr.forLabel}</span>{flowToggle}</div>
-          {freqToggle && <div className="ctrl"><span className="ctrl-cap">{tr.forLabel}</span>{freqToggle}</div>}
+          <div className="ctrl"><span className="ctrl-cap">{tr.forLabel}</span>{freqToggle}</div>
         </div>
 
         <div className="hero-foot">

@@ -670,3 +670,5 @@ a.lockmask:hover { color: var(--accent); }
 .hero-search-top--light .search-input { background-color: var(--panel); border-color: var(--line-strong); color: var(--ink); }
 .hero-search-top--light .search-input::placeholder { color: var(--muted); }
 @media (max-width: 720px) { .topbar-country { grid-template-columns: 1fr; } .topbar-country .hero-search-top { justify-self: stretch; } }
+.seg-opt.disabled { opacity: .4; cursor: not-allowed; }
+.seg-opt.disabled:hover { color: #c6d2ec; }
