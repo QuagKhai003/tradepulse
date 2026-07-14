@@ -36,7 +36,9 @@ All 9 batches done + merged. Data + content are SAMPLE; Stage 0 willingness-to-p
 |---|------|--------|
 | 2.1 | Second vertical (from Stage 0 feedback + locked-page clicks) | ⬜ |
 | 2.2 | Tender feed productized (EU TED live, 659 products; Korean genco tenders are ActiveX/login-walled — deferred) | ✅ |
-| 2.2b | Layer 2 for real: **Buyers · Sellers · Past orders** — sellers DERIVED from won contracts (ADR-0005) | ✅ |
+| 2.2b | Layer 2: **Buyers · Sellers · Past orders** — Buyers/Past-orders from EU TED | ✅ |
+| 2.2c | **Sellers = real exporters** from approval registries (ADR-0006). Phase 1 EU DG SANTE (seafood, 2,219 exporters) | ✅ |
+| 2.2d | Sellers Phase 2: USDA Organic + Korea MFDS (coffee/tea/rice/cashew; need free keys) + UK Defra + FSC/PEFC | ⬜ |
 | 2.3 | Zalo OA alerts | ⬜ |
 | 2.4 | Monthly national-stats freshness for covered markets (US Census, EU Eurostat, UK HMRC) | ✅ |
 

@@ -15,9 +15,9 @@ from pathlib import Path
 
 from .alerts import rollup_locked_clicks, signal_alerts
 from .db import DEFAULT_DB, connect, count_trade_flows, fetch_flows, fetch_signals, upsert_signals
-from .export import (DEFAULT_SNAPSHOT, build_all, build_awards, build_cpv_match, build_sellers,
-                     build_snapshot, build_tenders, write_countries, write_json, write_snapshot,
-                     write_tenders)
+from .export import (DEFAULT_SNAPSHOT, build_all, build_awards, build_cpv_match,
+                     build_sellers_web, build_snapshot, build_tenders, write_countries,
+                     write_json, write_snapshot, write_tenders)
 from .pipeline import get_sources, run_multi
 from .signals import compute_signals
 
@@ -105,28 +105,56 @@ def main() -> None:
             asince = (today - timedelta(days=AWARD_LOOKBACK_DAYS)).strftime("%Y%m%d")
             awards = ted.pull_awards(TENDER_CPV, asince, now_iso)
             upsert_awards(conn, awards)
+        # SELLERS = real exporters from approval registries (ADR-0006), NOT award winners. Pulled from
+        # DG SANTE (keyless; animal-origin -> seafood + honey among our products). A won contract is a
+        # PAST ORDER, so sellers must come from a different source or the two tabs are the same data.
+        from .config import SELLER_COUNTRIES, SELLER_SECTIONS
+        from .db import fetch_registry_sellers, upsert_registry_sellers
+        sellers_raw = []
+        if not args.export_only:
+            from .sources.registry import DgSanteSource
+            sellers_raw = DgSanteSource().pull(SELLER_COUNTRIES, list(SELLER_SECTIONS), today.isoformat())
+            upsert_registry_sellers(conn, sellers_raw)
+
         write_json(build_cpv_match(), default_path.parent / "cpv-match.json")
-        open_n = award_n = seller_n = 0
+        open_n = award_n = 0
         for hs in TENDER_CPV:
             ten = build_tenders(conn, hs, today.isoformat())
             write_tenders(ten, default_path.parent / f"tenders-{hs}.json")
             open_n += len(ten)
-            aw = build_awards(conn, hs)                  # past orders
-            se = build_sellers(aw)                       # sellers, derived from them
+            aw = build_awards(conn, hs)                  # PAST ORDERS (won contracts)
             write_json(aw, default_path.parent / f"awards-{hs}.json")
-            write_json(se, default_path.parent / f"sellers-{hs}.json")
             award_n += len(aw)
+
+        # sellers-<hs>.json for every product a registry covers, plus the tender products (they get []
+        # until a registry covers them — an honest "coming soon", not a fake list).
+        seller_hs = sorted({h for codes in SELLER_SECTIONS.values() for h in codes} | set(TENDER_CPV))
+        seller_n = 0
+        for hs in seller_hs:
+            se = build_sellers_web(conn, hs)
+            write_json(se, default_path.parent / f"sellers-{hs}.json")
             seller_n += len(se)
-        # "All products" rolls every product up into one view (deduped — a notice can match an HS4
-        # heading and its HS6 children, and must not be shown three times).
-        t_all, a_all, s_all = build_all(conn, today.isoformat())
+        # TOTAL sellers = every registry seller, deduped by (org, country).
+        allrows = fetch_registry_sellers(conn, list(SELLER_SECTIONS))
+        seen, s_all = set(), []
+        for r in allrows:
+            k = (r["seller"], r["seller_code"])
+            if k in seen:
+                continue
+            seen.add(k)
+            s_all.append({"seller": r["seller"], "seller_country": r["seller_iso"],
+                          "seller_code": r["seller_code"], "approval_no": r["approval_no"],
+                          "activity": r["activity"], "city": r["city"], "source": r["source"],
+                          "url": r["source_url"], "verified": r["verified_date"]})
+        write_json(s_all, default_path.parent / "sellers-TOTAL.json")
+
+        # PAST ORDERS + BUYERS rollup for "All products" (deduped; sellers handled above, registry-based).
+        t_all, a_all, _ = build_all(conn, today.isoformat())
         write_tenders(t_all, default_path.parent / "tenders-TOTAL.json")
         write_json(a_all, default_path.parent / "awards-TOTAL.json")
-        write_json(s_all, default_path.parent / "sellers-TOTAL.json")
         print(f"[tradepulse] tenders: {len(rows)} scraped, {open_n} still open | "
-              f"awards: {len(awards)} scraped, {award_n} on-product, {seller_n} sellers | "
-              f"{len(TENDER_CPV)} products | ALL: {len(t_all)} open, {len(a_all)} orders, "
-              f"{len(s_all)} sellers")
+              f"awards: {len(awards)} scraped, {award_n} on-product | "
+              f"sellers (registry): {len(sellers_raw)} pulled, {seller_n} product-rows, {len(s_all)} unique")
 
     _print_rollup()
 

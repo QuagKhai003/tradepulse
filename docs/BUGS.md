@@ -17,9 +17,15 @@ Format: `L-NNN` (limitation) / `B-NNN` (bug) / `S-NNN` (security/launch risk).
 ## L-002 — Mirror discrepancies (exporter vs importer reported)
 - **Symptom:** exporter-reported and importer-reported values differ (freight, misclassification).
 - **Cause:** two independent customs systems report the same flow.
-- **Status:** addressed-by-design.
+- **Status:** addressed-by-design; also USED as a fix (2026-07-14) — see below.
 - **Where:** plan §6.4. Default importer-reported per view; state it in a tooltip.
 - **Notes:** Vietnam-tile headline side (GDVC vs importer) still open — plan §15 Q4.
+- **Mirror-as-fix (2026-07-14):** late/non-reporters (Vietnam self-reports to Comtrade ~2y late) were
+  frozen at 2023 and vanished from the latest view. `ComtradeMirrorSource` rebuilds a country's exports
+  from its partners' import reports (imports-from-E summed = E's mirror exports). Mirror is CIF (~5-10%
+  above the exporter's FOB), so it ranks BELOW every direct report and fills gaps only (DO NOTHING),
+  skips the thin frontier year, and every mirror value is badged `est.` in the UI. Fixed "Vietnam
+  missing from coffee": VN now shows 2024 ($4.36B), ranks coffee #4 / rice #3 / cashew #1.
 
 ## L-003 — Comtrade free preview: annual World-only (no quarterly, no partners)
 - **Symptom:** live `--source comtrade` returns ANNUAL World totals only; drill-down shows "no

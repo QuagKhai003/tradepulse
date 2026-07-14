@@ -94,6 +94,25 @@ CREATE TABLE IF NOT EXISTS awards (
 );
 
 CREATE INDEX IF NOT EXISTS ix_awards_hs6 ON awards (hs6);
+
+--- SELLERS = real exporters, from approval registries (ADR-0006). A "seller" is a company APPROVED to
+--- export a product (DG SANTE etc.), NOT a contract winner (that is `awards`/past orders). One row per
+--- (source, approval_no, seller, seller_code). Public org + approval + source + verified date only.
+CREATE TABLE IF NOT EXISTS registry_sellers (
+    source          TEXT    NOT NULL,   -- 'dgsante' | 'ukdefra' | 'usda-organic' | ...
+    approval_no     TEXT,               -- official approval/registration number (nullable)
+    seller          TEXT    NOT NULL,   -- organisation
+    seller_iso      TEXT,               -- ISO2
+    seller_code     INTEGER,            -- M49
+    activity        TEXT,               -- e.g. 'Processing Plant'
+    city            TEXT,
+    section         TEXT,               -- registry section code (mapped to HS in config.SELLER_SECTIONS)
+    source_url      TEXT    NOT NULL,
+    verified_date   TEXT    NOT NULL,
+    PRIMARY KEY (source, approval_no, seller, seller_code)
+);
+
+CREATE INDEX IF NOT EXISTS ix_sellers_section ON registry_sellers (section);
 """
 
 
@@ -159,6 +178,30 @@ def fill_trade_flows(conn: sqlite3.Connection, rows: list[dict]) -> int:
     with conn:
         cur = conn.executemany(sql, rows)
     return len(rows)
+
+def upsert_registry_sellers(conn: sqlite3.Connection, rows: list[dict]) -> int:
+    """Idempotent on (source, approval_no, seller, seller_code). Re-pulling refreshes verified_date."""
+    sql = """
+        INSERT INTO registry_sellers
+            (source, approval_no, seller, seller_iso, seller_code, activity, city, section, source_url, verified_date)
+        VALUES
+            (:source, :approval_no, :seller, :seller_iso, :seller_code, :activity, :city, :section, :source_url, :verified_date)
+        ON CONFLICT(source, approval_no, seller, seller_code) DO UPDATE SET
+            seller_iso=excluded.seller_iso, activity=excluded.activity, city=excluded.city,
+            section=excluded.section, source_url=excluded.source_url, verified_date=excluded.verified_date
+    """
+    with conn:
+        conn.executemany(sql, rows)
+    return len(rows)
+
+
+def fetch_registry_sellers(conn: sqlite3.Connection, sections: list[str]) -> list[dict]:
+    if not sections:
+        return []
+    q = ",".join("?" * len(sections))
+    sql = f"SELECT * FROM registry_sellers WHERE section IN ({q}) ORDER BY seller"
+    return [dict(r) for r in conn.execute(sql, sections).fetchall()]
+
 
 def fetch_flows(conn: sqlite3.Connection, flow: str | None = None) -> list[dict]:
     """All trade_flows rows (optionally one flow direction) as plain dicts."""

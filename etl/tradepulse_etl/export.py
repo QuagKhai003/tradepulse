@@ -167,6 +167,31 @@ def build_all(conn, today: str) -> tuple[list, list, list]:
     return tl, al, build_sellers(al)
 
 
+def _sections_for(hs6: str) -> list[str]:
+    """Which registry sections cover this product (reverse of config.SELLER_SECTIONS)."""
+    return [sec for sec, codes in config.SELLER_SECTIONS.items() if hs6 in codes]
+
+
+def build_sellers_web(conn, hs6: str) -> list[dict]:
+    """SELLERS for the web = real exporters from approval registries (ADR-0006), NOT award winners.
+    An establishment approved for a section that covers this product is a seller of it. Deduped by
+    (organisation, country) across sections/sources; ranked by country then name (deterministic)."""
+    from .db import fetch_registry_sellers
+    rows = fetch_registry_sellers(conn, _sections_for(hs6))
+    by: dict[tuple, dict] = {}
+    for r in rows:
+        key = (r["seller"], r["seller_code"])
+        cur = by.get(key)
+        if cur is None:
+            by[key] = {"seller": r["seller"], "seller_country": r["seller_iso"],
+                       "seller_code": r["seller_code"], "approval_no": r["approval_no"],
+                       "activity": r["activity"], "city": r["city"], "source": r["source"],
+                       "url": r["source_url"], "verified": r["verified_date"]}
+    out = list(by.values())
+    out.sort(key=lambda x: (x["seller_country"] or "", x["seller"]))
+    return out
+
+
 def build_sellers(awards: list[dict]) -> list[dict]:
     """SELLERS, derived from past orders. A seller never publishes 'I sell tea' — but a public buyer
     publishes who WON its tea contract. So a seller here is exactly: an organisation that has won at

@@ -169,15 +169,14 @@ function toRow(tab, x, locked, isAggregate, lang, t) {
   }
 
   if (tab === "sellers") {
+    // A registry seller = a company APPROVED to export this product (not a contract winner).
     return {
-      key: `${x.seller}-${x.seller_country}`, locked, name: x.seller, country: x.seller_country,
-      rowFact: `${x.wins} ${x.wins === 1 ? t.sellerWin : t.sellerWins}`,
+      key: `${x.seller}-${x.seller_code}`, locked, name: x.seller, country: x.seller_country,
+      rowFact: x.approval_no || x.activity || "",
       tag: t.roleSeller, tagKind: "contract",
-      facts: [[t.sellerWinsLabel, String(x.wins)],
-              [t.sellerValue, x.value ? fmtMoney(x.value, x.currency) : t.sellerNoValue],
-              [t.sellerLastLabel, x.last || "—"],
-              [t.sellerBuyers, (x.buyers || []).slice(0, 6).join(", ") || "—"]],
-      note: t.sellerNote, url: x.url, cta: t.sellerOpenAward,
+      facts: [[t.sApproval, x.approval_no || "—"], [t.sActivity, x.activity || "—"],
+              [t.sCity, x.city || "—"], [t.sVerified, x.verified || "—"]],
+      note: t.sellerNote, url: x.url, cta: t.sOpenRegistry,
     };
   }
 

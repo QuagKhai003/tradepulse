@@ -12,3 +12,4 @@ Copy `0000-template.md` → `NNNN-<slug>.md` and link it below.
 | 0002 | [Phase 1 MVP build plan](0002-phase1-mvp.md) | Accepted — COMPLETE |
 | 0003 | [Map-first realignment](0003-map-first-realignment.md) | Accepted — COMPLETE (3.1–3.7) |
 | 0004 | [Park the Vietnamese build](0004-park-vietnamese-build.md) | Accepted — English-only until the catalog is translated |
+| 0006 | [Sellers from registries](0006-sellers-from-registries.md) | Accepted — real exporters, phased |

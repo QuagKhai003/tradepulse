@@ -191,3 +191,17 @@ def is_final(period: str, today) -> bool:
     if freq_of(period) == "A":
         return months_ago > REVISION_YEARS * 12
     return months_ago > REVISION_MONTHS
+
+
+# --- Sellers = REAL exporters, from approval registries (plan §7.4; ADR-0006). Phase 1: EU DG SANTE
+# (animal-origin, keyless) -> seafood + honey. A DG SANTE "section" maps to the HS products it covers;
+# an establishment approved for that section is a seller of each of those products. ---
+SELLER_SECTIONS = {
+    "FFP": ["0301", "0302", "0303", "0304", "0305", "0306", "030617", "0307", "0308", "1604", "1605"],
+    "LBM": ["0307", "0308"],          # live bivalve molluscs
+    "HON": ["0409"],                  # honey
+}
+# Exporter countries to pull (major seafood exporters + the pilot origin). DG SANTE lists every
+# third country approved to export to the EU; we bound the pull to the ones a user would care about.
+SELLER_COUNTRIES = ["VN", "IN", "EC", "ID", "CN", "TH", "BD", "AR", "CL", "PE", "MA", "TR",
+                    "VE", "MX", "PH", "LK", "MY", "SN", "NG", "GH"]
