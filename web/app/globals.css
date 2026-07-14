@@ -648,3 +648,4 @@ a.lockmask:hover { color: var(--accent); }
   text-transform: uppercase; color: #b45309; background: rgba(245,158,11,.14); padding: 1px 6px;
   border-radius: 5px; vertical-align: middle; cursor: help; }
 .mfeed-src { opacity: .8; }
+.mrow-meta .kind{flex:none}

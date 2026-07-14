@@ -29,7 +29,7 @@ class TedTest(unittest.TestCase):
         self.assertEqual(r["buyer_country"], "LVA")
         self.assertEqual(r["published"], "2026-01-08")                   # date only
         self.assertIsNone(r["deadline"])                                 # prior-info notice: no deadline
-        self.assertEqual(r["url"], "https://ted.europa.eu/en/notice/8046-2026/pdf")  # /pdf: bare path 404s
+        self.assertEqual(r["url"], "https://ted.europa.eu/en/notice/8046-2026/html")  # /html renders online; bare path 404s
 
     def test_deadline_trimmed_to_date(self):
         n = {**NOTICE, "deadline-receipt-tender-date-lot": ["2026-09-30+02:00"]}

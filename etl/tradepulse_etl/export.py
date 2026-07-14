@@ -118,8 +118,8 @@ def build_tenders(conn, hs6: str, today: str) -> list[dict]:
 # TED titles read "Country – English subject – LOCAL PROJECT NAME" (the tail stays in the buyer's own
 # language). We display the English subject only; the full local title is one click away on TED.
 def _notice_url(pub: str) -> str:
-    """Canonical TED link for a publication number — the /pdf document view (the bare path 404s)."""
-    return f"https://ted.europa.eu/en/notice/{pub}/pdf"
+    """Canonical TED link — the /html view renders in the browser (/pdf downloads; bare path 404s)."""
+    return f"https://ted.europa.eu/en/notice/{pub}/html"
 
 
 def _subject(title: str) -> str:

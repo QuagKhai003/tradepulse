@@ -96,6 +96,9 @@ export default function MarketFeed({ tenders = [], sellers = [], orders = [], pr
                             onClick={() => setPick(i)}>
                       <span className="mrow-name">{r.name}</span>
                       <span className="mrow-meta">
+                        {/* a "One lot" chip so a food-framework contract with a coffee lot never reads
+                            as a mismatch — the buyer bundled it, and this row is the relevant lot */}
+                        {r.lot != null && <span className={`kind ${r.lot ? "lot" : "contract"}`}>{r.lot ? t.matchLot : t.matchContract}</span>}
                         <span className="mrow-cty">{r.country}</span>
                         <span className="mrow-fact">{r.rowFact}</span>
                       </span>
@@ -158,7 +161,7 @@ function toRow(tab, x, locked, isAggregate, lang, t) {
     const due = fmtDeadline(x.deadline, lang);
     const isLot = x.match === "lot";
     return {
-      key: x.id, locked, name: x.buyer || x.title, country: x.buyer_country,
+      key: x.id, locked, name: x.buyer || x.title, country: x.buyer_country, lot: isLot,
       rowFact: due.label, tag: prod || (isLot ? t.matchLot : t.matchContract),
       tagKind: isLot ? "lot" : "contract",
       facts: [[t.mProduct, prod || t.product], [t.mContract, x.title],
@@ -182,6 +185,7 @@ function toRow(tab, x, locked, isAggregate, lang, t) {
 
   return {
     key: `${x.id}-${x.seller}`, locked, name: x.seller, country: `${x.seller_country} → ${x.buyer_country}`,
+    lot: x.match === "lot",
     rowFact: x.value ? fmtMoney(x.value, x.currency) : (x.date || ""),
     tag: prod || (x.match === "lot" ? t.matchLot : t.matchContract),
     tagKind: x.match === "lot" ? "lot" : "contract",
