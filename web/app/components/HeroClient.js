@@ -10,9 +10,6 @@
 import { useState } from "react";
 import GlobeHero from "./GlobeHero.js";
 import GlobalFeed from "./GlobalFeed.js";
-import TenderList from "./TenderList.js";
-import SellerList from "./SellerList.js";
-import OrderList from "./OrderList.js";
 import TopCountries from "./TopCountries.js";
 import SearchBox from "./SearchBox.js";
 import BrowseCountries from "./BrowseCountries.js";
@@ -36,13 +33,11 @@ function Segmented({ options, value, onChange, size = "md" }) {
   );
 }
 
-export default function HeroClient({ snapshot, tenders = [], sellers = [], orders = [],
-                                    curatedSellers = [], cpv = null, hs, initialLang, initialFlow }) {
+export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
   const [lang, setLang] = useState(initialLang);
   const [flow, setFlow] = useState(initialFlow);
   const [sort, setSort] = useState("none");   // open unsorted: the snapshot order, as shipped
   const [freq, setFreq] = useState("A");
-  const [panel, setPanel] = useState("signals");   // signals | buyers | sellers | orders
   const tr = t(lang);
   const metric = flow === "export" ? "exp" : "imp";
   const isTotal = hs === "TOTAL";
@@ -61,20 +56,9 @@ export default function HeroClient({ snapshot, tenders = [], sellers = [], order
     <Segmented idBase="freq-ind" value={freq} onChange={setFreq} size="sm"
       options={[{ v: "A", label: tr.freqYear }, { v: "Q", label: tr.freqQuarter }]} />
   ) : null;
-  // Four views of one product, each answering a different question:
-  //   SIGNALS  where demand moved         (aggregate trade flows)
-  //   BUYERS   who is buying now          (open tenders — buyer named, no seller yet)
-  //   SELLERS  who sells this             (derived from won contracts; sellers never advertise)
-  //   ORDERS   who already bought whose   (awarded contracts, both sides named)
-  // All four always render — an empty tab states WHY it is empty. Hiding one reads as "nothing exists"
-  // when it means "no coverage here", and that difference matters to someone deciding where to sell.
-  const panelTabs = (
-    <Segmented idBase="panel-ind" value={panel} onChange={setPanel} size="sm"
-      options={[{ v: "signals", label: tr.tabSignals },
-                { v: "buyers", label: `${tr.tabBuyers}${tenders.length ? ` ${tenders.length}` : ""}` },
-                { v: "sellers", label: `${tr.tabSellers}${sellers.length ? ` ${sellers.length}` : ""}` },
-                { v: "orders", label: `${tr.tabOrders}${orders.length ? ` ${orders.length}` : ""}` }]} />
-  );
+  // The globe answers ONE question — where is demand moving — so this panel is the signal feed, and
+  // nothing else. Buyers / sellers / past orders are about a specific market, so they live on the
+  // country page you click into (CountryTabs), where that question is the one you are actually asking.
   // Only the SORT belongs to the feed. Flow + grain drive the GLOBE, so they live on the globe
   // control bar below — cramming all four into a 346px panel header overflowed it.
   const feedTools = <SortMenu value={sort} onChange={setSort} t={tr} />;
@@ -106,14 +90,8 @@ export default function HeroClient({ snapshot, tenders = [], sellers = [], order
         </MotionPanel>
 
         <MotionPanel from="right" delay={0.05} className="panel-col right glasscol">
-          {panelTabs && <div className="panel-tabsrow">{panelTabs}</div>}
-          {panel === "buyers" && <TenderList tenders={tenders} lang={lang} t={tr} product={product} cpv={cpv} />}
-          {panel === "sellers" && <SellerList sellers={sellers} curated={curatedSellers} product={product} t={tr} cpv={cpv} />}
-          {panel === "orders" && <OrderList orders={orders} product={product} t={tr} cpv={cpv} />}
-          {panel === "signals" && (
-            <GlobalFeed countries={snapshot.countries} flow={flow} freq={freq} lang={lang} t={tr} hs={hs}
-                        sort={sort} tools={feedTools} />
-          )}
+          <GlobalFeed countries={snapshot.countries} flow={flow} freq={freq} lang={lang} t={tr} hs={hs}
+                      sort={sort} tools={feedTools} />
         </MotionPanel>
 
         <div className="hero-controls-bar">

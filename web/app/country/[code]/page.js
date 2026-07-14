@@ -11,9 +11,7 @@ import WatchButton from "../../components/WatchButton.js";
 import PartnerTable from "../../components/PartnerTable.js";
 import SourcingChart from "../../components/SourcingChart.js";
 import QualPanel from "../../components/QualPanel.js";
-import TenderList from "../../components/TenderList.js";
-import SellerList from "../../components/SellerList.js";
-import OrderList from "../../components/OrderList.js";
+import CountryTabs from "../../components/CountryTabs.js";
 import { loadSnapshot } from "../../lib/snapshot.js";
 import { loadSourcing } from "../../lib/sourcing.js";
 import { loadAwards, loadCpvMatch, loadSellers, loadTenders } from "../../lib/tenders.js";
@@ -129,42 +127,9 @@ export default async function CountryPage({ params, searchParams }) {
         <FlowPanel title={tr.importsLabel} slot={c.imp} t={tr} lang={lang} />
       </section>
 
-      {allTenders.length > 0 && (
-        <section className="panel tender-sec">
-          <h2>{tr.tendersFor} {product}</h2>
-          {tHere.length > 0 ? (
-            <>
-              <h3 className="tender-sub">{tr.tendersHere} {name} <span className="muted">({tHere.length})</span></h3>
-              <TenderList tenders={tHere} lang={lang} t={tr} product={product} cpv={cpv} />
-            </>
-          ) : (
-            <p className="muted tender-note">{tr.tendersNoneHere} {name}. {tr.tendersElsewhereNote}</p>
-          )}
-          {tElse.length > 0 && (
-            <>
-              <h3 className="tender-sub">{tr.tendersElsewhere} <span className="muted">({tElse.length})</span></h3>
-              <TenderList tenders={tElse} lang={lang} t={tr} product={product} />
-            </>
-          )}
-          <p className="muted tender-note">{tr.tenderSource}</p>
-        </section>
-      )}
-
-      {sellersHere.length > 0 && (
-        <section className="panel tender-sec">
-          <h2>{tr.sellersIn} {name}</h2>
-          <SellerList sellers={sellersHere} product={product} t={tr} cpv={cpv} />
-          <p className="muted tender-note">{tr.sellerNote}</p>
-        </section>
-      )}
-
-      {ordersHere.length > 0 && (
-        <section className="panel tender-sec">
-          <h2>{tr.ordersIn} {name}</h2>
-          <OrderList orders={ordersHere} product={product} t={tr} cpv={cpv} />
-          <p className="muted tender-note">{tr.orderNote}</p>
-        </section>
-      )}
+      {/* who buys, who sells, and what has already been sold — for THIS product in THIS country */}
+      <CountryTabs tHere={tHere} tElse={tElse} sellers={sellersHere} orders={ordersHere}
+                   product={product} country={name} cpv={cpv} lang={lang} t={tr} />
 
       <QualPanel hs={hs} code={c.code} product={product} country={name} lang={lang} t={tr} />
 

@@ -578,3 +578,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .co-group { padding: 12px 0 4px; font-size: 11px; font-weight: 700; letter-spacing: .06em;
   text-transform: uppercase; list-style: none; }
 .co-locked { cursor: not-allowed; opacity: .55; filter: blur(.2px); }
+
+/* country-page tabs: buyers | sellers | past orders */
+.ctabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: -4px 0 14px; }
+.ctab { background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer;
+  font: inherit; font-size: 14px; font-weight: 600; color: var(--muted);
+  padding: 8px 12px; margin-bottom: -1px; }
+.ctab:hover { color: var(--fg); }
+.ctab.on { color: var(--accent); border-bottom-color: var(--accent); }
+.ctab .num { font-weight: 750; opacity: .7; margin-left: 2px; }
