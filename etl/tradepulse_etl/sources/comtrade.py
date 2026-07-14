@@ -60,6 +60,7 @@ class ComtradeSource:
     # year instead of 1 per product per year. The API truncates a response at ROW_CAP rows, so a batch
     # that comes back at the cap is re-fetched in halves (silent truncation would drop whole countries).
     CODES_PER_CALL = 40
+    MONTHLY_CODES_PER_CALL = 8   # monthly all-reporters is heavy; big batches time out
     ROW_CAP = 100_000
     # server-side equivalent of _is_total_row: the fully-aggregated cell only
     TOTALS_ONLY = {"customsCode": "C00", "motCode": "0", "partner2Code": "0"}
@@ -133,13 +134,19 @@ class ComtradeSource:
         # skips months whose quarter is already stored + final (incremental).
         codes = [hs for hs in hs_codes if hs != "TOTAL"
                  and (self.quarterly_hs is None or hs in self.quarterly_hs)]
+        if not codes:
+            return []
         months = self._recent_months(self.months)
         rows: list[dict] = []
-        for hs in codes:
-            for chunk in _chunks(months, self.MONTHLY_ALL_CHUNK):
-                if all((hs, _quarter_of(m)) in skip for m in chunk):
-                    continue
-                params = {"cmdCode": hs, "flowCode": "M,X", "partnerCode": "0", "period": ",".join(chunk)}
+        # One call PER MONTH for the whole product batch (cmdCode is a list), World totals only. Same
+        # optimisation as the annual pull: totals-only params drop the customs x transport breakdown we
+        # would otherwise download and discard. A month whose quarter is already final for EVERY code is
+        # skipped (incremental).
+        for m in months:
+            todo = [hs for hs in codes if (hs, _quarter_of(m)) not in skip]
+            for batch in _chunks(todo, self.MONTHLY_CODES_PER_CALL):
+                params = {"cmdCode": ",".join(batch), "flowCode": "M,X", "partnerCode": "0",
+                          "period": m, **self.TOTALS_ONLY}
                 data = self._get(f"{DATA_MONTHLY}?{urllib.parse.urlencode(params)}", auth=True)
                 rows += [r for r in data if _is_world_total(r)]
                 time.sleep(self.pause)
