@@ -203,14 +203,18 @@ def fetch_registry_sellers(conn: sqlite3.Connection, sections: list[str]) -> lis
     return [dict(r) for r in conn.execute(sql, sections).fetchall()]
 
 
-def fetch_flows(conn: sqlite3.Connection, flow: str | None = None) -> list[dict]:
-    """All trade_flows rows (optionally one flow direction) as plain dicts."""
+def fetch_flows(conn: sqlite3.Connection, flow: str | None = None,
+                hs6: str | None = None) -> list[dict]:
+    """All trade_flows rows (optionally one flow direction and/or one product) as plain dicts."""
     sql = "SELECT * FROM trade_flows"
-    params: tuple = ()
+    where, params = [], []
     if flow is not None:
-        sql += " WHERE flow = ?"
-        params = (flow,)
-    return [dict(r) for r in conn.execute(sql, params).fetchall()]
+        where.append("flow = ?"); params.append(flow)
+    if hs6 is not None:
+        where.append("hs6 = ?"); params.append(hs6)
+    if where:
+        sql += " WHERE " + " AND ".join(where)
+    return [dict(r) for r in conn.execute(sql, tuple(params)).fetchall()]
 
 
 def fetch_signals(conn: sqlite3.Connection) -> list[dict]:

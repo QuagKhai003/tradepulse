@@ -69,13 +69,16 @@ def run(source: TradeSource, conn, *, raw_dir: Path = RAW_DIR) -> int:
     return run_multi([source], conn, raw_dir=raw_dir)
 
 
-def run_multi(sources: list[TradeSource], conn, *, raw_dir: Path = RAW_DIR, today=None) -> int:
+def run_multi(sources: list[TradeSource], conn, *, raw_dir: Path = RAW_DIR, today=None,
+              hs_codes: list[str] | None = None) -> int:
     """Pull every source, transform each (tagged with its own name), then MERGE to one row per cell
     (national authority > freshness > priority — see merge.py) before the upsert. Never sums sources.
     INCREMENTAL: (hs6, period) pairs already stored + final are skipped, so a re-run only fetches the
-    revisable recent window (not the whole history again)."""
+    revisable recent window (not the whole history again). `hs_codes` restricts the pull to a subset
+    (lazy per-product build); defaults to the whole catalogue."""
+    codes = hs_codes or config.COVERED_HS
     reporters = [m["reporter"] for m in config.MARKETS.values()]
-    skip = frozenset(_final_stored(conn, today or date.today()))
+    skip = frozenset(_final_stored(conn, today or date.today(), codes))
     raw_by: dict[str, list] = {s.name: [] for s in sources}
 
     # BULK sources (a local file covering every product) are pulled ONCE for all products — re-parsing
@@ -84,7 +87,7 @@ def run_multi(sources: list[TradeSource], conn, *, raw_dir: Path = RAW_DIR, toda
     api_sources = []
     for source in sources:
         if getattr(source, "bulk", False):
-            raw = source.pull(config.COVERED_HS, reporters, None, skip=skip)
+            raw = source.pull(codes, reporters, None, skip=skip)
             raw_by[source.name] += raw
             for row in transform_all(raw, source.name):
                 bulk_by_hs.setdefault(row["hs6"], []).append(row)
@@ -102,7 +105,7 @@ def run_multi(sources: list[TradeSource], conn, *, raw_dir: Path = RAW_DIR, toda
     # Work in CHUNKS of products and upsert each chunk: a slow/throttled/killed run keeps every chunk
     # it finished. Merging stays correct because a cell lives within one product, so merging
     # per product == merging globally.
-    for chunk in _chunks(config.COVERED_HS, PRODUCTS_PER_UPSERT):
+    for chunk in _chunks(codes, PRODUCTS_PER_UPSERT):
         rows_by_hs: dict[str, list] = {hs: list(bulk_by_hs.get(hs, ())) for hs in chunk}
         for source in batched:
             raw = source.pull(chunk, reporters, None, skip=skip)
@@ -125,7 +128,12 @@ def _chunks(items: list, n: int) -> list[list]:
     return [items[i:i + n] for i in range(0, len(items), n)]
 
 
-def _final_stored(conn, today) -> set:
-    """(hs6, period) pairs already in trade_flows AND final (outside the revision window)."""
-    rows = conn.execute("SELECT DISTINCT hs6, period FROM trade_flows").fetchall()
+def _final_stored(conn, today, hs_codes: list[str] | None = None) -> set:
+    """(hs6, period) pairs already in trade_flows AND final (outside the revision window). Scoped to
+    hs_codes when given (a lazy per-product build must not scan the whole ~2M-row table)."""
+    if hs_codes and len(hs_codes) <= 50:
+        q = ",".join("?" * len(hs_codes))
+        rows = conn.execute(f"SELECT DISTINCT hs6, period FROM trade_flows WHERE hs6 IN ({q})", hs_codes)
+    else:
+        rows = conn.execute("SELECT DISTINCT hs6, period FROM trade_flows")
     return {(hs6, period) for hs6, period in rows if config.is_final(period, today)}

@@ -40,17 +40,20 @@ def main() -> None:
                     help="skip every network pull; rebuild snapshots/signals from the stored DB")
     ap.add_argument("--no-flows", action="store_true",
                     help="skip the trade-flow pull (use with --tenders to refresh tenders/awards only)")
+    ap.add_argument("--only", metavar="HS",
+                    help="build ONLY this product (lazy per-product build for the web, on first open)")
     args = ap.parse_args()
 
     now_iso = datetime.now(timezone.utc).isoformat()
     conn = connect(args.db)
+    only = args.only                                 # None = whole catalogue; else one HS
 
     skip_flows = args.export_only or args.no_flows
     sources = [] if skip_flows else get_sources(args.source.split(","), freqs=tuple(args.freq))
-    n = 0 if skip_flows else run_multi(sources, conn)
+    n = 0 if skip_flows else run_multi(sources, conn, hs_codes=([only] if only else None))
 
     prev = fetch_signals(conn)                       # state before this run (for band crossings)
-    sigs = compute_signals(fetch_flows(conn), now_iso)
+    sigs = compute_signals(fetch_flows(conn, hs6=only) if only else fetch_flows(conn), now_iso)
     upsert_signals(conn, sigs)
 
     alerts = signal_alerts(prev, sigs)               # skips first load (prev empty)
@@ -59,10 +62,12 @@ def main() -> None:
 
     # One snapshot per covered product; the map switches between them. Default = first covered.
     from .config import COVERED_HS
+    hs_list = [only] if only else COVERED_HS         # lazy build writes just the one product
     default_path = Path(args.snapshot)
-    write_countries(conn, default_path.parent / "countries.json")   # names once, shared by all products
+    if not only:   # countries.json is a shared batch artifact — a lazy build reuses it, no full scan
+        write_countries(conn, default_path.parent / "countries.json")
     covered = []
-    for hs in COVERED_HS:
+    for hs in hs_list:
         snap = build_snapshot(conn, generated_at=now_iso, hs6=hs)
         if not snap["countries"]:
             continue
@@ -89,13 +94,16 @@ def main() -> None:
         print(f"[tradepulse] sourcing (quarterly, {len(FOCUS_REPORTERS)} focus reporters) [{' '.join(srcs)}]")
 
     # --- Forward demand: EU TED tenders (who is buying RIGHT NOW) — plan §9.2 / Phase 2.2 ---
-    if args.tenders or args.export_only:
+    if args.tenders or args.export_only or only:
         from datetime import date, timedelta
         from .config import TENDER_CPV, TENDER_LOOKBACK_DAYS, AWARD_LOOKBACK_DAYS
         from .db import upsert_awards, upsert_tenders
         today = date.today()
+        # A lazy per-product build (--only) rebuilds that product's files from STORED tender/award/seller
+        # data (fast, no network) — the TED + DG SANTE pulls are a periodic batch, not per-open.
+        do_pull = args.tenders and not args.export_only and not only
         rows, awards = [], []
-        if not args.export_only:                     # --export-only rewrites the files from stored rows
+        if do_pull:
             from .sources.ted import TedSource
             ted = TedSource()
             since = (today - timedelta(days=TENDER_LOOKBACK_DAYS)).strftime("%Y%m%d")
@@ -111,14 +119,16 @@ def main() -> None:
         from .config import SELLER_COUNTRIES, SELLER_SECTIONS
         from .db import fetch_registry_sellers, upsert_registry_sellers
         sellers_raw = []
-        if not args.export_only:
+        if do_pull:
             from .sources.registry import DgSanteSource
             sellers_raw = DgSanteSource().pull(SELLER_COUNTRIES, list(SELLER_SECTIONS), today.isoformat())
             upsert_registry_sellers(conn, sellers_raw)
 
-        write_json(build_cpv_match(), default_path.parent / "cpv-match.json")
+        write_json(build_cpv_match(), default_path.parent / "cpv-match.json")   # cheap; no network
         open_n = award_n = 0
-        for hs in TENDER_CPV:
+        for hs in ([only] if only else list(TENDER_CPV)):
+            if hs not in TENDER_CPV:                 # a lazily-built product with no tender coverage
+                continue
             ten = build_tenders(conn, hs, today.isoformat())
             write_tenders(ten, default_path.parent / f"tenders-{hs}.json")
             open_n += len(ten)
@@ -130,12 +140,12 @@ def main() -> None:
         # until a registry covers them — an honest "coming soon", not a fake list).
         seller_hs = sorted({h for codes in SELLER_SECTIONS.values() for h in codes} | set(TENDER_CPV))
         seller_n = 0
-        for hs in seller_hs:
+        for hs in ([only] if only else seller_hs):
             se = build_sellers_web(conn, hs)
             write_json(se, default_path.parent / f"sellers-{hs}.json")
             seller_n += len(se)
-        # TOTAL sellers = every registry seller, deduped by (org, country).
-        allrows = fetch_registry_sellers(conn, list(SELLER_SECTIONS))
+        # TOTAL sellers = every registry seller, deduped by (org, country). Skipped on a lazy build.
+        allrows = [] if only else fetch_registry_sellers(conn, list(SELLER_SECTIONS))
         seen, s_all = set(), []
         for r in allrows:
             k = (r["seller"], r["seller_code"])
@@ -146,15 +156,16 @@ def main() -> None:
                           "seller_code": r["seller_code"], "approval_no": r["approval_no"],
                           "activity": r["activity"], "city": r["city"], "source": r["source"],
                           "url": r["source_url"], "verified": r["verified_date"]})
-        write_json(s_all, default_path.parent / "sellers-TOTAL.json")
-
-        # PAST ORDERS + BUYERS rollup for "All products" (deduped; sellers handled above, registry-based).
-        t_all, a_all, _ = build_all(conn, today.isoformat())
-        write_tenders(t_all, default_path.parent / "tenders-TOTAL.json")
-        write_json(a_all, default_path.parent / "awards-TOTAL.json")
+        if not only:                                 # the "All products" rollup is a full-build artifact
+            write_json(s_all, default_path.parent / "sellers-TOTAL.json")
+            # PAST ORDERS + BUYERS rollup for "All products" (deduped; sellers handled above, registry).
+            t_all, a_all, _ = build_all(conn, today.isoformat())
+            write_tenders(t_all, default_path.parent / "tenders-TOTAL.json")
+            write_json(a_all, default_path.parent / "awards-TOTAL.json")
         print(f"[tradepulse] tenders: {len(rows)} scraped, {open_n} still open | "
               f"awards: {len(awards)} scraped, {award_n} on-product | "
-              f"sellers (registry): {len(sellers_raw)} pulled, {seller_n} product-rows, {len(s_all)} unique")
+              f"sellers (registry): {len(sellers_raw)} pulled, {seller_n} product-rows | "
+              f"{'ONLY ' + only if only else 'full'}")
 
     _print_rollup()
 
