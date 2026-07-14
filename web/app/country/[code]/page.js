@@ -129,7 +129,7 @@ export default async function CountryPage({ params, searchParams }) {
 
       {/* who buys, who sells, and what has already been sold — for THIS product in THIS country */}
       <CountryTabs tHere={tHere} tElse={tElse} sellers={sellersHere} orders={ordersHere}
-                   product={product} country={name} cpv={cpv} lang={lang} t={tr} />
+                   product={product} country={name} cpv={cpv} hs={hs} lang={lang} t={tr} />
 
       <QualPanel hs={hs} code={c.code} product={product} country={name} lang={lang} t={tr} />
 
