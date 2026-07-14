@@ -40,6 +40,9 @@ def get_source(kind: str, period: str | None = None, freqs: tuple[str, ...] = ("
         return EurostatSource()          # keyless (EU); EUR->USD via ECB FX
     if kind == "hmrc":
         return UKHmrcSource()            # keyless (UK); GBP->USD via ECB FX
+    if kind == "kcs":
+        from .settings import kcs_service_key
+        return KcsSource(key=kcs_service_key(), freqs=freqs)   # Korea national primary (reporter 410)
     if kind == "baci":
         return BaciSource()             # local bulk file (no API throttle); global history
     if kind in ("mirror", "comtrade-mirror"):

@@ -46,3 +46,4 @@ def kcs_service_key() -> str | None:
     """Korea Customs data.go.kr serviceKey (Decoding form) — KCS_SERVICE_KEY in etl/.env."""
     load_env()
     return os.environ.get("KCS_SERVICE_KEY") or None
+
