@@ -21,9 +21,13 @@ function Flow({ tag, cls, slot }) {
   );
 }
 
-export default function TopCountries({ countries, lang, t, hs, freq = "A" }) {
-  const rows = [...countries]
-    .sort((a, b) => ((b.exp?.value_usd || 0) + (b.imp?.value_usd || 0)) - ((a.exp?.value_usd || 0) + (a.imp?.value_usd || 0)));
+export default function TopCountries({ countries, lang, t, hs, freq = "A", flow = "import" }) {
+  // Rank by the flow currently shown on the globe (import or export), NOT export+import combined —
+  // otherwise, viewing imports, a huge EXPORTER (Saudi crude) still ranks near the top with a tiny
+  // import, which reads as a wrong order. The ranking now matches the globe + the flow toggle.
+  const metric = flow === "export" ? "exp" : "imp";
+  const rank = (c) => slotFor(c[metric], freq)?.value_usd || 0;
+  const rows = [...countries].sort((a, b) => rank(b) - rank(a));
   return (
     <div className="col-fill">
       <div className="panel-h"><h2>{t.topCountries}</h2></div>

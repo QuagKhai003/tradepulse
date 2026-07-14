@@ -86,7 +86,7 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
         </header>
 
         <MotionPanel from="left" className="panel-col left glasscol">
-          <TopCountries countries={snapshot.countries} lang={lang} t={tr} hs={hs} freq={freq} />
+          <TopCountries countries={snapshot.countries} lang={lang} t={tr} hs={hs} freq={freq} flow={flow} />
         </MotionPanel>
 
         <MotionPanel from="right" delay={0.05} className="panel-col right glasscol">
@@ -95,8 +95,8 @@ export default function HeroClient({ snapshot, hs, initialLang, initialFlow }) {
         </MotionPanel>
 
         <div className="hero-controls-bar">
-          {flowToggle}
-          {freqToggle}
+          <div className="ctrl"><span className="ctrl-cap">{tr.forLabel}</span>{flowToggle}</div>
+          {freqToggle && <div className="ctrl"><span className="ctrl-cap">{tr.forLabel}</span>{freqToggle}</div>}
         </div>
 
         <div className="hero-foot">

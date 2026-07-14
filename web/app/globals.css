@@ -403,7 +403,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .seg-opt.on { color: #fff; }
 .seg-opt:hover:not(.on) { color: #dbe3f3; }
 /* sliding fill — width + translateX set inline by the component (active index) */
-.seg-ind { position: absolute; top: 3px; bottom: 3px; left: 3px; z-index: 0; background: var(--brand); border-radius: var(--pill); transition: transform .28s var(--ease), width .28s var(--ease); }
+.seg-ind { position: absolute; top: 3px; bottom: 3px; left: 3px; z-index: 0; background: var(--brand); border-radius: var(--pill); box-shadow: 0 1px 3px rgba(11,18,32,.35); transition: transform .28s var(--ease), width .28s var(--ease); }
 .seg-label { position: relative; z-index: 1; }
 .seg-sm .seg-opt { padding: 0 13px; min-height: 30px; font-size: var(--fs-sm); }
 
@@ -649,3 +649,10 @@ a.lockmask:hover { color: var(--accent); }
   border-radius: 5px; vertical-align: middle; cursor: help; }
 .mfeed-src { opacity: .8; }
 .mrow-meta .kind{flex:none}
+
+/* globe control bar: each toggle captioned "For:", the two pills equal-width + balanced */
+.hero-controls-bar .ctrl { display: inline-flex; flex-direction: column; align-items: center; gap: 5px; }
+.ctrl-cap { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: #aeb9d6; }
+.hero-controls-bar .seg { min-width: 168px; }          /* both pills the same width, not text-sized */
+.hero-controls-bar .seg-opt { flex: 1 1 0; }           /* the two options inside each pill are equal */
