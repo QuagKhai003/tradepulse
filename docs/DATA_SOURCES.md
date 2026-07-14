@@ -19,11 +19,11 @@
 ### Wire-up status (tested live 2026-07-14 with the keys in etl/.env)
 - **Comtrade preview failover** — ✅ WIRED. `_get` falls over to `/public/v1/preview` on a keyed
   throttle/timeout (partial coverage, logged). The main resilience win.
-- **US Census quarterly** — ✅ WIRED. Monthly -> complete quarters; fresh to ~May 2026; overrides
-  Comtrade for the US via merge authority. Verified: US coffee 2026-Q1 imports $3.21B.
-- **Korea KCS** — ❌ BLOCKED. Endpoint returns HTTP 403 with our `KCS_SERVICE_KEY`: data.go.kr keys
-  are approved PER SERVICE, so the owner must apply for the `nitemtrade` API (#15100475) on their
-  data.go.kr account. Code path not built until the key clears.
+- **US Census quarterly** — ✅ WIRED + POPULATED. Monthly -> complete quarters; overrides Comtrade for
+  the US. Live in the DB: US coffee annual 2025 $12.63B (source=census), Q 2026-Q1 $3.21B.
+- **Korea KCS** — ✅ WIRED. `nitemtrade` service approved on data.go.kr; `KcsSource` (reporter 410),
+  quarterly + annual, **fresh to 2026-Q2**, overrides Comtrade for Korea via merge authority. Values
+  USD (verified). Query capped ~12 months -> chunked per calendar year. Live: KR coffee 2025 $1.70B.
 - **Japan e-Stat** — ⚠️ appId VERIFIED WORKING (RESULT status 0), but the easy trade table uses
   概況品 (gaikyō-hin) commodity codes, NOT HS. The HS-based table needs finding the right statsDataId
   + parsing the 9-digit (HS6 + 3-digit tail) codes. Deferred: real integration work, not a quick wire.
