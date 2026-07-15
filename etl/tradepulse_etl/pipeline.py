@@ -43,6 +43,12 @@ def get_source(kind: str, period: str | None = None, freqs: tuple[str, ...] = ("
     if kind == "kcs":
         from .settings import kcs_service_key
         return KcsSource(key=kcs_service_key(), freqs=freqs)   # Korea national primary (reporter 410)
+    if kind in ("thai", "thaimoc"):
+        from .sources.thaimoc import ThaiMocSource
+        return ThaiMocSource()          # fresh national primary for Thailand (reporter 764), pilots only
+    if kind == "india":
+        from .sources.india import IndiaSource
+        return IndiaSource()            # fresh national primary for India (reporter 699), pilots only
     if kind == "baci":
         return BaciSource()             # local bulk file (no API throttle); global history
     if kind in ("mirror", "comtrade-mirror"):

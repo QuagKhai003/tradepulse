@@ -6,8 +6,14 @@ test_alerts.py — deterministic test for batch 1.8 (the push engine). No clock/
 import unittest
 
 from tradepulse_etl.alerts import (
-    match_watches, rollup_locked_clicks, rule_change_alerts, signal_alerts,
+    match_event_watches, match_watches, regulatory_event_alerts, rollup_locked_clicks,
+    rule_change_alerts, signal_alerts,
 )
+
+
+def ev(source, eid, hs4, market, kind="rule_change"):
+    return {"source": source, "event_id": eid, "hs4": hs4, "market": market, "kind": kind,
+            "area": "SPS", "title": "t", "event_date": "2026-07-01", "source_url": "u"}
 
 
 def sig(reporter, band, period="2026-Q1", yoy=0.4):
@@ -66,6 +72,37 @@ class MatchAndRollupTest(unittest.TestCase):
         self.assertEqual(roll[0]["hs6"], "090240")            # most requests first
         self.assertEqual(roll[0]["requests"], 1)
         self.assertEqual(roll[0]["views"], 1)
+
+
+class RegulatoryAlertTest(unittest.TestCase):
+    CUR = [ev("wto-eping", "1", "0306", "kr"), ev("eu-rasff", "9", "0306", "eu", "rejection")]
+
+    def test_only_new_events_alert(self):
+        prev = {("wto-eping", "1", "0306")}                  # event 1 already seen
+        out = regulatory_event_alerts(prev, self.CUR)
+        self.assertEqual([a["source"] for a in out], ["eu-rasff"])   # only the new one (9)
+        self.assertEqual(out[0]["type"], "regulatory")
+
+    def test_first_load_skips_the_backlog(self):
+        self.assertEqual(regulatory_event_alerts(set(), self.CUR), [])   # empty prev -> no spam
+
+    def test_signal_watch_matched_by_family_and_market(self):
+        # a watch on shrimp (090111... no, 030617) + Korea (M49 410) gets the KR event, not the EU one.
+        alerts = regulatory_event_alerts({("x", "x", "x")}, self.CUR)   # non-empty prev -> both are "new"
+        watches = [{"kind": "signal", "hs6": "030617", "market": "410"}]
+        matched = match_event_watches(alerts, watches, {410: "kr", 97: "eu"})
+        self.assertEqual(len(matched), 1)
+        self.assertEqual([e["market"] for e in matched[0]["events"]], ["kr"])
+
+    def test_wrong_market_watch_gets_nothing(self):
+        alerts = regulatory_event_alerts({("x", "x", "x")}, self.CUR)
+        watches = [{"kind": "signal", "hs6": "030617", "market": "392"}]   # Japan — no JP event here
+        self.assertEqual(match_event_watches(alerts, watches, {392: "jp", 410: "kr", 97: "eu"}), [])
+
+    def test_rule_kind_watch_ignored(self):                  # only 'signal' watches take change-alerts
+        alerts = regulatory_event_alerts({("x", "x", "x")}, self.CUR)
+        watches = [{"kind": "rule", "hs6": "030617", "market": "410"}]
+        self.assertEqual(match_event_watches(alerts, watches, {410: "kr"}), [])
 
 
 if __name__ == "__main__":

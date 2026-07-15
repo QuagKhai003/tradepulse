@@ -15,8 +15,8 @@ from pathlib import Path
 
 from .alerts import rollup_locked_clicks, signal_alerts
 from .db import DEFAULT_DB, connect, count_trade_flows, fetch_flows, fetch_signals, upsert_signals
-from .export import (DEFAULT_SNAPSHOT, build_all, build_awards, build_cpv_match,
-                     build_sellers_web, build_snapshot, build_tenders, write_countries,
+from .export import (DEFAULT_SNAPSHOT, build_all, build_awards, build_cpv_match, build_events,
+                     build_forward, build_sellers_web, build_snapshot, build_tenders, write_countries,
                      write_json, write_snapshot, write_tenders)
 from .pipeline import get_sources, run_multi
 from .signals import compute_signals
@@ -144,6 +144,49 @@ def main() -> None:
             se = build_sellers_web(conn, hs)
             write_json(se, default_path.parent / f"sellers-{hs}.json")
             seller_n += len(se)
+
+        # REGULATORY CHANGES (ADR-0007): WTO ePing SPS/TBT -> the qualification tab (a SEPARATE lane,
+        # never merged into a signal). Pulled in the batch; a lazy --only build reads the stored DB.
+        from .config import MARKET_SLUG_BY_M49, RASFF_CAT, RASFF_LOOKBACK_DAYS, REGULATORY_HS
+        from .db import fetch_regulatory_event_keys, upsert_regulatory_events
+        events_pulled = 0
+        if do_pull:
+            from .sources.eping import EpingSource
+            from .sources.rasff import RasffSource
+            prev_ev_keys = fetch_regulatory_event_keys(conn)     # what was 'seen' BEFORE this pull
+            pulled_events = (EpingSource().pull(REGULATORY_HS, today.isoformat())
+                             + RasffSource().pull(RASFF_CAT, REGULATORY_HS, today.isoformat(), RASFF_LOOKBACK_DAYS))
+            events_pulled = upsert_regulatory_events(conn, pulled_events)
+            # CHANGE-ALERTS (owner: fire on the SIGNAL watch = country + product). New events only; the
+            # first-ever load is skipped (an initial import is a baseline, not a change).
+            from .alerts import match_event_watches, regulatory_event_alerts
+            new_ev = regulatory_event_alerts(prev_ev_keys, pulled_events)
+            if new_ev:
+                _append_alerts(new_ev, now_iso)
+                matched = match_event_watches(new_ev, _load_active_watches(), MARKET_SLUG_BY_M49)
+                print(f"[tradepulse] change-alerts: {len(new_ev)} new events -> "
+                      f"{len(matched)} watched signal(s) notified")
+        event_n = 0
+        for hs in ([only] if only else sorted(REGULATORY_HS)):
+            ev = build_events(conn, hs)                  # [] for products with no coverage (honest)
+            write_json(ev, default_path.parent / f"events-{hs}.json")
+            event_n += len(ev)
+        print(f"[tradepulse] regulatory events (ePing): {events_pulled} pulled, {event_n} product-rows")
+
+        # FORWARD lane (ADR-0007): IMF world PRICE trend. Pulled in the batch; a lazy --only build reads
+        # the stored DB. Only products with an honest direct IMF series get a line (null otherwise).
+        from .config import PRICE_HS
+        from .db import upsert_commodity_prices
+        if do_pull:
+            from .sources.imf_pcps import ImfPcpsSource
+            upsert_commodity_prices(conn, ImfPcpsSource().pull(PRICE_HS, today.isoformat()))
+        fwd_n = 0
+        for hs in ([only] if only else sorted(PRICE_HS)):
+            fwd = build_forward(conn, hs)                # None -> null file -> the UI shows no price line
+            write_json(fwd, default_path.parent / f"forward-{hs}.json")
+            fwd_n += 1 if fwd else 0
+        print(f"[tradepulse] forward price (IMF PCPS): {fwd_n} products with a trend line")
+
         # TOTAL sellers = every registry seller, deduped by (org, country). Skipped on a lazy build.
         allrows = [] if only else fetch_registry_sellers(conn, list(SELLER_SECTIONS))
         seen, s_all = set(), []
@@ -168,6 +211,27 @@ def main() -> None:
               f"{'ONLY ' + only if only else 'full'}")
 
     _print_rollup()
+
+
+def _load_active_watches() -> list[dict]:
+    """Active watches = the keys whose LAST action was 'watch' (data/watches.ndjson is append-only:
+    each toggle logs watch/unwatch). Used to route change-alerts to who asked for them."""
+    log = DATA_DIR / "watches.ndjson"
+    if not log.exists():
+        return []
+    state: dict[str, dict] = {}
+    for line in log.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        try:
+            r = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if r.get("action") == "unwatch":
+            state.pop(r.get("key"), None)
+        else:
+            state[r.get("key")] = r
+    return list(state.values())
 
 
 def _append_alerts(alerts: list[dict], now_iso: str) -> None:

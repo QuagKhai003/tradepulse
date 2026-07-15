@@ -108,6 +108,100 @@ TENDER_LOOKBACK_DAYS = 365
 # the contract closed — that is the point of the sellers list.
 AWARD_LOOKBACK_DAYS = 730               # how far back to ask TED for still-ACTIVE notices
 
+# --- Regulatory-event lane (ADR-0007): the qualification tab / change-alerts ---------------------
+# A SEPARATE lane from trade_flows (never merged). Pilot products -> the search terms ePing files them
+# under (ePing has no HS<->term index; its own hsCodes[] tag confirms a match when present). HS4 keys
+# are keys in PRODUCTS. Kept to the pilots first (wood pellets/wood, coffee, tea, rice, shrimp, cashew).
+REGULATORY_HS = {
+    "440131": ["wood pellet", "wood fuel"],
+    "4401":   ["wood pellet", "wood fuel", "fuel wood"],
+    "4407":   ["sawnwood", "sawn wood", "lumber", "timber"],
+    "0901":   ["coffee"],
+    "090111": ["coffee"],
+    "0902":   ["tea"],
+    "090240": ["tea"],
+    "1006":   ["rice"],
+    "100630": ["rice"],
+    "0306":   ["shrimp", "prawn"],
+    "030617": ["shrimp", "prawn"],
+    "0801":   ["cashew"],
+    "080131": ["cashew"],
+}
+REGULATORY_LOOKBACK_DAYS = 1095      # keep rule-changes from the last ~3y (requirements age slowly)
+
+# EU RASFF border-REJECTIONS -> the qualification tab (a 2nd event source, kind='rejection'). A rejected
+# shipment at the EU border is a live warning to a seller ("EU found antibiotic in shrimp from VN"). Maps
+# a product to its RASFF product-CATEGORY id; because a category is broad (18434 = all cereals), a row is
+# kept only if the notification SUBJECT also contains one of the product's REGULATORY_HS keywords. Food/
+# feed only -> no wood. Vietnam-origin rejections are the sharpest signal (surfaced in the detail line).
+RASFF_CAT = {
+    "0901": 18435, "090111": 18435, "090121": 18435,      # cocoa/coffee/tea
+    "0902": 18435, "090240": 18435, "090210": 18435,
+    "1006": 18434, "100630": 18434, "100640": 18434,      # cereals and bakery
+    "0306": 18438, "030617": 18438,                        # crustaceans
+    "0801": 18427, "080131": 18427, "080132": 18427,      # nuts, nut products and seeds
+}
+RASFF_LOOKBACK_DAYS = 540            # a border rejection is a timely warning -> ~18-month window
+
+# ePing notifyingMember (a country NAME) -> our market slug, for the qualification tab's per-market
+# view. EU members all fold to 'eu' (the pilot treats the EU as one market). Names not here keep their
+# own name and slug=None (still shown on the product-wide qualification view, just not pinned to a pilot).
+_EU27 = {"Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Czechia", "Denmark",
+         "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia",
+         "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovak Republic",
+         "Slovakia", "Slovenia", "Spain", "Sweden", "European Union"}
+MARKET_BY_ENAME = {**{n: "eu" for n in _EU27},
+                   "Japan": "jp",
+                   "Korea, Republic of": "kr", "Republic of Korea": "kr", "Korea": "kr",
+                   "United States of America": "us", "United States": "us",
+                   "United Kingdom": "gb", "United Kingdom of Great Britain and Northern Ireland": "gb"}
+
+# --- Forward lane (ADR-0007): world commodity PRICE trend (IMF PCPS) -----------------------------
+# A SEPARATE lane from customs value (different unit — a $/unit world price, not a trade total), shown
+# BESIDE the flow chart as a direction signal ("price of this commodity is rising -> demand firm"). Not
+# a forecast of volume; a price is deterministic + published monthly + fresher than customs stats. Only
+# products with a HONEST direct IMF series get a line — no misleading proxies (no wood-pellet or cashew
+# price exists, so those show none). Coffee uses ROBUSTA (Vietnam is the world's #1 robusta exporter).
+PRICE_HS = {
+    "0901": "PCOFFROB", "090111": "PCOFFROB", "090121": "PCOFFROB",
+    "0902": "PTEA", "090240": "PTEA", "090210": "PTEA",
+    "1006": "PRICENPQ", "100630": "PRICENPQ", "100640": "PRICENPQ",
+    "0306": "PSHRI", "030617": "PSHRI",
+    "4407": "PSAWMAL",
+}
+PRICE_LABEL = {                          # human name of the IMF series (shown so the proxy is explicit)
+    "PCOFFROB": {"en": "Coffee (robusta)", "vi": "Cà phê (robusta)"},
+    "PTEA":     {"en": "Tea", "vi": "Trà"},
+    "PRICENPQ": {"en": "Rice (Thai 5%)", "vi": "Gạo (Thái 5%)"},
+    "PSHRI":    {"en": "Shrimp", "vi": "Tôm"},
+    "PSAWMAL":  {"en": "Sawnwood (Malaysia)", "vi": "Gỗ xẻ (Malaysia)"},
+}
+PRICE_MONTHS = 26                        # months of history to pull (enough for a 24-mo trend + YoY)
+
+# M49 country code -> market slug, for matching a SIGNAL watch (country + product) to the regulatory
+# events of that market (change-alerts). The EU is the aggregate (97) AND each member state.
+_EU27_M49 = [40, 56, 100, 191, 196, 203, 208, 233, 246, 250, 276, 300, 348, 372, 380,
+             428, 440, 442, 470, 528, 616, 620, 642, 703, 705, 724, 752]
+MARKET_SLUG_BY_M49 = {m["reporter"]: slug for slug, m in MARKETS.items()}
+MARKET_SLUG_BY_M49.update({c: "eu" for c in _EU27_M49})
+
+# --- Fresh national ASIA primary: Thailand MOC (keyless HS×partner JSON, fresh to ~1 month) ----------
+# Refreshes THAILAND's own map cell (reporter 764), like Census does for the US — the app sums the
+# per-partner rows into a World total. Scoped to the pilot products (a per-product API over all 1,240
+# would be tens of thousands of calls). NOT used to rebuild Vietnam's world total: Thailand is one buyer,
+# so that alone would badly understate VN — a wrong number we will not show (Golden Rule).
+THAI_HS = ["0901", "0902", "1006", "0306", "0801", "4407", "440131"]
+THAILAND_M49 = 764
+
+# India DGCI&S TRADESTAT (keyless, CSRF-token + session — no login). One POST returns India's whole
+# HS4 export (or import) table for a fiscal year in US$ million. Refreshes INDIA's own cell (reporter
+# 699). India's FY runs Apr–Mar, so FY2024-25 is labelled period '2024' (the FY start) — a fiscal year,
+# not calendar; it still merges as India's own authority over Comtrade. Same non-use as Thailand: not
+# for rebuilding VN's world total. Pilots only (the table is fetched whole, then filtered).
+INDIA_HS = ["0901", "0902", "1006", "0306", "0801", "4407"]
+INDIA_M49 = 699
+INDIA_FY = "2024"      # EidbYear param -> FY2024-25 (latest reliable); labelled period '2024'
+
 PARTNER_WORLD = 0      # aggregate of all partners
 PARTNER_VIETNAM = 704  # for VN import-share on drill-down (plan §7.3)
 

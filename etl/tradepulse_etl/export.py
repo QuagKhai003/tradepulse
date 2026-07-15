@@ -152,6 +152,56 @@ def build_awards(conn, hs6: str) -> list[dict]:
     return out
 
 
+def build_events(conn, hs: str) -> list[dict]:
+    """REGULATORY CHANGES for a product (ADR-0007): the qualification-tab EVENTS lane. Public import-
+    rule changes (WTO ePing SPS/TBT) touching this product's HS4 family, newest first. A SEPARATE lane
+    — an event, never a number, never merged into a signal. Deduped by notice id (an HS4 heading and
+    its children can carry the same notice). Golden Rule: public act + official source URL only, no
+    party/contact. `match` = 'hs' (structured HS tag confirmed) vs 'keyword' (freetext) so the UI ranks."""
+    from .db import fetch_regulatory_events
+    by: dict[str, dict] = {}
+    for r in fetch_regulatory_events(conn, hs):
+        by.setdefault(r["event_id"], {
+            "id": r["event_id"], "source": r["source"], "kind": r["kind"], "area": r["area"],
+            "market": r["market"], "market_name": r["market_name"],
+            "date": r["event_date"], "deadline": r["deadline"],
+            "title": r["title"], "detail": r["detail"], "match": r["match_kind"],
+            "url": r["source_url"], "verified": r["verified_date"]})
+    out = list(by.values())
+    out.sort(key=lambda e: e["date"] or "", reverse=True)     # newest first; undated last
+    return out
+
+
+def build_forward(conn, hs: str) -> dict | None:
+    """FORWARD lane (ADR-0007): the product's world PRICE trend from IMF PCPS. Returns latest level, the
+    year-on-year % move + a direction cue, and a ~24-month series for a sparkline — or None when there
+    is no honest price series for this product (wood pellets, cashew: no direct IMF series -> no line).
+    A SEPARATE lane: a $/unit world price, never merged into the customs total (different measure)."""
+    from .db import fetch_commodity_prices
+    rows = fetch_commodity_prices(conn, hs)
+    if not rows:
+        return None
+    ind = rows[-1]["indicator"]
+    series = [{"period": r["period"], "value": r["value"]} for r in rows if r["value"] is not None]
+    if not series:
+        return None
+    latest = series[-1]
+    by_period = {s["period"]: s["value"] for s in series}
+    # YoY: same month a year earlier (exact match only — never interpolate a price we cannot stand behind).
+    py, pm = int(latest["period"][:4]) - 1, latest["period"][5:7]
+    prev = by_period.get(f"{py}-{pm}")
+    yoy = round((latest["value"] - prev) / prev * 100, 1) if prev else None
+    direction = None if yoy is None else ("up" if yoy > 2 else "down" if yoy < -2 else "flat")
+    label = config.PRICE_LABEL.get(ind, {})
+    return {"hs": hs, "source": "imf-pcps", "indicator": ind,
+            "label_en": label.get("en", ind), "label_vi": label.get("vi", ind),
+            "latest_period": latest["period"], "latest_value": latest["value"],
+            "yoy_pct": yoy, "direction": direction,
+            "series": series[-24:],
+            "url": "https://www.imf.org/en/Research/commodity-prices",
+            "verified": rows[-1]["verified_date"]}
+
+
 def build_all(conn, today: str) -> tuple[list, list, list]:
     """'All products' (HS TOTAL) is not a good — nothing tenders for it — but the ANSWER a user wants
     from it is real: everything, across every product. So TOTAL is a ROLLUP, not an empty page.

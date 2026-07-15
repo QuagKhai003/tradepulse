@@ -113,6 +113,45 @@ CREATE TABLE IF NOT EXISTS registry_sellers (
 );
 
 CREATE INDEX IF NOT EXISTS ix_sellers_section ON registry_sellers (section);
+
+--- REGULATORY EVENTS = public acts that change a market's qualification requirements (ADR-0007):
+--- an import-rule change (WTO ePing SPS/TBT) or a border rejection (EU RASFF). Feeds the Layer-3
+--- qualification tab + change-alerts. A SEPARATE lane — never merged into trade_flows. One row per
+--- (source, event_id, hs4). Golden Rule: public act + official source URL only, never a party/contact.
+CREATE TABLE IF NOT EXISTS regulatory_events (
+    source          TEXT    NOT NULL,   -- 'wto-eping' | 'eu-rasff' | ...
+    event_id        TEXT    NOT NULL,   -- the source's notification/notice id
+    hs4             TEXT    NOT NULL,   -- product this event maps to (HS4; a product key in PRODUCTS)
+    market          TEXT,               -- slug of the notifying/deciding market (jp|kr|eu|us|gb|<iso2>)
+    market_name     TEXT,               -- human name of that market
+    event_date      TEXT,               -- distribution/decision date (ISO)
+    deadline        TEXT,               -- comment deadline (ePing) — forward-looking; nullable
+    kind            TEXT    NOT NULL,   -- 'rule_change' (TBT/SPS) | 'rejection' (RASFF)
+    area            TEXT,               -- 'TBT' | 'SPS' | hazard category
+    title           TEXT,
+    detail          TEXT,               -- measure / hazard / reason (plain text)
+    match_kind      TEXT,               -- 'hs' (structured HS tag) | 'keyword' (freetext) — confidence
+    source_url      TEXT    NOT NULL,
+    verified_date   TEXT    NOT NULL,
+    PRIMARY KEY (source, event_id, hs4)
+);
+
+CREATE INDEX IF NOT EXISTS ix_regevents_hs4 ON regulatory_events (hs4);
+
+--- COMMODITY PRICES = the FORWARD lane's world price trend (ADR-0007), from IMF PCPS. A SEPARATE lane,
+--- never merged into trade_flows (a $/unit world price is a different measure than a customs total).
+--- One row per (source, hs4, period). Only products with an honest direct IMF series are stored.
+CREATE TABLE IF NOT EXISTS commodity_prices (
+    source          TEXT    NOT NULL,   -- 'imf-pcps'
+    hs4             TEXT    NOT NULL,   -- product key (the series is world-level, shown on every country)
+    indicator       TEXT,               -- IMF series code (e.g. PCOFFROB) — makes the proxy explicit
+    period          TEXT    NOT NULL,   -- 'YYYY-MM'
+    value           REAL,               -- world USD price level (for the trend shape + YoY)
+    verified_date   TEXT    NOT NULL,
+    PRIMARY KEY (source, hs4, period)
+);
+
+CREATE INDEX IF NOT EXISTS ix_prices_hs4 ON commodity_prices (hs4);
 """
 
 
@@ -201,6 +240,61 @@ def fetch_registry_sellers(conn: sqlite3.Connection, sections: list[str]) -> lis
     q = ",".join("?" * len(sections))
     sql = f"SELECT * FROM registry_sellers WHERE section IN ({q}) ORDER BY seller"
     return [dict(r) for r in conn.execute(sql, sections).fetchall()]
+
+
+def upsert_regulatory_events(conn: sqlite3.Connection, rows: list[dict]) -> int:
+    """Idempotent on (source, event_id, hs4). Re-pulling refreshes dates/market/detail."""
+    sql = """
+        INSERT INTO regulatory_events
+            (source, event_id, hs4, market, market_name, event_date, deadline, kind, area,
+             title, detail, match_kind, source_url, verified_date)
+        VALUES
+            (:source, :event_id, :hs4, :market, :market_name, :event_date, :deadline, :kind, :area,
+             :title, :detail, :match_kind, :source_url, :verified_date)
+        ON CONFLICT(source, event_id, hs4) DO UPDATE SET
+            market=excluded.market, market_name=excluded.market_name, event_date=excluded.event_date,
+            deadline=excluded.deadline, kind=excluded.kind, area=excluded.area, title=excluded.title,
+            detail=excluded.detail, match_kind=excluded.match_kind, source_url=excluded.source_url,
+            verified_date=excluded.verified_date
+    """
+    with conn:
+        conn.executemany(sql, rows)
+    return len(rows)
+
+
+def fetch_regulatory_event_keys(conn: sqlite3.Connection) -> set:
+    """All (source, event_id, hs4) already stored — the 'seen' set for firing change-alerts on new ones."""
+    return {(r[0], r[1], r[2])
+            for r in conn.execute("SELECT source, event_id, hs4 FROM regulatory_events")}
+
+
+def fetch_regulatory_events(conn: sqlite3.Connection, hs: str) -> list[dict]:
+    """Events for a product, newest first. Matches the whole HS4 FAMILY (the heading + its children),
+    so opening coffee '0901' or '090111' both surface the product's changes. Empty = honest 'no changes'."""
+    family = (hs or "")[:4]
+    sql = ("SELECT * FROM regulatory_events WHERE hs4 LIKE ? "
+           "ORDER BY (event_date IS NULL), event_date DESC")
+    return [dict(r) for r in conn.execute(sql, (family + "%",)).fetchall()]
+
+
+def upsert_commodity_prices(conn: sqlite3.Connection, rows: list[dict]) -> int:
+    """Idempotent on (source, hs4, period). Re-pulling refreshes the value + verified_date."""
+    sql = """
+        INSERT INTO commodity_prices (source, hs4, indicator, period, value, verified_date)
+        VALUES (:source, :hs4, :indicator, :period, :value, :verified_date)
+        ON CONFLICT(source, hs4, period) DO UPDATE SET
+            indicator=excluded.indicator, value=excluded.value, verified_date=excluded.verified_date
+    """
+    with conn:
+        conn.executemany(sql, rows)
+    return len(rows)
+
+
+def fetch_commodity_prices(conn: sqlite3.Connection, hs: str) -> list[dict]:
+    """Price series for a product, oldest->newest. Matches the exact HS key (the map is per-key, so an
+    HS4 heading and its children each carry their own copy). Empty = no honest price series."""
+    sql = "SELECT * FROM commodity_prices WHERE hs4 = ? ORDER BY period"
+    return [dict(r) for r in conn.execute(sql, (hs,)).fetchall()]
 
 
 def fetch_flows(conn: sqlite3.Connection, flow: str | None = None,
