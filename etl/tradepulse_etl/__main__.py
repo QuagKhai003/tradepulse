@@ -165,6 +165,11 @@ def main() -> None:
             kr_since = (today - timedelta(days=25)).strftime("%Y%m%d")
             upsert_tenders(conn, KonepsSource(kcs_service_key(), max_pages=15).pull(
                 KONEPS_KW, kr_since, today.strftime("%Y%m%d"), now_iso))
+            # Ukraine (ProZorro): list-then-fetch, ДК021 = CPV codes -> reuses the CPV crosswalk. Tagged UKR.
+            from .sources.prozorro import ProzorroSource
+            ua_tn, ua_aw = ProzorroSource(max_details=400).pull(TENDER_CPV, us_since, now_iso)
+            upsert_tenders(conn, ua_tn)
+            upsert_awards(conn, ua_aw)
         # SELLERS = real exporters from approval registries (ADR-0006), NOT award winners. Pulled from
         # DG SANTE (keyless; animal-origin -> seafood + honey among our products). A won contract is a
         # PAST ORDER, so sellers must come from a different source or the two tabs are the same data.
