@@ -753,10 +753,16 @@ a.lockmask:hover { color: var(--accent); }
 .cpage {
   min-height: 100vh;
   --muted: #57657f;                                    /* a touch darker -> readable secondary on white */
-  background: transparent;                             /* the space lives on the BODY, not this column */
+  /* Paint the space on the COLUMN itself too — not only body:has() below. The light section headings
+     (.csec-h, .csum h1) are children of this element, so contrast tooling (and any context that can't
+     resolve the body :has() layer or the gradient) must find the real dark background HERE, or it
+     falls back to white and mis-reports 1.1:1. background-attachment:fixed aligns it pixel-for-pixel
+     with the body-gutter gradient, so there's still no seam. */
+  background: linear-gradient(180deg, #2b3d63 0%, #202f52 58%, #1b2a49 100%);
+  background-attachment: fixed;
 }
 /* the soft dark-blue space is the PAGE's own base layer — full viewport, edge to edge, fixed under
-   everything. Putting it here (not on the centered column) removes the seam that read as a pasted page. */
+   everything. Also on the body so the gutters beside the centered column are filled seamlessly. */
 html:has(.cpage) { background: #2b3d63; overscroll-behavior: none; }   /* match gradient TOP; no bounce */
 body:has(.cpage) {
   background: linear-gradient(180deg, #2b3d63 0%, #202f52 58%, #1b2a49 100%);
@@ -867,7 +873,7 @@ body:has(.cpage) {
 .psd-up { color: #15803d; }
 .psd-down { color: #b91c1c; }
 .psd-flat { color: var(--muted); }
-.psd-foot { margin: 10px 0 0; }
+.psd-foot { margin: 10px 0 0; max-width: 70ch; }   /* source note wraps to a readable measure, not a full-width 190-char line */
 
 /* MARKET FEED: flat detail column with a DIVIDER line between it and the left feed (no grey inner box) */
 .cpage .mfeed-detail { background: none; border: none; border-radius: 0; border-left: 1px solid var(--line-strong);

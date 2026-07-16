@@ -6,8 +6,8 @@
  * @limits   Server-only (node:fs). Missing file -> [] (product simply has no tender coverage).
  * @affects  Consumed by country/[code]/page.js -> MarketFeed.
  */
-import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { readJsonCached } from "./jsoncache.js";
 
 // TED sits behind AWS WAF (bots get a 202 challenge; a real browser passes) + blocks framing, so we
 // can't proxy/embed the PDF. But the browser CAN open it: the .../pdf URL renders inline in the browser's
@@ -21,7 +21,7 @@ export async function loadTenders(hs) {
   if (!hs) return [];
   const p = path.join(process.cwd(), "public", "data", `tenders-${hs}.json`);
   try {
-    const list = JSON.parse(await readFile(p, "utf-8"));
+    const list = await readJsonCached(p);
     return Array.isArray(list) ? tedFix(list) : [];
   } catch {
     return [];
@@ -43,7 +43,7 @@ async function loadList(hs, kind) {
   if (!hs) return [];
   const p = path.join(process.cwd(), "public", "data", `${kind}-${hs}.json`);
   try {
-    const list = JSON.parse(await readFile(p, "utf-8"));
+    const list = await readJsonCached(p);
     return Array.isArray(list) ? tedFix(list) : [];
   } catch {
     return [];
@@ -57,7 +57,7 @@ export async function loadCpvMatch(hs) {
   if (!hs) return null;
   const p = path.join(process.cwd(), "public", "data", "cpv-match.json");
   try {
-    const map = JSON.parse(await readFile(p, "utf-8"));
+    const map = await readJsonCached(p);
     return map[hs] || null;
   } catch {
     return null;

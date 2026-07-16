@@ -5,14 +5,14 @@
  * @limits   Server-only (fs).
  * @affects  Consumed by app/country/[code]/page.js.
  */
-import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { readJsonCached } from "./jsoncache.js";
 
 export async function loadSourcing(hs) {
   if (!hs) return null;
   const p = path.join(process.cwd(), "public", "data", `sourcing-${hs}.json`);
   try {
-    return JSON.parse(await readFile(p, "utf-8"));
+    return await readJsonCached(p);
   } catch {
     return null;
   }

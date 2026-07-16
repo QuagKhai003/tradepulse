@@ -7,8 +7,8 @@
  * @limits   Server-only (node:fs). Missing file -> [] (product has no regulatory coverage yet).
  * @affects  Consumed by QualPanel on country/[code]/page.js.
  */
-import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { readJsonCached } from "./jsoncache.js";
 
 // M49 country code -> our pilot market slug (mirrors config.MARKETS on the ETL side). The EU is both
 // the aggregate (97) and each member state, so a member's own country page also resolves to 'eu' — its
@@ -22,7 +22,7 @@ export async function loadEvents(hs) {
   if (!hs) return [];
   const p = path.join(process.cwd(), "public", "data", `events-${hs}.json`);
   try {
-    const list = JSON.parse(await readFile(p, "utf-8"));
+    const list = await readJsonCached(p);
     return Array.isArray(list) ? list : [];
   } catch {
     return [];

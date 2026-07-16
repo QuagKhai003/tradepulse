@@ -8,16 +8,17 @@
  * @limits   Server-only (node:fs). Returns null when the file is missing (page tells the user to run ETL).
  * @affects  Consumed by app/page.js + country/[code]. Contract in docs/DATA_MODEL.md.
  */
-import { readFile, access } from "node:fs/promises";
+import { access } from "node:fs/promises";
 import path from "node:path";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+import { readJsonCached } from "./jsoncache.js";
 
 const dataPath = (f) => path.join(process.cwd(), "public", "data", f);
 
 async function readJson(file) {
   try {
-    return JSON.parse(await readFile(dataPath(file), "utf-8"));
+    return await readJsonCached(dataPath(file));
   } catch {
     return null;
   }
@@ -77,13 +78,17 @@ export async function loadSnapshot(hs) {
   const names = (await readJson("countries.json")) || {};
   const nm = (code) => names[String(code)] || {};
 
-  snap.countries = (snap.countries || []).map((c) => ({
-    code: c.c,
-    name_en: nm(c.c).name_en ?? String(c.c),
-    name_vi: nm(c.c).name_vi ?? String(c.c),
-    exp: hydrateSlot(c.e, snap.periods),
-    imp: hydrateSlot(c.i, snap.periods),
-  }));
-  snap.feed = [];   // the feed is derived from countries at the chosen grain (GlobalFeed)
-  return snap;
+  // `snap` is the SHARED cached parse (jsoncache) — build a NEW object rather than mutating it, or the
+  // next read would get already-hydrated countries and re-hydrate garbage.
+  return {
+    ...snap,
+    countries: (snap.countries || []).map((c) => ({
+      code: c.c,
+      name_en: nm(c.c).name_en ?? String(c.c),
+      name_vi: nm(c.c).name_vi ?? String(c.c),
+      exp: hydrateSlot(c.e, snap.periods),
+      imp: hydrateSlot(c.i, snap.periods),
+    })),
+    feed: [],   // the feed is derived from countries at the chosen grain (GlobalFeed)
+  };
 }
