@@ -51,7 +51,7 @@ time you regenerate data (`--size-only` skips unchanged files, so repeat syncs a
 
 ## Step 3 — Deploy on Vercel
 
-1. Vercel → **Add New Project** → import the `QuagKhai003/TradePulse` GitHub repo.
+1. Vercel → **Add New Project** → import the `QuagKhai003/tradepulse` GitHub repo.
 2. **Root Directory:** set to `web` (the repo is a monorepo; the app lives in `web/`).
 3. **Environment Variables:** add `DATA_BASE_URL` = your bucket's public URL (e.g. `https://pub-xxxxxxxx.r2.dev`, no trailing slash).
 4. Deploy. Framework preset (Next.js), build command, and output are auto-detected.
