@@ -6,14 +6,12 @@
  * @limits   Server-only (node:fs). Missing/null file -> null (the UI simply shows no price line).
  * @affects  Consumed by country/[code]/page.js -> PricePanel.
  */
-import path from "node:path";
-import { readJsonCached } from "./jsoncache.js";
+import { dataRef, readJsonCached } from "./jsoncache.js";
 
 export async function loadForward(hs) {
   if (!hs) return null;
-  const p = path.join(process.cwd(), "public", "data", `forward-${hs}.json`);
   try {
-    const d = await readJsonCached(p);
+    const d = await readJsonCached(dataRef(`forward-${hs}.json`));
     return d && d.series && d.series.length ? d : null;
   } catch {
     return null;

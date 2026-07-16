@@ -12,13 +12,11 @@ import { access, stat } from "node:fs/promises";
 import path from "node:path";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
-import { readJsonCached } from "./jsoncache.js";
-
-const dataPath = (f) => path.join(process.cwd(), "public", "data", f);
+import { IS_REMOTE_DATA, dataRef, readJsonCached } from "./jsoncache.js";
 
 async function readJson(file) {
   try {
-    return await readJsonCached(dataPath(file));
+    return await readJsonCached(dataRef(file));
   } catch {
     return null;
   }
@@ -38,9 +36,13 @@ async function fileExists(p) {
 }
 
 async function ensureProduct(hs) {
+  // REMOTE data (serverless / Vercel): all products are pre-built on object storage — there is no local
+  // Python, and the filesystem is read-only, so never attempt a lazy build. A missing product just 404s
+  // on fetch and the page shows its no-data state.
+  if (IS_REMOTE_DATA) return;
   // The landing default + the TOTAL rollup are batch artifacts, not lazily built per product.
   if (!hs || hs === "TOTAL") return;
-  if (await fileExists(dataPath(`snapshot-${hs}.json`))) return;   // cached -> serve instantly
+  if (await fileExists(dataRef(`snapshot-${hs}.json`))) return;   // cached -> serve instantly
   if (!building.has(hs)) {
     const job = pexec(PY, ["-m", "tradepulse_etl", "--only", hs, "--export-only"],
                       { cwd: ETL_DIR, timeout: 90_000 })
@@ -73,18 +75,23 @@ function hydrateSlot(s, periods = {}) {
 // Hydration expands the slim 93KB snapshot into a ~400KB shape (241 countries, history + by_freq),
 // and BOTH the landing (serializes it into the client Flight payload) and every country page call this.
 // Redoing that per request was the biggest per-nav cost, so cache the HYDRATED result keyed by the
-// snapshot file's mtime — an ETL rewrite bumps mtime and re-hydrates. Returns a SHARED object; callers
-// read it (page -> HeroClient serialize, country -> countries.find), never mutate it.
-const hydratedCache = new Map();   // snapshot filename -> { mtimeMs, snap }
+// snapshot file's cache key. LOCAL: the file mtime (an ETL rewrite bumps it → re-hydrate). REMOTE:
+// the filename (data is immutable per deploy). Returns a SHARED object; callers read it (page ->
+// HeroClient serialize, country -> countries.find), never mutate it.
+const hydratedCache = new Map();   // snapshot filename -> { key, snap }
 
 // hs -> per-product snapshot (snapshot-<hs>.json); no hs -> the landing default (snapshot.json).
 export async function loadSnapshot(hs) {
   await ensureProduct(hs);   // build this product's files on first open (from the stored DB), then read
   const file = hs ? `snapshot-${hs}.json` : "snapshot.json";
-  let mtimeMs;
-  try { mtimeMs = (await stat(dataPath(file))).mtimeMs; } catch { return null; }
+  let key;
+  if (IS_REMOTE_DATA) {
+    key = file;                                                     // immutable per deploy
+  } else {
+    try { key = (await stat(dataRef(file))).mtimeMs; } catch { return null; }
+  }
   const hit = hydratedCache.get(file);
-  if (hit && hit.mtimeMs === mtimeMs) return hit.snap;
+  if (hit && hit.key === key) return hit.snap;
 
   const snap = await readJson(file);
   if (!snap) return null;
@@ -104,6 +111,6 @@ export async function loadSnapshot(hs) {
     })),
     feed: [],   // the feed is derived from countries at the chosen grain (GlobalFeed)
   };
-  hydratedCache.set(file, { mtimeMs, snap: out });
+  hydratedCache.set(file, { key, snap: out });
   return out;
 }

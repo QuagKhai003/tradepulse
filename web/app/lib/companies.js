@@ -6,16 +6,14 @@
  * @limits   Server-only (fs). Presentation gating (free vs paid) is applied in the page.
  * @affects  Consumed by app/profiles/page.js.
  */
-import { readFile } from "node:fs/promises";
-import path from "node:path";
+import { contentRef, readJsonCached } from "./jsoncache.js";
 
 // Free tier shows this many full profiles; the rest are blurred until upgrade (plan §11).
 export const FREE_PROFILE_LIMIT = 3;
 
 export async function loadCompanies(hs6 = "440131") {
-  const p = path.join(process.cwd(), "..", "content", "companies", "pellets.json");
   try {
-    const data = JSON.parse(await readFile(p, "utf-8"));
+    const data = await readJsonCached(contentRef("companies/pellets.json"));
     return data.hs6 === hs6 ? data : null;
   } catch {
     return null;

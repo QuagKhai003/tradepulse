@@ -9,8 +9,7 @@
  *           portal) or the product has no baseline category — an honest omission, never a fake list.
  * @affects  Consumed by QualPanel. Category resolver is tested implicitly via SSR.
  */
-import { readFile } from "node:fs/promises";
-import path from "node:path";
+import { contentRef, readJsonCached } from "./jsoncache.js";
 
 // HS chapter -> the baseline categories that decide which items apply. Wood is a plant product (phyto);
 // seafood is animal-origin food (health cert). Kept to the pilots + near neighbours; broaden later.
@@ -30,8 +29,7 @@ export async function loadFoundation(hs, slug) {
   if (!cats.length) return null;
   let data;
   try {
-    data = JSON.parse(await readFile(
-      path.join(process.cwd(), "..", "content", "requirements", "foundation.json"), "utf-8"));
+    data = await readJsonCached(contentRef("requirements/foundation.json"));
   } catch {
     return null;
   }

@@ -6,19 +6,14 @@
  * @limits   Server-only (fs). Free/paid gating is applied in the page, not here.
  * @affects  Consumed by app/requirements/[market]/page.js + the index.
  */
-import { readFile } from "node:fs/promises";
-import path from "node:path";
+import { contentRef, readJsonCached } from "./jsoncache.js";
 
 export const REQ_MARKETS = ["jp", "kr", "eu"];
-
-function reqPath(market) {
-  return path.join(process.cwd(), "..", "content", "requirements", `pellets-${market}.json`);
-}
 
 export async function loadRequirement(market) {
   if (!REQ_MARKETS.includes(market)) return null;
   try {
-    const data = JSON.parse(await readFile(reqPath(market), "utf-8"));
+    const data = await readJsonCached(contentRef(`requirements/pellets-${market}.json`));
     // Golden Rule / plan §8: an item without an official source + verified date does not ship.
     const kept = (data.requirements || []).filter((r) => r.source_url && r.verified_date);
     const dropped = (data.requirements || []).length - kept.length;

@@ -6,8 +6,7 @@
  * @limits   Server-only (node:fs). Missing file -> [] (product simply has no tender coverage).
  * @affects  Consumed by country/[code]/page.js -> MarketFeed.
  */
-import path from "node:path";
-import { readJsonCached } from "./jsoncache.js";
+import { dataRef, readJsonCached } from "./jsoncache.js";
 
 // TED sits behind AWS WAF (bots get a 202 challenge; a real browser passes) + blocks framing, so we
 // can't proxy/embed the PDF. But the browser CAN open it: the .../pdf URL renders inline in the browser's
@@ -19,9 +18,8 @@ function tedFix(list) {
 
 export async function loadTenders(hs) {
   if (!hs) return [];
-  const p = path.join(process.cwd(), "public", "data", `tenders-${hs}.json`);
   try {
-    const list = await readJsonCached(p);
+    const list = await readJsonCached(dataRef(`tenders-${hs}.json`));
     return Array.isArray(list) ? tedFix(list) : [];
   } catch {
     return [];
@@ -41,9 +39,8 @@ export async function loadSellers(hs) {
 
 async function loadList(hs, kind) {
   if (!hs) return [];
-  const p = path.join(process.cwd(), "public", "data", `${kind}-${hs}.json`);
   try {
-    const list = await readJsonCached(p);
+    const list = await readJsonCached(dataRef(`${kind}-${hs}.json`));
     return Array.isArray(list) ? tedFix(list) : [];
   } catch {
     return [];
@@ -55,9 +52,8 @@ async function loadList(hs, kind) {
 // vegetables") — the UI says so, because a related-category tender is not the same as your product.
 export async function loadCpvMatch(hs) {
   if (!hs) return null;
-  const p = path.join(process.cwd(), "public", "data", "cpv-match.json");
   try {
-    const map = await readJsonCached(p);
+    const map = await readJsonCached(dataRef("cpv-match.json"));
     return map[hs] || null;
   } catch {
     return null;
