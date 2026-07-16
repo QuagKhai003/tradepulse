@@ -73,18 +73,6 @@ Nothing here is mocked. Every number is a reproducible formula over published da
 
 ---
 
-## Tech stack
-
-Deliberately boring and cheap — monthly/quarterly batch data, no streaming, no per-request billing.
-
-- **ETL / pipeline** — Python (standard library only), cron-scheduled batch → SQLite star schema over trade flows.
-- **Frontend** — Next.js 15 (App Router, SSR for SEO on public map/category pages).
-- **Map** — D3 / MapLibre choropleth over free GeoJSON. No Google Maps billing.
-- **Layer-3 CMS** — Markdown in-repo, so git history *is* the change log and audit trail.
-- **Web/ETL seam** — the ETL writes slim per-product JSON snapshots; the web app reads them at request time (with an in-process mtime cache), so re-running the pipeline shows up without a rebuild.
-
----
-
 ## Getting started
 
 **One command** (fetches real trade data on first run if the snapshot is missing):
@@ -125,20 +113,6 @@ trade-signal-terminal-plan.md   Full product vision (source of truth for scope)
 ```
 
 ---
-
-## Design principles (non-negotiable)
-
-1. **Inform, never match.** The app never introduces two parties. Layer 2 shows public names + source links only — never private/verified contact data. If a feature introduces a buyer to a seller, it stops.
-2. **Deterministic signals only.** Every signal is a reproducible formula over published data. No AI-guessed trends, ever.
-3. **Every requirement cites its source.** Each Layer-3 item shows an official source link + a "last verified" date, or it doesn't ship.
-
----
-
-## Status
-
-**Phase 1 MVP — complete and running on `localhost:3200`.** Map + signals + search + country drill-down + Layer-2 public-buyer profiles + Layer-3 requirement pages + watch/alerts. Data is real across all three layers. Willingness-to-pay (Stage 0) is not yet validated — this is a working product prototype, not a launched business.
-
-See [`docs/STATUS.md`](docs/STATUS.md) for live detail and [`docs/ROADMAP.md`](docs/ROADMAP.md) for phase scope.
 
 ## About
 
