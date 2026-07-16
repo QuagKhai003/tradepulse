@@ -94,6 +94,8 @@ TENDER_CPV_MANUAL = {
     "080131": ["03222000"],
     "080132": ["03222000"],
     "0904":   ["15872100"],              # pepper
+    "2709":   ["09131000"],              # crude oil -> crude petroleum (US SPR buys via USAspending; govs
+                                         #             rarely TENDER crude, so this mostly surfaces US awards)
 }
 
 _CPV_MAP_PATH = Path(__file__).resolve().parent / "reference" / "cpv_by_hs.json"
@@ -123,6 +125,7 @@ PROCUREMENT_KW = {
     "0306":   ["shrimp", "prawn"],
     "0801":   ["cashew"],
     "0904":   ["pepper", "peppercorn"],
+    "2709":   ["crude oil", "crude petroleum"],   # US Strategic Petroleum Reserve crude buys (DOE)
 }
 
 # OCDS publishers for market-specific public buyers beyond EU TED (sources/ocds.py). Each is one country;
