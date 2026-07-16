@@ -129,8 +129,9 @@ PROCUREMENT_KW = {
 # bulk-paged (no server-side product filter) and matched LOCALLY to TENDER_CPV. (name, base_url, iso3).
 # Only feeds that page newest-first via OCDS links.next go here; date-path/cursor feeds are added per-source.
 OCDS_PUBLISHERS = [
-    ("uk-cf",  "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search", "GBR"),
-    ("uk-fts", "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages",         "GBR"),
+    ("uk-cf",   "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?limit=100", "GBR"),
+    ("uk-fts",  "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages?limit=100",        "GBR"),
+    ("uk-scot", "https://api.publiccontractsscotland.gov.uk/v1/Notices?dateFrom={since}",              "GBR"),
 ]
 OCDS_MAX_PAGES = 30                      # bound the bulk scan (our products are niche)
 

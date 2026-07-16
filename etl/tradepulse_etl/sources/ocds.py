@@ -102,12 +102,13 @@ def parse_release(rel: dict, iso3: str, source: str, cpv_by_hs: dict[str, list[s
 
 
 class OcdsSource:
-    def __init__(self, base: str, country_iso3: str, source_name: str, page_param: str = "limit=100",
+    def __init__(self, start_url: str, country_iso3: str, source_name: str,
                  timeout: int = 40, pause: float = 0.3, max_pages: int = 40):
-        self.base = base
+        # start_url is the FULL first-page URL incl. query; a '{since}' placeholder is filled per pull
+        # (for date-parameterised feeds like Scotland). Pagination then follows OCDS links.next.
+        self.start_url = start_url
         self.country = country_iso3
         self.source_name = source_name
-        self.page_param = page_param
         self.timeout = timeout
         self.pause = pause
         self.max_pages = max_pages
@@ -116,7 +117,7 @@ class OcdsSource:
         """Page recent releases (newest first via links.next), match locally. `since` = 'YYYY-MM-DD'."""
         tenders: list[dict] = []
         awards: list[dict] = []
-        url = f"{self.base}?{self.page_param}"
+        url = self.start_url.format(since=since)
         for _ in range(self.max_pages):
             d = self._get(url)
             if not d:
