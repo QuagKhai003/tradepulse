@@ -16,15 +16,24 @@
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 
-// DATA_BASE_URL = e.g. "https://pub-xxxx.r2.dev" (no trailing slash). Unset → local filesystem.
+// DATA_BASE_URL = e.g. "https://tradepulse-data.pages.dev" (no trailing slash). Unset → local filesystem.
 const REMOTE = (process.env.DATA_BASE_URL || "").replace(/\/$/, "") || null;
 const LOCAL_DIR = path.join(process.cwd(), "public", "data");
 
+// FEED_BASE_URL (optional) hosts the VOLATILE market-feed files (procurement/regulatory/price) on a
+// SEPARATE store so a scheduled job can refresh them without touching — or being able to break — the
+// heavy BACI trade data (map + partner tables) on DATA_BASE_URL. Unset → feed served from REMOTE too
+// (backward compatible; one store). These are the files the `--tenders` ETL step regenerates.
+const FEED = (process.env.FEED_BASE_URL || "").replace(/\/$/, "") || REMOTE;
+const FEED_FILE = /^(awards|tenders|sellers|events|forward|psd|cpv-match)/;
+
 export const IS_REMOTE_DATA = !!REMOTE;
 
-// Resolve a bare filename ("sourcing-TOTAL.json") to a fetchable URL or an absolute fs path.
+// Resolve a bare filename ("sourcing-TOTAL.json") to a fetchable URL or an absolute fs path. In remote
+// mode, volatile feed files go to FEED, everything else (snapshots/sourcing/countries) to REMOTE.
 export function dataRef(file) {
-  return REMOTE ? `${REMOTE}/${file}` : path.join(LOCAL_DIR, file);
+  if (!REMOTE) return path.join(LOCAL_DIR, file);
+  return `${FEED_FILE.test(file) ? FEED : REMOTE}/${file}`;
 }
 
 // Curated Layer-3 content lives in the repo's ../content dir (outside web/), so on a serverless host it

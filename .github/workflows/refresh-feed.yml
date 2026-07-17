@@ -1,0 +1,64 @@
+name: Refresh market feed
+
+# Auto-refreshes ONLY the volatile market-feed data (public buyers, awarded contracts, regulatory
+# changes, price + PSD outlook) — all API-based, no BACI. Deploys to the SEPARATE Cloudflare Pages
+# project `tradepulse-feed`, so this can never touch or break the heavy trade data (map + partner
+# tables) on `tradepulse-data`. The app reads feed files from FEED_BASE_URL (see web/app/lib/jsoncache.js).
+#
+# Refresh the map / partner tables (BACI) separately + rarely with: bash scripts/refresh-baci.sh
+#
+# Required GitHub secrets (Settings -> Secrets and variables -> Actions):
+#   CLOUDFLARE_API_TOKEN    a token with "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID   your Cloudflare account id
+# Optional (richer feed; without them those sources just skip):
+#   KCS_SERVICE_KEY   USDA_API_KEY   API_DATA_GOV_KEY
+
+on:
+  schedule:
+    - cron: "0 3 1 * *"        # 03:00 UTC on the 1st of each month
+  workflow_dispatch: {}         # + a manual "Run workflow" button
+
+concurrency:
+  group: refresh-feed
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"      # ETL is pure standard library — no pip install needed
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Regenerate market feed (procurement + regulatory + price — no flows, no BACI)
+        working-directory: etl
+        env:
+          KCS_SERVICE_KEY: ${{ secrets.KCS_SERVICE_KEY }}
+          USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
+          API_DATA_GOV_KEY: ${{ secrets.API_DATA_GOV_KEY }}
+        run: python -m tradepulse_etl --no-flows --tenders
+
+      - name: Collect feed files + sanity gate
+        run: |
+          mkdir -p _feed
+          for pat in awards tenders sellers events forward psd; do
+            cp web/public/data/${pat}-*.json _feed/ 2>/dev/null || true
+          done
+          cp web/public/data/cpv-match.json _feed/ 2>/dev/null || true
+          n=$(ls _feed | wc -l)
+          echo "feed files generated: $n"
+          # Abort BEFORE deploying if the run produced suspiciously little — never publish a broken set.
+          test "$n" -gt 100
+
+      - name: Deploy feed to Cloudflare Pages (tradepulse-feed)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler@4 pages deploy _feed --project-name tradepulse-feed --branch main --commit-dirty=true
